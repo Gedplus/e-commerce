@@ -1,13 +1,13 @@
 import React, { useState } from "react"
 import Badge from '@mui/material/Badge';
-import MailIcon from '@mui/icons-material/Mail';
+
 import Avatar from '@mui/material/Avatar';
 
-import { useGetCustomersQuery, useGetMediaQuery, useGetUtilisateursQuery,useGetPackQuery } from '../../state/api'
+import {  useGetUtilisateursQuery,useGetPackQuery } from '../../state/api'
 const PackCart = ({ shopItems, addToCart }) => {
-  const { data, isLoading } = useGetPackQuery();
-  const userss = useGetUtilisateursQuery();
-  const users =userss.data
+  const { data } = useGetPackQuery();
+
+
   const [count, setCount] = useState(0) 
   const increment = () => {
     setCount(count + 1)
@@ -16,7 +16,7 @@ const PackCart = ({ shopItems, addToCart }) => {
 
   return (
     <>   
-    {data == undefined  ? (<>Loading....</>) : (<>{data.map((shopItems, index) => {
+    {data === undefined  ? (<>Loading....</>) : (<>{data.map((shopItems, index) => {
         return (
         <>  <div className='cart-list product d_flex' key={shopItems._id}>
         <div className='img'>

@@ -1,9 +1,7 @@
 import React, { useEffect, useState } from 'react'
-import Badge from '@mui/material/Badge';
-import MailIcon from '@mui/icons-material/Mail';
-import Avatar from '@mui/material/Avatar';
+
 import { editDocumentE, editDocumentI, editDocumentP, editDocumentU, getDocument, useGetUtilisateursQuery } from '../../state/api';
-import { useNavigate, useParams } from 'react-router-dom';
+import {  useParams } from 'react-router-dom';
 import { Box, Button, Typography } from '@mui/material';
 
 
@@ -59,7 +57,7 @@ setNumPages(numPages)
                 <header class="h">{Documents.titre}</header>
                 <br/>
                 <p>{Documents.description}</p>
-                {users == undefined  ? (<>sxxdd</>) : (<>{users.map((user) => {return( <>    {Documents.auteur == user._id ? (  <>  
+                {users === undefined  ? (<>sxxdd</>) : (<>{users.map((user) => {return( <>    {Documents.auteur === user._id ? (  <>  
                 
                     <Button
 

@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from "react"
 import Badge from '@mui/material/Badge';
-import MailIcon from '@mui/icons-material/Mail';
+
 import Avatar from '@mui/material/Avatar';
-import { editDocumentE, editDocumentI, editDocumentP, editDocumentU, getCommande, useGetCustomersQuery, useGetDocumentQuery, useGetUtilisateursQuery } from '../../state/api'
+import { editDocumentE, editDocumentI, editDocumentP, editDocumentU, getCommande,  useGetUtilisateursQuery } from '../../state/api'
 import { Link } from "react-router-dom";
 const AcheterCart = ({  user  }) => {
 
@@ -47,12 +47,12 @@ useEffect(() => {
             
   return (
     <>  
-    {Achats == undefined  ? (<>Loading....</>) : (<>{Achats.map((shopItems, index) => {
+    {Achats === undefined  ? (<>Loading....</>) : (<>{Achats.map((shopItems, index) => {
         return (<>{shopItems.product.map((shopItem, index) => { 
           return (<>
-        {shopItem.typeP == "document" && (<> {shopItem.prixF == shopItem.prixLecture ?(<>  <div className='cart-list product d_flex' key={shopItem._id}>
+        {shopItem.typeP === "document" && (<> {shopItem.prixF === shopItem.prixLecture ?(<>  <div className='cart-list product d_flex' key={shopItem._id}>
         <div className='img'>
-        {users == undefined  ? (<>sxxdd</>) : (<>{users.map((user) => {return( <>    {shopItem.auteur == user._id ? (  <>   <img  src={user.image} alt='' />   
+        {users === undefined  ? (<>sxxdd</>) : (<>{users.map((user) => {return( <>    {shopItem.auteur === user._id ? (  <>   <img  src={user.image} alt='' />   
      <div className=' d_flex'>
         <Badge badgeContent={shopItem.interessant + count} color="primary" style={{marginTop:"5px"}}>
         <Avatar alt="interessant" src="./images/interessant.png"   sx={{ width: 35, height: 35 }} onClick={ () => handleFormSubmit(shopItem._id, {interessant: shopItem.interessant + 1} )}/>
@@ -79,7 +79,7 @@ useEffect(() => {
           <h4  style={{ fontSize:"15px"}}>Titre du document : {shopItem.titre}</h4>
           
         
-          {users == undefined  ? (<>sxxdd</>) : (<>{users.map((user) => {return( <>    {shopItem.auteur == user._id ? (     <h4 style={{ fontSize:"15px"}}>  Auteur : {user.name} </h4> ):
+          {users === undefined  ? (<>sxxdd</>) : (<>{users.map((user) => {return( <>    {shopItem.auteur === user._id ? (     <h4 style={{ fontSize:"15px"}}>  Auteur : {user.name} </h4> ):
           (<></>)}</> ) })}</>)}
         
           <h4 style={{color:"grey" , fontWeight:"300", fontSize:"15px"}}>  {shopItem.type}</h4>
@@ -104,7 +104,7 @@ useEffect(() => {
    
       </div></>):(<><div className='cart-list product d_flex' key={shopItem._id}>
         <div className='img'>
-        {users == undefined  ? (<>sxxdd</>) : (<>{users.map((user) => {return( <>    {shopItem.auteur == user._id ? (  <>   <img  src={user.image} alt='' />   
+        {users === undefined  ? (<>sxxdd</>) : (<>{users.map((user) => {return( <>    {shopItem.auteur === user._id ? (  <>   <img  src={user.image} alt='' />   
      <div className=' d_flex'>
         <Badge badgeContent={shopItem.interessant + count} color="primary" style={{marginTop:"5px"}}>
         <Avatar alt="interessant" src="./images/interessant.png"   sx={{ width: 35, height: 35 }} onClick={ () => handleFormSubmit(shopItem._id, {interessant: shopItem.interessant + 1} )}/>
@@ -131,7 +131,7 @@ useEffect(() => {
           <h4  style={{ fontSize:"15px"}}>Titre du document : {shopItem.titre}</h4>
        
         
-          {users == undefined  ? (<>sxxdd</>) : (<>{users.map((user) => {return( <>    {shopItem.auteur == user._id ? (     <h4 style={{ fontSize:"15px"}}>  Auteur : {user.name} </h4> ):
+          {users === undefined  ? (<>sxxdd</>) : (<>{users.map((user) => {return( <>    {shopItem.auteur === user._id ? (     <h4 style={{ fontSize:"15px"}}>  Auteur : {user.name} </h4> ):
           (<></>)}</> ) })}</>)}
         
           <h4 style={{color:"grey" , fontWeight:"300", fontSize:"15px"}}>  {shopItem.type}</h4>
@@ -158,9 +158,9 @@ useEffect(() => {
          </>
          
          ) }
-           {shopItem.typeP == "video" && (<>  <div className='cart-list product d_flex' key={shopItem._id}>
+           {shopItem.typeP === "video" && (<>  <div className='cart-list product d_flex' key={shopItem._id}>
         <div className='img'>
-        {users == undefined  ? (<>sxxdd</>) : (<>{users.map((user) => {return( <>    {shopItem.auteur == user._id ? (  <>   <img  src={user.image} alt='' />   
+        {users === undefined  ? (<>sxxdd</>) : (<>{users.map((user) => {return( <>    {shopItem.auteur === user._id ? (  <>   <img  src={user.image} alt='' />   
      <div className=' d_flex'>
         <Badge badgeContent={shopItem.interessant + count} color="primary" style={{marginTop:"5px"}}>
         <Avatar alt="interessant" src="./images/interessant.png"   sx={{ width: 35, height: 35 }} onClick={ () => handleFormSubmit(shopItem._id, {interessant: shopItem.interessant + 1} )}/>
@@ -187,7 +187,7 @@ useEffect(() => {
           <h4  style={{ fontSize:"15px"}}>Titre du video : {shopItem.name}</h4>
           
         
-          {users == undefined  ? (<>sxxdd</>) : (<>{users.map((user) => {return( <>    {shopItem.auteur == user._id ? (     <h4 style={{ fontSize:"15px"}}>  Auteur : {user.name} </h4> ):
+          {users === undefined  ? (<>sxxdd</>) : (<>{users.map((user) => {return( <>    {shopItem.auteur === user._id ? (     <h4 style={{ fontSize:"15px"}}>  Auteur : {user.name} </h4> ):
           (<></>)}</> ) })}</>)}
         
           <h4 style={{color:"grey" , fontWeight:"300", fontSize:"15px"}}>  {shopItem.type}</h4>
@@ -213,9 +213,9 @@ useEffect(() => {
         
          </>
          
-         ) } {shopItem.typeP == "packs" && (<>  <div className='cart-list product d_flex' key={shopItem._id}>
+         ) } {shopItem.typeP === "packs" && (<>  <div className='cart-list product d_flex' key={shopItem._id}>
          <div className='img'>
-         {users == undefined  ? (<>sxxdd</>) : (<>{users.map((user) => {return( <>    {shopItem.auteur == user._id ? (  <>   <img  src={user.image} alt='' />   
+         {users === undefined  ? (<>sxxdd</>) : (<>{users.map((user) => {return( <>    {shopItem.auteur === user._id ? (  <>   <img  src={user.image} alt='' />   
       <div className=' d_flex'>
          <Badge badgeContent={shopItem.interessant + count} color="primary" style={{marginTop:"5px"}}>
          <Avatar alt="interessant" src="./images/interessant.png"   sx={{ width: 35, height: 35 }} onClick={ () => handleFormSubmit(shopItem._id, {interessant: shopItem.interessant + 1} )}/>
@@ -242,7 +242,7 @@ useEffect(() => {
            <h4  style={{ fontSize:"15px"}}>Titre du video : {shopItem.title}</h4>
           
          
-           {users == undefined  ? (<>sxxdd</>) : (<>{users.map((user) => {return( <>    {shopItem.auteur == user._id ? (     <h4 style={{ fontSize:"15px"}}>  Auteur : {user.name} </h4> ):
+           {users === undefined  ? (<>sxxdd</>) : (<>{users.map((user) => {return( <>    {shopItem.auteur === user._id ? (     <h4 style={{ fontSize:"15px"}}>  Auteur : {user.name} </h4> ):
            (<></>)}</> ) })}</>)}
          
            <h4 style={{color:"grey" , fontWeight:"300", fontSize:"15px"}}>  {shopItem.type}</h4>

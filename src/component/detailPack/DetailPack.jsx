@@ -1,9 +1,8 @@
 import React, { useEffect, useState } from 'react'
-import Badge from '@mui/material/Badge';
-import MailIcon from '@mui/icons-material/Mail';
+
 import Avatar from '@mui/material/Avatar';
-import { editDocumentE, editDocumentI, editDocumentP, editDocumentU, getDocument, getMedia, getPackid, useGetMediaQuery, useGetUtilisateursQuery } from '../../state/api';
-import { Link, useNavigate, useParams } from 'react-router-dom';
+import { editDocumentE, editDocumentI, editDocumentP, editDocumentU,  getPackid, useGetMediaQuery, useGetUtilisateursQuery } from '../../state/api';
+import { Link,  useParams } from 'react-router-dom';
 import { Box, Button, Card, CardActionArea, CardActions, CardContent, CardHeader, IconButton, Typography } from '@mui/material';
 
 
@@ -67,15 +66,15 @@ const DetailPack= () => {
               gridTemplateColumns="repeat(2, minmax(0, 1fr))"
        style={{marginTop:"50px",marginLeft:"70px"}}
             >
-            {Pack.videos== undefined ? (<></>):(<>{Pack.videos.map((video) =>{
+            {Pack.videos === undefined ? (<></>):(<>{Pack.videos.map((video) =>{
     return(<>
-        {data == undefined ? (
+        {data === undefined ? (
             <></>):(<>{data.map((media) =>{
-                return(<>{media._id== video ?(<>    {media.videos== undefined ? (<></>):(<>{media.videos.map((video) =>{
+                return(<>{media._id === video ?(<>    {media.videos === undefined ? (<></>):(<>{media.videos.map((video) =>{
                     return(
                         <Card sx={{ maxWidth: 345 }} style={{boxShadow:"0px 2px 10px "}}>
-                                    {users == undefined  ? (<>sxxdd</>) : (<>{users.map((user) => {return( <>  
-                                      {media.auteur == user._id ? (     <CardHeader
+                                    {users === undefined  ? (<>sxxdd</>) : (<>{users.map((user) => {return( <>  
+                                      {media.auteur === user._id ? (     <CardHeader
         avatar={
             <Avatar alt= {user.name} src={user.image} />
         }
@@ -94,7 +93,7 @@ const DetailPack= () => {
                         
                         <CardActionArea>
                         <video preload="auto" width="352" height="208" controls>
-                        <source src={`http://localhost:5001${video}` } />
+                        <source src={`https://api.bibintunisie.com${video}` } />
                        
                         </video>
                           <CardContent>

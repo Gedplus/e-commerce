@@ -1,7 +1,7 @@
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 import axios from 'axios';
 export const api = createApi({
-    baseQuery: fetchBaseQuery({ baseUrl: "http://localhost:5001" }), 
+    baseQuery: fetchBaseQuery({ baseUrl: "https://api.bibintunisie.com" }), 
     reducerPath: "adminApi",
     tagTypes: [
       "User",
@@ -38,53 +38,53 @@ export const api = createApi({
 
     } = api;
 export const addReclamation = async (reclamation) => {
-    return await axios.post(`http://localhost:5001/general/ReclamationAdd`, reclamation);
+    return await axios.post(`https://api.bibintunisie.com/general/ReclamationAdd`, reclamation);
 }
 export const addContact = async (contact) => {
-    return await axios.post(`http://localhost:5001/general/contactAdd`, contact);
+    return await axios.post(`https://api.bibintunisie.com/general/contactAdd`, contact);
 }
 export const addDocument = async (document) => {
-  return await axios.post(`http://localhost:5001/general/DocumentAdd`, document);
+  return await axios.post(`https://api.bibintunisie.com/general/DocumentAdd`, document);
 }
 export const editUser = async (id, user) => {
-  return await axios.put(`http://localhost:5001/client/${id}`, user)
+  return await axios.put(`https://api.bibintunisie.com/client/${id}`, user)
 }
 export const editDocumentI = async (id, document) => {
-  return await axios.put(`http://localhost:5001/client/documentsI/${id}`, document)
+  return await axios.put(`https://api.bibintunisie.com/client/documentsI/${id}`, document)
 }
 export const editDocumentU = async (id, document) => {
-  return await axios.put(`http://localhost:5001/client/documentsU/${id}`, document)
+  return await axios.put(`https://api.bibintunisie.com/client/documentsU/${id}`, document)
 }
 export const editDocumentE = async (id, document) => {
-  return await axios.put(`http://localhost:5001/client/documentsE/${id}`, document)
+  return await axios.put(`https://api.bibintunisie.com/client/documentsE/${id}`, document)
 }
 export const editDocumentP = async (id, document) => {
-  return await axios.put(`http://localhost:5001/client/documentsP/${id}`, document)
+  return await axios.put(`https://api.bibintunisie.com/client/documentsP/${id}`, document)
 }
 export const editMediaI = async (id, media) => {
-  return await axios.put(`http://localhost:5001/media/mediaI/${id}`, media)
+  return await axios.put(`https://api.bibintunisie.com/media/mediaI/${id}`, media)
 }
 export const editMediaU = async (id, media) => {
-  return await axios.put(`http://localhost:5001/media/mediaU/${id}`, media)
+  return await axios.put(`https://api.bibintunisie.com/media/mediaU/${id}`, media)
 }
 export const editMediaE = async (id, media) => {
-  return await axios.put(`http://localhost:5001/media/mediaE/${id}`, media)
+  return await axios.put(`https://api.bibintunisie.com/media/mediaE/${id}`, media)
 }
 export const editMediaP = async (id, media) => {
-  return await axios.put(`http://localhost:5001/media/mediaP/${id}`, media)
+  return await axios.put(`https://api.bibintunisie.com/media/mediaP/${id}`, media)
 }
 export const addCommande = async (commande) => {
-  return await axios.post(`http://localhost:5001/commande/CommandeAdd`, commande);
+  return await axios.post(`https://api.bibintunisie.com/commande/CommandeAdd`, commande);
 }
 export const getCommande = async (id) => {
-  return await axios.get(`http://localhost:5001/commande/${id}` )
+  return await axios.get(`https://api.bibintunisie.com/commande/${id}` )
 }
 export const getDocument= async (id) => {
-  return await axios.get(`http://localhost:5001/client/Doc/${id}`);
+  return await axios.get(`https://api.bibintunisie.com/client/Doc/${id}`);
 }
 export const getMedia = async (id) => {
-  return await axios.get(`http://localhost:5001/media/${id}`);
+  return await axios.get(`https://api.bibintunisie.com/media/${id}`);
 }
 export const getPackid = async (id) => {
-  return await axios.get(`http://localhost:5001/pack/${id}`);
+  return await axios.get(`https://api.bibintunisie.com/pack/${id}`);
 }

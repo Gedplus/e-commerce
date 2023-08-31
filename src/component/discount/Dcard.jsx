@@ -2,12 +2,12 @@ import React from "react"
 import Slider from "react-slick"
 import "slick-carousel/slick/slick.css"
 import "slick-carousel/slick/slick-theme.css"
-import Ddata from "./Ddata"
+
 import "../newarrivals/style.css"
 import { useGetMediaQuery, useGetUtilisateursQuery } from "../../state/api"
 
 const Dcard = ({addToCart}) => {
-  const { data, isLoading } = useGetMediaQuery();
+  const { data } = useGetMediaQuery();
   const userss = useGetUtilisateursQuery();
   const users =userss.data
   const settings = {
@@ -20,19 +20,19 @@ const Dcard = ({addToCart}) => {
   return (
     <> 
 
-      {data == undefined  ? (<>Loading....</>) : (        <Slider {...settings}>  {data.map((value, index) => {
+      {data === undefined  ? (<>Loading....</>) : (        <Slider {...settings}>  {data.map((value, index) => {
           return (
             <>
               <div className='box product d_flex' key={index}>
                 <div className='img'>
-                {users == undefined  ? (<>sxxdd</>) : (<>{users.map((user) => {return( <>    {value.auteur == user._id && (  
+                {users === undefined  ? (<>sxxdd</>) : (<>{users.map((user) => {return( <>    {value.auteur === user._id && (  
                 <>   <img style ={{width:"170px", height:"140px"}} src={user.image} alt='' />   </>)}</>)})}</>)}
       
                 </div>
                 <div className='cart-details' style={{width:"200px"}}> 
           <h4  style={{ fontSize:"15px"}}>{value.name}</h4>
    
-          {users == undefined  ? (<>sxxdd</>) : (<>{users.map((user) => {return( <>    {value.auteur == user._id ? (     <h4 style={{ fontSize:"15px"}}>  Auteur : {user.name}</h4> ):
+          {users === undefined  ? (<>sxxdd</>) : (<>{users.map((user) => {return( <>    {value.auteur === user._id ? (     <h4 style={{ fontSize:"15px"}}>  Auteur : {user.name}</h4> ):
           (<></>)}</> ) })}</>)}
     
        

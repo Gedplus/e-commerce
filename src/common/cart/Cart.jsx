@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react"
+import React, { useState } from "react"
 import "./style.css"
 import { FormControl, FormControlLabel, FormLabel, Radio, RadioGroup } from "@mui/material"
 import { addCommande, useGetUtilisateursQuery } from "../../state/api";
@@ -8,18 +8,12 @@ const Cart = ({ CartItem, addToCart, decreaseQty , user}) => {
   // Stpe: 7   calucate total of items
   const userss = useGetUtilisateursQuery();
   const [selected, setSelected] = useState([]);
-var [total, settotal] = useState(0);
+
   const users =userss.data
   const totalPrice = selected.reduce((a,v) =>  a = a + v.value , 0 )
 
   var total = 0 
-  const updatedNums = CartItem.map((number)=>{
-   
-if(number.prix !== undefined)
 
- {   return total =parseFloat(number.prix) + total;
-}
-});
 const handleFormSubmit = async(values) => {
 
 const commande ={
@@ -64,10 +58,10 @@ await addCommande(commande);
             {CartItem.map((item, index) => {
           
 
-              return ( <>    {item.typeP == "document" && (<>  <div className='cart-list product d_flex' key={index}>
+              return ( <>    {item.typeP === "document" && (<>  <div className='cart-list product d_flex' key={index}>
                         
               <div className='img'>
-              {users == undefined  ? (<>sxxdd</>) : (<>{users.map((user) => {return( <>    {item.auteur == user._id ? (    <img src={user.image} alt='' />     ):
+              {users === undefined  ? (<>sxxdd</>) : (<>{users.map((user) => {return( <>    {item.auteur === user._id ? (    <img src={user.image} alt='' />     ):
       (<></>)}</> ) })}</>)}
              
               </div>
@@ -118,10 +112,10 @@ await addCommande(commande);
 
               <div className='cart-item-price'></div>
             </div></>)} 
-            {item.typeP == "video" && (<>  <div className='cart-list product d_flex' key={index}>
+            {item.typeP === "video" && (<>  <div className='cart-list product d_flex' key={index}>
                         
                         <div className='img'>
-                        {users == undefined  ? (<>sxxdd</>) : (<>{users.map((user) => {return( <>    {item.auteur == user._id ? (    <img src={user.image} alt='' />     ):
+                        {users === undefined  ? (<>sxxdd</>) : (<>{users.map((user) => {return( <>    {item.auteur === user._id ? (    <img src={user.image} alt='' />     ):
                 (<></>)}</> ) })}</>)}
                        
                         </div>
@@ -156,10 +150,10 @@ await addCommande(commande);
           
                         <div className='cart-item-price'></div>
                       </div></>)} 
-                      {item.typeP == "packs" && (<>  <div className='cart-list product d_flex' key={index}>
+                      {item.typeP === "packs" && (<>  <div className='cart-list product d_flex' key={index}>
                         
                         <div className='img'>
-                        {users == undefined  ? (<>sxxdd</>) : (<>{users.map((user) => {return( <>    {item.auteur == user._id ? (    <img src={user.image} alt='' />     ):
+                        {users === undefined  ? (<>sxxdd</>) : (<>{users.map((user) => {return( <>    {item.auteur === user._id ? (    <img src={user.image} alt='' />     ):
                 (<></>)}</> ) })}</>)}
                        
                         </div>
@@ -212,7 +206,7 @@ await addCommande(commande);
             </div>
             <h4>  <img src="./images/accept.png" alt='' style={{height:"20px", width:"20px", marginTop:"10px", marginBottom:"-5px"}} />  J’ai lu et j’accepte les <Link to="/Reglement"  style={{ color:"#0000a1", textDecoration: "underline"}}>conditions générales * </Link></h4>
             <br/>
-            { user._id == undefined  ? (     <Link to='/login'>
+            { user._id === undefined  ? (     <Link to='/login'>
           <button className="button-18" style={{backgroundColor:"#0000a1", color:"#fff"}}>Confirmer votre commande
 </button></Link>):(     <button className="button-18" style={{backgroundColor:"#0000a1", color:"#fff"}} onClick={handleFormSubmit}>Confirmer votre commande
 </button>)}

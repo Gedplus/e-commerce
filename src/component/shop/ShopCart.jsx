@@ -1,10 +1,10 @@
 import React, { useState } from "react"
 import Badge from '@mui/material/Badge';
-import MailIcon from '@mui/icons-material/Mail';
+
 import Avatar from '@mui/material/Avatar';
-import { editDocumentE, editDocumentI, editDocumentP, editDocumentU, useGetCustomersQuery, useGetDocumentQuery, useGetUtilisateursQuery } from '../../state/api'
+import { editDocumentE, editDocumentI, editDocumentP, editDocumentU, useGetDocumentQuery, useGetUtilisateursQuery } from '../../state/api'
 const ShopCart = ({ shopItems, addToCart }) => {
-  const { data, isLoading } = useGetDocumentQuery();
+  const { data } = useGetDocumentQuery();
   const userss = useGetUtilisateursQuery();
   const users =userss.data
   const [count, setCount] = useState(0);
@@ -35,11 +35,11 @@ const ShopCart = ({ shopItems, addToCart }) => {
             
   return (
     <>    
-    {data == undefined  ? (<>Loading....</>) : (<>{data.map((shopItems, index) => {
+    {data === undefined  ? (<>Loading....</>) : (<>{data.map((shopItems, index) => {
         return (
-        <>  {shopItems.statue == "etudiant" ? ( <div className='cart-list product d_flex' key={shopItems._id}>
+        <>  {shopItems.statue === "etudiant" ? ( <div className='cart-list product d_flex' key={shopItems._id}>
         <div className='img'>
-        {users == undefined  ? (<>sxxdd</>) : (<>{users.map((user) => {return( <>    {shopItems.auteur == user._id ? (  <>   <img src={user.image} alt='' />   
+        {users === undefined  ? (<>sxxdd</>) : (<>{users.map((user) => {return( <>    {shopItems.auteur === user._id ? (  <>   <img src={user.image} alt='' />   
      <div className=' d_flex'>
         <Badge badgeContent={shopItems.interessant + count} color="primary" style={{marginTop:"5px"}}>
         <Avatar alt="interessant" src="./images/interessant.png"   sx={{ width: 35, height: 35 }} onClick={ () => handleFormSubmit(shopItems._id, {interessant: shopItems.interessant + 1} )}/>
@@ -51,7 +51,7 @@ const ShopCart = ({ shopItems, addToCart }) => {
 </Badge>
 <Badge badgeContent={shopItems.pasvraiment + count} color="primary" style={{marginTop:"5px"}}>
         <Avatar alt="pas vraiment" src="./images/sm.png"  sx={{ width: 35, height: 35 }}  onClick={ () => handleFormSubmitP(shopItems._id, {pasvraiment: shopItems.pasvraiment + 1} )} />
-</Badge></div><div className='product-like'>{user.approved == true ?(<img  style={{height:"40px", width:"40px"}} src="./images/checked.png"/>):(<></>)}
+</Badge></div><div className='product-like'>{user.approved === true ?(<img  style={{height:"40px", width:"40px"}} alt="checked" src="./images/checked.png"/>):(<></>)}
               
               
               </div>   
@@ -64,7 +64,7 @@ const ShopCart = ({ shopItems, addToCart }) => {
         <div className='cart-details'>
           <h4  style={{ fontSize:"15px"}}>Titre du document : {shopItems.titre}</h4>
   
-          {users == undefined  ? (<>sxxdd</>) : (<>{users.map((user) => {return( <>    {shopItems.auteur == user._id ? (     <h4 style={{ fontSize:"15px"}}>  Auteur : {user.name} </h4> ):
+          {users === undefined  ? (<>sxxdd</>) : (<>{users.map((user) => {return( <>    {shopItems.auteur === user._id ? (     <h4 style={{ fontSize:"15px"}}>  Auteur : {user.name} </h4> ):
           (<></>)}</> ) })}</>)}
         
           <h4 style={{color:"grey" , fontWeight:"300", fontSize:"15px"}}>  {shopItems.type}</h4>
@@ -107,7 +107,7 @@ const ShopCart = ({ shopItems, addToCart }) => {
         <div className='cart-item-price'></div>
       </div>):( <div className='cart-list product d_flex' key={shopItems._id} style={{background:"#FBFCFA"}}>
                   <div className='img'>
-                  {users == undefined  ? (<>sxxdd</>) : (<>{users.map((user) => {return( <>    {shopItems.auteur == user._id ? (      <>   <img src={user.image} alt='' />   
+                  {users === undefined  ? (<>sxxdd</>) : (<>{users.map((user) => {return( <>    {shopItems.auteur === user._id ? (      <>   <img src={user.image} alt='' />   
      <div className=' d_flex'>
         <Badge badgeContent={shopItems.interessant + count} color="primary" style={{marginTop:"5px"}}>
         <Avatar alt="interessant" src="./images/interessant.png"   sx={{ width: 35, height: 35 }} onClick={ () => handleFormSubmit(shopItems._id, {interessant: shopItems.interessant + 1} )}/>
@@ -120,7 +120,7 @@ const ShopCart = ({ shopItems, addToCart }) => {
 <Badge badgeContent={shopItems.pasvraiment + count} color="primary" style={{marginTop:"5px"}}>
         <Avatar alt="pas vraiment" src="./images/sm.png"  sx={{ width: 35, height: 35 }}  onClick={ () => handleFormSubmitP(shopItems._id, {pasvraiment: shopItems.pasvraiment + 1} )} />
 </Badge></div>
-<div className='product-like'>{user.approved == true ?(<img  style={{height:"40px", width:"40px"}} src="./images/checked.png"/>):(<></>)}
+<div className='product-like'>{user.approved === true ?(<img  style={{height:"40px", width:"40px"}} src="./images/checked.png" alt="checked"/>):(<></>)}
               
               
           </div>   </>  ):
@@ -130,7 +130,7 @@ const ShopCart = ({ shopItems, addToCart }) => {
                   <div className='cart-details'>
                     <h4  style={{ fontSize:"15px"}}>Titre du document : {shopItems.titre}</h4>
                    
-                    {users == undefined  ? (<>sxxdd</>) : (<>{users.map((user) => {return( <>    {shopItems.auteur == user._id ? (     <h4 style={{ fontSize:"15px"}}>  Auteur : {user.name} </h4> ):
+                    {users === undefined  ? (<>sxxdd</>) : (<>{users.map((user) => {return( <>    {shopItems.auteur === user._id ? (     <h4 style={{ fontSize:"15px"}}>  Auteur : {user.name} </h4> ):
                     (<></>)}</> ) })}</>)}
                   
                     <h4 style={{color:"grey" , fontWeight:"300", fontSize:"15px"}}>  {shopItems.type}</h4>

@@ -1,9 +1,7 @@
 import React, { useEffect, useState } from 'react'
-import Badge from '@mui/material/Badge';
-import MailIcon from '@mui/icons-material/Mail';
-import Avatar from '@mui/material/Avatar';
-import { editDocumentE, editDocumentI, editDocumentP, editDocumentU, getDocument, getMedia, useGetUtilisateursQuery } from '../../state/api';
-import { useNavigate, useParams } from 'react-router-dom';
+
+import { editDocumentE, editDocumentI, editDocumentP, editDocumentU,  getMedia, useGetUtilisateursQuery } from '../../state/api';
+import {  useParams } from 'react-router-dom';
 import { Box, Button, Typography } from '@mui/material';
 
 
@@ -48,9 +46,7 @@ const DetailVideo= () => {
                 await editDocumentP(id, document1 );
               
               };
-              function onDocumentSuccess ({numPages}){
-setNumPages(numPages)
-              }
+             
     return (
         <>
       <section class="container2 forms">
@@ -60,7 +56,7 @@ setNumPages(numPages)
                 <header class="h">{Media.name}</header>
                 <br/>
                 <p>{Media.description}</p>
-                {users == undefined  ? (<>sxxdd</>) : (<>{users.map((user) => {return( <>    {Media.auteur == user._id ? (  <>  
+                {users === undefined  ? (<>sxxdd</>) : (<>{users.map((user) => {return( <>    {Media.auteur === user._id ? (  <>  
                 
                     <Button
 
@@ -97,10 +93,10 @@ setNumPages(numPages)
           </> ):
           (<></>)}</> ) })}</>)} 
 <div>
-{Media.videos== undefined ? (<></>):(<>{Media.videos.map((video) =>{
+{Media.videos=== undefined ? (<></>):(<>{Media.videos.map((video) =>{
     return(
         <video preload="auto" width="1000" height="500" controls>
-        <source src={`http://localhost:5001${video}` } />
+        <source src={`https://api.bibintunisie.com${video}` } />
    
         </video>
     )

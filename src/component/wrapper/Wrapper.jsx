@@ -50,7 +50,7 @@ const Wrapper = () => {
         <div className='container' style={{marginTop:"40px"}}>
         <div className='heading d_flex'>
             <div className='heading-left row  f_flex'>
-              <img src='./images/par.png' />
+              <img src='./images/par.png' alt="par" />
               <h2>Partenaires</h2>
             </div>
             <div className='heading-right row '>

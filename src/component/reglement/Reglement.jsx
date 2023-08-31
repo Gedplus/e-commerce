@@ -1,5 +1,5 @@
-import React, { useState } from "react"
-import { addReclamation } from "../../state/api";
+import React  from "react"
+
 
 
 const Reglement = () => {

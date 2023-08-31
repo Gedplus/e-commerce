@@ -1,5 +1,5 @@
 import React from "react"
-import Catg from "../shop/Catg"
+
 
 const Categories = () => {
   const data = [

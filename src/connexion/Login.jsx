@@ -8,7 +8,7 @@ const Login = () => {
     e.preventDefault();
 
   
-    fetch("http://localhost:5001/login-user", {
+    fetch("https://api.bibintunisie.com/login-user", {
       method: "POST",
       crossDomain: true,
       headers: {
@@ -24,7 +24,7 @@ const Login = () => {
       .then((res) => res.json())
       .then((data) => {
        
-        if (data.status == "ok") {
+        if (data.status === "ok") {
           alert("login successful");
           window.localStorage.setItem("token", data.data._id);
           window.localStorage.setItem("loggedIn", true);

@@ -1,4 +1,4 @@
-import logo from './logo.svg';
+
 import './App.css';
 import Header from './common/header/Header';
 import { BrowserRouter as Router , Switch , Route  } from 'react-router-dom';
@@ -13,7 +13,7 @@ import Signup from './connexion/SignUp';
 import Reclamation from './component/reclamation/Reclamation';
 import Contact from './component/contact/Contact';
 import Documents from './component/document/document';
-import { getCommande, useGetUserQuery } from './state/api';
+import { useGetUserQuery } from './state/api';
 import AddDocument from './component/addDocument/AddDocument';
 import MesDocuments from './component/MesDocument/MesDocument';
 import Reglement from './component/reglement/Reglement';
@@ -28,7 +28,7 @@ import DetailPack from './component/detailPack/DetailPack';
 
 function App() {
   const {productItems } = Data
-  const [CartItem , setCartItem ] = useState([])
+
   
   const [items, setItems] = useState([]);
   const {shopItems} = Sdata

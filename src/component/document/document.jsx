@@ -5,13 +5,13 @@ import React from 'react'
 
 
 
-import Shop from '../shop/Shop'
+
 import ShopCart from '../shop/ShopCart'
-import Catg from '../shop/Catg'
+
 import Categories from './categorie'
 import { useGetDocumentQuery } from '../../state/api'
 const Documents = ({ addToCart, shopItems }) => {
-    const { data, isLoading } = useGetDocumentQuery();
+ 
   return (
     <><section className='shop-items ' >
         <div className='container d_flex '> 

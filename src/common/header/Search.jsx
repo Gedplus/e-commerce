@@ -1,7 +1,7 @@
-import React, { useEffect, useState } from "react"
-import logo from "../../image/Logo-fini.png"
+import React, {  useState } from "react"
+
 import { Link } from "react-router-dom"
-import { Box, IconButton, useTheme, MenuItem,  Menu,  Button,Typography, } from "@mui/material";
+import { Box, IconButton, MenuItem,  Menu,  Button,Typography } from "@mui/material";
 import ArrowDropDownOutlinedIcon from '@mui/icons-material/ArrowDropDownOutlined';
 const Search = ({ CartItem,user }) => {
   // fixed Header
@@ -35,7 +35,7 @@ const Search = ({ CartItem,user }) => {
           </div>
          <div className='icon f_flex width'>
       
-         { user._id == undefined  ? ( <><Link to='/login'>
+         { user._id === undefined  ? ( <><Link to='/login'>
           <button className="button-17">Connexion</button> </Link>
           <Link to='/signup'>
           <button className="button-17" style={{backgroundColor:"#0000a1", color:"#fff"}}>S'identifier</button></Link></>
@@ -88,7 +88,7 @@ const Search = ({ CartItem,user }) => {
             <div className='cart'>
               <Link to='/cart'>
                 <i className='fa fa-shopping-bag icon-circle'></i>
-   <span>{CartItem.length == 0 ? "" : CartItem.length}</span>
+   <span>{CartItem.length === 0 ? "" : CartItem.length}</span>
               </Link>
             </div>
           </div>

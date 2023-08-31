@@ -32,14 +32,14 @@ const Navbar = (user) => {
                 <Link to='/packs'>Packs videos</Link>
               </li>
           
-              { user.user._id == undefined  ? ( 
+              { user.user._id === undefined  ? ( 
                 <>    </> 
         ) :(<>   <li>
           <Link to='/AddDocument'>Ajouter Document</Link>
         </li>
      
    
-        { user.user.demande == false  ? ( 
+        { user.user.demande === false  ? ( 
         <li>
           <Link to='/verification'>Demande de verification</Link>
         </li>):(<></>)}</>)}

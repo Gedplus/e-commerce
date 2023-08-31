@@ -8,7 +8,7 @@ const Discount = ({addToCart}) => {
         <div className='container'>
           <div className='heading d_flex'>
             <div className='heading-left row  f_flex'>
-              <img src="./images/vid.png" />
+              <img src="./images/vid.png"  alt="video"/>
               <h2>Liste videos</h2>
             </div>
             <div className='heading-right row '>

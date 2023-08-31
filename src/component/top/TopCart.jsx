@@ -2,12 +2,12 @@ import React from "react"
 import Slider from "react-slick"
 import "slick-carousel/slick/slick.css"
 import "slick-carousel/slick/slick-theme.css"
-import Tdata from "./Tdate"
+
 import { useGetPackQuery } from "../../state/api"
 
 
 const TopCart = (addToCart) => {
-  const { data, isLoading } = useGetPackQuery();
+  const { data } = useGetPackQuery();
   const settings = {
     dots: false,
     infinite: true,
@@ -20,7 +20,7 @@ const TopCart = (addToCart) => {
      
    
           
-        {data == undefined  ? (<>Loading....</>) : (  <Slider {...settings}> {data.map((shopItems, index) => {
+        {data === undefined  ? (<>Loading....</>) : (  <Slider {...settings}> {data.map((shopItems, index) => {
         return (<>
         <div className='cart-list product d_flex' key={shopItems._id}>
         <div className='img'>

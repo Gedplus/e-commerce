@@ -1,5 +1,5 @@
 import React, { useState } from "react"
-import { addContact, addReclamation } from "../../state/api";
+import { addContact} from "../../state/api";
 
 
 const Contact = () => {
