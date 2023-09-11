@@ -25,12 +25,7 @@ const Navbar = (user) => {
               <li>
                 <Link to='/documents'>Documents</Link>
               </li>
-              <li>
-                <Link to='/videos'>Videos</Link>
-              </li>
-              <li>
-                <Link to='/packs'>Packs videos</Link>
-              </li>
+          
           
               { user.user._id === undefined  ? ( 
                 <>    </> 
