@@ -14,17 +14,12 @@ i18n.changeLanguage(lang);
         <div className='container d_flex'>
           <div className='left row'>
             <i className='fa fa-phone'></i>
-            <label> +88012 3456 7894</label>
+            <label> +216 25 55 77 80</label>
             <i className='fa fa-envelope'></i>
-            <label> support@ui-lib.com</label>
+            <label> bibintunisie@gmail.com</label>
           </div>
           <div className='right row RText'>
-            <label>Theme FAQ"s</label>
-            <label>{t('Header.Hello-world')}</label>
-            <button onClick={()=> handlClick('fr')}>    <span>🏳️‍⚧️</span>FR</button>
-            <button onClick={()=> handlClick('en')}> <span>🏳️‍⚧️</span>EN</button>
-                  <button onClick={()=> handlClick('ar')}> <span>🏳️‍⚧️</span>AR</button>
-         
+       
          
           </div>
         </div>

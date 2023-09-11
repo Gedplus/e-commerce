@@ -13,13 +13,10 @@ const Pages = ({productItems, addToCart,CartItem,shopItems}) => {
     <>
    
       <Home CartItem ={CartItem}/>
-  <TopCate addToCart={addToCart}/>
-      
-    <Discount addToCart={addToCart}/>
 
       <Shop shopItems={shopItems} addToCart={addToCart}/>
     
-      <Wrapper/>
+
     </>
   )
 }

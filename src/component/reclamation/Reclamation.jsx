@@ -1,5 +1,6 @@
 import React, { useState } from "react"
 import { addReclamation } from "../../state/api";
+import { Typography } from "@mui/material";
 
 
 const Reclamation = () => {
@@ -8,9 +9,10 @@ const Reclamation = () => {
     const [email , setEmail] = useState("")
     const [Message , setMessage] = useState("")
     const [cin , setCin] = useState("")
+    const [phoneNumber , setPhoneNumber] = useState("")
     const reclamation ={
         Email: email,
-      
+        phoneNumber: phoneNumber,
           NomPrenom: Fname,
           CIN: cin,
           justificative:  image,
@@ -58,7 +60,7 @@ const Reclamation = () => {
             <div class="form-content">
                 <header class="h">Formulaire espace de réclamation</header>
                 <br/>
-                <p>Si vous constatez l'existence de votre document sans aucun droit, vous pouvez faire une réclamation en remplissant les données requises . Une fois que vous aurez prouvé  la validité de votre document, notre plateforme vous offrira le compte avec le solde qu'il contient.</p>
+                <p>Si vous constatez que votre document est présent sans autorisation, vous avez la possibilité de déposer une réclamation en fournissant les informations requises. Une fois que vous aurez prouvé la validité de votre document, notre plateforme vous rétablira l'accès à votre compte ainsi que le solde qu'il contient : </p>
               
                 <div class="div"> 
                 <img src="./images/reclamation.png" alt=''  style={{width:"400px", height:"400px", marginTop:"70px"}}/>
@@ -76,13 +78,21 @@ const Reclamation = () => {
                     <div class="field input-field">
                         <input type="email" placeholder="Email" class="input" onChange={(event) => {setEmail(event.target.value)}} />
                     </div>
-                
+                    <div class="field input-field">
+                        <input type="text" placeholder="Numéro de téléphone" class="input" onChange={(e) => setPhoneNumber(e.target.value)} />
+                    </div><br/>
+                    <Typography id="non-linear-slider"  style={{fontSize:"17px"}}  gutterBottom>
+          Upload votre CIN ou passport :
+        </Typography>
                     <div class="field input-field">
                     <input accept="image/*"
              type="file" placeholder="Email"
              onChange={convertToBase64}/>
 
-                    </div>
+                    </div><br/>
+                    <Typography id="non-linear-slider"  style={{fontSize:"17px"}}  gutterBottom>
+          Upload votre piéce justificatif :
+        </Typography>
                     <div class="field input-field">
                     <input accept="image/*"
              type="file"   placeholder="Email"

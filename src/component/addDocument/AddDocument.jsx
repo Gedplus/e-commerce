@@ -12,22 +12,30 @@ import Slider from '@mui/material/Slider';
 import { Cascader } from 'antd';
 const AddDocument = ({user}) => {
     const [selected, setSelected] = useState("");
-    const [profession, setProfession] = useState();
+  
 const [type, setType] = useState();
 const [image , setImage] = useState("")
 const [universite , setUniversite] = useState("")
-const [pieceJustificatif , setPieceJustificatif] = useState("")
-const [carteIdentite , setCarteIdentite] = useState("")
-const [auteur, setAuteur] = useState();
-const [ file, setFile ] = useState(null)
-const [ fileName, setFileName ] = useState(null)
+
+const [Annee , setAnnée] = useState("")
 const [description, setDescription] = useState("");
 var prixt = 0
 const [Titre, setTitre] = useState("");
 const [period, setPeriod] = useState(6);
 const [value, setValue] = useState(0);
+const [image1 , setImage1] = useState("")
+function convertToBase646(e){
+  console.log(e);
+  var reader = new FileReader();
+  reader.readAsDataURL(e.target.files[0]);
+  reader.onload = () => {
 
+    setImage1(reader.result)
 
+  };
+  reader.onerror = error => {
+    console.log("error: ", error);
+  }}
       const options = [
         {
           value: 'Université de Tunis',
@@ -188,18 +196,17 @@ const [value, setValue] = useState(0);
     const handleFormSubmit = async(values) => {
       if (user.approved == true ){
         const document ={
-          statue: selected,
+    
           document: image,
           type: type,
           prixLecture: value,
           prixTelechargement: prixt,
-          profession: profession,
+          Annee: Annee,
           auteur: user._id,
         titre: Titre,
         description: description, 
-        profession :profession,
-        pieceJustificatif: pieceJustificatif,
-        carteIdentite: carteIdentite,
+image:image1,
+      
         universite: universite,
         accepte : true,
         period : period,
@@ -208,18 +215,17 @@ const [value, setValue] = useState(0);
       }
       else {
         const document ={
-          statue: selected,
+
           document: image,
           type: type,
           prixLecture: value,
           prixTelechargement: prixt,
-          profession: profession,
+          image:image1,
           auteur: user._id,
         titre: Titre,
         description: description, 
-        profession :profession,
-        pieceJustificatif: pieceJustificatif,
-        carteIdentite: carteIdentite,
+        Annee:Annee,
+       
         universite: universite,
         accepte : false,
         period : period,
@@ -230,14 +236,11 @@ const [value, setValue] = useState(0);
       
       
       };
-      const handleChange6 = (event) => {
-        setProfession(event.target.value);
-      };
+
+    
    
        
-            function handleChange1(event) {
-                setSelected(event.target.value);
-             }
+     
              function valueLabelFormatD(value) {
             
               return value;
@@ -275,30 +278,7 @@ function valueLabelFormat(value) {
       console.log("error: ", error);
     }}
 
-        function convertToBase641(e){
-            console.log(e);
-            var reader = new FileReader();
-            reader.readAsDataURL(e.target.files[0]);
-            reader.onload = () => {
-          
-              setPieceJustificatif(reader.result)
-        
-            };
-            reader.onerror = error => {
-              console.log("error: ", error);
-            }}
-            function convertToBase642(e){
-              console.log(e);
-              var reader = new FileReader();
-              reader.readAsDataURL(e.target.files[0]);
-              reader.onload = () => {
-           
-                setCarteIdentite(reader.result)
-          
-              };
-              reader.onerror = error => {
-                console.log("error: ", error);
-              }}
+       
         function calculateValue(value) {
           var ss=  value.toString()
          const str2 = '00';
@@ -384,291 +364,15 @@ function valueLabelFormat(value) {
                 <br/>
                
              <form  class="form2" onSubmit={handleFormSubmit}>
-             <FormControl          sx={{ gridColumn: "span 4" }}>
-      <FormLabel id="demo-row-radio-buttons-group-label"    style={{fontSize:"20px"}} color="secondary"  >vous êtes étudiant(e) ou professionnel(le)</FormLabel>
-      <RadioGroup
-        row
-        aria-labelledby="demo-row-radio-buttons-group-label"
-        name="row-radio-buttons-group"
-        onChange = {handleChange1}
-
-      >
-        <FormControlLabel value="etudiant" control={<Radio   color="default" />} label="etudiant"/>
-        <FormControlLabel value="professionnel" control={<Radio color="default"  />} label="professionnel" />
-     
-      </RadioGroup>
-    </FormControl><br/><br/>  
-                     <Typography id="non-linear-slider"  style={{fontSize:"18px"}}  gutterBottom>
+             <Typography id="non-linear-slider"  style={{fontSize:"18px"}}  gutterBottom>
           Upload votre document:
         </Typography>
         <div class="field input-field">
    <input type="file"    onChange={convertToBase64}    required /> <br/> <br/>
  
                      </div>
-                     {selected === "etudiant" && (<>
-                        <div class="field input-field">  <FormControl
-     fullWidth
-  
-          >
-            <InputLabel
-              color="secondary"
-              id="demo-simple-select-label"
-            >
-           Type de votre document
-            </InputLabel>
-            <Select
-            
-     
-              labelId="demo-simple-select-label"
-              id="demo-simple-select"
-              label="Type de votre document"
-              color="secondary"
-              onChange={handleChange2}
-            >
-          
-                  <MenuItem value="PFE">
-           PFE ou autre (niveau licence)
-                  </MenuItem>
-                  <MenuItem value="Mémoire">
-                 Mémoire ou autre (niveau mastére)
-                  </MenuItem>
-                  <MenuItem value="Thése">
-           Thése ou autre (niveau doctorat)
-                  </MenuItem>
-           
-            </Select>
-          </FormControl><br/><br/></div>
-        
-                      {type === "PFE" && (<>
-                      <br/>
-                        <Box sx={{ width: 270 }}>
-        <Typography id="non-linear-slider"  style={{fontSize:"18px"}}  gutterBottom>
-          Prix de mode lecture : {value} dt
-        </Typography>
-        <Slider
-              style={{width:"400px"}}
-          value={value}
-          min={0}
-          step={0.001}
-          max={0.900}
-          color="secondary"
-        
-          getAriaValueText={valueLabelFormat}
-          valueLabelFormat={valueLabelFormat}
-          onChange={handleChange4}
-          valueLabelDisplay="auto"
-          aria-labelledby="non-linear-slider"
-        />
-      </Box>     <Box sx={{ width: 270 }}>
-          <Typography id="non-linear-slider"  style={{fontSize:"18px"}}  gutterBottom>
-         Durée de mode lecture : {period} mois
-        </Typography>
-        <Slider
-              style={{width:"400px"}}
-          value={period}
-          min={6}
-          step={1}
-          max={12}
-          color="secondary"
-        
-          getAriaValueText={valueLabelFormatD}
-          valueLabelFormat={valueLabelFormatD}
-          onChange={handleChange7}
-          valueLabelDisplay="auto"
-          aria-labelledby="non-linear-slider"
-        />
-      </Box>          <Box sx={{ width: 270 }}>
-        <Typography id="non-linear-slider"   style={{fontSize:"18px"}} gutterBottom>
-        Prix de mode téléchargement : { value == 0 ?(<>{prixt =value } </>):(<>{prixt =value + 0.900} dt</>)}
-        </Typography>
-        <Slider
-             style={{width:"400px"}}
-          value={value}
-          min={0}
-          step={0.001}
-          max={0.900}
-   disabled
-          getAriaValueText={valueLabelFormat}
-          valueLabelFormat={valueLabelFormat}
-          onChange={handleChange4}
-          valueLabelDisplay="auto"
-          aria-labelledby="non-linear-slider"
-        />
-      </Box></>
-                )}   {type === "Mémoire" && (<>
-                    <Box sx={{ width: 270 }}>
-    <Typography id="non-linear-slider"  style={{fontSize:"18px"}}  gutterBottom>
-    Prix de mode lecture :  {value}
-    </Typography>
-    <Slider
-      value={value}
-      min={0}
-      style={{width:"400px"}}
-      step={0.001}
-      max={1.800}
-      color="secondary"
-    
-      getAriaValueText={valueLabelFormat}
-      valueLabelFormat={valueLabelFormat}
-      onChange={handleChange4}
-      valueLabelDisplay="auto"
-      aria-labelledby="non-linear-slider"
-    />
-  </Box>          <Box sx={{ width: 270 }}>
-          <Typography id="non-linear-slider"  style={{fontSize:"18px"}}  gutterBottom>
-         Durée de mode lecture : {period} mois
-        </Typography>
-        <Slider
-              style={{width:"400px"}}
-          value={period}
-          min={6}
-          step={1}
-          max={12}
-          color="secondary"
-        
-          getAriaValueText={valueLabelFormatD}
-          valueLabelFormat={valueLabelFormatD}
-          onChange={handleChange7}
-          valueLabelDisplay="auto"
-          aria-labelledby="non-linear-slider"
-        />
-      </Box>     <Box sx={{ width: 270 }}>
-    <Typography id="non-linear-slider"  style={{fontSize:"18px"}}  gutterBottom>
-    Prix de mode téléchargement :   { value == 0 ?(<>{prixt =value } </>):(<>{prixt =value + 1.800}</>)}
-    </Typography>
-    <Slider
-         style={{width:"400px"}}
-      value={value}
-      min={0}
-      step={0.001}
-      max={1.800}
-disabled
-      getAriaValueText={valueLabelFormat}
-      valueLabelFormat={valueLabelFormat}
-      onChange={handleChange4}
-      valueLabelDisplay="auto"
-      aria-labelledby="non-linear-slider"
-    />
-  </Box></>
-            )}
-             {type === "Thése" && (<>
-                    <Box sx={{ width: 270 }}>
-    <Typography id="non-linear-slider"  style={{fontSize:"18px"}}  gutterBottom>
-    Prix de mode lecture : {value}
-    </Typography>
-    <Slider
-         style={{width:"400px"}}
-      value={value}
-      min={0}
-      step={0.001}
-      max={3.600}
-      color="secondary"
-    
-      getAriaValueText={valueLabelFormat}
-      valueLabelFormat={valueLabelFormat}
-      onChange={handleChange4}
-      valueLabelDisplay="auto"
-      aria-labelledby="non-linear-slider"
-    />
-  </Box>   
-  <Box sx={{width: 270 }}>
-          <Typography id="non-linear-slider"  style={{fontSize:"18px"}}  gutterBottom>
-         Durée de mode lecture : {period} mois
-        </Typography>
-        <Slider
-              style={{width:"400px"}}
-          value={period}
-          min={6}
-          step={1}
-          max={12}
-          color="secondary"
-        
-          getAriaValueText={valueLabelFormatD}
-          valueLabelFormat={valueLabelFormatD}
-          onChange={handleChange7}
-          valueLabelDisplay="auto"
-          aria-labelledby="non-linear-slider"
-        />
-      </Box>           <Box sx={{ width: 270 }}>
-    <Typography id="non-linear-slider"  style={{fontSize:"18px"}}  gutterBottom>
-    Prix de mode téléchargement : { value == 0 ?(<>{prixt =value } </>):(<>{prixt =value + 3.600}</>)}
-    </Typography>
-    <Slider
-         style={{width:"400px"}}
-      value={value}
-      min={0}
-      step={0.001}
-      max={3.600}
-disabled
-      getAriaValueText={valueLabelFormat}
-      valueLabelFormat={valueLabelFormat}
-      onChange={handleChange4}
-      valueLabelDisplay="auto"
-      aria-labelledby="non-linear-slider"
-    />
-  </Box></>
-            )}
-                     </>
-              )}
-                
-                 
-                <div class="field input-field">
-                <Cascader options={options} onChange={onChange} placeholder="Université dont vous avez travaillé votre document "     style={{width:"940px"}} />
-                    </div>
-                    {selected === "professionnel" && (<>
-                   <FormControl
-                      fullWidth
-         
-                 >
-                   <InputLabel
-                     color="secondary"
-                     id="demo-simple-select-label"
-                   >
-              Qu'elle est votre profession
-                   </InputLabel>
-                   <Select
-                   
-            
-                     labelId="demo-simple-select-label"
-                     id="demo-simple-select"
-                     label="Qu'elle est votre profession"
-                     color="secondary"
-                     onChange={handleChange6}
-                   >
-                 
-                         <MenuItem value="Enseignant">
-                         Enseignant
-                         </MenuItem>
-                         <MenuItem value="Avocat">
-                         Avocat
-                         </MenuItem>
-                         <MenuItem value="Juge">
-                         Juge
-                         </MenuItem>
-                         <MenuItem value="Expert">
-                         Expert comptable
-                         </MenuItem>
-                         <MenuItem value="Huissier">
-                         Huissier
-                         </MenuItem>
-                         <MenuItem value="Autre">
-        Autre
-                         </MenuItem>
-                  
-                   </Select>
-                 </FormControl><br/> <br/>    <Typography id="non-linear-slider"  style={{fontSize:"18px"}}  gutterBottom>
-          Upload votre carte d'identité(image ou pdf):
-        </Typography>
-        
-        <div class="field input-field">
-                 <input type="file" name="cin"  required  onChange={convertToBase641} /></div><br/> <br/><br/>
-                 <Typography id="non-linear-slider"  style={{fontSize:"18px"}}  gutterBottom>
-          Upload pièce justificatif  de votre profession (image ou pdf):
-        </Typography>
-        
-        <div class="field input-field">
-                 <input type="file" name="justification" onChange={convertToBase642}  required /></div><br/><br/>
-            <FormControl
+                     <br/>
+                     <FormControl
        fullWidth
           >
             <InputLabel
@@ -702,13 +406,190 @@ disabled
                   <MenuItem value="Ouvrage">
  Ouvrage
                   </MenuItem>
-                  <MenuItem value="Autre">
- Autre
-                  </MenuItem>
+      
            
             </Select>
-          </FormControl><br/> <br/>   {type === "Article" || type === "PFE" ||  type === "Mémoire" || type === "Autre"  ? (<>
-                <Box sx={{ width: 270 }}>
+          </FormControl>
+          <br/>
+          <br/>
+          <div class="field input-field">
+                <Cascader options={options} onChange={onChange} placeholder="Université dont vous avez travaillé votre document "     style={{width:"940px"}} />
+                    </div>
+                    <div class="field input-field">
+                        <input type="text" placeholder="Année" class="input" onChange={(event) => {setAnnée(event.target.value)}} />
+                    </div>
+          {type === "PFE" && (<>
+                      <br/>
+                        <Box sx={{ width: 270 }}>
+        <Typography id="non-linear-slider"  style={{fontSize:"18px"}}  gutterBottom>
+          Prix de mode lecture : {value} dt
+        </Typography>
+        <Slider
+              style={{width:"400px"}}
+          value={value}
+          min={0} 
+          step={0.001}
+          max={4000}
+          color="secondary"
+        
+          getAriaValueText={valueLabelFormat}
+          valueLabelFormat={valueLabelFormat}
+          onChange={handleChange4}
+          valueLabelDisplay="auto"
+          aria-labelledby="non-linear-slider"
+        />
+      </Box>     <Box sx={{ width: 270 }}>
+          <Typography id="non-linear-slider"  style={{fontSize:"18px"}}  gutterBottom>
+         Durée de mode lecture : {period} mois
+        </Typography>
+        <Slider
+              style={{width:"400px"}}
+          value={period}
+          min={6}
+          step={1}
+          max={12}
+          color="secondary"
+        
+          getAriaValueText={valueLabelFormatD}
+          valueLabelFormat={valueLabelFormatD}
+          onChange={handleChange7}
+          valueLabelDisplay="auto"
+          aria-labelledby="non-linear-slider"
+        />
+      </Box>          <Box sx={{ width: 270 }}>
+        <Typography id="non-linear-slider"   style={{fontSize:"18px"}} gutterBottom>
+        Prix de mode téléchargement : { value == 0 ?(<>{prixt =value } </>):(<>{prixt =value + 4000} dt</>)}
+        </Typography>
+        <Slider
+             style={{width:"400px"}}
+          value={value}
+          min={0}
+          step={0.001}
+          max={4000}
+   disabled
+          getAriaValueText={valueLabelFormat}
+          valueLabelFormat={valueLabelFormat}
+          onChange={handleChange4}
+          valueLabelDisplay="auto"
+          aria-labelledby="non-linear-slider"
+        />
+      </Box></>
+                )} {type === "Mémoire" && (<>
+                  <Box sx={{ width: 270 }}>
+  <Typography id="non-linear-slider"  style={{fontSize:"18px"}}  gutterBottom>
+  Prix de mode lecture :  {value}
+  </Typography>
+  <Slider
+    value={value}
+    min={0}
+    style={{width:"400px"}}
+    step={0.001}
+    max={6000}
+    color="secondary"
+  
+    getAriaValueText={valueLabelFormat}
+    valueLabelFormat={valueLabelFormat}
+    onChange={handleChange4}
+    valueLabelDisplay="auto"
+    aria-labelledby="non-linear-slider"
+  />
+</Box>          <Box sx={{ width: 270 }}>
+        <Typography id="non-linear-slider"  style={{fontSize:"18px"}}  gutterBottom>
+       Durée de mode lecture : {period} mois
+      </Typography>
+      <Slider
+            style={{width:"400px"}}
+        value={period}
+        min={6}
+        step={1}
+        max={12}
+        color="secondary"
+      
+        getAriaValueText={valueLabelFormatD}
+        valueLabelFormat={valueLabelFormatD}
+        onChange={handleChange7}
+        valueLabelDisplay="auto"
+        aria-labelledby="non-linear-slider"
+      />
+    </Box>     <Box sx={{ width: 270 }}>
+  <Typography id="non-linear-slider"  style={{fontSize:"18px"}}  gutterBottom>
+  Prix de mode téléchargement :   { value == 0 ?(<>{prixt =value } </>):(<>{prixt =value + 6000}</>)}
+  </Typography>
+  <Slider
+       style={{width:"400px"}}
+    value={value}
+    min={0}
+    step={0.001}
+    max={6000}
+disabled
+    getAriaValueText={valueLabelFormat}
+    valueLabelFormat={valueLabelFormat}
+    onChange={handleChange4}
+    valueLabelDisplay="auto"
+    aria-labelledby="non-linear-slider"
+  />
+</Box></>
+          )}
+           {type === "Thése" && (<>
+                  <Box sx={{ width: 270 }}>
+  <Typography id="non-linear-slider"  style={{fontSize:"18px"}}  gutterBottom>
+  Prix de mode lecture : {value}
+  </Typography>
+  <Slider
+       style={{width:"400px"}}
+    value={value}
+    min={0}
+    step={0.001}
+    max={8000}
+    color="secondary"
+  
+    getAriaValueText={valueLabelFormat}
+    valueLabelFormat={valueLabelFormat}
+    onChange={handleChange4}
+    valueLabelDisplay="auto"
+    aria-labelledby="non-linear-slider"
+  />
+</Box>   
+<Box sx={{width: 270 }}>
+        <Typography id="non-linear-slider"  style={{fontSize:"18px"}}  gutterBottom>
+       Durée de mode lecture : {period} mois
+      </Typography>
+      <Slider
+            style={{width:"400px"}}
+        value={period}
+        min={6}
+        step={1}
+        max={12}
+        color="secondary"
+      
+        getAriaValueText={valueLabelFormatD}
+        valueLabelFormat={valueLabelFormatD}
+        onChange={handleChange7}
+        valueLabelDisplay="auto"
+        aria-labelledby="non-linear-slider"
+      />
+    </Box>           <Box sx={{ width: 270 }}>
+  <Typography id="non-linear-slider"  style={{fontSize:"18px"}}  gutterBottom>
+  Prix de mode téléchargement : { value == 0 ?(<>{prixt =value } </>):(<>{prixt =value + 8000}</>)}
+  </Typography>
+  <Slider
+       style={{width:"400px"}}
+    value={value}
+    min={0}
+    step={0.001}
+    max={8000}
+disabled
+    getAriaValueText={valueLabelFormat}
+    valueLabelFormat={valueLabelFormat}
+    onChange={handleChange4}
+    valueLabelDisplay="auto"
+    aria-labelledby="non-linear-slider"
+  />
+</Box></>
+          )}
+
+
+{user.statue === "professionnel" && user.approved === true && type==="Article"  && (<>        <Box sx={{ width: 270 }}>
 <Typography id="non-linear-slider" gutterBottom style={{fontSize:"18px"}} > 
 Prix de mode lecture :  {value}
 </Typography>
@@ -716,7 +597,7 @@ Prix de mode lecture :  {value}
   value={value}
   min={0}
   step={0.001}
-  max={7.200}
+  max={8000}
   color="secondary"
   style={{width:"400px"}}
   getAriaValueText={valueLabelFormat}
@@ -745,13 +626,13 @@ Prix de mode lecture :  {value}
         />
       </Box>       <Box sx={{ width: 270 }}>
 <Typography id="non-linear-slider" gutterBottom style={{fontSize:"18px"}} >
-Prix de mode téléchargement: { value == 0 ?(<>{prixt =value } </>):(<>{prixt =value + 7.200}</>)}
+Prix de mode téléchargement: { value == 0 ?(<>{prixt =value } </>):(<>{prixt =value + 8000}</>)}
 </Typography>
 <Slider
   value={value}
   min={0}
   step={0.001}
-  max={7.200}
+  max={8000}
 disabled
 style={{width:"400px"}}
   getAriaValueText={valueLabelFormat}
@@ -760,25 +641,137 @@ style={{width:"400px"}}
   valueLabelDisplay="auto"
   aria-labelledby="non-linear-slider"
 />
-</Box></>
-        ):(      <>        <Box sx={{ width: 270 }} style={{fontSize:"18px"}} >
-          <Typography id="non-linear-slider" gutterBottom>
-          Prix de mode lecture :  {value}
-          </Typography>
-          <Slider
-            value={value}
-            min={0}
-            step={0.001}
-            max={14.400}
-            color="secondary"
-            style={{width:"400px"}}
-            getAriaValueText={valueLabelFormat}
-            valueLabelFormat={valueLabelFormat}
-            onChange={handleChange4}
-            valueLabelDisplay="auto"
-            aria-labelledby="non-linear-slider"
-          />
-          </Box>   <Box sx={{ width: 270 }}>
+</Box></> )}
+{user.statue === "professionnel" && user.approved === false && type==="Article"  && (<>  <Typography color="red" id="non-linear-slider" gutterBottom style={{fontSize:"18px"}} > 
+La soumission de ce type de document est conditionnée à la vérification préalable de votre compte
+</Typography>        <Box sx={{ width: 270 }}>
+<Typography id="non-linear-slider" gutterBottom style={{fontSize:"18px"}} > 
+Prix de mode lecture :  {value}
+</Typography>
+<Slider
+  value={value}
+  min={0}
+  step={0.001}
+  max={8000}
+  disabled
+  color="secondary"
+  style={{width:"400px"}}
+  getAriaValueText={valueLabelFormat}
+  valueLabelFormat={valueLabelFormat}
+  onChange={handleChange4}
+  valueLabelDisplay="auto"
+  aria-labelledby="non-linear-slider"
+/>
+</Box>      <Box sx={{ width: 270 }}>
+          <Typography id="non-linear-slider"  style={{fontSize:"18px"}}  gutterBottom>
+         Durée de mode lecture : {period} mois
+        </Typography>
+        <Slider
+              style={{width:"400px"}}
+          value={period}
+          min={6}
+          step={1}
+          max={12}
+          color="secondary"
+          disabled
+          getAriaValueText={valueLabelFormatD}
+          valueLabelFormat={valueLabelFormatD}
+          onChange={handleChange7}
+          valueLabelDisplay="auto"
+          aria-labelledby="non-linear-slider"
+        />
+      </Box>       <Box sx={{ width: 270 }}>
+<Typography id="non-linear-slider" gutterBottom style={{fontSize:"18px"}} >
+Prix de mode téléchargement: { value == 0 ?(<>{prixt =value } </>):(<>{prixt =value + 8000}</>)}
+</Typography>
+<Slider
+  value={value}
+  min={0}
+  step={0.001}
+  max={8000}
+disabled
+style={{width:"400px"}}
+  getAriaValueText={valueLabelFormat}
+  valueLabelFormat={valueLabelFormat}
+  onChange={handleChange4}
+  valueLabelDisplay="auto"
+  aria-labelledby="non-linear-slider"
+/>
+</Box></> )}
+{user.statue === "etudiant"  && type==="Article"  && (<>    <Typography color="red" id="non-linear-slider" gutterBottom style={{fontSize:"18px"}} > 
+La soumission de ce type de document est conditionnée à la vérification préalable de votre compte
+</Typography>      <Box sx={{ width: 270 }}>
+<Typography id="non-linear-slider" gutterBottom style={{fontSize:"18px"}} > 
+Prix de mode lecture :  {value}
+</Typography>
+<Slider
+  value={value}
+  min={0}
+  step={0.001}
+  max={8000}
+  color="secondary"
+  disabled
+  style={{width:"400px"}}
+  getAriaValueText={valueLabelFormat}
+  valueLabelFormat={valueLabelFormat}
+  onChange={handleChange4}
+  valueLabelDisplay="auto"
+  aria-labelledby="non-linear-slider"
+/>
+</Box>      <Box sx={{ width: 270 }}>
+          <Typography id="non-linear-slider"  style={{fontSize:"18px"}}  gutterBottom>
+         Durée de mode lecture : {period} mois
+        </Typography>
+        <Slider
+              style={{width:"400px"}}
+          value={period}
+          min={6}
+          step={1}
+          max={12}
+          color="secondary"
+          disabled
+          getAriaValueText={valueLabelFormatD}
+          valueLabelFormat={valueLabelFormatD}
+          onChange={handleChange7}
+          valueLabelDisplay="auto"
+          aria-labelledby="non-linear-slider"
+        />
+      </Box>       <Box sx={{ width: 270 }}>
+<Typography id="non-linear-slider" gutterBottom style={{fontSize:"18px"}} >
+Prix de mode téléchargement: { value == 0 ?(<>{prixt =value } </>):(<>{prixt =value + 8000}</>)}
+</Typography>
+<Slider
+  value={value}
+  min={0}
+  step={0.001}
+  max={8000}
+disabled
+style={{width:"400px"}}
+  getAriaValueText={valueLabelFormat}
+  valueLabelFormat={valueLabelFormat}
+  onChange={handleChange4}
+  valueLabelDisplay="auto"
+  aria-labelledby="non-linear-slider"
+/>
+</Box></> )}
+{user.statue === "professionnel" && user.approved === true && type==="Ouvrage"  && (<>        <Box sx={{ width: 270 }}>
+<Typography id="non-linear-slider" gutterBottom style={{fontSize:"18px"}} > 
+Prix de mode lecture :  {value}
+</Typography>
+<Slider
+  value={value}
+  min={0}
+  step={0.001}
+  max={12000}
+  color="secondary"
+  style={{width:"400px"}}
+  getAriaValueText={valueLabelFormat}
+  valueLabelFormat={valueLabelFormat}
+  onChange={handleChange4}
+  valueLabelDisplay="auto"
+  aria-labelledby="non-linear-slider"
+/>
+</Box>      <Box sx={{ width: 270 }}>
           <Typography id="non-linear-slider"  style={{fontSize:"18px"}}  gutterBottom>
          Durée de mode lecture : {period} mois
         </Typography>
@@ -796,39 +789,154 @@ style={{width:"400px"}}
           valueLabelDisplay="auto"
           aria-labelledby="non-linear-slider"
         />
-      </Box>    
-               <Box sx={{ width: 270 }}>
-          <Typography id="non-linear-slider" gutterBottom style={{fontSize:"18px"}} >
-          Prix de mode téléchargement :  { value == 0 ?(<>{prixt =value } </>):(<>{prixt =value + 14.400}</>)}
-          </Typography>
-          <Slider
-            value={value}
-            min={0}
-            step={0.001}
-            max={14.400}
+      </Box>       <Box sx={{ width: 270 }}>
+<Typography id="non-linear-slider" gutterBottom style={{fontSize:"18px"}} >
+Prix de mode téléchargement: { value == 0 ?(<>{prixt =value } </>):(<>{prixt =value + 8000}</>)}
+</Typography>
+<Slider
+  value={value}
+  min={0}
+  step={0.001}
+  max={12000}
+disabled
+style={{width:"400px"}}
+  getAriaValueText={valueLabelFormat}
+  valueLabelFormat={valueLabelFormat}
+  onChange={handleChange4}
+  valueLabelDisplay="auto"
+  aria-labelledby="non-linear-slider"
+/>
+</Box></> )}
+{user.statue === "professionnel" && user.approved === false && type==="Ouvrage"  && (<>  <Typography color="red" id="non-linear-slider" gutterBottom style={{fontSize:"18px"}} > 
+La soumission de ce type de document est conditionnée à la vérification préalable de votre compte
+</Typography>        <Box sx={{ width: 270 }}>
+<Typography id="non-linear-slider" gutterBottom style={{fontSize:"18px"}} > 
+Prix de mode lecture :  {value}
+</Typography>
+<Slider
+  value={value}
+  min={0}
+  step={0.001}
+  max={12000}
+  disabled
+  color="secondary"
+  style={{width:"400px"}}
+  getAriaValueText={valueLabelFormat}
+  valueLabelFormat={valueLabelFormat}
+  onChange={handleChange4}
+  valueLabelDisplay="auto"
+  aria-labelledby="non-linear-slider"
+/>
+</Box>      <Box sx={{ width: 270 }}>
+          <Typography id="non-linear-slider"  style={{fontSize:"18px"}}  gutterBottom>
+         Durée de mode lecture : {period} mois
+        </Typography>
+        <Slider
+              style={{width:"400px"}}
+          value={period}
+          min={6}
+          step={1}
+          max={12}
+          color="secondary"
           disabled
-          style={{width:"400px"}}
-            getAriaValueText={valueLabelFormat}
-            valueLabelFormat={valueLabelFormat}
-            onChange={handleChange4}
-            valueLabelDisplay="auto"
-            aria-labelledby="non-linear-slider"
-          />
-          </Box></>)}
-        </>
-             
-              )} 
-                <div class="field input-field">
+          getAriaValueText={valueLabelFormatD}
+          valueLabelFormat={valueLabelFormatD}
+          onChange={handleChange7}
+          valueLabelDisplay="auto"
+          aria-labelledby="non-linear-slider"
+        />
+      </Box>       <Box sx={{ width: 270 }}>
+<Typography id="non-linear-slider" gutterBottom style={{fontSize:"18px"}} >
+Prix de mode téléchargement: { value == 0 ?(<>{prixt =value } </>):(<>{prixt =value + 8000}</>)}
+</Typography>
+<Slider
+  value={value}
+  min={0}
+  step={0.001}
+  max={12000}
+disabled
+style={{width:"400px"}}
+  getAriaValueText={valueLabelFormat}
+  valueLabelFormat={valueLabelFormat}
+  onChange={handleChange4}
+  valueLabelDisplay="auto"
+  aria-labelledby="non-linear-slider"
+/>
+</Box></> )}
+{user.statue === "etudiant"  && type==="Ouvrage"  && (<>    <Typography color="red" id="non-linear-slider" gutterBottom style={{fontSize:"18px"}} > 
+La soumission de ce type de document est conditionnée à la vérification préalable de votre compte
+</Typography>      <Box sx={{ width: 270 }}>
+<Typography id="non-linear-slider" gutterBottom style={{fontSize:"18px"}} > 
+Prix de mode lecture :  {value}
+</Typography>
+<Slider
+  value={value}
+  min={0}
+  step={0.001}
+  max={12000}
+  color="secondary"
+  disabled
+  style={{width:"400px"}}
+  getAriaValueText={valueLabelFormat}
+  valueLabelFormat={valueLabelFormat}
+  onChange={handleChange4}
+  valueLabelDisplay="auto"
+  aria-labelledby="non-linear-slider"
+/>
+</Box>      <Box sx={{ width: 270 }}>
+          <Typography id="non-linear-slider"  style={{fontSize:"18px"}}  gutterBottom>
+         Durée de mode lecture : {period} mois
+        </Typography>
+        <Slider
+              style={{width:"400px"}}
+          value={period}
+          min={6}
+          step={1}
+          max={12}
+          color="secondary"
+          disabled
+          getAriaValueText={valueLabelFormatD}
+          valueLabelFormat={valueLabelFormatD}
+          onChange={handleChange7}
+          valueLabelDisplay="auto"
+          aria-labelledby="non-linear-slider"
+        />
+      </Box>       <Box sx={{ width: 270 }}>
+<Typography id="non-linear-slider" gutterBottom style={{fontSize:"18px"}} >
+Prix de mode téléchargement: { value == 0 ?(<>{prixt =value } </>):(<>{prixt =value + 8000}</>)}
+</Typography>
+<Slider
+  value={value}
+  min={0}
+  step={0.001}
+  max={12000}
+disabled
+style={{width:"400px"}}
+  getAriaValueText={valueLabelFormat}
+  valueLabelFormat={valueLabelFormat}
+  onChange={handleChange4}
+  valueLabelDisplay="auto"
+  aria-labelledby="non-linear-slider"
+/>
+</Box></> )}
+<div class="field input-field">
                         <input type="text" placeholder="Titre" class="input" onChange={(event) => {setTitre(event.target.value)}} />
                     </div>
                    <div class="field1 input-field">
                         <textarea type="text" placeholder="Description" class="input" onChange={(event) => {setDescription(event.target.value)}} />
                     </div>
+                    <Typography id="non-linear-slider"  style={{fontSize:"17px"}}  gutterBottom>
+          Ajouté une photo :
+        </Typography>
+                    <div class="field input-field">
+                    <input accept="image/*"
+             type="file" placeholder="Email"
+             onChange={convertToBase646}/>
+
+                    </div>
                      <div class="field button-field">
                          <button type="submit" >Envoyer</button>
           </div>
-                   
-                     
                 </form>
                  
              </div>

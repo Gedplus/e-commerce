@@ -3,15 +3,16 @@ import "./style.css"
 import { FormControl, FormControlLabel, FormLabel, Radio, RadioGroup } from "@mui/material"
 import { addCommande, useGetUtilisateursQuery } from "../../state/api";
 import { Link } from "react-router-dom";
-
+import Avatar from '@mui/material/Avatar';
+import Stack from '@mui/material/Stack';
 const Cart = ({ CartItem, addToCart, decreaseQty , user}) => {
   // Stpe: 7   calucate total of items
   const userss = useGetUtilisateursQuery();
   const [selected, setSelected] = useState([]);
 
   const users =userss.data
-  const totalPrice = selected.reduce((a,v) =>  a = a + v.value , 0 )
 
+  const totalPrice = CartItem.reduce((price, item) => price +  parseFloat(item.prixF), 0)
   var total = 0 
 
 const handleFormSubmit = async(values) => {
@@ -26,23 +27,7 @@ const commande ={
 await addCommande(commande);
 
   }
-  function handleChange1(event, id) {
-    const productExit = selected.find((select) => select.id === id)
-    const productExit1 = CartItem.find((item) => item._id === id)
-
-    if (productExit) {
-      var value = parseFloat(event.replace(",", "."));
-      productExit.value = value;
-      productExit1.prixF = value;
-   
-    setSelected([...selected])
-
-    }
-    else{   var value = parseFloat(event.replace(",", "."));
-    productExit1.prixF = value;
-    setSelected([...selected, { value: value , id: id }]);}
-  
- }
+ 
 
   // prodcut qty total
   return (
@@ -58,46 +43,38 @@ await addCommande(commande);
             {CartItem.map((item, index) => {
           
 
-              return ( <>    {item.typeP === "document" && (<>  <div className='cart-list product d_flex' key={index}>
+              return ( <> {console.log(CartItem)}   {item.typeP === "document" && (<>  <div className='cart-list product d_flex' key={index}>
                         
               <div className='img'>
-              {users === undefined  ? (<>sxxdd</>) : (<>{users.map((user) => {return( <>    {item.auteur === user._id ? (    <img src={user.image} alt='' />     ):
+              {users === undefined  ? (<>sxxdd</>) : (<>{users.map((user) => {return( <>    {item.auteur === user._id ? ( <>  <Stack direction="row" spacing={6}  className="profile1">
+      <Avatar
+        alt="Remy Sharp"
+        src={user.image}
+        sx={{ width: 46, height: 46 }}
+      />
+    </Stack>
+        <img src={item.image} alt='' />   
+<div className='product-like1'>{user.approved === true ?(<img  style={{height:"25px", width:"25px"}} alt="checked" src="./images/checked.png"/>):(<></>)}
+              
+              
+              </div>   </>    ):
       (<></>)}</> ) })}</>)}
              
               </div>
               <div className='cart-details'>
-                <h3>{item.titre}</h3>
-                <FormControl          >
-  <FormLabel id="demo-row-radio-buttons-group-label"    style={{fontSize:"20px"}} color="secondary"  ></FormLabel>
-  <RadioGroup
-  
-    aria-labelledby="demo-radio-buttons-group-label"
-  name="radio-buttons-group"
-    onChange = {(e) =>handleChange1(e.target.value,item._id)}
+                <h3>Titre : {item.titre}</h3>
 
-  >
-    <FormControlLabel value={item.prixLecture}  control={<Radio   color="default" />} label={    <div className='price'>
-            <h4 style={{ fontSize:"15px"}}>Prix de lecture : {item.prixLecture} dt  / {item.period} mois </h4>
-             
-              {/* step : 3  
-                 if hami le button ma click garryo bahne 
-                */} 
-            </div>}/>
-    <FormControlLabel value={item.prixTelechargement} control={<Radio color="default"  />} label={      <div className='price'>
+                {users === undefined  ? (<>sxxdd</>) : (<>{users.map((user) => {return( <>    {item.auteur === user._id ? (     <h4 style={{ fontSize:"18px", marginLeft:"20px",marginTop:"10px"}}>  Auteur : {user.name} </h4> ):
+            (<></>)}</> ) })}</>)}
+          
            
-           <h4 style={{ fontSize:"15px"}}>Prix de télechargement : {item.prixTelechargement} dt</h4>
-           {/* step : 3  
-              if hami le button ma click garryo bahne 
-             */}
-         </div>} />
- 
-  </RadioGroup>
-</FormControl> 
-            
-      
-             
+                
+
+          <h4 style={{ fontSize:"18px", marginLeft:"20px", marginTop:"10px"}}>Prix : {item.prixF} dt / {item.period} mois  </h4>
             
               </div>
+           
+  
               <div className='cart-items-function'>
             
                   <button className='removeCart' onClick={() => decreaseQty(index)} >
@@ -112,6 +89,32 @@ await addCommande(commande);
 
               <div className='cart-item-price'></div>
             </div></>)} 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
             {item.typeP === "video" && (<>  <div className='cart-list product d_flex' key={index}>
                         
                         <div className='img'>

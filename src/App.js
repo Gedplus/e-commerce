@@ -24,6 +24,7 @@ import DocumentsAcheter from './component/DocumentAcheter/DocumentAcheter';
 import DetailDoc from './component/detailDocument/DetailDocument';
 import DetailVideo from './component/detailVideo/DetailVideo';
 import DetailPack from './component/detailPack/DetailPack';
+import Apropo from './component/Apropo/Apropo';
 
 
 function App() {
@@ -173,6 +174,9 @@ useEffect(() => {
     </Route>
     <Route path='/detailPack/:id' exact>
   <DetailPack productItems={productItems}    user={data || {}}/>
+    </Route>
+    <Route path='/Apropo' exact>
+  <Apropo productItems={productItems}    user={data || {}}/>
     </Route>
   </Switch><Footer/>
     </Router></>

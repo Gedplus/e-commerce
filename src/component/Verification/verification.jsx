@@ -1,11 +1,12 @@
 import React, { useState } from "react"
 import { addContact, addReclamation, editUser } from "../../state/api";
 import { useHistory } from 'react-router-dom'; 
+import { Typography } from "@mui/material";
 
 const Verification = ({ CartItem,user }) => {
   const history = useHistory ();
   const [image , setImage] = useState("")
-  
+  const [phoneNumber , setPhoneNumber] = useState("")
 const id = user._id
 const [users, setUser] = useState(user);
 
@@ -23,7 +24,7 @@ const [users, setUser] = useState(user);
      
       
    
-      await editUser(id, {...user, demande: true, justificative: image , CIN: cin});
+      await editUser(id, {...user, demande: true, justificative: image , CIN: cin , phoneNumber: phoneNumber});
       history.push ('/');
  
       };
@@ -74,20 +75,27 @@ const [users, setUser] = useState(user);
             <div class="form-content">
              
             <div  class="form2">
-              
+            <Typography id="non-linear-slider"  style={{fontSize:"17px"}}  gutterBottom>
+          Upload votre CIN ou passport :
+        </Typography>
             <div class="field input-field">
                     <input accept="image/*"
              type="file" placeholder="Email"
              onChange={convertToBase64}/>
 
                     </div>
+                    <Typography id="non-linear-slider"  style={{fontSize:"17px"}}  gutterBottom>
+          Upload votre piéce justificatif :
+        </Typography>
                     <div class="field input-field">
                     <input accept="image/*"
              type="file"   placeholder="Email"
              onChange={convertToBase641}/>
         
                     </div>
-                
+                    <div class="field input-field">
+                        <input type="text" placeholder="Numéro de téléphone" class="input" onChange={(e) => setPhoneNumber(e.target.value)} />
+                    </div>
                     <div class="field button-field">
                         <button type="submit" onClick={handleFormSubmit} >Envoyer</button>
                     </div>

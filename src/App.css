@@ -22,6 +22,7 @@ body {
 .d_flex {
   display: flex;
   justify-content: space-between;
+  
 }
 .c_flex {
   display: flex;
@@ -322,9 +323,9 @@ z-index: 1;
 /*---------product-----------*/
 .product {
   background: #fff;
-  padding: 20px;
+  padding: 30px;
   position: relative;
-  border-radius: 8px;
+  border-radius: 35px;
   box-shadow: rgb(3 0 71 / 9%) 0px 1px 3px;
   margin: 10px;
 }
@@ -360,9 +361,9 @@ z-index: 1;
 .product-like {
   position: absolute;
   top: 0;
-  right: 10;
+
   margin: 10px;
-  margin-left: 200px;
+  margin-left: 170px;
   opacity: 1;
   transition: 0.5s;
 }
