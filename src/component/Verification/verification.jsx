@@ -59,14 +59,14 @@ const [users, setUser] = useState(user);
 
   return (
     <>
-      <section class="container2 forms">
+      <section class="container4 forms">
         <div class="form1 login">
            
             <div class="form-content">
                 <header class="h">Demande de verification</header>
                 <br/>
             
-                <div class="div"> 
+                <div class="div mobile"> 
                 <img src="./images/reclamation.png" alt=''  style={{width:"400px", height:"400px", marginTop:"70px"}}/>
                 
             </div>

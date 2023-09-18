@@ -199,10 +199,7 @@ const Categories = () => {
       cateImg: "./images/category/book.png",
       cateName: "Ouvrage",
     },
-    {
-      cateImg: "./images/category/contract.png",
-      cateName: "Autre",
-    },
+ 
   ]
 
   return (

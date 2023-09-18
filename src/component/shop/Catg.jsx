@@ -22,10 +22,7 @@ const Catg = () => {
       cateImg: "./images/category/book.png",
       cateName: "Ouvrage",
     },
-    {
-      cateImg: "./images/category/contract.png",
-      cateName: "Autre",
-    },
+ 
   ]
   return (
     <>
@@ -44,9 +41,7 @@ const Catg = () => {
             
           )
         })}
-        <div className='box box2'>
-       
-        </div>
+     
       </div>
     </>
   )

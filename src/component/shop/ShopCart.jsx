@@ -53,10 +53,20 @@ const ShopCart = ({ shopItems, addToCart }) => {
       <Avatar
         alt="Remy Sharp"
         src={user.image}
-        sx={{ width: 56, height: 56 }}
+        class="sahar"
       />
     </Stack>
         <img src={shopItems.image} alt='' />   
+        <div className=' d_flex'>
+        <Badge badgeContent={shopItems.interessant + count} color="primary" style={{marginTop:"5px"}}>
+        <Avatar alt="interessant" src="./images/icon3.png"   sx={{ width: 35, height: 35 }} onClick={ () => handleFormSubmit(shopItems._id, {interessant: shopItems.interessant + 1} )}/>
+</Badge> <Badge badgeContent={shopItems.utile} color="primary" style={{marginTop:"5px"}}>
+        <Avatar alt="utile" src="./images/icon1.png"   sx={{ width: 35, height: 35 }}  onClick={ () => handleFormSubmitU(shopItems._id, {utile: shopItems.utile + 1} )} />
+</Badge>
+<Badge badgeContent={shopItems.excellent + count} color="primary" style={{marginTop:"5px"}}>
+        <Avatar alt="excellent" src="./images/icon2.png"  sx={{ width: 35, height: 35 }}  onClick={ () => handleFormSubmitE(shopItems._id, {excellent: shopItems.excellent + 1} )} />
+</Badge>
+</div>
 <div className='product-like'>{user.approved === true ?(<img  style={{height:"25px", width:"25px"}} alt="checked" src="./images/checked.png"/>):(<></>)}
               
               
@@ -102,7 +112,7 @@ const ShopCart = ({ shopItems, addToCart }) => {
       <Avatar
         alt="Remy Sharp"
         src={user.image}
-        sx={{ width: 56, height: 56 }}
+class="sahar"
       />
     </Stack>
         <img src={shopItems.image} alt='' />   

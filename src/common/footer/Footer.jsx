@@ -7,14 +7,14 @@ const Footer = () => {
     <>
       <footer>
         <div className='container grid3'>
-          <div className='box'style={{marginRight: "100px"}}>
+          <div className='box footerbox'>
             <h1>Bibin</h1>
             <p>"BiBin" est l'acronyme de "Bibliothèque Tunisienne de l'Intelligence Intellectuelle", une plateforme en ligne conçue dans le but de permettre aux étudiants et aux professionnels de partager leurs travaux académiques, articles et ouvrages. </p>
        
           </div>
 
           <div className='box'>
-            <h2>À propos de nous</h2>
+            <h2><Link className="Link" to='/Apropo'>À propos de nous</Link></h2>
             <ul>
             <li>
                 <Link className="Link" to='/'>Accueil</Link>
@@ -32,7 +32,7 @@ const Footer = () => {
              
             </ul>
           </div>
-          <div className='box'>
+          <div className='box boxcontact'>
             <h2>Contactez-nous</h2>
             <ul>
               <li>Email: bibintunisie@gmail.com</li>

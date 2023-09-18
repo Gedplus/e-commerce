@@ -17,7 +17,7 @@ const Navbar = (user) => {
           </div>
 
           <div className='navlink'>
-            <ul className={MobileMenu ? "nav-links-MobileMenu" : "link f_flex capitalize"} onClick={() => setMobileMenu(false)}>
+            <ul className="link f_flex capitalize" onClick={() => setMobileMenu(false)}>
               {/*<ul className='link f_flex uppercase {MobileMenu ? "nav-links-MobileMenu" : "nav-links"} onClick={() => setMobileMenu(false)}'>*/}
               <li>
                 <Link to='/'>Accueil</Link>
@@ -26,18 +26,7 @@ const Navbar = (user) => {
                 <Link to='/documents'>Documents</Link>
               </li>
           
-          
-              { user.user._id === undefined  ? ( 
-                <>    </> 
-        ) :(<>   <li>
-          <Link to='/AddDocument'>Ajouter Document</Link>
-        </li>
-     
-   
-        { user.user.demande === false  ? ( 
-        <li>
-          <Link to='/verification'>Demande de verification</Link>
-        </li>):(<></>)}</>)}
+       
               <li>
                 <Link to='/Reclamation'>Reclamation</Link>
               </li>
@@ -47,9 +36,7 @@ const Navbar = (user) => {
               </li>
             </ul>
 
-            <button className='toggle' onClick={() => setMobileMenu(!MobileMenu)}>
-              {MobileMenu ? <i className='fas fa-times close home-btn'></i> : <i className='fas fa-bars open'></i>}
-            </button>
+         
           </div>
         </div>
       </header>

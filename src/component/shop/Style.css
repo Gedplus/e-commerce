@@ -1,6 +1,6 @@
 .shop .category {
     padding: 30px;
-    height: 90vh;
+    height: 80vh;
   }
   .chead h1 {
     font-size: 20px;
@@ -91,6 +91,7 @@ background-color: #c6cbcf;
     object-fit: contain;
     border-radius: 25px;
   }
+
   .profile{
     background-size: cover;
     background-position: center;
@@ -98,6 +99,8 @@ background-color: #c6cbcf;
     top: 10px;
    left: 160px;
     border-radius: 50%;
+    width: 56px;
+    height: 56px;
     box-shadow: 5px 5px 10px rgba(0,0,0,0.5);
   }
   .shop-items .shop-details h3 {
@@ -118,7 +121,8 @@ background-color: #c6cbcf;
     -webkit-user-select: none;
     touch-action: manipulation;
     margin-top: 15px;
-    margin-left: 20px;
+   
+
   }
   
   .button-82-shadow {
@@ -316,4 +320,69 @@ background-color: #c6cbcf;
   
   .button-82-pushable1:focus:not(:focus-visible) {
     outline: none;
+  }
+ 
+  @media (max-width: 768px) {
+    .shop .contentWidth {
+      margin-left: 0px;
+    }
+    .shop-items .img {
+      width: 100px;
+      height: 100px;
+      border-radius: 50px;
+      margin-right: 20px;
+    }
+    .button-82-pushable{
+      margin-left: -100px;
+      width: 250px;
+    }
+    .button-82-pushable1{
+      margin-left: -100px;
+      width: 250px;
+    }
+    .button-82-front1 {
+      display: block;
+      position: relative;
+      padding: 5px 27px;
+      border-radius: 12px;
+      font-size: 0.9rem;
+font-weight: 600;
+      color: #0000a1;
+      background: hsl(0,0%,75%);
+      will-change: transform;
+      transform: translateY(-4px);
+      transition: transform 600ms cubic-bezier(.3, .7, .4, 1);
+  }
+  .button-82-front {
+    display: block;
+    position: relative;
+    padding: 5px 27px;
+    border-radius: 12px;
+    font-weight: 600;
+    font-size: 0.9rem;
+    color: white;
+    background: hsl(345deg 100% 47%);
+    will-change: transform;
+    transform: translateY(-4px);
+    transition:
+      transform
+      600ms
+      cubic-bezier(.3, .7, .4, 1);
+  }
+  .profile{
+    background-size: cover; 
+    background-position: center;
+    position: absolute;
+    top: 5px;
+   left: 85px;
+    border-radius: 50%;
+    box-shadow: 5px 5px 10px rgba(0,0,0,0.5);
+    width: 40px;
+    height: 40px;
+  }
+  .sahar
+{
+    width: 40px;
+    height: 40px;
+  }
   }

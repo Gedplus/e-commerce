@@ -1,13 +1,9 @@
 import React from 'react'
 
-import { useTranslation } from 'react-i18next';
+
 
 const Head = () => {
-  const  [t,i18n] = useTranslation("global");
-  function handlClick (lang) {
-  
-i18n.changeLanguage(lang);
-  }
+
   return (
     <>
  <section className='head'>

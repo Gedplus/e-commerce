@@ -25,7 +25,7 @@ const Search = ({ CartItem,user }) => {
       <section className='search'>
         <div className='container c_flex'>
           <div className='logo width '>
-            <img src="./images/LOGO.jpeg" alt='' style={{width:"150px", height:"65px"}} />
+            <img src="./images/LOGO.jpeg" alt=''  />
           </div>
 
           <div className='search-box f_flex'>
@@ -41,6 +41,7 @@ const Search = ({ CartItem,user }) => {
           <button className="button-17" style={{backgroundColor:"#0000a1", color:"#fff"}}>S'identifier</button></Link></>
           ) :(<>
             <Button
+   
         onClick={handleClick}
               sx={{
                 display: "flex",
@@ -48,7 +49,9 @@ const Search = ({ CartItem,user }) => {
                 alignItems: "center",
                 textTransform: "none",
                 gap: "1rem",
+              
               }}
+     style={{backgroundColor:"#f3f5f9"}}
             >
               <Box
                 component="img"
@@ -80,6 +83,10 @@ const Search = ({ CartItem,user }) => {
              onClose={handleClose1}
              anchorOrigin={{ vertical: "bottom", horizontal: "center" }}
             >
+                 <MenuItem ><Link to='/AddDocument'>Ajouter Document</Link></MenuItem>
+                 
+                 <MenuItem ><Link to='/verification'>Demande de verification</Link></MenuItem>
+                 <MenuItem ><Link to='/MesDocuments'>Mes Documents</Link></MenuItem>
               <MenuItem onClick={handleClose}>Log Out</MenuItem>
             </Menu>
             

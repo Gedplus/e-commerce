@@ -37,6 +37,25 @@ await addCommande(commande);
           {/* if hamro cart ma kunai pani item xaina bhane no diplay */}
 
           <div className='cart-details'>
+          <div className='cart-total product cart1'>
+            <h2>Cart Summary</h2>
+            
+            <div className=' d_flex'>
+    
+              <h4>Total Price :</h4>
+              <h3>{total + totalPrice} dt 
+              
+          </h3>
+
+            </div>
+            <h4>  <img src="./images/accept.png" alt='' style={{height:"20px", width:"20px", marginTop:"10px", marginBottom:"-5px"}} />  J’ai lu et j’accepte les <Link to="/Reglement"  style={{ color:"#0000a1", textDecoration: "underline"}}>conditions générales * </Link></h4>
+            <br/>
+            { user._id === undefined  ? (     <Link to='/login'>
+          <button className="button-18" style={{backgroundColor:"#0000a1", color:"#fff"}}>Confirmer votre commande
+</button></Link>):(     <button className="button-18" style={{backgroundColor:"#0000a1", color:"#fff"}} onClick={handleFormSubmit}>Confirmer votre commande
+</button>)}
+        
+          </div>
             {CartItem.length === 0 && <h1 className='no-items product'>Aucun article n'est ajouté au panier</h1>}
 
             {/* yasma hami le cart item lai display garaaxa */}
@@ -50,7 +69,9 @@ await addCommande(commande);
       <Avatar
         alt="Remy Sharp"
         src={user.image}
-        sx={{ width: 46, height: 46 }}
+        
+        class="imgavatar"
+
       />
     </Stack>
         <img src={item.image} alt='' />   
@@ -196,7 +217,7 @@ await addCommande(commande);
             })}
           </div>
 
-          <div className='cart-total product'>
+          <div className='cart-total product cart2'>
             <h2>Cart Summary</h2>
             
             <div className=' d_flex'>

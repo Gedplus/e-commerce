@@ -21,7 +21,7 @@ const Documents = ({ addToCart, shopItems }) => {
           
            
             
-            <section className='homeSlide  contentWidth'>
+            <section className='homeSlide1  contentWidth'>
         <div className='container'>
         <div className='shop-details'>
               <ShopCart addToCart={addToCart} shopItems={shopItems} />

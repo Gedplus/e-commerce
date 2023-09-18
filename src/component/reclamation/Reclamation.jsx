@@ -62,7 +62,7 @@ const Reclamation = () => {
                 <br/>
                 <p>Si vous constatez que votre document est présent sans autorisation, vous avez la possibilité de déposer une réclamation en fournissant les informations requises. Une fois que vous aurez prouvé la validité de votre document, notre plateforme vous rétablira l'accès à votre compte ainsi que le solde qu'il contient : </p>
               
-                <div class="div"> 
+                <div class="div mobile"> 
                 <img src="./images/reclamation.png" alt=''  style={{width:"400px", height:"400px", marginTop:"70px"}}/>
                 
             </div>
