@@ -69,7 +69,7 @@ const Signup = () => {
                 <header class="h">S'inscrire</header>
                 <form onSubmit={handleSubmit}>
                 <div class="field input-field">
-                        <input type="text" placeholder="Non et prénom *" class="input" onChange={(e) => setName(e.target.value)} />
+                        <input type="text" placeholder="Nom et prénom *" class="input" onChange={(e) => setName(e.target.value)} />
                     </div>
                     <div class="field input-field">
                         <input type="email" placeholder="Email *" class="input" onChange={(e) => setEmail(e.target.value)} />

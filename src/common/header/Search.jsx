@@ -82,12 +82,13 @@ const Search = ({ CartItem,user }) => {
              open={isOpen}
              onClose={handleClose1}
              anchorOrigin={{ vertical: "bottom", horizontal: "center" }}
-            >
+            > <MenuItem ><Link to='/MesDocuments'>Mes achats</Link></MenuItem>
+               <MenuItem ><Link to='/MesDocuments'>Mes Documents</Link></MenuItem>
                  <MenuItem ><Link to='/AddDocument'>Ajouter Document</Link></MenuItem>
-                 
-                 <MenuItem ><Link to='/verification'>Demande de verification</Link></MenuItem>
-                 <MenuItem ><Link to='/MesDocuments'>Mes Documents</Link></MenuItem>
-              <MenuItem onClick={handleClose}>Log Out</MenuItem>
+                 <MenuItem ><Link to='/MesDocuments'>Mon solde</Link></MenuItem>
+                 <MenuItem ><Link to='/MesDocuments'>Demande de versement de mon solde</Link></MenuItem>
+              <MenuItem ><Link to='/verification'>Demande de vérification de mon compte <img  style={{height:"20px", width:"20px"}} alt="checked" src="./images/checked.png"/></Link></MenuItem>
+              <MenuItem onClick={handleClose}>Déconnection</MenuItem>
             </Menu>
             
       </>)}

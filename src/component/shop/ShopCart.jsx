@@ -35,7 +35,7 @@ const ShopCart = ({ shopItems, addToCart }) => {
         };
             
   return (
-    <>    
+    <>    {console.log(data)}
     {data === undefined  ? (<>Loading....</>) : (<>{data.map((shopItems, index) => { 
         return (
         <> 
@@ -47,7 +47,7 @@ const ShopCart = ({ shopItems, addToCart }) => {
           
           
           
-          <div className='cart-list product d_flex' key={shopItems._id} >
+          <div className='cart-list product d_flex1' key={shopItems._id} >
         <div className='img'>
         <Stack direction="row" spacing={6}  className="profile">
       <Avatar
@@ -58,19 +58,19 @@ const ShopCart = ({ shopItems, addToCart }) => {
     </Stack>
         <img src={shopItems.image} alt='' />   
         <div className=' d_flex'>
-        <Badge badgeContent={shopItems.interessant + count} color="primary" style={{marginTop:"5px"}}>
+        <Badge badgeContent={shopItems.interessant + count} color="primary" style={{marginTop:"5px"  , zIndex:0}}>
         <Avatar alt="interessant" src="./images/icon3.png"   sx={{ width: 35, height: 35 }} onClick={ () => handleFormSubmit(shopItems._id, {interessant: shopItems.interessant + 1} )}/>
-</Badge> <Badge badgeContent={shopItems.utile} color="primary" style={{marginTop:"5px"}}>
+</Badge> <Badge badgeContent={shopItems.utile} color="primary" style={{marginTop:"5px"  , zIndex:0}}>
         <Avatar alt="utile" src="./images/icon1.png"   sx={{ width: 35, height: 35 }}  onClick={ () => handleFormSubmitU(shopItems._id, {utile: shopItems.utile + 1} )} />
 </Badge>
-<Badge badgeContent={shopItems.excellent + count} color="primary" style={{marginTop:"5px"}}>
+<Badge badgeContent={shopItems.excellent + count} color="primary" style={{marginTop:"5px" , zIndex:0}} >
         <Avatar alt="excellent" src="./images/icon2.png"  sx={{ width: 35, height: 35 }}  onClick={ () => handleFormSubmitE(shopItems._id, {excellent: shopItems.excellent + 1} )} />
 </Badge>
 </div>
 <div className='product-like'>{user.approved === true ?(<img  style={{height:"25px", width:"25px"}} alt="checked" src="./images/checked.png"/>):(<></>)}
               
               
-              </div>   
+              </div>    
         </div>
       
         <div className='cart-details' >
@@ -106,7 +106,7 @@ const ShopCart = ({ shopItems, addToCart }) => {
 
 
 
-        </div>):(   <div className='cart-list product d_flex' key={shopItems._id} style={{background:"#d8e5eb"}}>
+        </div>):(   <div className='cart-list product d_flex1' key={shopItems._id} style={{background:"#d8e5eb"}}>
         <div className='img'>
         <Stack direction="row" spacing={6}  className="profile">
       <Avatar
@@ -117,12 +117,12 @@ class="sahar"
     </Stack>
         <img src={shopItems.image} alt='' />   
         <div className=' d_flex'>
-        <Badge badgeContent={shopItems.interessant + count} color="primary" style={{marginTop:"5px"}}>
+        <Badge badgeContent={shopItems.interessant + count} color="primary" style={{marginTop:"5px"  , zIndex:0}}>
         <Avatar alt="interessant" src="./images/icon3.png"   sx={{ width: 35, height: 35 }} onClick={ () => handleFormSubmit(shopItems._id, {interessant: shopItems.interessant + 1} )}/>
-</Badge> <Badge badgeContent={shopItems.utile} color="primary" style={{marginTop:"5px"}}>
+</Badge> <Badge badgeContent={shopItems.utile} color="primary" style={{marginTop:"5px" , zIndex:0}}>
         <Avatar alt="utile" src="./images/icon1.png"   sx={{ width: 35, height: 35 }}  onClick={ () => handleFormSubmitU(shopItems._id, {utile: shopItems.utile + 1} )} />
 </Badge>
-<Badge badgeContent={shopItems.excellent + count} color="primary" style={{marginTop:"5px"}}>
+<Badge badgeContent={shopItems.excellent + count} color="primary" style={{marginTop:"5px"  , zIndex:0}}>
         <Avatar alt="excellent" src="./images/icon2.png"  sx={{ width: 35, height: 35 }}  onClick={ () => handleFormSubmitE(shopItems._id, {excellent: shopItems.excellent + 1} )} />
 </Badge>
 </div>

@@ -82,7 +82,7 @@ const Reclamation = () => {
                         <input type="text" placeholder="Numéro de téléphone" class="input" onChange={(e) => setPhoneNumber(e.target.value)} />
                     </div><br/>
                     <Typography id="non-linear-slider"  style={{fontSize:"17px"}}  gutterBottom>
-          Upload votre CIN ou passport :
+                    Copie de votre CIN ou passeport :
         </Typography>
                     <div class="field input-field">
                     <input accept="image/*"
@@ -91,7 +91,7 @@ const Reclamation = () => {
 
                     </div><br/>
                     <Typography id="non-linear-slider"  style={{fontSize:"17px"}}  gutterBottom>
-          Upload votre piéce justificatif :
+                    Pièce justificative de la propriété de votre document :
         </Typography>
                     <div class="field input-field">
                     <input accept="image/*"

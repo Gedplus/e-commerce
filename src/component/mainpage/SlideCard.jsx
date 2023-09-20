@@ -3,7 +3,7 @@ import Sdata from "./Sdata"
 import Slider from "react-slick"
 import "slick-carousel/slick/slick.css"
 import "slick-carousel/slick/slick-theme.css"
-
+import Sdata1 from "./sdata1"
 const SlideCard = () => {
   const settings = {
     dots: true,
@@ -15,8 +15,8 @@ const SlideCard = () => {
       return <ul style={{ margin: "-10px" }}>{dots}</ul>
     },
   }
-  return (
-    <>
+  return (<>
+    <div className="slidetaille">
       <Slider {...settings}>
         {Sdata.map((value, index) => {
           return (
@@ -30,7 +30,22 @@ const SlideCard = () => {
           )
         })}
       </Slider>
-    </>
+    </div>
+    <div className="slidetaille1">
+      <Slider {...settings}>
+        {Sdata1.map((value, index) => {
+          return (
+            <>
+              <div className='box d_flex top' key={index}>
+              
+                  <img src={value.cover}  style={{width:"300px"}} alt='' />
+               
+              </div>
+            </>
+          )
+        })}
+      </Slider>
+    </div></>
   )
 }
 

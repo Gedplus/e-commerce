@@ -63,7 +63,7 @@ const [users, setUser] = useState(user);
         <div class="form1 login">
            
             <div class="form-content">
-                <header class="h">Demande de verification</header>
+                <header class="h">Demande de verification <img  style={{height:"25px", width:"25px"}} alt="checked" src="./images/checked.png"/></header>
                 <br/>
             
                 <div class="div mobile"> 
@@ -76,7 +76,7 @@ const [users, setUser] = useState(user);
              
             <div  class="form2">
             <Typography id="non-linear-slider"  style={{fontSize:"17px"}}  gutterBottom>
-          Upload votre CIN ou passport :
+            CIN ou passeport :
         </Typography>
             <div class="field input-field">
                     <input accept="image/*"
@@ -85,7 +85,7 @@ const [users, setUser] = useState(user);
 
                     </div>
                     <Typography id="non-linear-slider"  style={{fontSize:"17px"}}  gutterBottom>
-          Upload votre piéce justificatif :
+                    Pièce justificative de votre emploi :
         </Typography>
                     <div class="field input-field">
                     <input accept="image/*"

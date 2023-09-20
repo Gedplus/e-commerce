@@ -7,11 +7,11 @@ const Catg = () => {
       cateName: "PFE ou autre (niveau licence)",
     },
     {
-      cateImg: "./images/category/open-book.png",
+      cateImg: "./images/category/open-boo.png",
       cateName: "Mémoire ou autre (niveau Mastére)",
     },
     {
-      cateImg: "./images/category/agenda.png",
+      cateImg: "./images/category/open-boo.png",
       cateName: "Thése ou autre (niveau doctorat)",
     },
     {
