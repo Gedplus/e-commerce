@@ -5,11 +5,11 @@ import { addContact} from "../../state/api";
 const Contact = () => {
    
     const [sujet , setsujet] = useState("")
-    const [email , setEmail] = useState("")
+
     const [Message , setMessage] = useState("")
    
     const contact ={
-        email: email,
+
       
         subject: sujet,
       
@@ -26,16 +26,23 @@ const Contact = () => {
 
   return (
     <>
-      <section class="container2 forms">
+      <section class="container1 forms">
         <div class="form1 login">
            
             <div class="form-content">
-                <header class="h">Contacter nous</header>
+                <header class="h">Contactez-nous</header>
                 <br/>
             
-                <div class="div"> 
-                <img src="./images/reclamation.png" alt=''  style={{width:"400px", height:"400px", marginTop:"70px"}}/>
-                
+                <div class="div contactM"> 
+                <div className="contact f_flex">
+                <img src="./images/tel.png" alt=''  style={{width:"50px", height:"50px", marginTop:"-5px"}}/><h1>+216 25 55 77 80</h1><br/>
+             
+                </div>
+                <br/>
+                <div className="contact1 f_flex">
+     
+                <img src="./images/email.png" alt=''  style={{width:"50px", height:"50px", marginTop:"-15px"}}/><h3>bibintunisie@gmail.com</h3>
+                </div>
             </div>
             </div>
             <div class="div">
@@ -43,10 +50,10 @@ const Contact = () => {
              
             <form  class="form2" onSubmit={handleFormSubmit}>
               
+         
+            <p>Vous pouvez nous envoyer un message</p>
+              
             
-                    <div class="field input-field">
-                        <input type="email" placeholder="Email" class="input" onChange={(event) => {setEmail(event.target.value)}} />
-                    </div>
                     <div class="field input-field">
                         <input type="text" placeholder="sujet" class="input"  onChange={(event) => {setsujet(event.target.value)}}/>
                     </div>

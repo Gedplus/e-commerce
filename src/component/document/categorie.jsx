@@ -1,5 +1,5 @@
 import React from "react"
-
+import { Link } from "react-router-dom"
 
 const Categories = () => {
   const data = [
@@ -891,41 +891,47 @@ const Categories = () => {
     {
       cateImg: "./images/category/open-boo.png",
       cateName: "PFE ou autre (niveau licence)",
+      catlink:"PFE",
     },
     {
-      cateImg: "./images/category/open-book.png",
+      cateImg: "./images/category/open-boo.png",
       cateName: "Mémoire ou autre (niveau Mastére)",
+      catlink: "Mémoire",
     },
     {
-      cateImg: "./images/category/agenda.png",
+      cateImg: "./images/category/open-boo.png",
       cateName: "Thése ou autre (niveau doctorat)",
+      catlink: "Thése",
     },
     {
       cateImg: "./images/category/application.png",
       cateName: "Article",
+      catlink: "Article", 
     },
     {
       cateImg: "./images/category/book.png",
       cateName: "Ouvrage",
+      catlink: "Ouvrage",
     },
  
   ]
 
   return (
     < > 
-      <div className='category'>
+      <div className='category categoryM'>
         {data.map((value, index) => {
           return (
             <div className='box f_flex' key={index}>
-              <img src={value.cateImg} style={{width:"30px", height:"30px"}} alt='' />
+              <img src={value.cateImg} style={{width:"30px", height:"30px"}} alt=''  />
              <span>{value.cateName}</span> 
              <i className='fa fa-chevron-down'></i>
              <div className='sub-menu-1'>
              {value.sousCat.map((value, index) => {
           return (
+            <Link onClick={() => {window.location.href=`/doc/${value.cateName}`}}>
              <div className='box f_flex' key={index}>
             <img src={value.cateImg} style={{width:"30px", height:"30px"}}alt='' />
-              <span>{value.cateName}</span></div>
+              <span>{value.cateName}</span></div></Link>
                ) }) } </div>
             </div>
           )
@@ -938,11 +944,12 @@ const Categories = () => {
         </div>
         {data1.map((value, index) => {
           return (
+            <Link onClick={() => {window.location.href=`/docType/${value.catlink}`}}>
             <div className='box f_flex' key={index}>
               <img src={value.cateImg} alt='' style={{width:"40px", height:"40px"}} />
               <span>{value.cateName}</span>
             
-            </div>
+            </div></Link>
             
           )
         })}

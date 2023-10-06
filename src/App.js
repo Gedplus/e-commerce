@@ -25,6 +25,10 @@ import DetailDoc from './component/detailDocument/DetailDocument';
 import DetailVideo from './component/detailVideo/DetailVideo';
 import DetailPack from './component/detailPack/DetailPack';
 import Apropo from './component/Apropo/Apropo';
+import DocUni from './component/DocuementUniversite/DocUni';
+import DocType from './component/docType/DocType';
+import MonCompte from './component/MonCompte.jsx/MonCompte';
+import DocSearch from './component/docSearch/DocSearch';
 
 
 function App() {
@@ -143,11 +147,23 @@ useEffect(() => {
     <Route path='/documents' exact>
   <Documents productItems={productItems} addToCart={addToCart} shopItems={shopItems}/>
     </Route>
+    <Route path='/MonCompte' exact>
+  <MonCompte productItems={productItems} addToCart={addToCart} shopItems={shopItems} user={data || {}} />
+    </Route>
     <Route path='/AddDocument' exact>
   <AddDocument productItems={productItems} addToCart={addToCart} shopItems={shopItems} user={data || {}}  />
     </Route>
     <Route path='/MesDocuments' exact>
   <MesDocuments productItems={productItems} addToCart={addToCart} shopItems={shopItems} user={data || {}}  />
+    </Route>
+    <Route path='/Doc/:id' exact>
+  <DocUni productItems={productItems} addToCart={addToCart} shopItems={shopItems} user={data || {}}  />
+    </Route>
+    <Route path='/recherche/:id' exact>
+  <DocSearch productItems={productItems} addToCart={addToCart} shopItems={shopItems} user={data || {}}  />
+    </Route>
+    <Route path='/docType/:id' exact>
+  <DocType productItems={productItems} addToCart={addToCart} shopItems={shopItems} user={data || {}}  />
     </Route>
     <Route path='/Reglement' exact>
   <Reglement productItems={productItems} addToCart={addToCart} shopItems={shopItems} user={data || {}}  />

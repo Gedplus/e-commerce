@@ -3,12 +3,33 @@ import React, {  useState } from "react"
 import { Link } from "react-router-dom"
 import { Box, IconButton, MenuItem,  Menu,  Button,Typography } from "@mui/material";
 import ArrowDropDownOutlinedIcon from '@mui/icons-material/ArrowDropDownOutlined';
+import SearchIcon from '@mui/icons-material/Search';
+import Modal from '@mui/material/Modal';
+import Categories from "../../component/mainpage/Categories";
+import CategoriesS from "./Cat";
+import { useHistory } from 'react-router-dom'; 
+const style = {
+  position: 'absolute' ,
+  top: '50%',
+  left: '50%',
+  transform: 'translate(-50%, -50%)',
+  width: 400,
+  bgcolor: 'background.paper',
+  border: '2px solid #000',
+  boxShadow: 24,
+  p: 4,
+};
 const Search = ({ CartItem,user }) => {
-  // fixed Header
+  // fixed Header 
+  const [mot, setMot] = useState("");
+  const history = useHistory ();
   window.addEventListener("scroll", function () {
     const search = document.querySelector(".search")
     search.classList.toggle("active", window.scrollY > 100)
   })
+  const [open, setOpen] = React.useState(false);
+  const handleOpen = () => setOpen(!open);
+  const handleClose2 = () => setOpen(false);
   const [anchorEl, setAnchorEl] = useState(null);
   const isOpen = Boolean(anchorEl);
   const handleClick = (event) => setAnchorEl(event.currentTarget);
@@ -19,6 +40,7 @@ const Search = ({ CartItem,user }) => {
       window.localStorage.clear();
       window.location.href ="./login"
       setAnchorEl(null)};
+    
 
   return (
     <>
@@ -27,12 +49,12 @@ const Search = ({ CartItem,user }) => {
           <div className='logo width '>
             <img src="./images/LOGO.jpeg" alt=''  />
           </div>
-
-          <div className='search-box f_flex'>
+          <form  className="searchwidth" onSubmit={() =>       history.push (`/recherche/${mot}`)}>
+          <div className='search-box f_flex searchM' >
             <i className='fa fa-search'></i>
-            <input type='text' placeholder='Rechercher et appuyer sur Entrée...' />
-            <span>tout les documents</span>
-          </div>
+            <input type='text' placeholder='Vos mots-clés'    onChange={(e) => setMot(e.target.value)} />
+            <span>  <i className='fa fa-search'></i></span>
+          </div></form>
          <div className='icon f_flex width'>
       
          { user._id === undefined  ? ( <><Link to='/login'>
@@ -100,9 +122,30 @@ const Search = ({ CartItem,user }) => {
               </Link>
             </div>
           </div>
-          
+      
         </div>
+ 
       </section>
+      <div className="SearchMobile">
+      <div className=' container c_flex ' >
+        <Button  onClick={handleOpen}>
+      <div className='catgrories d_flex'>
+            <span class='fas fa-border-all'></span>
+      
+            <h4>
+           Liste des universités <i className='fa fa-chevron-down'></i>
+            </h4>
+          </div></Button>
+          {open === true ? (<CategoriesS/>):(<></>)}
+          <form  className="searchwidth" onSubmit={() =>       history.push (`/recherche/${mot}`)}>
+        <div className='search-box f_flex'>
+            <i className='fa fa-search'></i>
+            <input type='text' placeholder='Vos mots-clés' />
+            <span>  <i className='fa fa-search'></i></span>
+          </div>
+          </form>
+   
+     </div></div>
     </>
   )
 }

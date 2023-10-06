@@ -12,7 +12,7 @@ const Signup = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [statue, setSelected] = useState("");
-  const [image , setImage] = useState("")
+  const [image , setImage] = useState("https://i.stack.imgur.com/34AD2.jpg")
   const [phoneNumber , setPhoneNumber] = useState("")
   const history = useHistory ();
   const role = "utilisateur"

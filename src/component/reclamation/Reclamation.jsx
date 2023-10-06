@@ -58,7 +58,7 @@ const Reclamation = () => {
         <div class="form1 login">
            
             <div class="form-content">
-                <header class="h">Formulaire espace de réclamation</header>
+                <header class="h">Réclamation</header>
                 <br/>
                 <p>Si vous constatez que votre document est présent sans autorisation, vous avez la possibilité de déposer une réclamation en fournissant les informations requises. Une fois que vous aurez prouvé la validité de votre document, notre plateforme vous rétablira l'accès à votre compte ainsi que le solde qu'il contient : </p>
               

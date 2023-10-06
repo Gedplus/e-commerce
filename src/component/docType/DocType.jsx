@@ -5,18 +5,20 @@ import React from 'react'
 
 
 
+import Shop from '../shop/Shop' 
 
-import ShopCart from '../shop/ShopCart'
 
-import Categories from './categorie'
 import { useGetDocumentQuery } from '../../state/api'
-const Documents = ({ addToCart, shopItems }) => {
-  
+import Categories from '../document/categorie'
+
+import DocTypeCard from './DocTypeCard'
+const DocType = ({ addToCart, shopItems,user }) => {
+    const { data, isLoading } = useGetDocumentQuery();
   return (
     <>
-         <section className='shop1 background'>
-        <div className='container d_flex'>
-          <Categories />
+       <section className='shop1 background '>
+        <div className='container d_flex  '>
+          <Categories  />
 
           <div className='contentWidth'>
             <div className='heading d_flex'>
@@ -33,7 +35,7 @@ const Documents = ({ addToCart, shopItems }) => {
           {/* if hamro cart ma kunai pani item xaina bhane no diplay */}
 
           <div className='shop-details'>
-              <ShopCart addToCart={addToCart} shopItems={shopItems} />
+              <DocTypeCard addToCart={addToCart} shopItems={shopItems} />
 
             </div>
             </div>
@@ -41,9 +43,7 @@ const Documents = ({ addToCart, shopItems }) => {
           </div>
         </div>
       </section>
-  
     </>
   )
 }
-
-export default Documents
+export default DocType

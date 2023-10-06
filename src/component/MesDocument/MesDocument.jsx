@@ -5,7 +5,7 @@ import React from 'react'
 
 
 
-import Shop from '../shop/Shop'
+import Shop from '../shop/Shop' 
 
 
 import { useGetDocumentQuery } from '../../state/api'
@@ -14,26 +14,34 @@ import MesDocs from './MesDocs'
 const MesDocuments = ({ addToCart, shopItems,user }) => {
     const { data, isLoading } = useGetDocumentQuery();
   return (
-    <><section className='shop-items'>
-        <div className='container d_flex'>
+    <>
+    <section className='shop1 background '>
+     <div className='container d_flex  '>
+       <Categories  />
 
-            <Categories/>
-        
-          
-           
-            
-            <section className='homeSlide contentWidth'>
-        <div className='container'>
-        <div className='shop-details1'>
-              <MesDocs addToCart={addToCart} shopItems={shopItems} user={user || {}} />
+       <div className='contentWidth'>
+         <div className='heading d_flex'>
+           <div className='heading-left row  f_flex'>
+             <h2>Catalogue de la bibliothèque</h2>
+           </div>
+           <div className='heading-right row '>
+             <span>Voir tout</span>
+              <i className='fas fa-caret-right'></i>
+           </div> 
+         </div>
+         <section className='shop-items'>
+     <div className=' d_flex'>
+       {/* if hamro cart ma kunai pani item xaina bhane no diplay */}
 
-            </div>
-         
-        </div>
-      </section>
-        </div>
-    </section>
-  
+       <div className='shop-details'>
+       <MesDocs addToCart={addToCart} shopItems={shopItems} user={user || {}} />
+
+         </div>
+         </div>
+         </section>
+       </div>
+     </div>
+   </section>
     </>
   )
 }

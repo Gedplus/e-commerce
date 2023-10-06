@@ -31,7 +31,7 @@
     width: 22%;
   }
   .search-box {
-    width: 65%;
+    width: 100%;
     border: 2px solid rgba(0, 0, 0, 0.1);
     /*padding: 10px;*/
     border-radius: 50px;
@@ -52,10 +52,10 @@
     font-size: 15px;
   }
   .search-box span {
-    width: 30%;
+  
     opacity: 0.5;
     border-left: 2px solid rgba(0, 0, 0, 0.1);
-    padding: 10px;
+
   }
   .cart {
     position: relative;
@@ -144,15 +144,13 @@
       width: 70px ;
       height: 30px ;
     }
-    .catgrories{
+    .catgroriesMobile{
       display: none;
     }
     .header2 ul li {
       margin-left: 10px;
     }
-.search-box{
-  display: none;
-}
+
 .search .width {
 width: 300px;
 }
@@ -164,5 +162,66 @@ width: 300px;
   margin-left: 0px;
   text-align: center;
   border-radius: 50%;
+}
+.header2 ul li a {
+  transition: 0.5s;
+  font-size: 11px;
+  font-weight: 400;
+}
+.header2 ul li a:hover {
+  color: #ff014f;
+}
+.search-box input {
+  width: 100%;
+  padding: 0px;
+}
+.search-box {
+  width: 100%;
+  border: 2px solid rgba(0, 0, 0, 0.1);
+  /*padding: 10px;*/
+  border-radius: 50px;
+}
+.search-box i {
+  width: 5%;
+  text-align: center;
+
+  opacity: 0.5;
+  padding: 6px 15px;
+  font-size: 10px;
+}
+.search {
+  padding: 10px 10px;
+}
+.searchM{
+  display: none;
+}
+.header2 {
+  margin-top: -15px;
+  height: 6vh;
+  box-shadow: -1px 15px 17px -8px rgba(0, 0, 0, 0.1);
+}
+
+.catgrories {
+  background-color: #f6f9fc;
+  padding: 0px 10px;
+  border-radius: 5px;
+  height: 4vh;
+  margin-top: 5px;
+  margin-left: -20px;
+}
+.catgrories span {
+  margin-right: 2px;
+  font-size: 20px;
+  margin-top: 5px;
+  width: 30px;
+  height: 30px;
+}
+.catgrories h4 {
+  font-weight: 500;
+  margin-top: 8px;
+}
+.catgrories h4 i {
+  margin-left: 0px;
+
 }
   }

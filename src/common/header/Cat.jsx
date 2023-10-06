@@ -1,6 +1,6 @@
 import React from "react"
 import { Link } from "react-router-dom"
-const Categories = () => {
+const CategoriesS = () => {
   const data = [
     {
       cateImg: "./images/school.png",
@@ -889,7 +889,7 @@ const Categories = () => {
 
   return (
     <>
-      <div className='category categoryM' >
+      <div className='category  catD' >
         {data.map((value, index) => {
           return (
             <div className='box f_flex' key={index}>
@@ -899,7 +899,8 @@ const Categories = () => {
              <div className='sub-menu-1'>
              {value.sousCat.map((value, index) => {
           return (
-            <Link to={`/doc/${value.cateName}`} >
+            <Link  onClick={() => {window.location.href=`/doc/${value.cateName}`}}>
+          
              <div className='box f_flex' key={index}>
             
             <img src={value.cateImg} alt='' />
@@ -913,4 +914,4 @@ const Categories = () => {
   )
 }
 
-export default Categories
+export default CategoriesS

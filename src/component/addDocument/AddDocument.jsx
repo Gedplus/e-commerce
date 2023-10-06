@@ -1,5 +1,5 @@
-import React, { useState } from "react"
-import { addDocument, addReclamation } from "../../state/api";
+import React, { useEffect, useState } from "react"
+import { addDocument, addReclamation, getArticle } from "../../state/api";
 import Radio from '@mui/material/Radio';
 import RadioGroup from '@mui/material/RadioGroup';
 import FormControlLabel from '@mui/material/FormControlLabel';
@@ -24,6 +24,7 @@ const [Titre, setTitre] = useState("");
 const [period, setPeriod] = useState(6);
 const [value, setValue] = useState(0);
 const [image1 , setImage1] = useState("")
+
 function convertToBase646(e){
   console.log(e);
   var reader = new FileReader();
@@ -1086,25 +1087,64 @@ function convertToBase646(e){
       }
     const handleFormSubmit = async(values) => {
       if (user.approved == true ){
-        const document ={
+        if(image1 == ""){
+          const document ={
     
-          document: image,
-          type: type,
-          prixLecture: value,
-          prixTelechargement: prixt,
-          Annee: Annee,
-          auteur: user._id,
-        titre: Titre,
-        description: description, 
-image:image1,
-      
-        universite: universite,
-        accepte : true,
-        period : period,
-        };
-        await addDocument(document);
+            document: image,
+            type: type,
+            prixLecture: value,
+            prixTelechargement: prixt,
+            Annee: Annee,
+            auteur: user._id,
+          titre: Titre,
+          description: description, 
+
+        
+          universite: universite,
+          accepte : true,
+          period : period,
+          };
+          await addDocument(document);
+        }else{
+   
+          const document ={
+    
+            document: image,
+            type: type,
+            prixLecture: value,
+            prixTelechargement: prixt,
+            Annee: Annee,
+            auteur: user._id,
+          titre: Titre,
+          description: description, 
+  image:image1,
+        
+          universite: universite,
+          accepte : true,
+          period : period,
+          };
+          await addDocument(document);
+
+        }
+     
       }
-      else {
+      else {         if(image1 === ""){    const document ={
+
+        document: image,
+        type: type,
+        prixLecture: value,
+        prixTelechargement: prixt,
+      
+        auteur: user._id,
+      titre: Titre,
+      description: description, 
+      Annee:Annee,
+     
+      universite: universite,
+      accepte : false,
+      period : period,
+      };
+      await addDocument(document); } else {
         const document ={
 
           document: image,
@@ -1122,6 +1162,8 @@ image:image1,
         period : period,
         };
         await addDocument(document);
+      }
+    
 
       }
       
@@ -1290,7 +1332,7 @@ function valueLabelFormat(value) {
                   </MenuItem>
                   <MenuItem value="Thése">
            Thése ou autre (niveau doctorat)
-                  </MenuItem>
+                  </MenuItem> 
                   <MenuItem value="Article">
        Article
                   </MenuItem>
@@ -1826,7 +1868,7 @@ style={{width:"400px"}}
 
                     </div>
                      <div class="field button-field">
-                         <button type="submit" onClick={handleFormSubmit}  >Envoyer</button>
+                         <button type="submit"   onClick={handleFormSubmit}  >Envoyer</button>
           </div>
                 </form>
                  

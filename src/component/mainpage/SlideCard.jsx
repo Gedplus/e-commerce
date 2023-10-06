@@ -16,7 +16,7 @@ const SlideCard = () => {
     },
   }
   return (<>
-    <div className="slidetaille">
+    <div className="slidetaille" >
       <Slider {...settings}>
         {Sdata.map((value, index) => {
           return (
@@ -32,7 +32,7 @@ const SlideCard = () => {
       </Slider>
     </div>
     <div className="slidetaille1">
-      <Slider {...settings}>
+      <Slider {...settings} style={{marginTop:"-60px"}}>
         {Sdata1.map((value, index) => {
           return (
             <>

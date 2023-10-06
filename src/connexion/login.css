@@ -216,10 +216,16 @@ a.goolge span{
     justify-content: center;
     background-color: #f6f9fc;
 }
-
+.searchwidth{
+    margin-top: 0px ;
+    width: 65%;
+  }
 
 @media (max-width: 768px) {
-
+    .searchwidth{
+        margin-top: 0px ;
+        width: 50%;
+      }
 
 
 .div {
@@ -228,7 +234,7 @@ a.goolge span{
   }
 
   .container2 {
-    height: 160vh;}
+    height: auto;}
 
 
 }

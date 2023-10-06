@@ -1,14 +1,25 @@
-import React, { useState } from "react"
+import React, { useEffect, useState } from "react"
 import Badge from '@mui/material/Badge';
 import Avatar from '@mui/material/Avatar';
 import Stack from '@mui/material/Stack';
-
-import { editDocumentDE, editDocumentDI, editDocumentDU, editDocumentE, editDocumentI, editDocumentP, editDocumentU, useGetDocumentQuery, useGetUtilisateursQuery } from '../../state/api'
-const ShopCart = ({ shopItems, addToCart }) => {
-  const { data } = useGetDocumentQuery();
+import {  useParams } from 'react-router-dom';
+import { editDocumentDE, editDocumentDI, editDocumentDU, editDocumentE, editDocumentI, editDocumentP, editDocumentU, getDocUni, getSearch, useGetDocumentQuery, useGetUtilisateursQuery } from '../../state/api'
+const DocSearchCard = ({ shopItems, addToCart }) => {
+  
   const userss = useGetUtilisateursQuery();
+  const { id } = useParams();
+  console.log("id",id)
   const users =userss.data
-
+  const [count, setCount] = useState(0);
+  const [doc, setDoc] = useState([]);
+  useEffect(() => {
+    const loadUserDetails = async() => {
+        const response = await getSearch(id);
+  setDoc(response.data)
+console.log(response.data)
+    }
+    loadUserDetails();
+  }, []);
   const [likes, setLikes] = useState([]);
  
 
@@ -126,10 +137,9 @@ console.log("id", id)
           
           };
     
-
   return (
-    <>    {console.log(data)}
-    {data === undefined  ? (<>Loading....</>) : (<>{data.map((shopItems, index) => { 
+    <>    
+    {doc === undefined  ? (<>Loading....</>) : (<>{doc.map((shopItems, index) => { 
         return (
         <> 
         {users === undefined  ? (<>sxxdd</>) : (<> {shopItems.accepte === true && (<>
@@ -318,4 +328,4 @@ class="sahar"
   )
 }
 
-export default ShopCart
+export default DocSearchCard

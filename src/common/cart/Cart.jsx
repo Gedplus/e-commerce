@@ -89,9 +89,9 @@ await addCommande(commande);
             (<></>)}</> ) })}</>)}
           
            
-                
+                {item.typeF=="Lecture" ?( <h4 style={{ fontSize:"18px", marginLeft:"20px", marginTop:"10px"}}>Prix lecture : {item.prixF} dt / {item.period} mois  </h4>):( <h4 style={{ fontSize:"18px", marginLeft:"20px", marginTop:"10px"}}>Prix téléchargement : {item.prixF} dt </h4>)}
 
-          <h4 style={{ fontSize:"18px", marginLeft:"20px", marginTop:"10px"}}>Prix : {item.prixF} dt / {item.period} mois  </h4>
+         
             
               </div>
            

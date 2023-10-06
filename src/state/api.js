@@ -88,3 +88,24 @@ export const getMedia = async (id) => {
 export const getPackid = async (id) => {
   return await axios.get(`https://api.bibintunisie.com/pack/${id}`);
 }
+export const getDocUni = async (id) => {
+  return await axios.get(`https://api.bibintunisie.com/client/documentsU/${id}`);
+}
+export const getDocType = async (id) => {
+  return await axios.get(`https://api.bibintunisie.com/client/documentsType/${id}`);
+}
+export const getDocSearch = async (id) => {
+  return await axios.get(`https://api.bibintunisie.com/client/Search/${id}`);
+}
+export const editDocumentDI = async (id, document) => {
+  return await axios.put(`https://api.bibintunisie.com/client/documentsDI/${id}`, document)
+}
+export const editDocumentDU = async (id, document) => {
+  return await axios.put(`https://api.bibintunisie.com/client/documentsDU/${id}`, document)
+}
+export const editDocumentDE = async (id, document) => {
+  return await axios.put(`https://api.bibintunisie.com/client/documentsDE/${id}`, document)
+}
+export const getSearch= async (id) => {
+  return await axios.get(`https://api.bibintunisie.com/client/Search/${id}`);
+}

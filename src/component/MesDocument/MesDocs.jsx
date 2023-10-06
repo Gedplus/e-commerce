@@ -1,132 +1,330 @@
 import React, { useState } from "react"
-import { useGetDocumentQuery } from '../../state/api'
+import { useGetDocumentQuery , editDocumentDE, editDocumentDI, editDocumentDU, editDocumentE, editDocumentI, editDocumentP, editDocumentU ,useGetUtilisateursQuery} from '../../state/api'
+import Badge from '@mui/material/Badge';
+import Avatar from '@mui/material/Avatar';
+import Stack from '@mui/material/Stack';
 const MesDocs = ({ shopItems, addToCart,user }) => {
   const { data, isLoading } = useGetDocumentQuery();
-  const [count, setCount] = useState(0)
-  const increment = () => {
-    setCount(count + 1)
-  }
+  const [likes, setLikes] = useState([]);
+  const userss = useGetUtilisateursQuery();
+
+  const users =userss.data
+
+  const [likesE, setLikesE] = useState([]);
+  
+  const [likesI, setLikesI] = useState([]);
+  const handleFormSubmit = async(id,document1) => {
+console.log("id", id)
+    if(likes.includes(id) ) {
+     
+
+
+      setLikes((prevState) =>
+      prevState.filter((prevItem) => prevItem !== id))
+      await editDocumentDI(id, document1 );
+    }else{
+      if(likesE.includes(id)){
+        setLikesE((prevState) =>
+          prevState.filter((prevItem) => prevItem !== id))
+           editDocumentDE(id, document1 );
+          setLikes(likes.concat(id))
+
+          await editDocumentI(id, document1 );
+      }
+      else if(likesI.includes(id)) {
+        setLikesI((prevState) =>
+        prevState.filter((prevItem) => prevItem !== id))
+         editDocumentDU(id, document1 );
+        setLikes(likes.concat(id))
+        await editDocumentI(id, document1 );
+      }
+      else
+    {  setLikes(likes.concat(id))}
+    await editDocumentI(id, document1 );
+
+      
+    }
+
+  
+  };
+  const handleFormSubmitI = async(id,document1) => {
+    console.log("id", id)
+        if(likesI.includes(id) ) {
+         
+    
+    
+          setLikesI((prevState) =>
+          prevState.filter((prevItem) => prevItem !== id))
+          await editDocumentDU(id, document1 );
+        }else{
+
+          if(likes.includes(id)){
+            setLikes((prevState) =>
+              prevState.filter((prevItem) => prevItem !== id))
+               editDocumentDI(id, document1 );
+              setLikesE(likesE.concat(id))
+              await editDocumentU(id, document1 );
+          }
+        else if (likesE.includes(id)) {
+          setLikesE((prevState) =>
+          prevState.filter((prevItem) => prevItem !== id))
+           editDocumentDE(id, document1 );
+          setLikesI(likesE.concat(id))
+          await editDocumentU(id, document1 );
+          }
+          else
+        {  setLikesI(likesE.concat(id))
+          await editDocumentU(id, document1 );}
+
+
+
+         
+    
+      
+        }
+    
+      
+      };
+      const handleFormSubmitE = async(id,document1) => {
+        console.log("id", id)
+            if(likesE.includes(id) ) {
+             
+        
+        
+              setLikesE((prevState) =>
+              prevState.filter((prevItem) => prevItem !== id))
+              await editDocumentDE(id, document1 );
+            }else{
+    
+              if(likes.includes(id)){
+                setLikes((prevState) =>
+                  prevState.filter((prevItem) => prevItem !== id))
+                   editDocumentDI(id, document1 );
+                  setLikesE(likesE.concat(id))
+                  await editDocumentE(id, document1 );
+              }
+              else if (likesI.includes(id)) {
+                setLikesI((prevState) =>
+                prevState.filter((prevItem) => prevItem !== id))
+                 editDocumentDU(id, document1 );
+                setLikesE(likesE.concat(id))
+                await editDocumentE(id, document1 );
+              }
+              else
+            {  setLikesE(likesE.concat(id))
+              await editDocumentE(id, document1 );}
+    
+    
+    
+             
+        
+          
+            }
+        
+          
+          };
 
   return (
     <>    
-    {data == undefined  ? (<>Loading....</>) : (<>{data.map((shopItems, index) => {
-        return ( <> 
-            {user._id === shopItems.auteur && (
-        <>  {shopItems.statue == "etudiant" ? ( <div className='cart-list product d_flex' key={shopItems._id}>
-        <div className='img'>
-          <img src={user.image} alt='' /> 
-      
-           <div className='product-like'>
-               <label>{count}</label> <br />
-              <i className='fas fa-heart' onClick={increment}></i>
-           </div>
-
-
-        </div>
-        <div className='cart-details'>
-          <h4  style={{ fontSize:"15px"}}>Titre du document : {shopItems.titre}</h4>
-  
+    {data === undefined  ? (<>Loading....</>) : (<>{data.map((shopItems, index) => { 
+        return (
+        <>  {user._id === shopItems.auteur && (<>
         
-          <h4 style={{color:"grey" , fontWeight:"300", fontSize:"15px"}}>  {shopItems.type}</h4>
-         
-          <h4 style={{color:"grey" , fontWeight:"300"}}>  {shopItems.universite}</h4>
-       
-      <div className='price'>
-      <h4 style={{ fontSize:"15px"}}>Prix de lecture : {shopItems.prixLecture}dt</h4>
-       
-        {/* step : 3  
-           if hami le button ma click garryo bahne 
-          */}
-      </div>
-      <div className='price'>
-     
-        <h4 style={{ fontSize:"15px"}}>Prix de télechargement : {shopItems.prixTelechargement}dt</h4>
-        {/* step : 3  
-           if hami le button ma click garryo bahne 
-          */}
-      </div>
-      <div className='cartControl d_flex'>
-      
-      <button className='incCart ' onClick={() => addToCart(shopItems)}>
-      Ajouter au panier  <i className='fa-solid fa  fa-plus'></i>
-      </button>
-      
-     
-    </div>
-        </div>
-        <div className='cart-items-function'>
-      
-          {/* stpe: 5 
-          product ko qty lai inc ra des garne
-          */}
-     
-        </div>
-<div></div> <div className='cart-item-price'></div>
-<div className='cart-item-price'></div>
-   
-        <div className='cart-item-price'></div>
-      </div>):( <div className='cart-list product d_flex' key={shopItems._id} style={{background:"#FBFCFA"}}>
-                  <div className='img'>
-                <img src={user.image} alt='' />  =
-                  
-                    <div className='product-like'>
+        {users === undefined  ? (<>sxxdd</>) : (<> {shopItems.accepte === true && (<>
+        
+        {users.map((user) => {return( <>    {shopItems.auteur === user._id ? ( <>
+          
+          {user.statue === "etudiant" ?(
+          
+          
+          
+          <div className='cart-list product d_flex1' key={shopItems._id} >
+        <div className='img'>
+        <Stack direction="row" spacing={6}  className="profile">
+      <Avatar
+        alt="Remy Sharp"
+        src={user.image}
+        class="sahar"
+      />
+    </Stack>
+        <img src={shopItems.image} alt='' />   
+        <div className=' d_flex'>
+
+        <Badge badgeContent={likes.includes(shopItems._id) ? shopItems.interessant + 1  : shopItems.interessant } color="primary" style={{marginTop:"5px"  , zIndex:0}}>
+        <Avatar alt="interessant" src="./images/icon3.png"   sx={{ width: 30, height: 30 }} onClick={ () => handleFormSubmit(shopItems._id, {interessant: shopItems.interessant + 1} )}/>
+</Badge> <Badge  badgeContent={likesE.includes(shopItems._id) ? shopItems.excellent + 1  : shopItems.excellent }  color="primary" style={{marginTop:"5px"  , zIndex:0}}>
+        <Avatar alt="utile" src="./images/icon1.png"   sx={{ width: 30, height: 30 }} onClick={ () => handleFormSubmitE(shopItems._id, {excellent: shopItems.excellent + 1} )}  />
+</Badge>
+<Badge badgeContent={likesI.includes(shopItems._id) ? shopItems.utile + 1  : shopItems.utile } color="primary" style={{marginTop:"5px" , zIndex:0}} >
+        <Avatar alt="excellent" src="./images/icon2.png"  sx={{ width: 30, height: 30}} onClick={ () => handleFormSubmitI(shopItems._id, {utile: shopItems.utile + 1} )}  />
+</Badge>
+</div>
+<div className='product-like'>{user.approved === true ?(<img  style={{height:"25px", width:"25px"}} className="Aprover" alt="checked" src="./images/checked.png"/>):(<></>)}
               
-                    <img src="./images/badge.png" alt='' style={{height:"40px", width:"40px"}} />
-                </div>
-                <div className='product-like' style={{marginTop:"60px",marginLeft:"205px"}}>
-               <label>{count}</label> <br />
-              <i className='fas fa-heart' onClick={increment}></i>
-           </div>
+              
+              </div>    
+        </div>
+      
+        <div className='cart-details' >
+            <h4  >Titre : {shopItems.titre}</h4>
     
-                  </div>
-                  <div className='cart-details'>
-                    <h4  style={{ fontSize:"15px"}}>Titre du document : {shopItems.titre}</h4>
-              
+            {users === undefined  ? (<>sxxdd</>) : (<>{users.map((user) => {return( <>    {shopItems.auteur === user._id ? (     <h4 >  Auteur : {user.name} </h4> ):
+            (<></>)}</> ) })}</>)}
+          
+            <h4 style={{color:"grey" , fontWeight:"300"}}>  {shopItems.type} - {shopItems.Annee}</h4>
+           
+            <h4 style={{color:"grey" , fontWeight:"300"}}>  {shopItems.universite}</h4>
+            <p> {shopItems.description}</p>
+
  
-                  
-                    <h4 style={{color:"grey" , fontWeight:"300", fontSize:"15px"}}>  {shopItems.type}</h4>
-                   
-                    <h4 style={{color:"grey" , fontWeight:"300"}}>  {shopItems.universite}</h4>
-                 
-                <div className='price'>
-                <h4 style={{ fontSize:"15px"}}>Prix de lecture : {shopItems.prixLecture}dt</h4>
-                 
-                  {/* step : 3  
-                     if hami le button ma click garryo bahne 
-                    */}
-                </div>
-                <div className='price'>
-               
-                  <h4 style={{ fontSize:"15px"}}>Prix de télechargement : {shopItems.prixTelechargement}dt</h4>
-                  {/* step : 3  
-                     if hami le button ma click garryo bahne 
-                    */}
-                </div>
-                <div className='cartControl d_flex'>
-                
-                <button className='incCart ' onClick={() => addToCart(shopItems)}>
-                Ajouter au panier  <i className='fa-solid fa  fa-plus'></i>
-                </button>
-                
-               
-              </div>
-                  </div>
-                  <div className='cart-items-function'>
-                
-                    {/* stpe: 5 
-                    product ko qty lai inc ra des garne
-                    */}
-               
-                  </div>
-<div></div> <div className='cart-item-price'></div>
-<div className='cart-item-price'></div>
-             
-                  <div className='cart-item-price'></div>
-                </div>)}
-         </>
-            )}</>)
-      })} </>)}
+        <button class="button-82-pushable" role="button" onClick={() => addToCart({...shopItems , typeP:"document", prixF:`${shopItems.prixLecture}`, typeF:"Lecture"})}>
+  <span class="button-82-shadow"></span>
+  <span class="button-82-edge"></span>
+  <span class="button-82-front text">
+    Consulter pendant <br/> {shopItems.period} mois / {shopItems.prixLecture} TND
+  </span>
+</button>
+<button class="button-82-pushable1" role="button" onClick={() => addToCart({...shopItems , typeP:"document", prixF:`${shopItems.prixTelechargement}`, typeF:"Telechargement"})} >
+  <span class="button-82-shadow1"></span>
+  <span class="button-82-edge1"></span>
+  <span class="button-82-front1 text1">
+   Télécharger <br/> {shopItems.prixTelechargement} TND
+  </span>
+</button>
+     
+          </div>
+ 
+  <div></div> 
+  
+
+
+
+        </div>):(   <div className='cart-list product d_flex1' key={shopItems._id} style={{background:"#d8e5eb"}}>
+        <div className='img'>
+        <Stack direction="row" spacing={6}  className="profile">
+      <Avatar
+        alt="Remy Sharp"
+        src={user.image}
+class="sahar"
+      />
+    </Stack>
+        <img src={shopItems.image} alt='' />   
+        <div className=' d_flex'>
+   
+        <Badge badgeContent={likes.includes(shopItems._id) ? shopItems.interessant + 1  : shopItems.interessant } color="primary" style={{marginTop:"5px"  , zIndex:0}}>
+        <Avatar alt="interessant" src="./images/icon3.png"   sx={{ width: 30, height: 30 }} onClick={ () => handleFormSubmit(shopItems._id, {interessant: shopItems.interessant + 1} )}/>
+</Badge> <Badge  badgeContent={likesE.includes(shopItems._id) ? shopItems.excellent + 1  : shopItems.excellent }  color="primary" style={{marginTop:"5px"  , zIndex:0}}>
+        <Avatar alt="utile" src="./images/icon1.png"   sx={{ width: 30, height: 30 }} onClick={ () => handleFormSubmitE(shopItems._id, {excellent: shopItems.excellent + 1} )}  />
+</Badge>
+<Badge badgeContent={likesI.includes(shopItems._id) ? shopItems.utile + 1  : shopItems.utile } color="primary" style={{marginTop:"5px" , zIndex:0}} >
+        <Avatar alt="excellent" src="./images/icon2.png"  sx={{ width: 30, height: 30}} onClick={ () => handleFormSubmitI(shopItems._id, {utile: shopItems.utile + 1} )}  />
+</Badge>
+</div>
+<div className='product-like'>{user.approved === true ?(<img  style={{height:"25px", width:"25px"}} alt="checked" src="./images/checked.png"/>):(<></>)}
+              
+              
+              </div>   
+        </div>
+
+        <div className='cart-details' >
+            <h4  >Titre  : {shopItems.titre}</h4>
+    
+            {users === undefined  ? (<>sxxdd</>) : (<>{users.map((user) => {return( <>    {shopItems.auteur === user._id ? (     <h4 >  Auteur : {user.name} </h4> ):
+            (<></>)}</> ) })}</>)}
+          
+            <h4 style={{color:"grey" , fontWeight:"300"}}>  {shopItems.type} - {shopItems.Annee}</h4>
+           
+            <h4 style={{color:"grey" , fontWeight:"300"}}>  {shopItems.universite}  </h4>
+            <p> {shopItems.description}</p>
+
+       
+        <button class="button-82-pushable" role="button" onClick={() => addToCart({...shopItems , typeP:"document", prixF:`${shopItems.prixLecture}`,typeF:"Lecture"})}>
+  <span class="button-82-shadow"></span>
+  <span class="button-82-edge"></span>
+  <span class="button-82-front text">
+    Consulter pendant <br/> {shopItems.period} mois / {shopItems.prixLecture} TND
+  </span>
+</button>
+<button class="button-82-pushable1" role="button" onClick={() => addToCart({...shopItems , typeP:"document", prixF:`${shopItems.prixTelechargement}` , typeF:"Telechargement"})} >
+  <span class="button-82-shadow1"></span>
+  <span class="button-82-edge1"></span>
+  <span class="button-82-front1 text1">
+   Télécharger <br/> {shopItems.prixTelechargement} TND
+  </span>
+</button>
+          </div>
+          <div className='cart-items-function'>
+        
+            {/* stpe: 5 
+            product ko qty lai inc ra des garne
+            */}
+       
+          </div>
+  <div></div> 
+  
+
+
+
+        </div>)}</> ) :(<>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    </>)}</>)})}
+        
+        
+        
+        
+        
+        </>
+
+        
+        )
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        } </>)}
       
+
+
+     
+         
+         
+         
+        </> )}
+         </>
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        )
+      })} </>)}
+     
     </>
   )
 }
