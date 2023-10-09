@@ -8,7 +8,28 @@
     margin-top: 40px;
     z-index: 1;
   }
+  .boxCompte1 {
+
+    width: 100%;
+    height: 750px;
+    padding: 15px 0;
+    border-radius: 5px;
+    margin-top: 40px;
+    z-index: 1;
+  }
   .shop2 .category {
     padding: 30px;
     height: 80vh;
+}
+.gg{
+  display: none;
+}
+@media (max-width: 768px) {
+  .mobileCompte{
+    display: none;
+
+  }
+  .gg{
+    display: block;
+  }
 }

@@ -48,7 +48,7 @@ const MonCompte = ({ CartItem,user }) => {
     };
   return (
     <>
-         <section className='shop background'>
+         <section className='shop background mobileCompte'>
         <div className='container d_flex'>
    
        
@@ -95,7 +95,7 @@ const MonCompte = ({ CartItem,user }) => {
       </section>
 
 
-          <div className='contentWidth '>
+          <div className='contentWidth  '>
             <div className='heading d_flex'>
               <div className='heading-left row  f_flex'>
                 
@@ -117,7 +117,56 @@ const MonCompte = ({ CartItem,user }) => {
           </div>
         </div>
       </section>
-  
+      <section className='shop background boxCompte1 gg'>
+        <div className='container d_flex'>
+   
+       
+            <section className='shop ' >
+   
+<div className='category ' style={{width:"90%", marginTop:"-10px",height:"650px"}}>
+<Box    sx={{
+                display: "flex",
+        
+                alignItems: "center",
+                textTransform: "none",
+                gap: "0.5rem",
+                width: "210px",
+                marginLeft:"35px"
+              
+              }} >
+<Stack direction="row" spacing={6}  style={{width:"100px", height:"100px"}} >
+      <Avatar
+        alt="Remy Sharp"
+        src={user.image}
+        sx={{width:"70px", height:"70px"}}
+      />
+    </Stack>
+<h4 style={{marginLeft:"-20px", marginTop:"-20px"}}>{user.name}</h4></Box>
+    
+        {data1.map((value, index) => {
+          return (
+            <Link to={`${value.catlink}`} >
+            <div className='box f_flex' key={index}>
+ 
+              <span>{value.cateName}</span>
+            
+            </div></Link>
+            
+          )
+        })}
+        <Link onClick={handleClose} >
+            <div className='box f_flex'>
+ 
+              <span>Déconnection</span>
+            
+            </div></Link>
+      </div>
+      </section>
+
+
+      
+        </div>
+      </section>
     </>
   )
 }

@@ -83,7 +83,12 @@ const Footer = () => {
             <span><i class="fab fa-youtube"></i></span>
             </button>
          </div>
-   
+         <div class="row">
+            <button class="linkedIn">
+            <span><i class="fab fa-linkedin-in"></i></span>
+            </button>
+          
+         </div>
       </div>
           </div>
         </div>
