@@ -6,6 +6,7 @@ import FormControlLabel from '@mui/material/FormControlLabel';
 import FormControl from '@mui/material/FormControl';
 import FormLabel from '@mui/material/FormLabel';
 import Select from "@mui/material/Select";
+import axios from "axios";
 import { Box, Button, Card, CardMedia, MenuItem, TextField, Typography } from "@mui/material";
 import InputLabel from "@mui/material/InputLabel";
 import Slider from '@mui/material/Slider';
@@ -16,14 +17,14 @@ const AddDocument = ({user}) => {
 const [type, setType] = useState();
 const [image , setImage] = useState("")
 const [universite , setUniversite] = useState("")
-
+const [file, setFile] = useState("");
 const [Annee , setAnnée] = useState("")
 const [description, setDescription] = useState("");
 var prixt = 0
 const [Titre, setTitre] = useState("");
 const [period, setPeriod] = useState(6);
 const [value, setValue] = useState(0);
-const [image1 , setImage1] = useState("")
+const [image1 , setImage1] = useState("https://media.istockphoto.com/id/877235850/vector/book-icon.jpg?s=612x612&w=0&k=20&c=FSTH3SrcKKTSH09LLkucwABRWOKHRYPmEjxqBjEDjxc=")
 
 function convertToBase646(e){
   console.log(e);
@@ -1085,93 +1086,38 @@ function convertToBase646(e){
    
         setUniversite(value[1])
       }
-    const handleFormSubmit = async(values) => {
-      if (user.approved == true ){
-        if(image1 == ""){
-          const document ={
-    
-            document: image,
-            type: type,
-            prixLecture: value,
-            prixTelechargement: prixt,
-            Annee: Annee,
-            auteur: user._id,
-          titre: Titre,
-          description: description, 
-
-        
-          universite: universite,
-          accepte : true,
-          period : period,
-          };
-          await addDocument(document);
-        }else{
    
-          const document ={
+
     
-            document: image,
-            type: type,
-            prixLecture: value,
-            prixTelechargement: prixt,
-            Annee: Annee,
-            auteur: user._id,
-          titre: Titre,
-          description: description, 
-  image:image1,
-        
-          universite: universite,
-          accepte : true,
-          period : period,
-          };
-          await addDocument(document);
-
-        }
-     
-      }
-      else {         if(image1 === ""){    const document ={
-
-        document: image,
-        type: type,
-        prixLecture: value,
-        prixTelechargement: prixt,
+      const submitImage = async (e) => {
+        e.preventDefault();
+        const formData = new FormData();
+        formData.append("title", Titre);
+        formData.append("file", file);
+        formData.append("type", type);
+        formData.append("prixLecture", value);
+        formData.append("prixTelechargement", prixt);
+        formData.append("Annee", Annee);
+        formData.append("auteur",  user._id);
+        formData.append("description", description);
+        formData.append("image", image1);
+        formData.append("universite", universite);
+        formData.append("accepte", false);
+        formData.append("period", period);
       
-        auteur: user._id,
-      titre: Titre,
-      description: description, 
-      Annee:Annee,
-     
-      universite: universite,
-      accepte : false,
-      period : period,
+        const result = await axios.post(
+          "https://api.bibintunisie.com/upload-files",
+          formData,
+          {
+            headers: { "Content-Type": "multipart/form-data" },
+          }
+        );
+        console.log(result);
+        if (result.data.status == "ok") {
+          alert("Uploaded Successfully!!!");
+          window.location.href = "./";
+        }      
       };
-      await addDocument(document); } else {
-        const document ={
-
-          document: image,
-          type: type,
-          prixLecture: value,
-          prixTelechargement: prixt,
-          image:image1,
-          auteur: user._id,
-        titre: Titre,
-        description: description, 
-        Annee:Annee,
-       
-        universite: universite,
-        accepte : false,
-        period : period,
-        };
-        await addDocument(document);
-      }
-    
-
-      }
-      
-      
-      };
-
-    
-   
        
      
              function valueLabelFormatD(value) {
@@ -1296,12 +1242,16 @@ function valueLabelFormat(value) {
                 <header class="h">Ajouter un document</header>
                 <br/>
                
-             <form  class="form2" >
+             <div  class="form2" >
              <Typography id="non-linear-slider"  style={{fontSize:"18px"}}  gutterBottom>
           Upload votre document:
         </Typography>
         <div class="field input-field">
-   <input type="file"    onChange={convertToBase64}    required /> <br/> <br/>
+        <input           type="file"
+          class="form-control"
+          accept="application/pdf"
+          required
+          onChange={(e) => setFile(e.target.files[0])}/><br/> <br/>
  
                      </div>
                      <br/>
@@ -1868,9 +1818,9 @@ style={{width:"400px"}}
 
                     </div>
                      <div class="field button-field">
-                         <button type="submit"   onClick={handleFormSubmit}  >Envoyer</button>
+                         <button type="submit"   onClick={submitImage}  >Envoyer</button>
           </div>
-                </form>
+                </div>
                  
              </div>
      

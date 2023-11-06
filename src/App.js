@@ -29,6 +29,9 @@ import DocUni from './component/DocuementUniversite/DocUni';
 import DocType from './component/docType/DocType';
 import MonCompte from './component/MonCompte.jsx/MonCompte';
 import DocSearch from './component/docSearch/DocSearch';
+import Forget from './connexion/forget';
+import Reset from './connexion/reset';
+import EditProfile from './connexion/editProfile';
 
 
 function App() {
@@ -129,6 +132,12 @@ useEffect(() => {
   <Route path='/login' exact>
   <Login productItems={productItems} addToCart={addToCart} shopItems={shopItems}/>
     </Route>
+    <Route path="/reset-password/:token" exact>
+  <Reset productItems={productItems} addToCart={addToCart} shopItems={shopItems}/>
+    </Route>
+    <Route path='/forget-password' exact>
+  <Forget productItems={productItems} addToCart={addToCart} shopItems={shopItems}/>
+    </Route>
     <Route path='/signup' exact>
   <Signup productItems={productItems} addToCart={addToCart} shopItems={shopItems}/>
     </Route>
@@ -149,6 +158,9 @@ useEffect(() => {
     </Route>
     <Route path='/MonCompte' exact>
   <MonCompte productItems={productItems} addToCart={addToCart} shopItems={shopItems} user={data || {}} />
+    </Route>
+    <Route path='/Profile' exact>
+  <EditProfile productItems={productItems} addToCart={addToCart} shopItems={shopItems} user={data || {}} />
     </Route>
     <Route path='/AddDocument' exact>
   <AddDocument productItems={productItems} addToCart={addToCart} shopItems={shopItems} user={data || {}}  />

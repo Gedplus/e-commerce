@@ -1,15 +1,43 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 
 import { Link } from "react-router-dom"
 
 import Avatar from '@mui/material/Avatar';
 import "./Style.css"
 
+import RadioGroup from '@mui/material/RadioGroup';
+import FormControlLabel from '@mui/material/FormControlLabel';
+import FormControl from '@mui/material/FormControl';
+import FormLabel from '@mui/material/FormLabel';
+import Radio from '@mui/material/Radio';
+import {Icon} from 'react-icons-kit';
 
+import {eyeOff} from 'react-icons-kit/feather/eyeOff';
+import {eye} from 'react-icons-kit/feather/eye'
 
-import { useGetDocumentQuery } from '../../state/api'
 import { Box, Stack, Typography } from '@mui/material'
+import { editUserProfile } from '../../state/api';
 const MonCompte = ({ CartItem,user }) => {
+  const [selected, setSelected] = useState("");
+  const [image , setImage] = useState("")
+  
+    const [name , setName] = useState("")
+    const [email , setEmail] = useState("")
+    const [password , setPassword] = useState("")
+    const [phoneNumber , setPhoneNumber] = useState("")   
+    useEffect(() => {
+      const loadUserDetails = async() => {
+
+        setName(user.name);
+        setEmail(user.email);
+        setPassword(user.password);
+        setPhoneNumber(user.phoneNumber);
+          setImage(user.image)
+          setSelected(user.statue)
+  
+      }
+      loadUserDetails();
+    }, []);
     const data1 = [
         {
           cateImg: "./images/category/open-boo.png",
@@ -46,6 +74,35 @@ const MonCompte = ({ CartItem,user }) => {
         window.localStorage.clear();
         window.location.href ="./login"
     };
+
+    function convertToBase64(e){
+      console.log(e);
+      var reader = new FileReader();
+      reader.readAsDataURL(e.target.files[0]);
+      reader.onload = () => {
+    
+        setImage(reader.result)
+    
+      };}
+      function handleChange1(event) {
+        setSelected(event.target.value);
+    
+      }
+      const handleFormSubmit = async() => {
+  
+        const user1 ={ name: name,
+          email:email,
+          phoneNumber:phoneNumber,
+          image:image,
+          statue :selected,
+          password: password
+        
+        }
+        
+             await  editUserProfile(user._id, user1);
+
+        
+          };
   return (
     <>
          <section className='shop background mobileCompte'>
@@ -109,8 +166,75 @@ const MonCompte = ({ CartItem,user }) => {
           {/* if hamro cart ma kunai pani item xaina bhane no diplay */}
 
           <div className='boxCompte'>
+          <div class="form signup">
+            <div class="form-content">
+          <div class="field input-field">
+          <Typography id="non-linear-slider"  style={{fontSize:"17px"}}  gutterBottom>
+          Nom et prénom  :
+        </Typography>
+                        <input type="text" placeholder="Nom et prénom *" value={name} class="input" onChange={(e) => setName(e.target.value)} />
+                    </div><br/>
+                    <div class="field input-field">
+                    <Typography id="non-linear-slider"  style={{fontSize:"17px"}}  gutterBottom>
+                    Email :
+        </Typography>
+                        <input type="email" placeholder="Email *" class="input" value={email} onChange={(e) => setEmail(e.target.value)} />
+                    </div><br/>
+                    <br/>
+                    <FormControl          sx={{ gridColumn: "span 4" }}>
+      <FormLabel id="demo-row-radio-buttons-group-label"    style={{fontSize:"17px"}} color="secondary"  >vous êtes étudiant(e) ou professionnel(le) *</FormLabel>
+      <RadioGroup
+        row
+        aria-labelledby="demo-row-radio-buttons-group-label"
+        name="row-radio-buttons-group"
+        onChange = {handleChange1}
+value={selected}
+      >
+        <FormControlLabel value="etudiant" control={<Radio   color="default" />} label="etudiant"/>
+        <FormControlLabel value="professionnel" control={<Radio color="default"  />} label="professionnel" />
      
+      </RadioGroup>
+    </FormControl>
+    <div class="field input-field">
+    <Typography id="non-linear-slider"  style={{fontSize:"17px"}}  gutterBottom>
+    Mot de passe :
+        </Typography>
+                    <input
+                  type="text"
+                  name="password"
+                  value={password}
+                  placeholder="Mot de passe"
+     disabled
+                  onChange={(e) => setPassword(e.target.value)}
+                  autoComplete="current-password"
+             />
+  
+                    
+                    </div><br/>
+                    <div class="field input-field">
+                    <Typography id="non-linear-slider"  style={{fontSize:"17px"}}  gutterBottom>
+                    Numéro de téléphone :
+        </Typography>
+                        <input type="text" placeholder="Numéro de téléphone" value={phoneNumber} class="input" onChange={(e) => setPhoneNumber(e.target.value)} />
+                    </div><br/>
+          
+                    <div class="field input-field">
+                    <Typography id="non-linear-slider"  style={{fontSize:"17px"}}  gutterBottom>
+          Ajouté une photo :
+        </Typography>
+                    <input accept="image/*" 
+             type="file" placeholder="Email"  
+             onChange={convertToBase64}/>
+             <br/>
+   {image=="" || image == null ? "":   <img  style={{width:50 , height:50}} src={image}/>}
+                    </div>
+                <br/><br/><br/>
+                    <div class="field button-field">
+                        <button onClick={handleFormSubmit}>Modifier</button>
+                    </div>
 
+            </div>
+            </div>
             </div>
             </div>
             </section>
@@ -154,6 +278,13 @@ const MonCompte = ({ CartItem,user }) => {
             
           )
         })}
+     <Link to="/Profile" >
+            <div className='box f_flex' >
+ 
+              <span>Information professionnel</span>
+            
+            </div></Link>
+
         <Link onClick={handleClose} >
             <div className='box f_flex'>
  

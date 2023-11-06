@@ -118,7 +118,7 @@
     display: none;
   }
   .search.active {
-    height: 12vh;
+    height: 14vh;
     position: fixed;
     top: 0;
     z-index: 1000;

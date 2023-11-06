@@ -3,12 +3,8 @@ import Badge from '@mui/material/Badge';
 import Avatar from '@mui/material/Avatar';
 import Stack from '@mui/material/Stack';
 import {  useParams } from 'react-router-dom';
-import icon1 from "../../image/icon1.png"
-import icon2 from "../../image/icon2.png"
-import icon3 from "../../image/icon3.png"
-import checked from "../../image/checked.png"
-import { editDocumentDE, editDocumentDI, editDocumentDU, editDocumentE, editDocumentI, editDocumentP, editDocumentU, getDocUni, useGetDocumentQuery, useGetUtilisateursQuery } from '../../state/api'
-const DocUniCard = ({ shopItems, addToCart }) => {
+import { editDocumentDE, editDocumentDI, editDocumentDU, editDocumentE, editDocumentI, editDocumentP, editDocumentU, getDocUni, getSearch, useGetDocumentQuery, useGetUtilisateursQuery } from '../../state/api'
+const DocSearchCard = ({ shopItems, addToCart }) => {
   
   const userss = useGetUtilisateursQuery();
   const { id } = useParams();
@@ -18,7 +14,7 @@ const DocUniCard = ({ shopItems, addToCart }) => {
   const [doc, setDoc] = useState([]);
   useEffect(() => {
     const loadUserDetails = async() => {
-        const response = await getDocUni(id);
+        const response = await getSearch(id);
   setDoc(response.data)
 console.log(response.data)
     }
@@ -140,7 +136,7 @@ console.log("id", id)
         
           
           };
-            
+    
   return (
     <>    
     {doc === undefined  ? (<>Loading....</>) : (<>{doc.map((shopItems, index) => { 
@@ -167,15 +163,15 @@ console.log("id", id)
         <div className=' d_flex'>
 
         <Badge badgeContent={likes.includes(shopItems._id) ? shopItems.interessant + 1  : shopItems.interessant } color="primary" style={{marginTop:"5px"  , zIndex:0}}>
-        <Avatar alt="interessant" src={icon3}  sx={{ width: 30, height: 30 }} onClick={ () => handleFormSubmit(shopItems._id, {interessant: shopItems.interessant + 1} )}/>
+        <Avatar alt="interessant" src="./images/icon3.png"   sx={{ width: 30, height: 30 }} onClick={ () => handleFormSubmit(shopItems._id, {interessant: shopItems.interessant + 1} )}/>
 </Badge> <Badge  badgeContent={likesE.includes(shopItems._id) ? shopItems.excellent + 1  : shopItems.excellent }  color="primary" style={{marginTop:"5px"  , zIndex:0}}>
-        <Avatar alt="utile" src={icon1}   sx={{ width: 30, height: 30 }} onClick={ () => handleFormSubmitE(shopItems._id, {excellent: shopItems.excellent + 1} )}  />
+        <Avatar alt="utile" src="./images/icon1.png"   sx={{ width: 30, height: 30 }} onClick={ () => handleFormSubmitE(shopItems._id, {excellent: shopItems.excellent + 1} )}  />
 </Badge>
 <Badge badgeContent={likesI.includes(shopItems._id) ? shopItems.utile + 1  : shopItems.utile } color="primary" style={{marginTop:"5px" , zIndex:0}} >
-        <Avatar alt="excellent" src={icon2} sx={{ width: 30, height: 30}} onClick={ () => handleFormSubmitI(shopItems._id, {utile: shopItems.utile + 1} )}  />
+        <Avatar alt="excellent" src="./images/icon2.png"  sx={{ width: 30, height: 30}} onClick={ () => handleFormSubmitI(shopItems._id, {utile: shopItems.utile + 1} )}  />
 </Badge>
 </div>
-<div className='product-like'>{user.approved === true ?(<img  style={{height:"25px", width:"25px"}} className="Aprover" alt="checked" src={checked} />):(<></>)}
+<div className='product-like'>{user.approved === true ?(<img  style={{height:"25px", width:"25px"}} className="Aprover" alt="checked" src="./images/checked.png"/>):(<></>)}
               
               
               </div>    
@@ -227,17 +223,16 @@ class="sahar"
         <img src={shopItems.image} alt='' />   
         <div className=' d_flex'>
    
-       
         <Badge badgeContent={likes.includes(shopItems._id) ? shopItems.interessant + 1  : shopItems.interessant } color="primary" style={{marginTop:"5px"  , zIndex:0}}>
-        <Avatar alt="interessant" src={icon3}  sx={{ width: 30, height: 30 }} onClick={ () => handleFormSubmit(shopItems._id, {interessant: shopItems.interessant + 1} )}/>
+        <Avatar alt="interessant" src="./images/icon3.png"   sx={{ width: 30, height: 30 }} onClick={ () => handleFormSubmit(shopItems._id, {interessant: shopItems.interessant + 1} )}/>
 </Badge> <Badge  badgeContent={likesE.includes(shopItems._id) ? shopItems.excellent + 1  : shopItems.excellent }  color="primary" style={{marginTop:"5px"  , zIndex:0}}>
-        <Avatar alt="utile" src={icon1}   sx={{ width: 30, height: 30 }} onClick={ () => handleFormSubmitE(shopItems._id, {excellent: shopItems.excellent + 1} )}  />
+        <Avatar alt="utile" src="./images/icon1.png"   sx={{ width: 30, height: 30 }} onClick={ () => handleFormSubmitE(shopItems._id, {excellent: shopItems.excellent + 1} )}  />
 </Badge>
 <Badge badgeContent={likesI.includes(shopItems._id) ? shopItems.utile + 1  : shopItems.utile } color="primary" style={{marginTop:"5px" , zIndex:0}} >
-        <Avatar alt="excellent" src={icon2} sx={{ width: 30, height: 30}} onClick={ () => handleFormSubmitI(shopItems._id, {utile: shopItems.utile + 1} )}  />
+        <Avatar alt="excellent" src="./images/icon2.png"  sx={{ width: 30, height: 30}} onClick={ () => handleFormSubmitI(shopItems._id, {utile: shopItems.utile + 1} )}  />
 </Badge>
 </div>
-<div className='product-like'>{user.approved === true ?(<img  style={{height:"25px", width:"25px"}} alt="checked" src={checked} />):(<></>)}
+<div className='product-like'>{user.approved === true ?(<img  style={{height:"25px", width:"25px"}} alt="checked" src="./images/checked.png"/>):(<></>)}
               
               
               </div>   
@@ -333,4 +328,4 @@ class="sahar"
   )
 }
 
-export default DocUniCard
+export default DocSearchCard

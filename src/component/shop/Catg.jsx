@@ -1,29 +1,32 @@
 import React from "react"
 import { Link } from "react-router-dom"
+import app from "../../image/application.png"
+import book from "../../image/book.png"
+import opon from "../../image/open-boo.png"
 const Catg = () => {
   const data = [
     {
-      cateImg: "./images/category/open-boo.png",
+      cateImg: opon,
       cateName: "PFE ou autre (niveau licence)",
       catlink:"PFE",
     },
     {
-      cateImg: "./images/category/open-boo.png",
+      cateImg: opon,
       cateName: "Mémoire ou autre (niveau Mastére)",
       catlink: "Mémoire",
     },
     {
-      cateImg: "./images/category/open-boo.png",
+      cateImg: opon,
       cateName: "Thése ou autre (niveau doctorat)",
       catlink: "Thése",
     },
     {
-      cateImg: "./images/category/application.png",
+      cateImg: app,
       cateName: "Article",
       catlink: "Article", 
     },
     {
-      cateImg: "./images/category/book.png",
+      cateImg: book,
       cateName: "Ouvrage",
       catlink: "Ouvrage",
     },

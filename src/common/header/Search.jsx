@@ -7,7 +7,9 @@ import SearchIcon from '@mui/icons-material/Search';
 import Modal from '@mui/material/Modal';
 import Categories from "../../component/mainpage/Categories";
 import CategoriesS from "./Cat";
+import checked from "../../image/checked.png"
 import { useHistory } from 'react-router-dom'; 
+import logo1 from "../../image/LOGO.jpeg"
 const style = {
   position: 'absolute' ,
   top: '50%',
@@ -47,7 +49,7 @@ const Search = ({ CartItem,user }) => {
       <section className='search'>
         <div className='container c_flex'>
           <div className='logo width '>
-            <img src="./images/LOGO.jpeg" alt=''  />
+            <img src={logo1} alt=''  />
           </div>
           <form  className="searchwidth" onSubmit={() =>       history.push (`/recherche/${mot}`)}>
           <div className='search-box f_flex searchM' >
@@ -64,7 +66,7 @@ const Search = ({ CartItem,user }) => {
           ) :(<>
             <Button
    
-        onClick={handleClick}
+        onClick={handleClick} 
               sx={{
                 display: "flex",
                 justifyContent: "space-between",
@@ -109,7 +111,7 @@ const Search = ({ CartItem,user }) => {
                  <MenuItem ><Link to='/AddDocument'>Ajouter Document</Link></MenuItem>
                  <MenuItem ><Link to='/MesDocuments'>Mon solde</Link></MenuItem>
                  <MenuItem ><Link to='/MesDocuments'>Demande de versement de mon solde</Link></MenuItem>
-              <MenuItem ><Link to='/verification'>Demande de vérification de mon compte <img  style={{height:"20px", width:"20px"}} alt="checked" src="./images/checked.png"/></Link></MenuItem>
+              <MenuItem ><Link to='/verification'>Demande de vérification de mon compte <img  style={{height:"20px", width:"20px"}} alt="checked" src={checked}/></Link></MenuItem>
               <MenuItem onClick={handleClose}>Déconnection</MenuItem>
             </Menu>
             

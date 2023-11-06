@@ -44,7 +44,7 @@ export const addContact = async (contact) => {
     return await axios.post(`https://api.bibintunisie.com/general/contactAdd`, contact);
 }
 export const addDocument = async (document) => {
-  return await axios.post(`https://api.bibintunisie.com/general/DocumentAdd`, document);
+  return await axios.post(`https://api.bibintunisie.com/DocumentAdd`, document);
 }
 export const editUser = async (id, user) => {
   return await axios.put(`https://api.bibintunisie.com/client/${id}`, user)
@@ -108,4 +108,19 @@ export const editDocumentDE = async (id, document) => {
 }
 export const getSearch= async (id) => {
   return await axios.get(`https://api.bibintunisie.com/client/Search/${id}`);
+}
+export const signup= async (user) => {
+  return await axios.post(`https://api.bibintunisie.com/user/register`, user);
+}
+export const loginUser= async (user) => {
+  return await axios.post(`https://api.bibintunisie.com/user/login`, user);
+}
+export const forgetPassword= async (email) => {
+  return await axios.post(`https://api.bibintunisie.com/user/forget-password-token`, email);
+}
+export const ResetPassword= async (password,token ) => {
+  return await axios.put(`https://api.bibintunisie.com/user/reset-password/${token}`, password);
+}
+export const editUserProfile = async (id, user) => {
+  return await axios.put(`https://api.bibintunisie.com/client/${id}`, user)
 }

@@ -2,7 +2,7 @@ import React, { useState } from "react"
 import { addContact, addReclamation, editUser } from "../../state/api";
 import { useHistory } from 'react-router-dom'; 
 import { Typography } from "@mui/material";
-
+import checked from "../../image/checked.png"
 const Verification = ({ CartItem,user }) => {
   const history = useHistory ();
   const [image , setImage] = useState("")
@@ -63,7 +63,7 @@ const [users, setUser] = useState(user);
         <div class="form1 login">
            
             <div class="form-content">
-                <header class="h">Demande de verification <img  style={{height:"25px", width:"25px"}} alt="checked" src="./images/checked.png"/></header>
+                <header class="h">Demande de verification <img  style={{height:"25px", width:"25px"}} alt="checked" src={checked}/></header>
                 <br/>
             
                 <div class="div mobile"> 

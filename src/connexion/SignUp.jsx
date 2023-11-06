@@ -7,15 +7,34 @@ import FormLabel from '@mui/material/FormLabel';
 import Radio from '@mui/material/Radio';
 import { useHistory } from 'react-router-dom'; 
 import { Typography } from "@mui/material";
+import { signup } from "../state/api";
+import {Icon} from 'react-icons-kit';
+import Alert from '@mui/material/Alert';
+import {eyeOff} from 'react-icons-kit/feather/eyeOff';
+import {eye} from 'react-icons-kit/feather/eye'
 const Signup = () => {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [erreur, setErreur] = useState(false);
+  const [passwordconf, setPasswordconf] = useState("");
   const [statue, setSelected] = useState("");
   const [image , setImage] = useState("https://i.stack.imgur.com/34AD2.jpg")
   const [phoneNumber , setPhoneNumber] = useState("")
   const history = useHistory ();
   const role = "utilisateur"
+
+  const [type, setType] = useState('password');
+  const [icon, setIcon] = useState(eyeOff);
+  const handleToggle = () => {
+    if (type==='password'){
+       setIcon(eye);
+       setType('text')
+    } else {
+       setIcon(eyeOff)
+       setType('password')
+    }
+  }
   function handleChange1(event) {
     setSelected(event.target.value);
  }
@@ -31,6 +50,31 @@ const Signup = () => {
   reader.onerror = error => {
     console.log("error: ", error);
   }}
+
+
+  const handleFormSubmit = async(values) => {
+if (password ==  passwordconf ) {
+  const user ={
+    name: name ,
+    email:email, 
+    password: password,
+    statue:statue,
+    image:image,
+    role : "utilisateur",
+    phoneNumber:phoneNumber
+
+  };
+  console.log(user)
+signup(user);
+await       history.push ('/login');
+
+
+}else {
+  setErreur(true)
+}
+   
+  }
+
   function handleSubmit(e) {
     e.preventDefault();
 
@@ -48,9 +92,7 @@ const Signup = () => {
         email,
         password,
         role,
-        statue,
-        image,
-        phoneNumber,
+ 
       }),
     })
       .then((res) => res.json())
@@ -58,7 +100,7 @@ const Signup = () => {
   
        
       });
-      history.push ('/login');
+
   }
 
   return (
@@ -67,7 +109,7 @@ const Signup = () => {
         <div class="form signup">
             <div class="form-content">
                 <header class="h">S'inscrire</header>
-                <form onSubmit={handleSubmit}>
+                <div>
                 <div class="field input-field">
                         <input type="text" placeholder="Nom et prénom *" class="input" onChange={(e) => setName(e.target.value)} />
                     </div>
@@ -89,15 +131,33 @@ const Signup = () => {
      
       </RadioGroup>
     </FormControl>
-                    <div class="field input-field">
-                        <input type="password" placeholder="Mot de passe" class="password" onChange={(e) => setPassword(e.target.value)}  />
-                       
+    <div class="field input-field">
+                    <input
+                  type={type}
+                  name="password"
+                  placeholder="Mot de passe"
+     
+                  onChange={(e) => setPassword(e.target.value)}
+                  autoComplete="current-password"
+             />
+             <span className="eye-icon" onClick={handleToggle}>
+                  <Icon icon={icon} size={25}/>
+              </span>
                     
                     </div>
                     <div class="field input-field">
-                        <input type="password" placeholder="Mot de passe" class="password"/>
-                        <i class="fa fa-eye-slash eye-icon" aria-hidden="true"></i>
-                    
+                    <input
+                  type={type}
+                  name="password"
+                  placeholder="Confirme mot de passe"
+     
+                  onChange={(e) => setPasswordconf(e.target.value)}
+                  autoComplete="current-password"
+             />
+             <span className="eye-icon" onClick={handleToggle}>
+                  <Icon icon={icon} size={25}/>
+              </span>
+            {erreur==true ?(<Alert severity="error">La confirmation du mot de passe ne correspond pas</Alert>):(<></>)} 
                     </div>
                     <br/>
                     <Typography id="non-linear-slider"  style={{fontSize:"17px"}}  gutterBottom>
@@ -113,27 +173,16 @@ const Signup = () => {
                         <input type="text" placeholder="Numéro de téléphone" class="input" onChange={(e) => setPhoneNumber(e.target.value)} />
                     </div>
                     <div class="field button-field">
-                        <button>S'inscrire</button>
+                        <button onClick={handleFormSubmit}>S'inscrire</button>
                     </div>
                 
                     <div class="form-link">
                         <span>Vous avez déjà un compte?<a href="#" class="login-link">Connexion</a></span>
                     </div>
-                </form>
+                </div>
             </div>
-            <div class="line"></div>
-            <div class="media-options">
-                <a href="#" class="field facebook">
-                <i class="fab fa-facebook-f  facebook-icon"></i>
-                
-
-<span>Inscrivez-vous avec Facebook</span>                </a>
-            </div>
-            <div class="media-options">
-                <a href="#" class="field google">
-              <img src="images/google.png" alt="" class="google-img" />
-<span>Inscrivez-vous avec Google</span>                </a> 
-            </div>
+          
+   
             
         </div>
       </section>

@@ -20,9 +20,9 @@ const Reclamation = () => {
       
       };
     const handleFormSubmit = async(values) => {
-   
+   console.log("sss", reclamation)
         await addReclamation(reclamation);
-
+        window.location.reload();
       };
     function convertToBase64(e){
         console.log(e);
@@ -70,7 +70,7 @@ const Reclamation = () => {
             <div class="div">
             <div class="form-content">
              
-            <form  class="form2" onSubmit={handleFormSubmit}>
+            <div  class="form2"  >
               
                 <div class="field input-field">
                         <input type="text" placeholder="Nom et prénom" class="input"  onChange={(event) => {setFname(event.target.value)}}/>
@@ -104,11 +104,11 @@ const Reclamation = () => {
                     </div>
                 
                     <div class="field button-field">
-                        <button type="submit" >Envoyer</button>
+                        <button type="submit"  onClick={handleFormSubmit}>Envoyer</button>
                     </div>
                   
                     
-               </form>
+               </div>
                 
             </div>
             </div>

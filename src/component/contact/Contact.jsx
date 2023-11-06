@@ -19,6 +19,7 @@ const Contact = () => {
     const handleFormSubmit = async(values) => {
 
         await addContact(contact);
+        window.location.reload();
       
       };
     
@@ -48,7 +49,7 @@ const Contact = () => {
             <div class="div">
             <div class="form-content">
              
-            <form  class="form2" onSubmit={handleFormSubmit}>
+            <div  class="form2" >
               
          
             <p>Vous pouvez nous envoyer un message</p>
@@ -63,11 +64,11 @@ const Contact = () => {
                     </div>
                 
                     <div class="field button-field">
-                        <button type="submit" >Envoyer</button>
+                        <button type="submit"  onClick={handleFormSubmit}>Envoyer</button>
                     </div>
                   
                     
-               </form>
+               </div>
                 
             </div>
             </div>
