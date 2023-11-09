@@ -98,18 +98,7 @@ const EditProfile = ({ CartItem,user }) => {
      
       </RadioGroup>
     </FormControl>
-    <div class="field input-field">
-                    <input
-                  type="text"
-                  name="password"
-                  placeholder="Mot de passe"
-     value={password}
-                  onChange={(e) => setPassword(e.target.value)}
-                  autoComplete="current-password"
-             />
-      
-                    
-                    </div>
+
        
                     <br/>
                     <Typography id="non-linear-slider"  style={{fontSize:"17px"}}  gutterBottom>

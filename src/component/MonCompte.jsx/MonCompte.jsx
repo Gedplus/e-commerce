@@ -195,22 +195,7 @@ value={selected}
      
       </RadioGroup>
     </FormControl>
-    <div class="field input-field">
-    <Typography id="non-linear-slider"  style={{fontSize:"17px"}}  gutterBottom>
-    Mot de passe :
-        </Typography>
-                    <input
-                  type="text"
-                  name="password"
-                  value={password}
-                  placeholder="Mot de passe"
-     disabled
-                  onChange={(e) => setPassword(e.target.value)}
-                  autoComplete="current-password"
-             />
-  
-                    
-                    </div><br/>
+<br/>
                     <div class="field input-field">
                     <Typography id="non-linear-slider"  style={{fontSize:"17px"}}  gutterBottom>
                     Numéro de téléphone :

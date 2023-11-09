@@ -1109,7 +1109,9 @@ function convertToBase646(e){
           "https://api.bibintunisie.com/upload-files",
           formData,
           {
-            headers: { "Content-Type": "multipart/form-data" },
+            "Content-Type": "application/json",
+            Accept: "application/json",
+            "Access-Control-Allow-Origin": "*",
           }
         );
         console.log(result);

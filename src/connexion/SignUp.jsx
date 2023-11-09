@@ -111,14 +111,14 @@ await       history.push ('/login');
                 <header class="h">S'inscrire</header>
                 <div>
                 <div class="field input-field">
-                        <input type="text" placeholder="Nom et prénom *" class="input" onChange={(e) => setName(e.target.value)} />
+                        <input type="text" required placeholder="Nom et prénom *" class="input"  onChange={(e) => setName(e.target.value)}  />
                     </div>
                     <div class="field input-field">
-                        <input type="email" placeholder="Email *" class="input" onChange={(e) => setEmail(e.target.value)} />
+                        <input type="email" placeholder="Email *" class="input" required onChange={(e) => setEmail(e.target.value)} />
                     </div>
                     <br/>
                     <FormControl          sx={{ gridColumn: "span 4" }}>
-      <FormLabel id="demo-row-radio-buttons-group-label"    style={{fontSize:"17px"}} color="secondary"  >vous êtes étudiant(e) ou professionnel(le) *</FormLabel>
+      <FormLabel id="demo-row-radio-buttons-group-label"   required style={{fontSize:"17px"}} color="secondary"  >vous êtes étudiant(e) ou professionnel(le) *</FormLabel>
       <RadioGroup
         row
         aria-labelledby="demo-row-radio-buttons-group-label"
@@ -136,7 +136,7 @@ await       history.push ('/login');
                   type={type}
                   name="password"
                   placeholder="Mot de passe"
-     
+                  required
                   onChange={(e) => setPassword(e.target.value)}
                   autoComplete="current-password"
              />

@@ -48,9 +48,10 @@ const Search = ({ CartItem,user }) => {
     <>
       <section className='search'>
         <div className='container c_flex'>
+          <Link to="/">
           <div className='logo width '>
             <img src={logo1} alt=''  />
-          </div>
+          </div></Link>
           <form  className="searchwidth" onSubmit={() =>       history.push (`/recherche/${mot}`)}>
           <div className='search-box f_flex searchM' >
             <i className='fa fa-search'></i>
@@ -106,12 +107,12 @@ const Search = ({ CartItem,user }) => {
              open={isOpen}
              onClose={handleClose1}
              anchorOrigin={{ vertical: "bottom", horizontal: "center" }}
-            > <MenuItem ><Link to='/MesDocuments'>Mes achats</Link></MenuItem>
-               <MenuItem ><Link to='/MesDocuments'>Mes Documents</Link></MenuItem>
-                 <MenuItem ><Link to='/AddDocument'>Ajouter Document</Link></MenuItem>
-                 <MenuItem ><Link to='/MesDocuments'>Mon solde</Link></MenuItem>
-                 <MenuItem ><Link to='/MesDocuments'>Demande de versement de mon solde</Link></MenuItem>
-              <MenuItem ><Link to='/verification'>Demande de vérification de mon compte <img  style={{height:"20px", width:"20px"}} alt="checked" src={checked}/></Link></MenuItem>
+            > <MenuItem onClick={handleClose1} ><Link to='/MesDocuments'  >Mes achats</Link></MenuItem>
+               <MenuItem onClick={handleClose1} ><Link to='/MesDocuments'>Mes Documents</Link></MenuItem>
+                 <MenuItem onClick={handleClose1} ><Link to='/AddDocument'>Ajouter Document</Link></MenuItem>
+                 <MenuItem  onClick={handleClose1} ><Link to='/MesDocuments'>Mon solde</Link></MenuItem>
+                 <MenuItem onClick={handleClose1} ><Link to='/MesDocuments'>Demande de versement de mon solde</Link></MenuItem>
+              <MenuItem onClick={handleClose1} ><Link to='/verification'>Demande de vérification de mon compte <img  style={{height:"20px", width:"20px"}} alt="checked" src={checked}/></Link></MenuItem>
               <MenuItem onClick={handleClose}>Déconnection</MenuItem>
             </Menu>
             

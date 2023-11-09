@@ -47,7 +47,7 @@ const Login = () => {
                 <header class="h">Connexion</header>
                 <div class="form2" >
                     <div class="field input-field">
-                        <input type="email" placeholder="Email" class="input"    onChange={(e) => setEmail(e.target.value)} />
+                        <input type="email" placeholder="Email" class="input"     onChange={(e) => setEmail(e.target.value)} />
                     </div>
                     <div class="field input-field">
                     <input
@@ -71,7 +71,7 @@ const Login = () => {
                         <Link to="/forget-password" class="forgot-pass">Mot de passe oublié</Link>
                     </div>
                     <div class="form-link">
-                        <span>Vous avez déjà un compte? <a href="#" class="signup-link">s'inscrire</a></span>
+                        <span>Vous avez déjà un compte? <Link to="/signup" class="signup-link">s'inscrire</Link></span>
                     </div>
                 </div>
             </div>

@@ -922,7 +922,7 @@ const Categories = () => {
   return (
     < > 
       <div className='category categoryM'>
-      <img src={school} style={{width:"30px", height:"30px"}}alt='' />
+     
         {data.map((value, index) => {
           return (
             <div className='box f_flex' key={index}>
