@@ -111,7 +111,7 @@ export const getSearch= async (id) => {
 }
 export const signup= async (user) => {
   try{
-  return await axios.post(`http://localhost:5002/user/register`, user);
+  return await axios.post(`https://api.bibintunisie.com/user/register`, user);
 } catch (error) {
   return error.response}
  
