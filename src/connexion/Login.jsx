@@ -37,10 +37,10 @@ const Login = () => {
         if (response.status == "200") {
 
           toast.success("login avec succès")
-          setTimeout(()=>{
-        
-            history.push("/")
-        },300)
+          window.localStorage.setItem("token", response.data._id);
+          window.localStorage.setItem("loggedIn", true);
+
+          window.location.href = "./";
         }else {
           toast.error("Erreur login ")
         }
