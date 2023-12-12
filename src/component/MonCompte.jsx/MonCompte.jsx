@@ -4,7 +4,7 @@ import { Link } from "react-router-dom"
 
 import Avatar from '@mui/material/Avatar';
 import "./Style.css"
-
+import {toast} from "react-toastify"
 import RadioGroup from '@mui/material/RadioGroup';
 import FormControlLabel from '@mui/material/FormControlLabel';
 import FormControl from '@mui/material/FormControl';
@@ -12,15 +12,16 @@ import FormLabel from '@mui/material/FormLabel';
 import Radio from '@mui/material/Radio';
 import {Icon} from 'react-icons-kit';
 
-import {eyeOff} from 'react-icons-kit/feather/eyeOff';
+import {eyeOff} from 'react-icons-kit/feather/eyeOff'; 
 import {eye} from 'react-icons-kit/feather/eye'
-
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 import { Box, Stack, Typography } from '@mui/material'
 import { editUserProfile } from '../../state/api';
 const MonCompte = ({ CartItem,user }) => {
   const [selected, setSelected] = useState("");
   const [image , setImage] = useState("")
-  
+  const [edit ,setEdit] = useState(true)
     const [name , setName] = useState("")
     const [email , setEmail] = useState("")
     const [password , setPassword] = useState("")
@@ -37,7 +38,7 @@ const MonCompte = ({ CartItem,user }) => {
   
       }
       loadUserDetails();
-    }, []);
+    }, [user]);
     const data1 = [
         {
           cateImg: "./images/category/open-boo.png",
@@ -101,7 +102,7 @@ const MonCompte = ({ CartItem,user }) => {
         
              await  editUserProfile(user._id, user1);
 
-        
+             toast.success("Modification avec succès")
           };
   return (
     <>
@@ -214,6 +215,9 @@ value={selected}
    {image=="" || image == null ? "":   <img  style={{width:50 , height:50}} src={image}/>}
                     </div>
                 <br/><br/><br/>
+                <div class="form-link">
+                        <Link to="/forget-password" class="forgot-pass">Mot de passe oublié</Link>
+                    </div>
                     <div class="field button-field">
                         <button onClick={handleFormSubmit}>Modifier</button>
                     </div>
@@ -283,6 +287,17 @@ value={selected}
       
         </div>
       </section>
+      <ToastContainer
+            position="top-right"
+            autoClose={250}
+            hideProgressBar={false}
+            newestOnTop={true}
+            closeOnClick
+            rtl={false}
+            pauseOnFocusLoss
+            draggable
+            theme="light"
+          />
     </>
   )
 }

@@ -1,5 +1,6 @@
 import React, {  useState } from "react"
-
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css"; 
 import { Link } from "react-router-dom"
 import { Box, IconButton, MenuItem,  Menu,  Button,Typography } from "@mui/material";
 import ArrowDropDownOutlinedIcon from '@mui/icons-material/ArrowDropDownOutlined';
@@ -56,9 +57,9 @@ const Search = ({ CartItem,user }) => {
           <div className='search-box f_flex searchM' >
             <i className='fa fa-search'></i>
             <input type='text' placeholder='Vos mots-clés'    onChange={(e) => setMot(e.target.value)} />
-            <span>  <i className='fa fa-search'></i></span>
+            <span onClick={() =>       history.push (`/recherche/${mot}`)}>  <i className='fa fa-search'></i></span>
           </div></form>
-         <div className='icon f_flex width'>
+         <div className='icon f_flex '>
       
          { user._id === undefined  ? ( <><Link to='/login'>
           <button className="button-17">Connexion</button> </Link>
@@ -143,11 +144,11 @@ const Search = ({ CartItem,user }) => {
           <form  className="searchwidth" onSubmit={() =>       history.push (`/recherche/${mot}`)}>
         <div className='search-box f_flex'>
             <i className='fa fa-search'></i>
-            <input type='text' placeholder='Vos mots-clés' />
-            <span>  <i className='fa fa-search'></i></span>
+            <input type='text' placeholder='Vos mots-clés'   onChange={(e) => setMot(e.target.value)} />
+            <span  onClick={() =>       history.push (`/recherche/${mot}`)}>  <i className='fa fa-search'></i></span>
           </div>
           </form>
-   
+       
      </div></div>
     </>
   )

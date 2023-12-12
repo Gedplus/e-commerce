@@ -74,8 +74,8 @@ const Footer = () => {
             </button>
          </div>
          <div class="row">
-            <button class="twitter">
-            <span><i class="fab fa-twitter"></i></span>
+         <button class="linkedIn">
+            <span><i class="fab fa-linkedin-in"></i></span>
             </button>
           
    
@@ -83,12 +83,7 @@ const Footer = () => {
             <span><i class="fab fa-youtube"></i></span>
             </button>
          </div>
-         <div class="row">
-            <button class="linkedIn">
-            <span><i class="fab fa-linkedin-in"></i></span>
-            </button>
-          
-         </div>
+      
       </div>
           </div>
         </div>

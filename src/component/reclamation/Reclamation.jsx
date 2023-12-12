@@ -1,12 +1,16 @@
 import React, { useState } from "react"
 import { addReclamation } from "../../state/api";
-import { Typography } from "@mui/material";
-
-
+import { CircularProgress, Typography } from "@mui/material";
+import { toast } from "react-toastify";
+import { ToastContainer} from "react-toastify";
+import "react-toastify/dist/ReactToastify.css"; 
+import { useHistory } from 'react-router-dom'; 
 const Reclamation = () => {
     const [image , setImage] = useState("")
     const [Fname , setFname] = useState("")
     const [email , setEmail] = useState("")
+    const [erreur1, setErreur1] = useState(false);
+    const history = useHistory ();
     const [Message , setMessage] = useState("")
     const [cin , setCin] = useState("")
     const [phoneNumber , setPhoneNumber] = useState("")
@@ -21,8 +25,20 @@ const Reclamation = () => {
       };
     const handleFormSubmit = async(values) => {
    console.log("sss", reclamation)
-        await addReclamation(reclamation);
-        window.location.reload();
+   setErreur1(true)
+   const response = await addReclamation(reclamation);
+   if (response.status == "201") {
+
+    toast.success("Reclamation envoyer avec succès")
+
+    setTimeout(()=>{
+  
+      history.push("/")
+  },500)
+  } else {
+    toast.error("Reclamation n'est pas envoyer")
+    setErreur1(false)
+  }
       };
     function convertToBase64(e){
         console.log(e);
@@ -106,16 +122,28 @@ const Reclamation = () => {
                     <div class="field button-field">
                         <button type="submit"  onClick={handleFormSubmit}>Envoyer</button>
                     </div>
-                  
+                    <br/>
+
+                    {erreur1==true ?(           <CircularProgress style={{marginLeft:"220px"}}/>):(<></>)}
                     
                </div>
                 
             </div>
             </div>
         </div>
-     
+        <ToastContainer
+            position="top-right"
+            autoClose={250}
+            hideProgressBar={false}
+            newestOnTop={true}
+            closeOnClick
+            rtl={false}
+            pauseOnFocusLoss
+            draggable
+            theme="light"
+          />
       </section>
-      
+    
     </>
   )
 }

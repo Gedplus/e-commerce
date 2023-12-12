@@ -4,11 +4,13 @@ import Avatar from '@mui/material/Avatar';
 import Stack from '@mui/material/Stack';
 import {  useParams } from 'react-router-dom';
 import { editDocumentDE, editDocumentDI, editDocumentDU, editDocumentE, editDocumentI, editDocumentP, editDocumentU, getDocUni, getSearch, useGetDocumentQuery, useGetUtilisateursQuery } from '../../state/api'
+import { Button, CardActions } from "@mui/material";
 const DocSearchCard = ({ shopItems, addToCart }) => {
   
   const userss = useGetUtilisateursQuery();
   const { id } = useParams();
   console.log("id",id)
+  const [isExpanded, setIsExpanded] = useState([]);
   const users =userss.data
   const [count, setCount] = useState(0);
   const [doc, setDoc] = useState([]);
@@ -26,6 +28,15 @@ console.log(response.data)
   const [likesE, setLikesE] = useState([]);
   
   const [likesI, setLikesI] = useState([]);
+  const handleFormSubmitD= async(id,document1) => {
+    if(isExpanded.includes(id) ) { 
+        setIsExpanded((prevState) =>
+        prevState.filter((prevItem) => prevItem !== id))
+}
+
+else {
+    setIsExpanded(isExpanded.concat(id))
+}}
   const handleFormSubmit = async(id,document1) => {
 console.log("id", id)
     if(likes.includes(id) ) {
@@ -186,8 +197,15 @@ console.log("id", id)
             <h4 style={{color:"grey" , fontWeight:"300"}}>  {shopItems.type} - {shopItems.Annee}</h4>
            
             <h4 style={{color:"grey" , fontWeight:"300"}}>  {shopItems.universite}</h4>
-            <p> {shopItems.description}</p>
-
+            <CardActions>       <Button
+          variant="primary"
+       
+          fullWidth
+          onClick={ () => handleFormSubmitD(shopItems._id )}
+        >
+       voir la description 
+        </Button></CardActions>
+        {isExpanded.includes(shopItems._id) ? <p> {shopItems.description}</p> :<></>} 
  
         <button class="button-82-pushable" role="button" onClick={() => addToCart({...shopItems , typeP:"document", prixF:`${shopItems.prixLecture}`, typeF:"Lecture"})}>
   <span class="button-82-shadow"></span>
@@ -247,7 +265,15 @@ class="sahar"
             <h4 style={{color:"grey" , fontWeight:"300"}}>  {shopItems.type} - {shopItems.Annee}</h4>
            
             <h4 style={{color:"grey" , fontWeight:"300"}}>  {shopItems.universite}  </h4>
-            <p> {shopItems.description}</p>
+            <CardActions>       <Button
+          variant="primary"
+       
+          fullWidth
+          onClick={ () => handleFormSubmitD(shopItems._id )}
+        >
+       voir la description 
+        </Button></CardActions>
+        {isExpanded.includes(shopItems._id) ? <p> {shopItems.description}</p> :<></>} 
 
        
         <button class="button-82-pushable" role="button" onClick={() => addToCart({...shopItems , typeP:"document", prixF:`${shopItems.prixLecture}`,typeF:"Lecture"})}>

@@ -7,12 +7,15 @@ import FormLabel from '@mui/material/FormLabel';
 import Radio from '@mui/material/Radio';
 import { useHistory } from 'react-router-dom'; 
 import { Typography } from "@mui/material";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 import { editUserProfile, signup } from "../state/api";
 import {Icon} from 'react-icons-kit';
 import Alert from '@mui/material/Alert';
+import { Link } from "react-router-dom"
 import {eyeOff} from 'react-icons-kit/feather/eyeOff';
 import {eye} from 'react-icons-kit/feather/eye'
-const EditProfile = ({ CartItem,user }) => {
+const EditProfile = ({ user }) => {
     const [selected, setSelected] = useState("");
     const [image , setImage] = useState("")
     
@@ -20,7 +23,8 @@ const EditProfile = ({ CartItem,user }) => {
       const [email , setEmail] = useState("")
       const [password , setPassword] = useState("")
       const [phoneNumber , setPhoneNumber] = useState("")   
-      console.log(user.statue)
+      console.log(user ,"sahar")
+      
       useEffect(() => {
         const loadUserDetails = async() => {
   
@@ -32,7 +36,7 @@ const EditProfile = ({ CartItem,user }) => {
             setSelected(user.statue)
     
         }
-        loadUserDetails();
+        loadUserDetails(user);
       }, []);
   function handleChange1(event) {
     setSelected(event.target.value);
@@ -59,12 +63,12 @@ const EditProfile = ({ CartItem,user }) => {
       image:image,
       statue :selected,
       password: password
-    
+     
     }
     
          await  editUserProfile(user._id, user1);
 
-    
+         toast.success("Modification avec succès")
       };
 
 
@@ -115,6 +119,9 @@ const EditProfile = ({ CartItem,user }) => {
                     <div class="field input-field">
                         <input type="text" placeholder="Numéro de téléphone" value={phoneNumber} class="input" onChange={(e) => setPhoneNumber(e.target.value)} />
                     </div>
+                    <div class="form-link">
+                        <Link to="/forget-password" class="forgot-pass">Mot de passe oublié</Link>
+                    </div>
                     <div class="field button-field">
                         <button onClick={handleFormSubmit}>Modifier</button>
                     </div>
@@ -123,7 +130,17 @@ const EditProfile = ({ CartItem,user }) => {
                 </div>
             </div>
           
-   
+            <ToastContainer
+            position="top-right"
+            autoClose={250}
+            hideProgressBar={false}
+            newestOnTop={true}
+            closeOnClick
+            rtl={false}
+            pauseOnFocusLoss
+            draggable
+            theme="light"
+          />
             
         </div>
       </section>

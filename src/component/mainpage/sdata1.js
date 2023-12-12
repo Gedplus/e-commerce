@@ -7,7 +7,7 @@ const Sdata1 = [
     {
       id: 2,
 
-      cover: "./images/1S2.png",
+      cover: "./images/S3.png",
     },
     {
       id: 3,

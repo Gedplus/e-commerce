@@ -1,7 +1,7 @@
 import React, { useState } from "react"
 import { addContact} from "../../state/api";
-
-
+import contact1 from "../../image/BB.png"
+import { Link } from "react-router-dom"
 const Contact = () => {
      
   const [Email , setEmail] = useState("")
@@ -35,48 +35,14 @@ email: Email,
             <div class="form-content">
                 <header class="h">Contactez-nous</header>
                 <br/>
-            
-                <div class="div contactM"> 
-                <div className="contact f_flex">
-                <img src="./images/tel.png" alt=''  style={{width:"50px", height:"50px", marginTop:"-5px"}}/><h1>+216 25 55 77 80</h1><br/>
-             
-                </div>
-                <br/>
-                <div className="contact1 f_flex">
-     
-                <img src="./images/email.png" alt=''  style={{width:"50px", height:"50px", marginTop:"-15px"}}/><h3>bibintunisie@gmail.com</h3>
-                </div>
+                <Link to="/Reclamation">
+                <img src={contact1} alt='' className="contactM"  style={{width:"900px", height:"600px", marginTop:"-120px"}}/>
+           </Link>
+           <Link to="/Reclamation">
+                <img src={contact1} alt='' className="contactMo"  style={{width:"300px", height:"200px", marginTop:"-50px"}}/>
+                </Link> 
             </div>
-            </div>
-            <div class="div">
-            <div class="form-content">
-             
-            <div  class="form2" >
-              
-         
-            <p>Vous pouvez nous envoyer un message</p>
-            <div class="field input-field">
-                        <input type="text" placeholder="Email" class="input"  onChange={(event) => {setEmail(event.target.value)}}/>
-                    </div>
-                  
-            
-                    <div class="field input-field">
-                        <input type="text" placeholder="sujet" class="input"  onChange={(event) => {setsujet(event.target.value)}}/>
-                    </div>
-                  
-                    <div class="field1 input-field">
-                        <textarea type="text" placeholder="Message" class="input" onChange={(event) => {setMessage(event.target.value)}} />
-                    </div>
-                
-                    <div class="field button-field">
-                        <button type="submit"  onClick={handleFormSubmit}>Envoyer</button>
-                    </div>
-                  
-                    
-               </div>
-                
-            </div>
-            </div>
+          
         </div>
      
       </section>

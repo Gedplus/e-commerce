@@ -5,10 +5,14 @@ import {eyeOff} from 'react-icons-kit/feather/eyeOff';
 import {eye} from 'react-icons-kit/feather/eye'
 import { loginUser } from "../state/api";
 import { Link } from "react-router-dom"
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css"; 
+import { useHistory } from 'react-router-dom'; 
+import { toast } from "react-toastify";
 const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-
+  const history = useHistory ();
   const [type, setType] = useState('password');
   const [icon, setIcon] = useState(eyeOff);
   const handleToggle = () => {
@@ -29,13 +33,16 @@ const Login = () => {
 
     };
     const response = await loginUser(user);
-      console.log("dddd", response.data)
+      console.log("dddd", response)
         if (response.status == "200") {
-          alert("login successful");
-          window.localStorage.setItem("token", response.data._id);
-          window.localStorage.setItem("loggedIn", true);
 
-          window.location.href = "./";
+          toast.success("login avec succès")
+          setTimeout(()=>{
+        
+            history.push("/")
+        },300)
+        }else {
+          toast.error("Erreur login ")
         }
   
   }
@@ -71,13 +78,24 @@ const Login = () => {
                         <Link to="/forget-password" class="forgot-pass">Mot de passe oublié</Link>
                     </div>
                     <div class="form-link">
-                        <span>Vous avez déjà un compte? <Link to="/signup" class="signup-link">s'inscrire</Link></span>
+                        <span>Vous n'avez pas de compte? <Link to="/signup" class="signup-link">Inscrivez-vous</Link></span>
                     </div>
                 </div>
             </div>
 
         </div>
       </section>
+      <ToastContainer
+            position="top-right"
+            autoClose={250}
+            hideProgressBar={false}
+            newestOnTop={true}
+            closeOnClick
+            rtl={false}
+            pauseOnFocusLoss
+            draggable
+            theme="light"
+          />
     </>
   )
 }

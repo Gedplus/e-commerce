@@ -110,7 +110,11 @@ export const getSearch= async (id) => {
   return await axios.get(`https://api.bibintunisie.com/client/Search/${id}`);
 }
 export const signup= async (user) => {
-  return await axios.post(`https://api.bibintunisie.com/user/register`, user);
+  try{
+  return await axios.post(`http://localhost:5002/user/register`, user);
+} catch (error) {
+  return error.response}
+ 
 }
 export const loginUser= async (user) => {
   return await axios.post(`https://api.bibintunisie.com/user/login`, user);

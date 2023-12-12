@@ -220,14 +220,22 @@ a.goolge span{
     margin-top: 0px ;
     width: 55%;
   }
+  .uniwidth{
+    width: 940px;
+  }
 
 @media (max-width: 768px) {
     .searchwidth{
         margin-top: 0px ;
         width: 50%;
       }
+      .uniwidth{
+        width: 460px;
+      }
 
-
+      body {
+        padding-right: 0  !important;
+      }
 .div {
     width: 100%;
     float: left;

@@ -8,6 +8,8 @@ import icon2 from "../../image/icon2.png"
 import icon3 from "../../image/icon3.png"
 import checked from "../../image/checked.png"
 import { editDocumentDE, editDocumentDI, editDocumentDU, editDocumentE, editDocumentI, editDocumentP, editDocumentU, getDocUni, useGetDocumentQuery, useGetUtilisateursQuery } from '../../state/api'
+import { Button, CardActions } from "@mui/material";
+
 const DocUniCard = ({ shopItems, addToCart }) => {
   
   const userss = useGetUtilisateursQuery();
@@ -16,6 +18,16 @@ const DocUniCard = ({ shopItems, addToCart }) => {
   const users =userss.data
   const [count, setCount] = useState(0);
   const [doc, setDoc] = useState([]);
+  const [isExpanded, setIsExpanded] = useState([]);
+  const handleFormSubmitD= async(id,document1) => {
+    if(isExpanded.includes(id) ) { 
+        setIsExpanded((prevState) =>
+        prevState.filter((prevItem) => prevItem !== id))
+}
+
+else {
+    setIsExpanded(isExpanded.concat(id))
+}}
   useEffect(() => {
     const loadUserDetails = async() => {
         const response = await getDocUni(id);
@@ -190,7 +202,15 @@ console.log("id", id)
             <h4 style={{color:"grey" , fontWeight:"300"}}>  {shopItems.type} - {shopItems.Annee}</h4>
            
             <h4 style={{color:"grey" , fontWeight:"300"}}>  {shopItems.universite}</h4>
-            <p> {shopItems.description}</p>
+            <CardActions>       <Button
+          variant="primary"
+       
+          fullWidth
+          onClick={ () => handleFormSubmitD(shopItems._id )}
+        >
+       voir la description 
+        </Button></CardActions>
+        {isExpanded.includes(shopItems._id) ? <p> {shopItems.description}</p> :<></>}
 
  
         <button class="button-82-pushable" role="button" onClick={() => addToCart({...shopItems , typeP:"document", prixF:`${shopItems.prixLecture}`, typeF:"Lecture"})}>
@@ -252,7 +272,15 @@ class="sahar"
             <h4 style={{color:"grey" , fontWeight:"300"}}>  {shopItems.type} - {shopItems.Annee}</h4>
            
             <h4 style={{color:"grey" , fontWeight:"300"}}>  {shopItems.universite}  </h4>
-            <p> {shopItems.description}</p>
+            <CardActions>       <Button
+          variant="primary"
+       
+          fullWidth
+          onClick={ () => handleFormSubmitD(shopItems._id )}
+        >
+       voir la description 
+        </Button></CardActions>
+        {isExpanded.includes(shopItems._id) ? <p> {shopItems.description}</p> :<></>}
 
        
         <button class="button-82-pushable" role="button" onClick={() => addToCart({...shopItems , typeP:"document", prixF:`${shopItems.prixLecture}`,typeF:"Lecture"})}>

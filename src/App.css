@@ -479,7 +479,13 @@ z-index: 1 !important;
 .catD{
   display: none;
 }
+.contactMo{
+  display: none;
+}
 @media (max-width: 768px) {
+  .contactMo{
+    display: block;
+  }
   .contactM{
     display: none;
   }

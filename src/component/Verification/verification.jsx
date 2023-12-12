@@ -1,11 +1,16 @@
 import React, { useState } from "react"
 import { addContact, addReclamation, editUser } from "../../state/api";
 import { useHistory } from 'react-router-dom'; 
-import { Typography } from "@mui/material";
+import { CircularProgress, Typography } from "@mui/material";
 import checked from "../../image/checked.png"
+import verification from "../../image/verif.jpg"
+import { toast } from "react-toastify";
+import { ToastContainer} from "react-toastify";
+import "react-toastify/dist/ReactToastify.css"; 
 const Verification = ({ CartItem,user }) => {
   const history = useHistory ();
   const [image , setImage] = useState("")
+  const [erreur1, setErreur1] = useState(false);
   const [phoneNumber , setPhoneNumber] = useState("")
 const id = user._id
 const [users, setUser] = useState(user);
@@ -21,12 +26,23 @@ const [users, setUser] = useState(user);
       };
     const handleFormSubmit = async() => {
   
-     
+      setErreur1(true)
       
    
-      await editUser(id, {...user, demande: true, justificative: image , CIN: cin , phoneNumber: phoneNumber});
-      history.push ('/');
- 
+      const response = await editUser(id, {...user, demande: true, justificative: image , CIN: cin , phoneNumber: phoneNumber});
+    
+      if (response.status == "200") {
+
+        toast.success("Demande de vérification envoyer avec succès")
+    
+        setTimeout(()=>{
+      
+          history.push("/")
+      },500)
+      } else {
+        toast.error("Demande de vérification n'est pas envoyer")
+        setErreur1(false)
+      }
       };
       function convertToBase64(e){
         console.log(e);
@@ -67,7 +83,7 @@ const [users, setUser] = useState(user);
                 <br/>
             
                 <div class="div mobile"> 
-                <img src="./images/reclamation.png" alt=''  style={{width:"400px", height:"400px", marginTop:"70px"}}/>
+                <img src={verification} alt=''  style={{width:"400px", height:"450px" ,marginTop:"-80px"}}/>
                 
             </div>
             </div>
@@ -79,7 +95,7 @@ const [users, setUser] = useState(user);
             CIN ou passeport :
         </Typography>
             <div class="field input-field">
-                    <input accept="image/*"
+                    <input accept="image/*" 
              type="file" placeholder="Email"
              onChange={convertToBase64}/>
 
@@ -99,12 +115,23 @@ const [users, setUser] = useState(user);
                     <div class="field button-field">
                         <button type="submit" onClick={handleFormSubmit} >Envoyer</button>
                     </div>
-                  
+                    <br/>                 {erreur1==true ?(           <CircularProgress style={{marginLeft:"220px"}}/>):(<></>)}
                     
     </div>
             </div>
             </div>
         </div>
+        <ToastContainer
+            position="top-right"
+            autoClose={250}
+            hideProgressBar={false}
+            newestOnTop={true}
+            closeOnClick
+            rtl={false}
+            pauseOnFocusLoss
+            draggable
+            theme="light"
+          />
      
       </section>
       

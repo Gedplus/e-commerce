@@ -157,7 +157,7 @@ useEffect(() => {
   <Documents productItems={productItems} addToCart={addToCart} shopItems={shopItems}/>
     </Route>
     <Route path='/MonCompte' exact>
-  <MonCompte productItems={productItems} addToCart={addToCart} shopItems={shopItems} user={data || {}} />
+  <MonCompte   user={data || {}} />
     </Route>
     <Route path='/Profile' exact>
   <EditProfile productItems={productItems} addToCart={addToCart} shopItems={shopItems} user={data || {}} />

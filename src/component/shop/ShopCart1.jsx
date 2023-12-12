@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react"
+import React, { useState } from "react"
 import Badge from '@mui/material/Badge';
 import Avatar from '@mui/material/Avatar';
 import Stack from '@mui/material/Stack';
@@ -6,33 +6,34 @@ import icon1 from "../../image/icon1.png"
 import icon2 from "../../image/icon2.png"
 import icon3 from "../../image/icon3.png"
 import checked from "../../image/checked.png"
-import {  useParams } from 'react-router-dom';
-import { editDocumentDE, editDocumentDI, editDocumentDU, editDocumentE, editDocumentI, editDocumentP, editDocumentU, getDocType, getDocUni, useGetDocumentQuery, useGetUtilisateursQuery } from '../../state/api'
-import { Button, CardActions } from "@mui/material";
-const DocTypeCard = ({ shopItems, addToCart }) => {
-  
-  const userss = useGetUtilisateursQuery();
-  const { id } = useParams();
-  console.log("id",id)
-  const users =userss.data
-  const [count, setCount] = useState(0);
-  const [doc, setDoc] = useState([]); 
+import { editDocumentDE, editDocumentDI, editDocumentDU, editDocumentE, editDocumentI, editDocumentP, editDocumentU, useGetDocumentQuery, useGetUtilisateursQuery } from '../../state/api'
+import { Link } from "react-router-dom/cjs/react-router-dom";
+import {   Collapse,Button, CardContent, CardActions, Card } from "@mui/material";
+
+
+const ShopCart1 = ({ shopItems, addToCart }) => {
+  const { data } = useGetDocumentQuery();
   const [isExpanded, setIsExpanded] = useState([]);
-  useEffect(() => {
-    const loadUserDetails = async() => {
-        const response = await getDocType(id);
-  setDoc(response.data)
-console.log(response.data)
-    }
-    loadUserDetails();
-  }, []);
+  const userss = useGetUtilisateursQuery();
+  const users =userss.data
+
   const [likes, setLikes] = useState([]);
  
 
   const [likesE, setLikesE] = useState([]);
   
   const [likesI, setLikesI] = useState([]);
-  const handleFormSubmitD= async(id,document1) => {
+  const data1 = [];
+  for (let i = 0; i < data?.length; i++) {
+    if(data1.length <20 &&  data[i]?.accepte== true)
+ {   data1.push(
+    data[i]
+
+    )}}
+
+
+console.log(data1, "sata")
+const handleFormSubmitD= async(id,document1) => {
     if(isExpanded.includes(id) ) { 
         setIsExpanded((prevState) =>
         prevState.filter((prevItem) => prevItem !== id))
@@ -41,6 +42,9 @@ console.log(response.data)
 else {
     setIsExpanded(isExpanded.concat(id))
 }}
+
+
+
   const handleFormSubmit = async(id,document1) => {
 console.log("id", id)
     if(likes.includes(id) ) {
@@ -152,12 +156,13 @@ console.log("id", id)
           
           };
     
+
   return (
-    <>    
-    {doc === undefined  ? (<>Loading....</>) : (<>{doc.map((shopItems, index) => { 
+    <>    {console.log(data)}
+    {data === undefined  ? (<>Loading....</>) : (<>{data1.map((shopItems, index) => { 
         return (
         <> 
-        {users === undefined  ? (<>sxxdd</>) : (<> {shopItems.accepte === true && (<>
+        {users === undefined  ? (<></>) : (<> {shopItems.accepte === true && (<>
         
         {users.map((user) => {return( <>    {shopItems.auteur === user._id ? ( <>
           
@@ -178,15 +183,15 @@ console.log("id", id)
         <div className=' d_flex'>
 
         <Badge badgeContent={likes.includes(shopItems._id) ? shopItems.interessant + 1  : shopItems.interessant } color="primary" style={{marginTop:"5px"  , zIndex:0}}>
-        <Avatar alt="interessant" src={icon3}  sx={{ width: 30, height: 30 }} onClick={ () => handleFormSubmit(shopItems._id, {interessant: shopItems.interessant + 1} )}/>
+        <Avatar alt="interessant" src={icon3}   sx={{ width: 30, height: 30 }} onClick={ () => handleFormSubmit(shopItems._id, {interessant: shopItems.interessant + 1} )}/>
 </Badge> <Badge  badgeContent={likesE.includes(shopItems._id) ? shopItems.excellent + 1  : shopItems.excellent }  color="primary" style={{marginTop:"5px"  , zIndex:0}}>
-        <Avatar alt="utile" src={icon1}  sx={{ width: 30, height: 30 }} onClick={ () => handleFormSubmitE(shopItems._id, {excellent: shopItems.excellent + 1} )}  />
+        <Avatar alt="utile" src={icon1}   sx={{ width: 30, height: 30 }} onClick={ () => handleFormSubmitE(shopItems._id, {excellent: shopItems.excellent + 1} )}  />
 </Badge>
 <Badge badgeContent={likesI.includes(shopItems._id) ? shopItems.utile + 1  : shopItems.utile } color="primary" style={{marginTop:"5px" , zIndex:0}} >
-        <Avatar alt="excellent" src={icon3}  sx={{ width: 30, height: 30}} onClick={ () => handleFormSubmitI(shopItems._id, {utile: shopItems.utile + 1} )}  />
+        <Avatar alt="excellent" src={icon2}  sx={{ width: 30, height: 30}} onClick={ () => handleFormSubmitI(shopItems._id, {utile: shopItems.utile + 1} )}  />
 </Badge>
 </div>
-<div className='product-like'>{user.approved === true ?(<img  style={{height:"25px", width:"25px"}} className="Aprover" alt="checked" src={checked} />):(<></>)}
+<div className='product-like'>{user.approved === true ?(<img  style={{height:"25px", width:"25px"}} className="Aprover" alt="checked" src={checked}/>):(<></>)}
               
               
               </div>    
@@ -195,13 +200,13 @@ console.log("id", id)
         <div className='cart-details' >
             <h4  >Titre : {shopItems.titre}</h4>
     
-            {users === undefined  ? (<>sxxdd</>) : (<>{users.map((user) => {return( <>    {shopItems.auteur === user._id ? (     <h4 >  Auteur : {user.name} </h4> ):
+            {users === undefined  ? (<></>) : (<>{users.map((user) => {return( <>    {shopItems.auteur === user._id ? (     <h4 >  Auteur : {user.name} </h4> ):
             (<></>)}</> ) })}</>)}
           
             <h4 style={{color:"grey" , fontWeight:"300"}}>  {shopItems.type} - {shopItems.Annee}</h4>
            
             <h4 style={{color:"grey" , fontWeight:"300"}}>  {shopItems.universite}</h4>
-            <CardActions>       <Button
+         <CardActions>       <Button
           variant="primary"
        
           fullWidth
@@ -209,9 +214,8 @@ console.log("id", id)
         >
        voir la description 
         </Button></CardActions>
-        {isExpanded.includes(shopItems._id) ? <p> {shopItems.description}</p> :<></>}
-
- 
+        {isExpanded.includes(shopItems._id) ? <p> {shopItems.description}</p> :<></>} 
+            
         <button class="button-82-pushable" role="button" onClick={() => addToCart({...shopItems , typeP:"document", prixF:`${shopItems.prixLecture}`, typeF:"Lecture"})}>
   <span class="button-82-shadow"></span>
   <span class="button-82-edge"></span>
@@ -245,17 +249,16 @@ class="sahar"
     </Stack>
         <img src={shopItems.image} alt='' />   
         <div className=' d_flex'>
-   
         <Badge badgeContent={likes.includes(shopItems._id) ? shopItems.interessant + 1  : shopItems.interessant } color="primary" style={{marginTop:"5px"  , zIndex:0}}>
         <Avatar alt="interessant" src={icon3}   sx={{ width: 30, height: 30 }} onClick={ () => handleFormSubmit(shopItems._id, {interessant: shopItems.interessant + 1} )}/>
 </Badge> <Badge  badgeContent={likesE.includes(shopItems._id) ? shopItems.excellent + 1  : shopItems.excellent }  color="primary" style={{marginTop:"5px"  , zIndex:0}}>
-        <Avatar alt="utile" src={icon1}  sx={{ width: 30, height: 30 }} onClick={ () => handleFormSubmitE(shopItems._id, {excellent: shopItems.excellent + 1} )}  />
+        <Avatar alt="utile" src={icon1}   sx={{ width: 30, height: 30 }} onClick={ () => handleFormSubmitE(shopItems._id, {excellent: shopItems.excellent + 1} )}  />
 </Badge>
 <Badge badgeContent={likesI.includes(shopItems._id) ? shopItems.utile + 1  : shopItems.utile } color="primary" style={{marginTop:"5px" , zIndex:0}} >
         <Avatar alt="excellent" src={icon2}  sx={{ width: 30, height: 30}} onClick={ () => handleFormSubmitI(shopItems._id, {utile: shopItems.utile + 1} )}  />
 </Badge>
 </div>
-<div className='product-like'>{user.approved === true ?(<img  style={{height:"25px", width:"25px"}} alt="checked" src={checked} />):(<></>)}
+<div className='product-like'>{user.approved === true ?(<img  style={{height:"25px", width:"25px"}} alt="checked" src={checked}/>):(<></>)}
               
               
               </div>   
@@ -278,7 +281,7 @@ class="sahar"
         >
        voir la description 
         </Button></CardActions>
-        {isExpanded.includes(shopItems._id) ? <p> {shopItems.description}</p> :<></>}
+        {isExpanded.includes(shopItems._id) ? <p> {shopItems.description}</p> :<></>} 
 
        
         <button class="button-82-pushable" role="button" onClick={() => addToCart({...shopItems , typeP:"document", prixF:`${shopItems.prixLecture}`,typeF:"Lecture"})}>
@@ -354,9 +357,9 @@ class="sahar"
          </>
         )
       })} </>)}
-     
+         
     </>
   )
 }
 
-export default DocTypeCard
+export default ShopCart1

@@ -4,6 +4,8 @@ import RadioGroup from '@mui/material/RadioGroup';
 import FormControlLabel from '@mui/material/FormControlLabel';
 import FormControl from '@mui/material/FormControl';
 import FormLabel from '@mui/material/FormLabel';
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css"; 
 import Radio from '@mui/material/Radio';
 import { useHistory } from 'react-router-dom'; 
 import { Typography } from "@mui/material";
@@ -17,6 +19,7 @@ const Signup = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [erreur, setErreur] = useState(false);
+  const [erreur1, setErreur1] = useState(false);
   const [passwordconf, setPasswordconf] = useState("");
   const [statue, setSelected] = useState("");
   const [image , setImage] = useState("https://i.stack.imgur.com/34AD2.jpg")
@@ -65,10 +68,20 @@ if (password ==  passwordconf ) {
 
   };
   console.log(user)
-signup(user);
-await       history.push ('/login');
 
+const response = await signup(user);
+console.log("dddd", response )
+if (response.status == "200") {
+  toast.success("Compte créer  avec succès")
+  setTimeout(()=>{
 
+    history.push("/login")
+},300)
+ 
+}
+else{
+  setErreur1(true)
+}
 }else {
   setErreur(true)
 }
@@ -109,6 +122,7 @@ await       history.push ('/login');
         <div class="form signup">
             <div class="form-content">
                 <header class="h">S'inscrire</header>
+                {erreur1==true ?(<Alert severity="error">Cette adresse est déjà utilisée </Alert>):(<></>)} 
                 <div>
                 <div class="field input-field">
                         <input type="text" required placeholder="Nom et prénom *" class="input"  onChange={(e) => setName(e.target.value)}  />
@@ -186,6 +200,17 @@ await       history.push ('/login');
             
         </div>
       </section>
+      <ToastContainer
+            position="top-right"
+            autoClose={250}
+            hideProgressBar={false}
+            newestOnTop={true}
+            closeOnClick
+            rtl={false}
+            pauseOnFocusLoss
+            draggable
+            theme="light"
+          />
     </>
   )
 }
