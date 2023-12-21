@@ -55,8 +55,8 @@ const Search = ({ CartItem,user }) => {
           </div></Link>
           <form  className="searchwidth" onSubmit={() =>       history.push (`/recherche/${mot}`)}>
           <div className='search-box f_flex searchM' >
-            <i className='fa fa-search'></i>
-            <input type='text' placeholder='Vos mots-clés'    onChange={(e) => setMot(e.target.value)} />
+       
+            <input type='text' placeholder='Vos mots-clés' style={{marginLeft:"20px"}}   onChange={(e) => setMot(e.target.value)} />
             <span onClick={() =>       history.push (`/recherche/${mot}`)}>  <i className='fa fa-search'></i></span>
           </div></form>
          <div className='icon f_flex '>
@@ -94,7 +94,7 @@ const Search = ({ CartItem,user }) => {
                   fontSize="0.85rem"
           
                 >
-             {user.name}
+             {user.name} {user.approved === true ?<img  style={{height:"20px", width:"20px"}} alt="checked" src={checked}/> :<></>}
                 </Typography>
             
               </Box>
@@ -143,8 +143,8 @@ const Search = ({ CartItem,user }) => {
           {open === true ? (<CategoriesS/>):(<></>)}
           <form  className="searchwidth" onSubmit={() =>       history.push (`/recherche/${mot}`)}>
         <div className='search-box f_flex'>
-            <i className='fa fa-search'></i>
-            <input type='text' placeholder='Vos mots-clés'   onChange={(e) => setMot(e.target.value)} />
+           
+            <input type='text' placeholder='Vos mots-clés'  style={{marginLeft:"20px"}}  onChange={(e) => setMot(e.target.value)} />
             <span  onClick={() =>       history.push (`/recherche/${mot}`)}>  <i className='fa fa-search'></i></span>
           </div>
           </form>

@@ -9,7 +9,7 @@ import icon3 from "../../image/icon3.png"
 import checked from "../../image/checked.png"
 import { editDocumentDE, editDocumentDI, editDocumentDU, editDocumentE, editDocumentI, editDocumentP, editDocumentU, getDocUni, useGetDocumentQuery, useGetUtilisateursQuery } from '../../state/api'
 import { Button, CardActions } from "@mui/material";
-
+import ThumbUpOffAltIcon from '@mui/icons-material/ThumbUpOffAlt';
 const DocUniCard = ({ shopItems, addToCart }) => {
   
   const userss = useGetUtilisateursQuery();
@@ -39,126 +39,29 @@ console.log(response.data)
   const [likes, setLikes] = useState([]);
  
 
-  const [likesE, setLikesE] = useState([]);
-  
-  const [likesI, setLikesI] = useState([]);
+
   const handleFormSubmit = async(id,document1) => {
-console.log("id", id)
-    if(likes.includes(id) ) {
-     
-
-
-      setLikes((prevState) =>
-      prevState.filter((prevItem) => prevItem !== id))
-      await editDocumentDI(id, document1 );
-    }else{
-      if(likesE.includes(id)){
-        setLikesE((prevState) =>
-          prevState.filter((prevItem) => prevItem !== id))
-           editDocumentDE(id, document1 );
-          setLikes(likes.concat(id))
-
-          await editDocumentI(id, document1 );
-      }
-      else if(likesI.includes(id)) {
-        setLikesI((prevState) =>
-        prevState.filter((prevItem) => prevItem !== id))
-         editDocumentDU(id, document1 );
-        setLikes(likes.concat(id))
-        await editDocumentI(id, document1 );
-      }
-      else
-    {  setLikes(likes.concat(id))}
-    await editDocumentI(id, document1 );
-
-      
-    }
-
-  
-  };
-  const handleFormSubmitI = async(id,document1) => {
     console.log("id", id)
-        if(likesI.includes(id) ) {
+        if(likes.includes(id) ) {
          
     
     
-          setLikesI((prevState) =>
+          setLikes((prevState) =>
           prevState.filter((prevItem) => prevItem !== id))
-          await editDocumentDU(id, document1 );
+          await editDocumentDI(id, document1 );
         }else{
-
-          if(likes.includes(id)){
-            setLikes((prevState) =>
-              prevState.filter((prevItem) => prevItem !== id))
-               editDocumentDI(id, document1 );
-              setLikesE(likesE.concat(id))
-              await editDocumentU(id, document1 );
-          }
-        else if (likesE.includes(id)) {
-          setLikesE((prevState) =>
-          prevState.filter((prevItem) => prevItem !== id))
-           editDocumentDE(id, document1 );
-          setLikesI(likesE.concat(id))
-          await editDocumentU(id, document1 );
-          }
-          else
-        {  setLikesI(likesE.concat(id))
-          await editDocumentU(id, document1 );}
-
-
-
-         
+        setLikes(likes.concat(id))
+        await editDocumentI(id, document1 );}
     
-      
-        }
-    
-      
+        
       };
-      const handleFormSubmitE = async(id,document1) => {
-        console.log("id", id)
-            if(likesE.includes(id) ) {
-             
-        
-        
-              setLikesE((prevState) =>
-              prevState.filter((prevItem) => prevItem !== id))
-              await editDocumentDE(id, document1 );
-            }else{
-    
-              if(likes.includes(id)){
-                setLikes((prevState) =>
-                  prevState.filter((prevItem) => prevItem !== id))
-                   editDocumentDI(id, document1 );
-                  setLikesE(likesE.concat(id))
-                  await editDocumentE(id, document1 );
-              }
-              else if (likesI.includes(id)) {
-                setLikesI((prevState) =>
-                prevState.filter((prevItem) => prevItem !== id))
-                 editDocumentDU(id, document1 );
-                setLikesE(likesE.concat(id))
-                await editDocumentE(id, document1 );
-              }
-              else
-            {  setLikesE(likesE.concat(id))
-              await editDocumentE(id, document1 );}
-    
-    
-    
-             
-        
-          
-            }
-        
-          
-          };
             
   return (
     <>    
     {doc === undefined  ? (<>Loading....</>) : (<>{doc.map((shopItems, index) => { 
         return (
         <> 
-        {users === undefined  ? (<>sxxdd</>) : (<> {shopItems.accepte === true && (<>
+        {users === undefined  ? (<></>) : (<> {shopItems.accepte === true && (<>
         
         {users.map((user) => {return( <>    {shopItems.auteur === user._id ? ( <>
           
@@ -178,14 +81,12 @@ console.log("id", id)
         <img src={shopItems.image} alt='' />   
         <div className=' d_flex'>
 
-        <Badge badgeContent={likes.includes(shopItems._id) ? shopItems.interessant + 1  : shopItems.interessant } color="primary" style={{marginTop:"5px"  , zIndex:0}}>
-        <Avatar alt="interessant" src={icon3}  sx={{ width: 30, height: 30 }} onClick={ () => handleFormSubmit(shopItems._id, {interessant: shopItems.interessant + 1} )}/>
-</Badge> <Badge  badgeContent={likesE.includes(shopItems._id) ? shopItems.excellent + 1  : shopItems.excellent }  color="primary" style={{marginTop:"5px"  , zIndex:0}}>
-        <Avatar alt="utile" src={icon1}   sx={{ width: 30, height: 30 }} onClick={ () => handleFormSubmitE(shopItems._id, {excellent: shopItems.excellent + 1} )}  />
-</Badge>
-<Badge badgeContent={likesI.includes(shopItems._id) ? shopItems.utile + 1  : shopItems.utile } color="primary" style={{marginTop:"5px" , zIndex:0}} >
-        <Avatar alt="excellent" src={icon2} sx={{ width: 30, height: 30}} onClick={ () => handleFormSubmitI(shopItems._id, {utile: shopItems.utile + 1} )}  />
-</Badge>
+        <Stack direction="row" spacing={2} style={{marginLeft: "25px"}}>
+      <Button variant="outlined" startIcon={<ThumbUpOffAltIcon />}  onClick={ () => handleFormSubmit(shopItems._id, {interessant: shopItems.interessant + 1} )}>
+     J'aime   {likes.includes(shopItems._id) ? shopItems.interessant + 1  : shopItems.interessant }
+      </Button>
+  
+    </Stack>
 </div>
 <div className='product-like'>{user.approved === true ?(<img  style={{height:"25px", width:"25px"}} className="Aprover" alt="checked" src={checked} />):(<></>)}
               
@@ -196,7 +97,7 @@ console.log("id", id)
         <div className='cart-details' >
             <h4  >Titre : {shopItems.titre}</h4>
     
-            {users === undefined  ? (<>sxxdd</>) : (<>{users.map((user) => {return( <>    {shopItems.auteur === user._id ? (     <h4 >  Auteur : {user.name} </h4> ):
+            {users === undefined  ? (<></>) : (<>{users.map((user) => {return( <>    {shopItems.auteur === user._id ? (     <h4 >  Auteur : {user.name} </h4> ):
             (<></>)}</> ) })}</>)}
           
             <h4 style={{color:"grey" , fontWeight:"300"}}>  {shopItems.type} - {shopItems.Annee}</h4>
@@ -248,14 +149,12 @@ class="sahar"
         <div className=' d_flex'>
    
        
-        <Badge badgeContent={likes.includes(shopItems._id) ? shopItems.interessant + 1  : shopItems.interessant } color="primary" style={{marginTop:"5px"  , zIndex:0}}>
-        <Avatar alt="interessant" src={icon3}  sx={{ width: 30, height: 30 }} onClick={ () => handleFormSubmit(shopItems._id, {interessant: shopItems.interessant + 1} )}/>
-</Badge> <Badge  badgeContent={likesE.includes(shopItems._id) ? shopItems.excellent + 1  : shopItems.excellent }  color="primary" style={{marginTop:"5px"  , zIndex:0}}>
-        <Avatar alt="utile" src={icon1}   sx={{ width: 30, height: 30 }} onClick={ () => handleFormSubmitE(shopItems._id, {excellent: shopItems.excellent + 1} )}  />
-</Badge>
-<Badge badgeContent={likesI.includes(shopItems._id) ? shopItems.utile + 1  : shopItems.utile } color="primary" style={{marginTop:"5px" , zIndex:0}} >
-        <Avatar alt="excellent" src={icon2} sx={{ width: 30, height: 30}} onClick={ () => handleFormSubmitI(shopItems._id, {utile: shopItems.utile + 1} )}  />
-</Badge>
+        <Stack direction="row" spacing={2} style={{marginLeft: "25px"}}>
+      <Button variant="outlined" startIcon={<ThumbUpOffAltIcon />}  onClick={ () => handleFormSubmit(shopItems._id, {interessant: shopItems.interessant + 1} )}>
+     J'aime   {likes.includes(shopItems._id) ? shopItems.interessant + 1  : shopItems.interessant }
+      </Button>
+  
+    </Stack>
 </div>
 <div className='product-like'>{user.approved === true ?(<img  style={{height:"25px", width:"25px"}} alt="checked" src={checked} />):(<></>)}
               
@@ -266,7 +165,7 @@ class="sahar"
         <div className='cart-details' >
             <h4  >Titre  : {shopItems.titre}</h4>
     
-            {users === undefined  ? (<>sxxdd</>) : (<>{users.map((user) => {return( <>    {shopItems.auteur === user._id ? (     <h4 >  Auteur : {user.name} </h4> ):
+            {users === undefined  ? (<></>) : (<>{users.map((user) => {return( <>    {shopItems.auteur === user._id ? (     <h4 >  Auteur : {user.name} </h4> ):
             (<></>)}</> ) })}</>)}
           
             <h4 style={{color:"grey" , fontWeight:"300"}}>  {shopItems.type} - {shopItems.Annee}</h4>

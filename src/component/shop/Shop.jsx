@@ -19,7 +19,7 @@ console.log(data1, "sata")
   return (
     <>
       <section className='shop background'>
-        <div className='container d_flex'>
+        <div className='container containerM d_flex'>
           <Catg />
 
           <div className='contentWidth'>

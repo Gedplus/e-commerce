@@ -15,14 +15,18 @@ import {Icon} from 'react-icons-kit';
 import {eyeOff} from 'react-icons-kit/feather/eyeOff'; 
 import {eye} from 'react-icons-kit/feather/eye'
 import { ToastContainer } from "react-toastify";
+import { CircularProgress } from "@mui/material";
 import "react-toastify/dist/ReactToastify.css";
 import { Box, Stack, Typography } from '@mui/material'
+import { useHistory } from 'react-router-dom'; 
 import { editUserProfile } from '../../state/api';
 const MonCompte = ({ CartItem,user }) => {
   const [selected, setSelected] = useState("");
   const [image , setImage] = useState("")
   const [edit ,setEdit] = useState(true)
+  const [erreur1, setErreur1] = useState(false);
     const [name , setName] = useState("")
+    const history = useHistory ();
     const [email , setEmail] = useState("")
     const [password , setPassword] = useState("")
     const [phoneNumber , setPhoneNumber] = useState("")   
@@ -90,7 +94,7 @@ const MonCompte = ({ CartItem,user }) => {
     
       }
       const handleFormSubmit = async() => {
-  
+        setErreur1(true)
         const user1 ={ name: name,
           email:email,
           phoneNumber:phoneNumber,
@@ -103,6 +107,10 @@ const MonCompte = ({ CartItem,user }) => {
              await  editUserProfile(user._id, user1);
 
              toast.success("Modification avec succès")
+             setTimeout(()=>{
+  
+              window.location.href=`/`
+          },500)
           };
   return (
     <>
@@ -221,6 +229,8 @@ value={selected}
                     <div class="field button-field">
                         <button onClick={handleFormSubmit}>Modifier</button>
                     </div>
+                    <br/>
+                    {erreur1==true ?(           <CircularProgress  className="progress" style={{marginLeft:"160px"}} />):(<></>)}
 
             </div>
             </div>

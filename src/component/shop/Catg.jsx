@@ -17,7 +17,7 @@ const Catg = () => {
     },
     {
       cateImg: opon,
-      cateName: "Thése ou autre (niveau doctorat)",
+      cateName: "Thèse ou autre (niveau doctorat)",
       catlink: "Thése",
     },
     {

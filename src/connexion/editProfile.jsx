@@ -13,12 +13,15 @@ import { editUserProfile, signup } from "../state/api";
 import {Icon} from 'react-icons-kit';
 import Alert from '@mui/material/Alert';
 import { Link } from "react-router-dom"
+import { CircularProgress } from "@mui/material";
+
 import {eyeOff} from 'react-icons-kit/feather/eyeOff';
 import {eye} from 'react-icons-kit/feather/eye'
 const EditProfile = ({ user }) => {
     const [selected, setSelected] = useState("");
     const [image , setImage] = useState("")
-    
+    const [erreur1, setErreur1] = useState(false);
+    const history = useHistory ();
       const [name , setName] = useState("")
       const [email , setEmail] = useState("")
       const [password , setPassword] = useState("")
@@ -56,21 +59,24 @@ const EditProfile = ({ user }) => {
 
 
   const handleFormSubmit = async() => {
-  
+    setErreur1(true)
     const user1 ={ name: name,
       email:email,
       phoneNumber:phoneNumber,
       image:image,
       statue :selected,
       password: password
-     
+    
     }
     
          await  editUserProfile(user._id, user1);
 
          toast.success("Modification avec succès")
-      };
+         setTimeout(()=>{
 
+          window.location.href=`/`
+      },500)
+      };
 
 
   return (
@@ -125,7 +131,8 @@ const EditProfile = ({ user }) => {
                     <div class="field button-field">
                         <button onClick={handleFormSubmit}>Modifier</button>
                     </div>
-                
+                <br/>
+                {erreur1==true ?(           <CircularProgress  className="progress" style={{marginLeft:"120px"}} />):(<></>)}
                   
                 </div>
             </div>

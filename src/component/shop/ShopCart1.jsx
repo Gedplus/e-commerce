@@ -9,7 +9,7 @@ import checked from "../../image/checked.png"
 import { editDocumentDE, editDocumentDI, editDocumentDU, editDocumentE, editDocumentI, editDocumentP, editDocumentU, useGetDocumentQuery, useGetUtilisateursQuery } from '../../state/api'
 import { Link } from "react-router-dom/cjs/react-router-dom";
 import {   Collapse,Button, CardContent, CardActions, Card } from "@mui/material";
-
+import ThumbUpOffAltIcon from '@mui/icons-material/ThumbUpOffAlt';
 
 const ShopCart1 = ({ shopItems, addToCart }) => {
   const { data } = useGetDocumentQuery();
@@ -20,9 +20,7 @@ const ShopCart1 = ({ shopItems, addToCart }) => {
   const [likes, setLikes] = useState([]);
  
 
-  const [likesE, setLikesE] = useState([]);
   
-  const [likesI, setLikesI] = useState([]);
   const data1 = [];
   for (let i = 0; i < data?.length; i++) {
     if(data1.length <20 &&  data[i]?.accepte== true)
@@ -45,116 +43,22 @@ else {
 
 
 
-  const handleFormSubmit = async(id,document1) => {
-console.log("id", id)
-    if(likes.includes(id) ) {
-     
-
-
-      setLikes((prevState) =>
-      prevState.filter((prevItem) => prevItem !== id))
-      await editDocumentDI(id, document1 );
-    }else{
-      if(likesE.includes(id)){
-        setLikesE((prevState) =>
-          prevState.filter((prevItem) => prevItem !== id))
-           editDocumentDE(id, document1 );
-          setLikes(likes.concat(id))
-
-          await editDocumentI(id, document1 );
-      }
-      else if(likesI.includes(id)) {
-        setLikesI((prevState) =>
-        prevState.filter((prevItem) => prevItem !== id))
-         editDocumentDU(id, document1 );
-        setLikes(likes.concat(id))
-        await editDocumentI(id, document1 );
-      }
-      else
-    {  setLikes(likes.concat(id))}
-    await editDocumentI(id, document1 );
-
-      
-    }
-
+const handleFormSubmit = async(id,document1) => {
+  console.log("id", id)
+      if(likes.includes(id) ) {
+       
   
-  };
-  const handleFormSubmitI = async(id,document1) => {
-    console.log("id", id)
-        if(likesI.includes(id) ) {
-         
-    
-    
-          setLikesI((prevState) =>
-          prevState.filter((prevItem) => prevItem !== id))
-          await editDocumentDU(id, document1 );
-        }else{
-
-          if(likes.includes(id)){
-            setLikes((prevState) =>
-              prevState.filter((prevItem) => prevItem !== id))
-               editDocumentDI(id, document1 );
-              setLikesE(likesE.concat(id))
-              await editDocumentU(id, document1 );
-          }
-        else if (likesE.includes(id)) {
-          setLikesE((prevState) =>
-          prevState.filter((prevItem) => prevItem !== id))
-           editDocumentDE(id, document1 );
-          setLikesI(likesE.concat(id))
-          await editDocumentU(id, document1 );
-          }
-          else
-        {  setLikesI(likesE.concat(id))
-          await editDocumentU(id, document1 );}
-
-
-
-         
-    
+  
+        setLikes((prevState) =>
+        prevState.filter((prevItem) => prevItem !== id))
+        await editDocumentDI(id, document1 );
+      }else{
+      setLikes(likes.concat(id))
+      await editDocumentI(id, document1 );}
+  
       
-        }
-    
-      
-      };
-      const handleFormSubmitE = async(id,document1) => {
-        console.log("id", id)
-            if(likesE.includes(id) ) {
-             
+    };
         
-        
-              setLikesE((prevState) =>
-              prevState.filter((prevItem) => prevItem !== id))
-              await editDocumentDE(id, document1 );
-            }else{
-    
-              if(likes.includes(id)){
-                setLikes((prevState) =>
-                  prevState.filter((prevItem) => prevItem !== id))
-                   editDocumentDI(id, document1 );
-                  setLikesE(likesE.concat(id))
-                  await editDocumentE(id, document1 );
-              }
-              else if (likesI.includes(id)) {
-                setLikesI((prevState) =>
-                prevState.filter((prevItem) => prevItem !== id))
-                 editDocumentDU(id, document1 );
-                setLikesE(likesE.concat(id))
-                await editDocumentE(id, document1 );
-              }
-              else
-            {  setLikesE(likesE.concat(id))
-              await editDocumentE(id, document1 );}
-    
-    
-    
-             
-        
-          
-            }
-        
-          
-          };
     
 
   return (
@@ -182,14 +86,12 @@ console.log("id", id)
         <img src={shopItems.image} alt='' />   
         <div className=' d_flex'>
 
-        <Badge badgeContent={likes.includes(shopItems._id) ? shopItems.interessant + 1  : shopItems.interessant } color="primary" style={{marginTop:"5px"  , zIndex:0}}>
-        <Avatar alt="interessant" src={icon3}   sx={{ width: 30, height: 30 }} onClick={ () => handleFormSubmit(shopItems._id, {interessant: shopItems.interessant + 1} )}/>
-</Badge> <Badge  badgeContent={likesE.includes(shopItems._id) ? shopItems.excellent + 1  : shopItems.excellent }  color="primary" style={{marginTop:"5px"  , zIndex:0}}>
-        <Avatar alt="utile" src={icon1}   sx={{ width: 30, height: 30 }} onClick={ () => handleFormSubmitE(shopItems._id, {excellent: shopItems.excellent + 1} )}  />
-</Badge>
-<Badge badgeContent={likesI.includes(shopItems._id) ? shopItems.utile + 1  : shopItems.utile } color="primary" style={{marginTop:"5px" , zIndex:0}} >
-        <Avatar alt="excellent" src={icon2}  sx={{ width: 30, height: 30}} onClick={ () => handleFormSubmitI(shopItems._id, {utile: shopItems.utile + 1} )}  />
-</Badge>
+        <Stack direction="row" spacing={2} style={{marginLeft: "25px"}}>
+      <Button variant="outlined" startIcon={<ThumbUpOffAltIcon />}  onClick={ () => handleFormSubmit(shopItems._id, {interessant: shopItems.interessant + 1} )}>
+     J'aime   {likes.includes(shopItems._id) ? shopItems.interessant + 1  : shopItems.interessant }
+      </Button>
+  
+    </Stack>
 </div>
 <div className='product-like'>{user.approved === true ?(<img  style={{height:"25px", width:"25px"}} className="Aprover" alt="checked" src={checked}/>):(<></>)}
               
@@ -249,14 +151,12 @@ class="sahar"
     </Stack>
         <img src={shopItems.image} alt='' />   
         <div className=' d_flex'>
-        <Badge badgeContent={likes.includes(shopItems._id) ? shopItems.interessant + 1  : shopItems.interessant } color="primary" style={{marginTop:"5px"  , zIndex:0}}>
-        <Avatar alt="interessant" src={icon3}   sx={{ width: 30, height: 30 }} onClick={ () => handleFormSubmit(shopItems._id, {interessant: shopItems.interessant + 1} )}/>
-</Badge> <Badge  badgeContent={likesE.includes(shopItems._id) ? shopItems.excellent + 1  : shopItems.excellent }  color="primary" style={{marginTop:"5px"  , zIndex:0}}>
-        <Avatar alt="utile" src={icon1}   sx={{ width: 30, height: 30 }} onClick={ () => handleFormSubmitE(shopItems._id, {excellent: shopItems.excellent + 1} )}  />
-</Badge>
-<Badge badgeContent={likesI.includes(shopItems._id) ? shopItems.utile + 1  : shopItems.utile } color="primary" style={{marginTop:"5px" , zIndex:0}} >
-        <Avatar alt="excellent" src={icon2}  sx={{ width: 30, height: 30}} onClick={ () => handleFormSubmitI(shopItems._id, {utile: shopItems.utile + 1} )}  />
-</Badge>
+        <Stack direction="row" spacing={2} style={{marginLeft: "25px"}}>
+      <Button variant="outlined" startIcon={<ThumbUpOffAltIcon />}  onClick={ () => handleFormSubmit(shopItems._id, {interessant: shopItems.interessant + 1} )}>
+     J'aime   {likes.includes(shopItems._id) ? shopItems.interessant + 1  : shopItems.interessant }
+      </Button>
+  
+    </Stack>
 </div>
 <div className='product-like'>{user.approved === true ?(<img  style={{height:"25px", width:"25px"}} alt="checked" src={checked}/>):(<></>)}
               

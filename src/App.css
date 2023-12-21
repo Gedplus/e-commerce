@@ -482,6 +482,33 @@ z-index: 1 !important;
 .contactMo{
   display: none;
 }
+
+
+ul.horizontal-list {
+  list-style: none;
+  background-color: white;
+  color: white;
+  display: inline-block;
+  padding: 1rem 1rem;
+
+}
+.catM{
+  display: none !important;
+}
+ul.horizontal-list li {
+  display: inline-block;
+  padding: 0 0.5rem;
+
+  text-align: center;
+  cursor: pointer;
+}
+
+ul.horizontal-list li:not(:last-child) {
+  border-right: 1px solid black;
+}
+.progress{
+  margin-left: 220px;
+}
 @media (max-width: 768px) {
   .contactMo{
     display: block;
@@ -499,6 +526,17 @@ z-index: 1 !important;
 .homeSlide  {
 margin-top: 0px;
 margin-bottom: 30px;
+}
+.progress{
+  margin-left: 150px;
+}
+.containerM {
+  max-width: 100%;
+  margin: auto;
+
+}
+.catM{
+  display: block !important;
 }
 .cart-details{
   margin-left: 10px;
@@ -634,6 +672,7 @@ margin-left: 10px;
   margin-top: 875px;
   z-index: 1 !important;
 }
+
 .catD{
   display: block;
 }

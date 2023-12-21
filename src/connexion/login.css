@@ -223,14 +223,22 @@ a.goolge span{
   .uniwidth{
     width: 940px;
   }
-
+  .slider{
+    width: 400px;
+  }
+  .ant-select-selection-placeholder{
+    color : black !important;
+  }
 @media (max-width: 768px) {
     .searchwidth{
         margin-top: 0px ;
         width: 50%;
       }
+      .slider{
+        width: 300px;
+      }
       .uniwidth{
-        width: 460px;
+        width: 280px;
       }
 
       body {

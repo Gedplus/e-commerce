@@ -89,19 +89,19 @@ const Reclamation = () => {
             <div  class="form2"  >
               
                 <div class="field input-field">
-                        <input type="text" placeholder="Nom et prénom" class="input"  onChange={(event) => {setFname(event.target.value)}}/>
+                        <input type="text" required placeholder="Nom et prénom" class="input"  onChange={(event) => {setFname(event.target.value)}}/>
                     </div>
                     <div class="field input-field">
-                        <input type="email" placeholder="Email" class="input" onChange={(event) => {setEmail(event.target.value)}} />
+                        <input type="email" required placeholder="Email" class="input" onChange={(event) => {setEmail(event.target.value)}} />
                     </div>
                     <div class="field input-field">
-                        <input type="text" placeholder="Numéro de téléphone" class="input" onChange={(e) => setPhoneNumber(e.target.value)} />
+                        <input type="text" required placeholder="Numéro de téléphone" class="input" onChange={(e) => setPhoneNumber(e.target.value)} />
                     </div><br/>
                     <Typography id="non-linear-slider"  style={{fontSize:"17px"}}  gutterBottom>
                     Copie de votre CIN ou passeport :
         </Typography>
                     <div class="field input-field">
-                    <input accept="image/*"
+                    <input accept="image/*" required
              type="file" placeholder="Email"
              onChange={convertToBase64}/>
 
@@ -110,7 +110,7 @@ const Reclamation = () => {
                     Pièce justificative de la propriété de votre document :
         </Typography>
                     <div class="field input-field">
-                    <input accept="image/*"
+                    <input accept="image/*" required
              type="file"   placeholder="Email"
              onChange={convertToBase641}/>
         
@@ -124,7 +124,7 @@ const Reclamation = () => {
                     </div>
                     <br/>
 
-                    {erreur1==true ?(           <CircularProgress style={{marginLeft:"220px"}}/>):(<></>)}
+                    {erreur1==true ?(           <CircularProgress  className="progress" />):(<></>)}
                     
                </div>
                 

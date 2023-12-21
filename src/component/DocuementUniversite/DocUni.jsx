@@ -17,7 +17,7 @@ const DocUni = ({ addToCart, shopItems,user }) => {
   return (
     <>
        <section className='shop1 background '>
-        <div className='container d_flex  '>
+        <div className='container containerM d_flex  '>
           <Categories  />
 
           <div className='contentWidth'>

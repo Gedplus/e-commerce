@@ -29,7 +29,7 @@ var prixt = 0
 const [Titre, setTitre] = useState("");
 const [period, setPeriod] = useState(6);
 const [value, setValue] = useState(0);
-const [image1 , setImage1] = useState("https://media.istockphoto.com/id/877235850/vector/book-icon.jpg?s=612x612&w=0&k=20&c=FSTH3SrcKKTSH09LLkucwABRWOKHRYPmEjxqBjEDjxc=")
+const [image1 , setImage1] = useState("https://res.cloudinary.com/djkoevvlt/image/upload/v1703074820/jaedv92epr9q7mawdjwj.jpg")
 const history = useHistory ();
 function convertToBase646(e){
   console.log(e);
@@ -1316,7 +1316,7 @@ function valueLabelFormat(value) {
                  Mémoire ou autre (niveau mastére)
                   </MenuItem>
                   <MenuItem value="Thése">
-           Thése ou autre (niveau doctorat)
+           Thèse ou autre (niveau doctorat)
                   </MenuItem> 
                   <MenuItem value="Article">
        Article
@@ -1343,7 +1343,8 @@ function valueLabelFormat(value) {
           Prix de mode lecture : {value} dt
         </Typography>
         <Slider
-              style={{width:"400px"}}
+        
+              className="slider"
           value={value}
           min={0} 
           step={0.001}
@@ -1361,7 +1362,7 @@ function valueLabelFormat(value) {
          Durée de mode lecture : {period} mois
         </Typography>
         <Slider
-              style={{width:"400px"}}
+       className="slider"
           value={period}
           min={6}
           step={1}
@@ -1379,7 +1380,7 @@ function valueLabelFormat(value) {
         Prix de mode téléchargement : { value == 0 ?(<>{prixt =value } </>):(<>{prixt =value + 4000} dt</>)}
         </Typography>
         <Slider
-             style={{width:"400px"}}
+             className="slider"
           value={value}
           min={0}
           step={0.001}
@@ -1400,7 +1401,7 @@ function valueLabelFormat(value) {
   <Slider
     value={value}
     min={0}
-    style={{width:"400px"}}
+    className="slider"
     step={0.001}
     max={6000}
     color="secondary"
@@ -1416,7 +1417,7 @@ function valueLabelFormat(value) {
        Durée de mode lecture : {period} mois
       </Typography>
       <Slider
-            style={{width:"400px"}}
+        className="slider"
         value={period}
         min={6}
         step={1}
@@ -1434,7 +1435,7 @@ function valueLabelFormat(value) {
   Prix de mode téléchargement :   { value == 0 ?(<>{prixt =value } </>):(<>{prixt =value + 6000}</>)}
   </Typography>
   <Slider
-       style={{width:"400px"}}
+        className="slider"
     value={value}
     min={0}
     step={0.001}
@@ -1454,7 +1455,7 @@ disabled
   Prix de mode lecture : {value}
   </Typography>
   <Slider
-       style={{width:"400px"}}
+       className="slider"
     value={value}
     min={0}
     step={0.001}
@@ -1473,7 +1474,7 @@ disabled
        Durée de mode lecture : {period} mois
       </Typography>
       <Slider
-            style={{width:"400px"}}
+            className="slider"
         value={period}
         min={6}
         step={1}
@@ -1491,7 +1492,7 @@ disabled
   Prix de mode téléchargement : { value == 0 ?(<>{prixt =value } </>):(<>{prixt =value + 8000}</>)}
   </Typography>
   <Slider
-       style={{width:"400px"}}
+     className="slider"
     value={value}
     min={0}
     step={0.001}
@@ -1507,7 +1508,7 @@ disabled
           )}
 
 
-{user.statue === "professionnel" && user.approved === true && type==="Article"  && (<>        <Box sx={{ width: 270 }}>
+{user.approved === true && type==="Article"  && (<>        <Box sx={{ width: 270 }}>
 <Typography id="non-linear-slider" gutterBottom style={{fontSize:"18px"}} > 
 Prix de mode lecture :  {value}
 </Typography>
@@ -1517,7 +1518,7 @@ Prix de mode lecture :  {value}
   step={0.001}
   max={8000}
   color="secondary"
-  style={{width:"400px"}}
+  className="slider"
   getAriaValueText={valueLabelFormat}
   valueLabelFormat={valueLabelFormat}
   onChange={handleChange4}
@@ -1529,7 +1530,7 @@ Prix de mode lecture :  {value}
          Durée de mode lecture : {period} mois
         </Typography>
         <Slider
-              style={{width:"400px"}}
+           className="slider"
           value={period}
           min={6}
           step={1}
@@ -1552,7 +1553,7 @@ Prix de mode téléchargement: { value == 0 ?(<>{prixt =value } </>):(<>{prixt =
   step={0.001}
   max={8000}
 disabled
-style={{width:"400px"}}
+className="slider"
   getAriaValueText={valueLabelFormat}
   valueLabelFormat={valueLabelFormat}
   onChange={handleChange4}
@@ -1560,7 +1561,7 @@ style={{width:"400px"}}
   aria-labelledby="non-linear-slider"
 />
 </Box></> )}
-{user.statue === "professionnel" && user.approved === false && type==="Article"  && (<>  <Typography color="red" id="non-linear-slider" gutterBottom style={{fontSize:"18px"}} > 
+{ user.approved === false && type==="Article"  && (<>  <Typography color="red" id="non-linear-slider" gutterBottom style={{fontSize:"18px"}} > 
 La soumission de ce type de document est conditionnée à la vérification préalable de votre compte
 </Typography>        <Box sx={{ width: 270 }}>
 <Typography id="non-linear-slider" gutterBottom style={{fontSize:"18px"}} > 
@@ -1573,7 +1574,7 @@ Prix de mode lecture :  {value}
   max={8000}
   disabled
   color="secondary"
-  style={{width:"400px"}}
+  className="slider"
   getAriaValueText={valueLabelFormat}
   valueLabelFormat={valueLabelFormat}
   onChange={handleChange4}
@@ -1585,7 +1586,7 @@ Prix de mode lecture :  {value}
          Durée de mode lecture : {period} mois
         </Typography>
         <Slider
-              style={{width:"400px"}}
+               className="slider"
           value={period}
           min={6}
           step={1}
@@ -1608,7 +1609,7 @@ Prix de mode téléchargement: { value == 0 ?(<>{prixt =value } </>):(<>{prixt =
   step={0.001}
   max={8000}
 disabled
-style={{width:"400px"}}
+className="slider"
   getAriaValueText={valueLabelFormat}
   valueLabelFormat={valueLabelFormat}
   onChange={handleChange4}
@@ -1629,7 +1630,7 @@ Prix de mode lecture :  {value}
   max={8000}
   color="secondary"
   disabled
-  style={{width:"400px"}}
+  className="slider"
   getAriaValueText={valueLabelFormat}
   valueLabelFormat={valueLabelFormat}
   onChange={handleChange4}
@@ -1641,7 +1642,7 @@ Prix de mode lecture :  {value}
          Durée de mode lecture : {period} mois
         </Typography>
         <Slider
-              style={{width:"400px"}}
+                className="slider"
           value={period}
           min={6}
           step={1}
@@ -1664,7 +1665,7 @@ Prix de mode téléchargement: { value == 0 ?(<>{prixt =value } </>):(<>{prixt =
   step={0.001}
   max={8000}
 disabled
-style={{width:"400px"}}
+className="slider"
   getAriaValueText={valueLabelFormat}
   valueLabelFormat={valueLabelFormat}
   onChange={handleChange4}
@@ -1672,7 +1673,7 @@ style={{width:"400px"}}
   aria-labelledby="non-linear-slider"
 />
 </Box></> )}
-{user.statue === "professionnel" && user.approved === true && type==="Ouvrage"  && (<>        <Box sx={{ width: 270 }}>
+{user.approved === true && type==="Ouvrage"  && (<>        <Box sx={{ width: 270 }}>
 <Typography id="non-linear-slider" gutterBottom style={{fontSize:"18px"}} > 
 Prix de mode lecture :  {value}
 </Typography>
@@ -1682,7 +1683,7 @@ Prix de mode lecture :  {value}
   step={0.001}
   max={12000}
   color="secondary"
-  style={{width:"400px"}}
+  className="slider"
   getAriaValueText={valueLabelFormat}
   valueLabelFormat={valueLabelFormat}
   onChange={handleChange4}
@@ -1694,7 +1695,7 @@ Prix de mode lecture :  {value}
          Durée de mode lecture : {period} mois
         </Typography>
         <Slider
-              style={{width:"400px"}}
+            className="slider"
           value={period}
           min={6}
           step={1}
@@ -1717,7 +1718,7 @@ Prix de mode téléchargement: { value == 0 ?(<>{prixt =value } </>):(<>{prixt =
   step={0.001}
   max={12000}
 disabled
-style={{width:"400px"}}
+className="slider"
   getAriaValueText={valueLabelFormat}
   valueLabelFormat={valueLabelFormat}
   onChange={handleChange4}
@@ -1725,7 +1726,7 @@ style={{width:"400px"}}
   aria-labelledby="non-linear-slider"
 />
 </Box></> )}
-{user.statue === "professionnel" && user.approved === false && type==="Ouvrage"  && (<>  <Typography color="red" id="non-linear-slider" gutterBottom style={{fontSize:"18px"}} > 
+{ user.approved === false && type==="Ouvrage"  && (<>  <Typography color="red" id="non-linear-slider" gutterBottom style={{fontSize:"18px"}} > 
 La soumission de ce type de document est conditionnée à la vérification préalable de votre compte
 </Typography>        <Box sx={{ width: 270 }}>
 <Typography id="non-linear-slider" gutterBottom style={{fontSize:"18px"}} > 
@@ -1738,7 +1739,7 @@ Prix de mode lecture :  {value}
   max={12000}
   disabled
   color="secondary"
-  style={{width:"400px"}}
+  className="slider"
   getAriaValueText={valueLabelFormat}
   valueLabelFormat={valueLabelFormat}
   onChange={handleChange4}
@@ -1750,7 +1751,7 @@ Prix de mode lecture :  {value}
          Durée de mode lecture : {period} mois
         </Typography>
         <Slider
-              style={{width:"400px"}}
+                 className="slider"
           value={period}
           min={6}
           step={1}
@@ -1773,7 +1774,7 @@ Prix de mode téléchargement: { value == 0 ?(<>{prixt =value } </>):(<>{prixt =
   step={0.001}
   max={12000}
 disabled
-style={{width:"400px"}}
+className="slider"
   getAriaValueText={valueLabelFormat}
   valueLabelFormat={valueLabelFormat}
   onChange={handleChange4}
@@ -1794,7 +1795,7 @@ Prix de mode lecture :  {value}
   max={12000}
   color="secondary"
   disabled
-  style={{width:"400px"}}
+  className="slider"
   getAriaValueText={valueLabelFormat}
   valueLabelFormat={valueLabelFormat}
   onChange={handleChange4}
@@ -1806,7 +1807,7 @@ Prix de mode lecture :  {value}
          Durée de mode lecture : {period} mois
         </Typography>
         <Slider
-              style={{width:"400px"}}
+                 className="slider"
           value={period}
           min={6}
           step={1}
@@ -1829,7 +1830,7 @@ Prix de mode téléchargement: { value == 0 ?(<>{prixt =value } </>):(<>{prixt =
   step={0.001}
   max={12000}
 disabled
-style={{width:"400px"}}
+className="slider"
   getAriaValueText={valueLabelFormat}
   valueLabelFormat={valueLabelFormat}
   onChange={handleChange4}
