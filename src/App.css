@@ -267,6 +267,7 @@ margin-left: 10px;
   padding: 0 20px;
  
 }
+
 .contact{
   transition: 0.5s;
   padding:  100px 100px 0px 100px;
@@ -489,7 +490,8 @@ ul.horizontal-list {
   background-color: white;
   color: white;
   display: inline-block;
-  padding: 1rem 1rem;
+margin-left: 120px;
+padding-bottom: 10px;
 
 }
 .catM{
@@ -497,24 +499,35 @@ ul.horizontal-list {
 }
 ul.horizontal-list li {
   display: inline-block;
-  padding: 0 0.5rem;
+  padding: 0 0.42rem;
 
   text-align: center;
   cursor: pointer;
 }
-
+.display{
+  display: none;
+}
 ul.horizontal-list li:not(:last-child) {
-  border-right: 1px solid black;
+  border-right: 1px solid hsl(0,0%,75%);
 }
 .progress{
   margin-left: 220px;
 }
 @media (max-width: 768px) {
+  .btn-like-margin{
+    margin-left: 0px !important;
+  }
+  ul.horizontal-list {
+    margin-left: -15px;
+  }
   .contactMo{
     display: block;
   }
   .contactM{
     display: none;
+  }
+  .display{
+    display: block;
   }
 .categoryM{
   display: none;
@@ -562,9 +575,7 @@ margin-bottom: 30px;
   opacity: 1;
   transition: 0.5s;
 }
-.footerM{
-  font-size: 20px;
-}
+
 .grid3 {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
@@ -584,6 +595,9 @@ margin-bottom: 30px;
 .footerbox{
   margin-right: 0px;
   width: 170px;
+}
+.social-buttons{
+  margin-left: 0px !important;
 }
 .boxM{
   display: none;

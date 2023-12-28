@@ -109,11 +109,11 @@ useEffect(() => {
 
     // here you need to make a loop to find the index of item to delete
     var indexToRemove = product;
-    console.log("sahar",product)
+
 
     //remove item selected, second parameter is the number of items to delete 
     storedNames.splice(indexToRemove, 1);
-    console.log("saharrrrrrrrrrrrrrrrrrrrrr",storedNames)
+
    // Put the object into storage
    
    localStorage.setItem('item', JSON.stringify(storedNames));

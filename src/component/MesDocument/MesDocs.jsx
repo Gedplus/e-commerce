@@ -7,6 +7,7 @@ import icon1 from "../../image/icon1.png"
 import icon2 from "../../image/icon2.png"
 import icon3 from "../../image/icon3.png"
 import checked from "../../image/checked.png"
+import ThumbUpAltIcon from '@mui/icons-material/ThumbUpAlt';
 import ThumbUpOffAltIcon from '@mui/icons-material/ThumbUpOffAlt';
 import { Button, CardActions } from "@mui/material";
 const MesDocs = ({ shopItems, addToCart,user }) => {
@@ -16,7 +17,7 @@ const MesDocs = ({ shopItems, addToCart,user }) => {
   const [isExpanded, setIsExpanded] = useState([]);
   const users =userss.data
 
- 
+ var long = 0 
   const handleFormSubmitD= async(id,document1) => {
     if(isExpanded.includes(id) ) { 
         setIsExpanded((prevState) =>
@@ -43,12 +44,13 @@ const handleFormSubmit = async(id,document1) => {
     };
 
   return (
-    <>    
-    {data === undefined  ? (<>Loading....</>) : (<>{data.map((shopItems, index) => { 
+    <>    {console.log(data,'data5')}
+    {long === 0 && (<p> Vous ne disposez aucun document pour l'instant </p>) }
+    {data === undefined  ? (<></>) : (<>{data.map((shopItems, index) => { 
         return (
         <>  {user._id === shopItems.auteur && (<>
-        
-        {users === undefined  ? (<>sxxdd</>) : (<> {shopItems.accepte === true && (<>
+     <div style={{display : "none" }}>   {long = long + 1}</div>
+        {users === undefined  ? (<></>) : (<> {shopItems.accepte === true && (<>
         
         {users.map((user) => {return( <>    {shopItems.auteur === user._id ? ( <>
           
@@ -62,16 +64,16 @@ const handleFormSubmit = async(id,document1) => {
       <Avatar
         alt="Remy Sharp"
         src={user.image}
-        class="sahar"
+        class="size-avatar"
       />
     </Stack>
-        <img src={shopItems.image} alt='' />   
-        <div className=' d_flex'>
+        <img src={shopItems.image} alt='' className="size-img" />   
+        <div className=' d_flex btn-like-margin'>
 
 
-        <Stack direction="row" spacing={2} style={{marginLeft: "25px"}}>
-      <Button variant="outlined" startIcon={<ThumbUpOffAltIcon />}  onClick={ () => handleFormSubmit(shopItems._id, {interessant: shopItems.interessant + 1} )}>
-     J'aime   {likes.includes(shopItems._id) ? shopItems.interessant + 1  : shopItems.interessant }
+        <Stack direction="row" spacing={2} >
+      <Button variant="text" startIcon={<>{likes.includes(shopItems._id) ? <ThumbUpAltIcon/> :<ThumbUpOffAltIcon />}</>}  onClick={ () => handleFormSubmit(shopItems._id, {interessant: shopItems.interessant + 1} )}>
+     J'aime&nbsp;{likes.includes(shopItems._id) ? shopItems.interessant + 1  : shopItems.interessant }
       </Button>
   
     </Stack>
@@ -130,16 +132,16 @@ const handleFormSubmit = async(id,document1) => {
       <Avatar
         alt="Remy Sharp"
         src={user.image}
-class="sahar"
+class="size-avatar"
       />
     </Stack>
-        <img src={shopItems.image} alt='' />   
-        <div className=' d_flex'>
+        <img src={shopItems.image} alt='' className="size-img" />   
+        <div className=' d_flex btn-like-margin'>
    
    
-        <Stack direction="row" spacing={2} style={{marginLeft: "25px"}}>
-      <Button variant="outlined" startIcon={<ThumbUpOffAltIcon />}  onClick={ () => handleFormSubmit(shopItems._id, {interessant: shopItems.interessant + 1} )}>
-     J'aime   {likes.includes(shopItems._id) ? shopItems.interessant + 1  : shopItems.interessant }
+        <Stack direction="row" spacing={2} >
+      <Button variant="text" startIcon={<>{likes.includes(shopItems._id) ? <ThumbUpAltIcon/> :<ThumbUpOffAltIcon />}</>} onClick={ () => handleFormSubmit(shopItems._id, {interessant: shopItems.interessant + 1} )}>
+     J'aime&nbsp;{likes.includes(shopItems._id) ? shopItems.interessant + 1  : shopItems.interessant }
       </Button>
   
     </Stack>

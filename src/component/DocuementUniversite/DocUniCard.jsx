@@ -9,6 +9,7 @@ import icon3 from "../../image/icon3.png"
 import checked from "../../image/checked.png"
 import { editDocumentDE, editDocumentDI, editDocumentDU, editDocumentE, editDocumentI, editDocumentP, editDocumentU, getDocUni, useGetDocumentQuery, useGetUtilisateursQuery } from '../../state/api'
 import { Button, CardActions } from "@mui/material";
+import ThumbUpAltIcon from '@mui/icons-material/ThumbUpAlt';
 import ThumbUpOffAltIcon from '@mui/icons-material/ThumbUpOffAlt';
 const DocUniCard = ({ shopItems, addToCart }) => {
   
@@ -75,15 +76,15 @@ console.log(response.data)
       <Avatar
         alt="Remy Sharp"
         src={user.image}
-        class="sahar"
+        class="size-avatar"
       />
     </Stack>
-        <img src={shopItems.image} alt='' />   
-        <div className=' d_flex'>
+        <img src={shopItems.image} alt='' className="size-img" />   
+        <div className=' d_flex btn-like-margin'>
 
-        <Stack direction="row" spacing={2} style={{marginLeft: "25px"}}>
-      <Button variant="outlined" startIcon={<ThumbUpOffAltIcon />}  onClick={ () => handleFormSubmit(shopItems._id, {interessant: shopItems.interessant + 1} )}>
-     J'aime   {likes.includes(shopItems._id) ? shopItems.interessant + 1  : shopItems.interessant }
+        <Stack direction="row" spacing={2} >
+      <Button variant="text" startIcon={<>{likes.includes(shopItems._id) ? <ThumbUpAltIcon/> :<ThumbUpOffAltIcon />}</>}   onClick={ () => handleFormSubmit(shopItems._id, {interessant: shopItems.interessant + 1} )}>
+     J'aime&nbsp;{likes.includes(shopItems._id) ? shopItems.interessant + 1  : shopItems.interessant }
       </Button>
   
     </Stack>
@@ -142,16 +143,16 @@ console.log(response.data)
       <Avatar
         alt="Remy Sharp"
         src={user.image}
-class="sahar"
+class="size-avatar"
       />
     </Stack>
-        <img src={shopItems.image} alt='' />   
-        <div className=' d_flex'>
+        <img src={shopItems.image} alt=''  className="size-img"/>   
+        <div className=' d_flex btn-like-margin'>
    
        
-        <Stack direction="row" spacing={2} style={{marginLeft: "25px"}}>
-      <Button variant="outlined" startIcon={<ThumbUpOffAltIcon />}  onClick={ () => handleFormSubmit(shopItems._id, {interessant: shopItems.interessant + 1} )}>
-     J'aime   {likes.includes(shopItems._id) ? shopItems.interessant + 1  : shopItems.interessant }
+        <Stack direction="row" spacing={2} >
+      <Button variant="text" startIcon={<>{likes.includes(shopItems._id) ? <ThumbUpAltIcon/> :<ThumbUpOffAltIcon />}</>}   onClick={ () => handleFormSubmit(shopItems._id, {interessant: shopItems.interessant + 1} )}>
+     J'aime&nbsp;{likes.includes(shopItems._id) ? shopItems.interessant + 1  : shopItems.interessant }
       </Button>
   
     </Stack>

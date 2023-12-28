@@ -68,9 +68,9 @@ const Reclamation = () => {
    
  
 
-  return (
+  return ( 
     <>
-      <section class="container2 forms">
+      <section class="container1 forms">
         <div class="form1 login">
            
             <div class="form-content">

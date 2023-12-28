@@ -8,7 +8,7 @@ import icon3 from "../../image/icon3.png"
 import checked from "../../image/checked.png"
 import ThumbUpOffAltIcon from '@mui/icons-material/ThumbUpOffAlt';
 import DeleteIcon from '@mui/icons-material/Delete';
-
+import ThumbUpAltIcon from '@mui/icons-material/ThumbUpAlt';
 import Stack from '@mui/material/Stack';
 import { editDocumentDE, editDocumentDI, editDocumentDU, editDocumentE, editDocumentI, editDocumentP, editDocumentU, useGetDocumentQuery, useGetUtilisateursQuery } from '../../state/api'
 import { Button, CardActions } from "@mui/material";
@@ -67,17 +67,17 @@ console.log("id", id)
       <Avatar
         alt="Remy Sharp"
         src={user.image}
-        class="sahar"
+        class="size-avatar"
       />
     </Stack>
-        <img src={shopItems.image} alt='' />   
-        <div className=' d_flex'>
-        <Stack direction="row" spacing={2} style={{marginLeft: "25px"}}>
-      <Button variant="outlined" startIcon={<ThumbUpOffAltIcon />}  onClick={ () => handleFormSubmit(shopItems._id, {interessant: shopItems.interessant + 1} )}>
-     J'aime   {likes.includes(shopItems._id) ? shopItems.interessant + 1  : shopItems.interessant }
+        <img src={shopItems.image} alt='' className="size-img" />   
+        <div className=' d_flex btn-like-margin'>
+        <Stack direction="row" spacing={2} >
+      <Button variant="text"   startIcon={<>{likes.includes(shopItems._id) ? <ThumbUpAltIcon/> :<ThumbUpOffAltIcon />}</>}  onClick={ () => handleFormSubmit(shopItems._id, {interessant: shopItems.interessant + 1} )}>
+     J'aime&nbsp;{likes.includes(shopItems._id) ? shopItems.interessant + 1  : shopItems.interessant }
       </Button>
-  
-    </Stack>
+  </Stack>
+   
 </div>
 <div className='product-like'>{user.approved === true ?(<img  style={{height:"25px", width:"25px"}} className="Aprover" alt="checked" src={checked}/>):(<></>)}
               
@@ -133,14 +133,14 @@ console.log("id", id)
       <Avatar
         alt="Remy Sharp"
         src={user.image}
-class="sahar"
+class="size-avatar"
       />
     </Stack>
-        <img src={shopItems.image} alt='' />   
-        <div className=' d_flex'>
-        <Stack direction="row" spacing={2} style={{marginLeft: "25px"}}>
-      <Button variant="outlined" startIcon={<ThumbUpOffAltIcon />}  onClick={ () => handleFormSubmit(shopItems._id, {interessant: shopItems.interessant + 1} )}>
-     J'aime   {likes.includes(shopItems._id) ? shopItems.interessant + 1  : shopItems.interessant }
+        <img src={shopItems.image} alt='' className="size-img"/>   
+        <div className=' d_flex btn-like-margin'>
+        <Stack direction="row" spacing={2} >
+      <Button variant="text" startIcon={<>{likes.includes(shopItems._id) ? <ThumbUpAltIcon/> :<ThumbUpOffAltIcon />}</>}  onClick={ () => handleFormSubmit(shopItems._id, {interessant: shopItems.interessant + 1} )}>
+     J'aime&nbsp;{likes.includes(shopItems._id) ? shopItems.interessant + 1  : shopItems.interessant }
       </Button>
   
     </Stack>

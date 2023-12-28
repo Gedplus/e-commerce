@@ -26,7 +26,7 @@ const EditProfile = ({ user }) => {
       const [email , setEmail] = useState("")
       const [password , setPassword] = useState("")
       const [phoneNumber , setPhoneNumber] = useState("")   
-      console.log(user ,"sahar")
+
       
       useEffect(() => {
         const loadUserDetails = async() => {

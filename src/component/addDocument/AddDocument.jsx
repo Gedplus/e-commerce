@@ -19,7 +19,8 @@ const AddDocument = ({user}) => {
     const [selected, setSelected] = useState("");
     const [erreur1, setErreur1] = useState(false);
     const [erreur, setErreur] = useState(false);
-const [type, setType] = useState();
+    const [erreur3, setErreur3] = useState(false);
+const [type, setType] = useState("");
 const [image , setImage] = useState("")
 const [universite , setUniversite] = useState("")
 const [file, setFile] = useState("");
@@ -1111,7 +1112,10 @@ function convertToBase646(e){
 
     
       const submitImage = async (e) => {
-        e.preventDefault();
+        if(type =="" || universite == ""  || Titre== "" || file=="" ||  Annee =="" || description =="") {
+          setErreur3(true)
+        }  else 
+       { e.preventDefault();
         setErreur1(true)
         const formData = new FormData();
         formData.append("title", Titre);
@@ -1150,8 +1154,9 @@ function convertToBase646(e){
           setErreur(true)
           toast.error("Docuement non ajouter")
           setErreur1(false)
-        }
+        }}
       };
+      console.log(erreur3 ," requis")
        
      
              function valueLabelFormatD(value) {
@@ -1275,6 +1280,7 @@ function valueLabelFormat(value) {
             <div class="form-content">
                 <header class="h">Ajouter un document <br/>        {erreur1==true ?( <CircularProgress />):(<></>)} </header>
                 <br/>
+                {erreur3==true ?(<Alert severity="error">Tous les champs sont requis .Il faut remplir tous les champs de document .</Alert>):(<></>)}
                 {erreur==true ?(<Alert severity="error">Le document est trop volumineux.</Alert>):(<></>)}
          
              <div  class="form2" >
@@ -1331,7 +1337,7 @@ function valueLabelFormat(value) {
           <br/>
           <br/>
           <div class="field input-field">
-                <Cascader options={options} onChange={onChange} placeholder="Université dont vous avez travaillé votre document "    className="uniwidth"  />
+                <Cascader options={options} onChange={onChange} placeholder="Université dont vous avez travaillé votre document "   className="uniwidth"  />
                     </div>
                     <div class="field input-field">
                         <input type="text" placeholder="Année" class="input" onChange={(event) => {setAnnée(event.target.value)}} />
@@ -1852,13 +1858,13 @@ className="slider"
              type="file" placeholder="Email"
              onChange={convertToBase646}/>
 
-                    </div>
+                    </div>{console.log(user.approved )}
                      <div class="field button-field">
-                             <button type="submit"   onClick={submitImage}  >Envoyer</button>
-                       
-                       
-          </div><br/>   {erreur1==true ?(           <CircularProgress style={{marginLeft:"440px"}}/>):(<></>)}
-
+                     {user.approved === false && type==="Ouvrage"  ||  user.approved === false && type==="Article" ? (         
+                         <button type="submit" style={{backgroundColor:"grey"}} disabled  onClick={submitImage}  >Envoyer</button> ) :(<button type="submit"   onClick={submitImage}  >Envoyer</button>) }
+                     
+          </div><br/>   {erreur1==true ?(           <CircularProgress className="addProgress" />):(<></>)}
+          {erreur3==true ?(<Alert severity="error">Tous les champs sont requis .Il faut remplir tous les champs de document .</Alert>):(<></>)}
                 </div>
                  
              </div>

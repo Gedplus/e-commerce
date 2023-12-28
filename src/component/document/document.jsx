@@ -18,32 +18,50 @@ const Documents = ({ addToCart, shopItems }) => {
         <div className='container containerM d_flex'>
           <Categories />
 
-          <div className='contentWidth'>
-          <ul class="horizontal-list catM">
-  <li>   <Link onClick={() => {window.location.href=`/docType/PFE`}}>
-
-  
-              <span>PFE</span>
-            
-         </Link></li>
-         <li>   <Link onClick={() => {window.location.href=`/docType/Thése`}}>
-
-  
-<span>Thèse</span>
-
-</Link></li>
-<li>   <Link onClick={() => {window.location.href=`/docType/Article`}}>
-
-  
-              <span>Article</span>
-            
-         </Link></li>
-         <li>   <Link onClick={() => {window.location.href=`/docType/Ouvrage`}}>
-
-  
-              <span>Ouvrage</span>
-            
-         </Link></li>
+          <div className='contentWidth' >
+          <ul class="horizontal-list  " >
+  <li>  
+    
+  <button class="button-82-pushable3" role="button" onClick={() => {window.location.href=`/docType/PFE`}}>
+  <span class="button-82-shadow3"></span>
+  <span class="button-82-edge3"></span>
+  <span class="button-82-front3 text3">
+  PFE
+  </span>
+</button>
+    
+    
+</li>
+         <li>   <button class="button-82-pushable3" role="button" onClick={() => {window.location.href=`/docType/Mémoire`}}>
+  <span class="button-82-shadow3"></span>
+  <span class="button-82-edge3"></span>
+  <span class="button-82-front3 text3">
+  Mémoire
+  </span>
+</button>  </li>
+         <li>   <button class="button-82-pushable3" role="button" onClick={() => {window.location.href=`/docType/Thése`}}>
+  <span class="button-82-shadow3"></span>
+  <span class="button-82-edge3"></span>
+  <span class="button-82-front3 text3">
+  Thése
+  </span>
+</button>
+      </li>
+<li>   <button class="button-82-pushable3" role="button" onClick={() => {window.location.href=`/docType/Article`}}>
+  <span class="button-82-shadow3"></span>
+  <span class="button-82-edge3"></span>
+  <span class="button-82-front3 text3">
+  Article
+  </span>
+</button>  </li>
+         <li>  <button class="button-82-pushable3" role="button" onClick={() => {window.location.href=`/docType/Ouvrage`}}>
+  <span class="button-82-shadow3"></span>
+  <span class="button-82-edge3"></span>
+  <span class="button-82-front3 text3">
+  Ouvrage
+  </span>
+</button>  
+   </li>
 </ul>
             <div className='heading d_flex'>
 

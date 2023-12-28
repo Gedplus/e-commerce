@@ -6,10 +6,12 @@ import icon1 from "../../image/icon1.png"
 import icon2 from "../../image/icon2.png"
 import icon3 from "../../image/icon3.png"
 import ThumbUpOffAltIcon from '@mui/icons-material/ThumbUpOffAlt';
+import ThumbUpAltIcon from '@mui/icons-material/ThumbUpAlt';
 import checked from "../../image/checked.png"
 import {  useParams } from 'react-router-dom';
 import { editDocumentDE, editDocumentDI, editDocumentDU, editDocumentE, editDocumentI, editDocumentP, editDocumentU, getDocType, getDocUni, useGetDocumentQuery, useGetUtilisateursQuery } from '../../state/api'
 import { Button, CardActions } from "@mui/material";
+
 const DocTypeCard = ({ shopItems, addToCart }) => {
   
   const userss = useGetUtilisateursQuery();
@@ -73,16 +75,16 @@ const handleFormSubmit = async(id,document1) => {
       <Avatar
         alt="Remy Sharp"
         src={user.image}
-        class="sahar"
+        class="size-avatar"
       />
     </Stack>
-        <img src={shopItems.image} alt='' />   
-        <div className=' d_flex'>
+        <img src={shopItems.image} alt='' className="size-img" />   
+        <div className=' d_flex btn-like-margin'>
 
    
-        <Stack direction="row" spacing={2} style={{marginLeft: "25px"}}>
-      <Button variant="outlined" startIcon={<ThumbUpOffAltIcon />}  onClick={ () => handleFormSubmit(shopItems._id, {interessant: shopItems.interessant + 1} )}>
-     J'aime   {likes.includes(shopItems._id) ? shopItems.interessant + 1  : shopItems.interessant }
+        <Stack direction="row" spacing={2} >
+      <Button variant="text" startIcon={<>{likes.includes(shopItems._id) ? <ThumbUpAltIcon/> :<ThumbUpOffAltIcon />}</>}   onClick={ () => handleFormSubmit(shopItems._id, {interessant: shopItems.interessant + 1} )}>
+     J'aime&nbsp;{likes.includes(shopItems._id) ? shopItems.interessant + 1  : shopItems.interessant }
       </Button>
   
     </Stack>
@@ -141,15 +143,15 @@ const handleFormSubmit = async(id,document1) => {
       <Avatar
         alt="Remy Sharp"
         src={user.image}
-class="sahar"
+class="size-avatar"
       />
     </Stack>
-        <img src={shopItems.image} alt='' />   
-        <div className=' d_flex'>
+        <img src={shopItems.image} alt='' className="size-img" />   
+        <div className=' d_flex btn-like-margin'>
  
-        <Stack direction="row" spacing={2} style={{marginLeft: "25px"}}>
-      <Button variant="outlined" startIcon={<ThumbUpOffAltIcon />}  onClick={ () => handleFormSubmit(shopItems._id, {interessant: shopItems.interessant + 1} )}>
-     J'aime   {likes.includes(shopItems._id) ? shopItems.interessant + 1  : shopItems.interessant }
+        <Stack direction="row" spacing={2} >
+      <Button variant="text" startIcon={<>{likes.includes(shopItems._id) ? <ThumbUpAltIcon/> :<ThumbUpOffAltIcon />}</>}   onClick={ () => handleFormSubmit(shopItems._id, {interessant: shopItems.interessant + 1} )}>
+     J'aime&nbsp;{likes.includes(shopItems._id) ? shopItems.interessant + 1  : shopItems.interessant }
       </Button>
   
     </Stack>
