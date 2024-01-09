@@ -41,7 +41,7 @@ export const addReclamation = async (reclamation) => {
     return await axios.post(`https://api.bibintunisie.com/general/ReclamationAdd`, reclamation);
 }
 export const addContact = async (contact) => {
-    return await axios.post(`http://localhost:5002/general/contactAdd`, contact);
+    return await axios.post(`https://api.bibintunisie.com/general/contactAdd`, contact);
 }
 export const addDocument = async (document) => {
   return await axios.post(`https://api.bibintunisie.com/DocumentAdd`, document);
@@ -96,6 +96,9 @@ export const getDocType = async (id) => {
 }
 export const getDocSearch = async (id) => {
   return await axios.get(`https://api.bibintunisie.com/client/Search/${id}`);
+}
+export const getDocSearchAvan = async (id, mot) => {
+  return await axios.get(`https://api.bibintunisie.com/client/SearchAvan/${id}/${mot}`);
 }
 export const editDocumentDI = async (id, document) => {
   return await axios.put(`https://api.bibintunisie.com/client/documentsDI/${id}`, document)

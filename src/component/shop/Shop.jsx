@@ -47,7 +47,9 @@ console.log(data1, "sata")
                 <h2></h2>
               </div>
             <div className='heading-right row '>
-            <Link  to="/documents" style={{ textDecoration: 'none' }} >  <span>Voir tout</span>
+            <Link       onClick={() => {
+              window.location.href = "/documents";
+            }}   style={{ textDecoration: 'none' }} >  <span>Voir tout</span>
                  <i className='fas fa-caret-right'></i>
                  </Link> </div>
             </div>

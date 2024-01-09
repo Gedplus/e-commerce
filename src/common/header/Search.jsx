@@ -114,7 +114,7 @@ const Search = ({ CartItem,user }) => {
                  <MenuItem  onClick={handleClose1} ><Link to='/MesDocuments'>Mon solde</Link></MenuItem>
                  <MenuItem onClick={handleClose1} ><Link to='/MesDocuments'>Demande de versement de mon solde</Link></MenuItem>
               <MenuItem onClick={handleClose1} ><Link to='/verification'>Demande de vérification de mon compte <img  style={{height:"20px", width:"20px"}} alt="checked" src={checked}/></Link></MenuItem>
-              <MenuItem onClick={handleClose}>Déconnection</MenuItem>
+              <MenuItem onClick={handleClose}>Déconnexion</MenuItem>
             </Menu>
             
       </>)}

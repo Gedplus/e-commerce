@@ -32,6 +32,7 @@ import DocSearch from './component/docSearch/DocSearch';
 import Forget from './connexion/forget';
 import Reset from './connexion/reset';
 import EditProfile from './connexion/editProfile';
+import DocAvan from './component/rechercheAvance/DocAvan';
 
 
 function App() {
@@ -173,6 +174,9 @@ useEffect(() => {
     </Route>
     <Route path='/recherche/:id' exact>
   <DocSearch productItems={productItems} addToCart={addToCart} shopItems={shopItems} user={data || {}}  />
+    </Route>
+    <Route path='/rechercheAvancée/:id/:mot' exact>
+  <DocAvan productItems={productItems} addToCart={addToCart} shopItems={shopItems} user={data || {}}  />
     </Route>
     <Route path='/docType/:id' exact>
   <DocType productItems={productItems} addToCart={addToCart} shopItems={shopItems} user={data || {}}  />

@@ -57,6 +57,12 @@
     color:#232836;
     text-align: center;
 }
+.h1 {
+    font-size: 24px;
+    font-weight: 600;
+    color: #232836;
+    text-align: center;
+}
 form{
     margin-top :30px;
 }
@@ -220,6 +226,14 @@ a.goolge span{
     margin-top: 0px ;
     width: 55%;
   }
+  .searchwidth1{
+    margin-top: 10px ;
+    margin-left: 160px;
+    margin-bottom: 20px;
+    width: 70%;
+  
+
+  }
   .uniwidth{
     width: 940px;
 
@@ -239,6 +253,19 @@ a.goolge span{
     margin-left: 440px;
 }
 @media (max-width: 768px) {
+    .h1 {
+        font-size: 15px;
+        font-weight: 600;
+        color: #232836;
+        text-align: center;
+    }
+    .searchwidth1{
+        margin-top: 10px ;
+        margin-left: 0px;
+        margin-bottom: 20px;
+        width: 95%;
+    
+    }
     .addProgress{
         margin-left: 120px;
     }

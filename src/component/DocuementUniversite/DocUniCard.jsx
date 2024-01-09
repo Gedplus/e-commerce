@@ -58,8 +58,8 @@ console.log(response.data)
       };
             
   return (
-    <>    
-    {doc === undefined  ? (<>Loading....</>) : (<>{doc.map((shopItems, index) => { 
+    <>    {doc.length ===  0  ? (<>Il n'y a aucun résultat pour votre recherche</>) :   
+   (<> {doc === undefined  ? (<>Loading....</>) : (<>{doc.map((shopItems, index) => { 
         return (
         <> 
         {users === undefined  ? (<></>) : (<> {shopItems.accepte === true && (<>
@@ -255,7 +255,7 @@ class="size-avatar"
      
          </>
         )
-      })} </>)}
+      })} </>)}</>)}
      
     </>
   )

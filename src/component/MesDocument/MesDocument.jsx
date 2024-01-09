@@ -22,10 +22,10 @@ const MesDocuments = ({ addToCart, shopItems,user }) => {
        <div className='contentWidth'>
          <div className='heading d_flex'>
            <div className='heading-left row  f_flex'>
-             <h2>Catalogue de la bibliothèque</h2>
+             <h2>Mes documents :</h2>
            </div>
            <div className='heading-right row '>
-             <span>Voir tout</span>
+             <span></span>
               <i className='fas fa-caret-right'></i>
            </div> 
          </div>

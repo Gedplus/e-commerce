@@ -45,7 +45,7 @@ const handleFormSubmit = async(id,document1) => {
 
   return (
     <>    {console.log(data,'data5')}
-    {long === 0 && (<p> Vous ne disposez aucun document pour l'instant </p>) }
+    {long === 0 && (<p> Vous ne disposez d'aucun document pour l'instant </p>) }
     {data === undefined  ? (<></>) : (<>{data.map((shopItems, index) => { 
         return (
         <>  {user._id === shopItems.auteur && (<>

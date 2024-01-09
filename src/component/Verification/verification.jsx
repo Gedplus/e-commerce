@@ -1,7 +1,7 @@
 import React, { useState } from "react"
 import { addContact, addReclamation, editUser } from "../../state/api";
 import { useHistory } from 'react-router-dom'; 
-import { CircularProgress, Typography } from "@mui/material";
+import { Alert, CircularProgress, Typography } from "@mui/material";
 import checked from "../../image/checked.png"
 import verification from "../../image/verif.jpg"
 import { toast } from "react-toastify";
@@ -12,6 +12,7 @@ const Verification = ({ CartItem,user }) => {
   const [image , setImage] = useState("")
   const [erreur1, setErreur1] = useState(false);
   const [phoneNumber , setPhoneNumber] = useState("")
+  const [erreur3, setErreur3] = useState(false);
 const id = user._id
 const [users, setUser] = useState(user);
 
@@ -25,24 +26,27 @@ const [users, setUser] = useState(user);
       
       };
     const handleFormSubmit = async() => {
-  
-      setErreur1(true)
+  if(image== "" || phoneNumber =="" || cin =="" )
+  {
+    setErreur3(true)
+  }else {   setErreur1(true)
       
    
-      const response = await editUser(id, {...user, demande: true, justificative: image , CIN: cin , phoneNumber: phoneNumber});
-    
-      if (response.status == "200") {
+    const response = await editUser(id, {...user, demande: true, justificative: image , CIN: cin , phoneNumber: phoneNumber});
+  
+    if (response.status == "200") {
 
-        toast.success("Demande de vérification envoyer avec succès")
+      toast.success("Demande de vérification envoyer avec succès")
+  
+      setTimeout(()=>{
     
-        setTimeout(()=>{
-      
-          history.push("/")
-      },500)
-      } else {
-        toast.error("Demande de vérification n'est pas envoyer")
-        setErreur1(false)
-      }
+        history.push("/")
+    },500)
+    } else {
+      toast.error("Demande de vérification n'est pas envoyer")
+      setErreur1(false)
+    }}
+   
       };
       function convertToBase64(e){
         console.log(e);
@@ -81,9 +85,10 @@ const [users, setUser] = useState(user);
             <div class="form-content">
                 <header class="h">Demande de verification <img  style={{height:"25px", width:"25px"}} alt="checked" src={checked}/></header>
                 <br/>
+                {erreur3==true ?(<Alert severity="error">Tous les champs sont requis .Il faut remplir tous les champs .</Alert>):(<></>)}
             
                 <div class="div mobile"> 
-                <img src={verification} alt=''  style={{width:"400px", height:"450px" ,marginTop:"-80px"}}/>
+                <img src={verification} alt=''  style={{width:"400px", height:"450px" }}/>
                 
             </div>
             </div>
@@ -115,7 +120,7 @@ const [users, setUser] = useState(user);
                     <div class="field button-field">
                         <button type="submit" onClick={handleFormSubmit} >Envoyer</button>
                     </div>
-                    <br/>                 {erreur1==true ?(           <CircularProgress style={{marginLeft:"220px"}}/>):(<></>)}
+                    <br/>                 {erreur1==true ?(           <CircularProgress  className="progress"/>):(<></>)}
                     
     </div>
             </div>

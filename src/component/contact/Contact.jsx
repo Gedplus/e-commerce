@@ -43,13 +43,13 @@ email: Email,
        
                 <img src={contact1} alt='' className="contactM"  style={{width:"400px", height:"400px", marginTop:"-90px"}}/>
 
-           <Link to="/Reclamation">
-                <img src={contact1} alt='' className="contactMo"  style={{width:"300px", height:"200px", marginTop:"-50px"}}/>
-                </Link> </div>
+
+                <img src={contact1} alt=''  className="contactMo "  style={{width:"300px", height:"200px", marginTop:"-50px"}}/>
+               </div>
                 <div class="div">
-                <img src={contact2} alt=''  style={{width:"300px", height:"100px", marginTop:"-20px" }}/>
-                <img src={contact3} alt=''   style={{width:"300px", height:"100px", }}/>
-                <Link to="/Reclamation">       <img src={contact4} alt=''  style={{width:"300px", height:"100px", }}/>  </Link>
+                <img src={contact2} alt=''  className="imageSize" style={{ marginTop:"-20px" }}/>
+                <img src={contact3} alt=''   className="imageSize" />
+                <Link to="/Reclamation">       <img src={contact4} alt=''  className="imageSize" />  </Link>
             </div>
             </div>
             

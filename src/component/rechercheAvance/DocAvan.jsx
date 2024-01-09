@@ -1,8 +1,8 @@
-import React from 'react'
+import React, { useState } from 'react'
 
 
 
-
+import { useHistory } from 'react-router-dom'; 
 
 
 import Shop from '../shop/Shop' 
@@ -10,17 +10,27 @@ import Shop from '../shop/Shop'
 
 import { useGetDocumentQuery } from '../../state/api'
 import Categories from '../document/categorie'
-
-import DocTypeCard from './DocTypeCard'
-const DocType = ({ addToCart, shopItems,user }) => {
+import {  useParams } from 'react-router-dom';
+import DocAvanCard from './DocAvanCard';
+const DocAvan = ({ addToCart, shopItems,user }) => {
     const { data, isLoading } = useGetDocumentQuery();
+    const [mot, setMot] = useState("");
+    const history = useHistory ();
+    const { id } = useParams();
   return (
     <>
        <section className='shop1 background '>
-        <div className='container d_flex  '>
+        <div className='container containerM d_flex  '>
           <Categories  />
 
           <div className='contentWidth'>
+          <header class="h1">RECHERCHE AVANCÉE DANS "{id}" </header>
+          <form  className="searchwidth1" onSubmit={() =>       history.push (`/rechercheAvancée/${id}/${mot}`)}>
+          <div className='search-box1 f_flex ' >
+       
+            <input type='text' placeholder='Essayez-moi !...' style={{marginLeft:"20px"}}   onChange={(e) => setMot(e.target.value)} />
+            <span onClick={() =>       history.push (`/rechercheAvancée/${id}/${mot}`)}>  <i className='fa fa-search'></i></span>
+          </div></form>
           <ul class="horizontal-list  " >
   <li>  
     
@@ -58,7 +68,7 @@ const DocType = ({ addToCart, shopItems,user }) => {
           {/* if hamro cart ma kunai pani item xaina bhane no diplay */}
 
           <div className='shop-details'>
-              <DocTypeCard addToCart={addToCart} shopItems={shopItems} />
+              <DocAvanCard addToCart={addToCart} shopItems={shopItems} />
 
             </div>
             </div>
@@ -69,4 +79,4 @@ const DocType = ({ addToCart, shopItems,user }) => {
     </>
   )
 }
-export default DocType
+export default DocAvan

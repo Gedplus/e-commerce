@@ -487,10 +487,9 @@ z-index: 1 !important;
 
 ul.horizontal-list {
   list-style: none;
-  background-color: white;
-  color: white;
+
   display: inline-block;
-margin-left: 120px;
+margin-left: 170px;
 padding-bottom: 10px;
 
 }
@@ -507,15 +506,127 @@ ul.horizontal-list li {
 .display{
   display: none;
 }
-ul.horizontal-list li:not(:last-child) {
-  border-right: 1px solid hsl(0,0%,75%);
-}
+
 .progress{
   margin-left: 220px;
 }
+.Btn-jaime{
+  font-size: 50px;
+}
+
+.imageSize{
+  width: 300px;
+  height: 100px;
+}
+
+.buttonType{
+  width: 120px;
+  height: 45px;
+  font-size: 17px;
+  color: #0000a1;
+  background-color: hsl(0,0%,75%);
+}
+.buttonType:hover{
+  width: 120px;
+  height: 45px;
+  font-size: 17px;
+  color:hsl(0,0%,75%) ;
+  background-color: #0000a1;
+}
+.buttonType1:hover{
+  width: 120px;
+  height: 45px;
+  font-size: 17px;
+  color:hsl(0,0%,75%) ;
+  background-color: #0000a1;
+}
+.buttonType2:hover{
+  width: 120px;
+  height: 45px;
+  font-size: 17px;
+  color:hsl(0,0%,75%) ;
+  background-color: #0000a1;
+}
+.buttonType1{
+  width: 120px;
+  height: 45px;
+  font-size: 17px;
+  color: #0000a1;
+  background-color: hsl(0,0%,75%);
+  border-top-right-radius: 25px;
+  border-bottom-right-radius: 25px;
+}
+.buttonType2{
+  width: 120px;
+  height: 45px;
+  font-size: 17px;
+  color: #0000a1;
+  background-color: hsl(0,0%,75%);
+  border-top-left-radius: 25px;
+  border-bottom-left-radius: 25px;
+}
+
 @media (max-width: 768px) {
+  .buttonType{
+    width: 60px;
+    height: 30px;
+    font-size: 12px;
+    color: #0000a1;
+    background-color: hsl(0,0%,75%);
+  }
+  .buttonType:hover{
+    width: 60px;
+    height: 30px;
+    font-size: 12px;
+    color:hsl(0,0%,75%) ;
+    background-color: #0000a1;
+  }
+  .buttonType1:hover{
+    width: 60px;
+    height: 30px;
+    font-size: 12px;
+    color:hsl(0,0%,75%) ;
+    background-color: #0000a1;
+  }
+  .buttonType2:hover{
+    width: 60px;
+    height: 30px;
+    font-size: 12px;
+    color:hsl(0,0%,75%) ;
+    background-color: #0000a1;
+  }
+  .buttonType1{
+    width: 60px;
+    height: 30px;
+    font-size: 12px;
+    color: #0000a1;
+    background-color: hsl(0,0%,75%);
+    border-top-right-radius: 25px;
+    border-bottom-right-radius: 25px;
+  }
+  .buttonType2{
+    width: 60px;
+    height: 30px;
+    font-size: 12px;
+    color: #0000a1;
+    background-color: hsl(0,0%,75%);
+    border-top-left-radius: 25px;
+    border-bottom-left-radius: 25px;
+  }
   .btn-like-margin{
     margin-left: 0px !important;
+  }
+  .boxca {
+    font-size: 8px;
+    width: 350px;
+    }
+  .imageSize{
+    width: 250px;
+    height: 80px;
+    margin-left: 10px;
+  }
+  .css-1e6y48t-MuiButtonBase-root-MuiButton-root {
+    font-size: 10px !important;
   }
   ul.horizontal-list {
     margin-left: -15px;

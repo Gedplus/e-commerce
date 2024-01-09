@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 
 
 
@@ -7,11 +7,11 @@ import { Link } from "react-router-dom"
 
 
 import ShopCart from '../shop/ShopCart'
-
+import { useHistory } from 'react-router-dom'; 
 import Categories from './categorie'
 import { useGetDocumentQuery } from '../../state/api'
 const Documents = ({ addToCart, shopItems }) => {
-  
+
   return (
     <>
          <section className='shop1 background'>
@@ -19,61 +19,40 @@ const Documents = ({ addToCart, shopItems }) => {
           <Categories />
 
           <div className='contentWidth' >
+       
           <ul class="horizontal-list  " >
   <li>  
     
-  <button class="button-82-pushable3" role="button" onClick={() => {window.location.href=`/docType/PFE`}}>
-  <span class="button-82-shadow3"></span>
-  <span class="button-82-edge3"></span>
-  <span class="button-82-front3 text3">
+  <button class="buttonType2" role="button" onClick={() => {window.location.href=`/docType/PFE`}}>
+
   PFE
-  </span>
+
 </button>
     
     
 </li>
-         <li>   <button class="button-82-pushable3" role="button" onClick={() => {window.location.href=`/docType/Mémoire`}}>
-  <span class="button-82-shadow3"></span>
-  <span class="button-82-edge3"></span>
-  <span class="button-82-front3 text3">
+         <li>   <button  role="button"class="buttonType" onClick={() => {window.location.href=`/docType/Mémoire`}}>
   Mémoire
-  </span>
 </button>  </li>
-         <li>   <button class="button-82-pushable3" role="button" onClick={() => {window.location.href=`/docType/Thése`}}>
-  <span class="button-82-shadow3"></span>
-  <span class="button-82-edge3"></span>
-  <span class="button-82-front3 text3">
+         <li>   <button class="buttonType" role="button" onClick={() => {window.location.href=`/docType/Thése`}}>
+
   Thése
-  </span>
+
 </button>
       </li>
-<li>   <button class="button-82-pushable3" role="button" onClick={() => {window.location.href=`/docType/Article`}}>
-  <span class="button-82-shadow3"></span>
-  <span class="button-82-edge3"></span>
-  <span class="button-82-front3 text3">
+<li>   <button class="buttonType" role="button" onClick={() => {window.location.href=`/docType/Article`}}>
+ 
   Article
-  </span>
+
 </button>  </li>
-         <li>  <button class="button-82-pushable3" role="button" onClick={() => {window.location.href=`/docType/Ouvrage`}}>
-  <span class="button-82-shadow3"></span>
-  <span class="button-82-edge3"></span>
-  <span class="button-82-front3 text3">
+         <li>  <button class="buttonType1" role="button" onClick={() => {window.location.href=`/docType/Ouvrage`}}>
+
   Ouvrage
-  </span>
+
 </button>  
    </li>
 </ul>
-            <div className='heading d_flex'>
-
-              <div className='heading-left row  f_flex'>
-                <h2>Catalogue de la bibliothèque</h2>
-              </div>
-              <div className='heading-right row '>
-                <span>Voir tout</span>
-                 <i className='fas fa-caret-right'></i>
-              </div>
-
-            </div>
+     
 
             
             <section className='shop-items'>

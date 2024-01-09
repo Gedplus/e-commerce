@@ -1271,7 +1271,12 @@ function valueLabelFormat(value) {
               setValue(newValue);
             }
           };
-          
+          const dropdownRender = (menus) => (
+            <div className="boxca" >
+              {menus}
+           
+            </div>
+          );
   return (
     <>
       <section class="container3 forms">
@@ -1337,7 +1342,7 @@ function valueLabelFormat(value) {
           <br/>
           <br/>
           <div class="field input-field">
-                <Cascader options={options} onChange={onChange} placeholder="Université dont vous avez travaillé votre document "   className="uniwidth"  />
+                <Cascader options={options} dropdownRender={dropdownRender} onChange={onChange} placeholder="Université dont vous avez travaillé votre document "  showSearch={true} className="uniwidth"  />
                     </div>
                     <div class="field input-field">
                         <input type="text" placeholder="Année" class="input" onChange={(event) => {setAnnée(event.target.value)}} />
@@ -1851,7 +1856,7 @@ className="slider"
                         <textarea type="text" placeholder="Description" class="input" onChange={(event) => {setDescription(event.target.value)}} />
                     </div>
                     <Typography id="non-linear-slider"  style={{fontSize:"17px"}}  gutterBottom>
-          Ajouté une photo :
+          Page de garde pour votre document (pas obligatoire) :
         </Typography>
                     <div class="field input-field">
                     <input accept="image/*"

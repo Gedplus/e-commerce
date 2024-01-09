@@ -55,7 +55,7 @@ footer {
   }
   .social-buttons {
     display: inline-block;
- margin-left: 210px;
+ margin-left: 230px;
   }
   
   .social-icon {
@@ -142,5 +142,5 @@ footer {
     color: #ffffff;
   }
   .social-margin{
-   padding: 10px;
+   padding: 8px;
   }

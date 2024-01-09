@@ -22,15 +22,38 @@ const DocSearch = ({ addToCart, shopItems,user }) => {
           <Categories  />
 
           <div className='contentWidth'>
-            <div className='heading d_flex'>
-              <div className='heading-left row  f_flex'>
-                <h2>Catalogue de la bibliothèque</h2>
-              </div>
-              <div className='heading-right row '>
-                <span>Voir tout</span>
-                 <i className='fas fa-caret-right'></i>
-              </div>
-            </div>
+          <ul class="horizontal-list  " >
+  <li>  
+    
+  <button class="buttonType2" role="button" onClick={() => {window.location.href=`/docType/PFE`}}>
+
+  PFE
+
+</button>
+    
+    
+</li>
+         <li>   <button  role="button"class="buttonType" onClick={() => {window.location.href=`/docType/Mémoire`}}>
+  Mémoire
+</button>  </li>
+         <li>   <button class="buttonType" role="button" onClick={() => {window.location.href=`/docType/Thése`}}>
+
+  Thése
+
+</button>
+      </li>
+<li>   <button class="buttonType" role="button" onClick={() => {window.location.href=`/docType/Article`}}>
+ 
+  Article
+
+</button>  </li>
+         <li>  <button class="buttonType1" role="button" onClick={() => {window.location.href=`/docType/Ouvrage`}}>
+
+  Ouvrage
+
+</button>  
+   </li>
+</ul>
             <section className='shop-items'>
         <div className=' d_flex'>
           {/* if hamro cart ma kunai pani item xaina bhane no diplay */}

@@ -1,6 +1,6 @@
 import React, { useState } from "react"
 import { addReclamation } from "../../state/api";
-import { CircularProgress, Typography } from "@mui/material";
+import { Alert, CircularProgress, Typography } from "@mui/material";
 import { toast } from "react-toastify";
 import { ToastContainer} from "react-toastify";
 import "react-toastify/dist/ReactToastify.css"; 
@@ -14,6 +14,7 @@ const Reclamation = () => {
     const [Message , setMessage] = useState("")
     const [cin , setCin] = useState("")
     const [phoneNumber , setPhoneNumber] = useState("")
+    const [erreur3, setErreur3] = useState(false);
     const reclamation ={
         Email: email,
         phoneNumber: phoneNumber,
@@ -25,7 +26,12 @@ const Reclamation = () => {
       };
     const handleFormSubmit = async(values) => {
    console.log("sss", reclamation)
-   setErreur1(true)
+if(image =="" || Fname== "" || email== "" || cin==""  )
+{
+  setErreur3(true)
+}
+   else{
+    setErreur1(true)
    const response = await addReclamation(reclamation);
    if (response.status == "201") {
 
@@ -39,6 +45,7 @@ const Reclamation = () => {
     toast.error("Reclamation n'est pas envoyer")
     setErreur1(false)
   }
+   }
       };
     function convertToBase64(e){
         console.log(e);
@@ -77,7 +84,7 @@ const Reclamation = () => {
                 <header class="h">Réclamation</header>
                 <br/>
                 <p>Si vous constatez que votre document est présent sans autorisation, vous avez la possibilité de déposer une réclamation en fournissant les informations requises. Une fois que vous aurez prouvé la validité de votre document, notre plateforme vous rétablira l'accès à votre compte ainsi que le solde qu'il contient : </p>
-              
+                {erreur3==true ?(<Alert severity="error">Tous les champs sont requis .Il faut remplir tous les champs .</Alert>):(<></>)}
                 <div class="div mobile"> 
                 <img src="./images/reclamation.png" alt=''  style={{width:"400px", height:"400px", marginTop:"70px"}}/>
                 

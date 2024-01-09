@@ -73,7 +73,7 @@ console.log("id", id)
         <img src={shopItems.image} alt='' className="size-img" />   
         <div className=' d_flex btn-like-margin'>
         <Stack direction="row" spacing={2} >
-      <Button variant="text"   startIcon={<>{likes.includes(shopItems._id) ? <ThumbUpAltIcon/> :<ThumbUpOffAltIcon />}</>}  onClick={ () => handleFormSubmit(shopItems._id, {interessant: shopItems.interessant + 1} )}>
+      <Button  variant="text"   startIcon={<>{likes.includes(shopItems._id) ? <ThumbUpAltIcon/> :<ThumbUpOffAltIcon />}</>}  onClick={ () => handleFormSubmit(shopItems._id, {interessant: shopItems.interessant + 1} )}>
      J'aime&nbsp;{likes.includes(shopItems._id) ? shopItems.interessant + 1  : shopItems.interessant }
       </Button>
   </Stack>
