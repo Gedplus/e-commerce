@@ -7,15 +7,16 @@ import icon1 from "../../image/icon1.png"
 import icon2 from "../../image/icon2.png"
 import icon3 from "../../image/icon3.png"
 import checked from "../../image/checked.png"
-import { editDocumentDE, editDocumentDI, editDocumentDU, editDocumentE, editDocumentI, editDocumentP, editDocumentU, getDocSearchAvan, getDocUni, useGetDocumentQuery, useGetUtilisateursQuery } from '../../state/api'
+import { editDocumentDE, editDocumentDI, editDocumentDU, editDocumentE, editDocumentI, editDocumentP, editDocumentU, getDocSearchAvan, getDocSearchAvanType, getDocUni, useGetDocumentQuery, useGetUtilisateursQuery } from '../../state/api'
 import { Button, CardActions } from "@mui/material";
 import ThumbUpAltIcon from '@mui/icons-material/ThumbUpAlt';
 import ThumbUpOffAltIcon from '@mui/icons-material/ThumbUpOffAlt';
-const DocAvanCard = ({ shopItems, addToCart }) => {
+const DocAvanTypeCard = ({ shopItems, addToCart }) => {
   
   const userss = useGetUtilisateursQuery();
   const { id } = useParams();
   const { mot } = useParams();
+  const { uni } = useParams();
   console.log("id",mot)
   console.log("id",id)
   const users =userss.data
@@ -33,7 +34,7 @@ else {
 }}
   useEffect(() => {
     const loadUserDetails = async() => {
-        const response = await getDocSearchAvan(id , mot);
+        const response = await getDocSearchAvanType(id , uni, mot);
   setDoc(response.data)
 
 console.log(response.data)
@@ -265,4 +266,4 @@ class="size-avatar"
   )
 }
 
-export default DocAvanCard
+export default DocAvanTypeCard

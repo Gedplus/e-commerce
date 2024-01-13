@@ -41,6 +41,7 @@ footer {
     text-decoration-line: underline;
     margin-bottom: 20px;
     text-align: center;
+    margin-left: -27px;
   }
   footer li {
     margin-bottom: 10px;
@@ -142,5 +143,5 @@ footer {
     color: #ffffff;
   }
   .social-margin{
-   padding: 8px;
+   padding: 6px;
   }

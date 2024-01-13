@@ -33,6 +33,8 @@ import Forget from './connexion/forget';
 import Reset from './connexion/reset';
 import EditProfile from './connexion/editProfile';
 import DocAvan from './component/rechercheAvance/DocAvan';
+import DocUniType from './component/DocUniType/DocUniType';
+import DocAvanceType from './component/rechercheAvanceType/RechercheAvanceType';
 
 
 function App() {
@@ -177,6 +179,12 @@ useEffect(() => {
     </Route>
     <Route path='/rechercheAvancée/:id/:mot' exact>
   <DocAvan productItems={productItems} addToCart={addToCart} shopItems={shopItems} user={data || {}}  />
+    </Route>
+    <Route path='/rechercheAvancée/:id/:uni/:mot' exact>
+  <DocAvanceType productItems={productItems} addToCart={addToCart} shopItems={shopItems} user={data || {}}  />
+    </Route>
+    <Route path='/docType/:id/:uni' exact>
+  <DocUniType productItems={productItems} addToCart={addToCart} shopItems={shopItems} user={data || {}}  />
     </Route>
     <Route path='/docType/:id' exact>
   <DocType productItems={productItems} addToCart={addToCart} shopItems={shopItems} user={data || {}}  />

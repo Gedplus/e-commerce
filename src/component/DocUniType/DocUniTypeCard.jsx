@@ -2,26 +2,37 @@ import React, { useEffect, useState } from "react"
 import Badge from '@mui/material/Badge';
 import Avatar from '@mui/material/Avatar';
 import Stack from '@mui/material/Stack';
-import {  useParams } from 'react-router-dom';
 import icon1 from "../../image/icon1.png"
 import icon2 from "../../image/icon2.png"
 import icon3 from "../../image/icon3.png"
-import checked from "../../image/checked.png"
-import { editDocumentDE, editDocumentDI, editDocumentDU, editDocumentE, editDocumentI, editDocumentP, editDocumentU, getDocSearchAvan, getDocUni, useGetDocumentQuery, useGetUtilisateursQuery } from '../../state/api'
-import { Button, CardActions } from "@mui/material";
-import ThumbUpAltIcon from '@mui/icons-material/ThumbUpAlt';
 import ThumbUpOffAltIcon from '@mui/icons-material/ThumbUpOffAlt';
-const DocAvanCard = ({ shopItems, addToCart }) => {
+import ThumbUpAltIcon from '@mui/icons-material/ThumbUpAlt';
+import checked from "../../image/checked.png"
+import {  useParams } from 'react-router-dom';
+import { editDocumentDE, editDocumentDI, editDocumentDU, editDocumentE, editDocumentI, editDocumentP, editDocumentU, getDocType, getDocUni, getDocUniType, useGetDocumentQuery, useGetUtilisateursQuery } from '../../state/api'
+import { Button, CardActions } from "@mui/material";
+
+const DocUniTypeCard = ({ shopItems, addToCart }) => {
   
   const userss = useGetUtilisateursQuery();
   const { id } = useParams();
-  const { mot } = useParams();
-  console.log("id",mot)
-  console.log("id",id)
+  const { uni } = useParams();
+  console.log("id",uni)
   const users =userss.data
   const [count, setCount] = useState(0);
-  const [doc, setDoc] = useState([]);
+  const [doc, setDoc] = useState([]); 
   const [isExpanded, setIsExpanded] = useState([]);
+  useEffect(() => {
+    const loadUserDetails = async() => {
+        const response = await getDocUniType(id , uni);
+  setDoc(response.data)
+console.log(response.data)
+    }
+    loadUserDetails();
+  }, []);
+  const [likes, setLikes] = useState([]);
+ 
+
   const handleFormSubmitD= async(id,document1) => {
     if(isExpanded.includes(id) ) { 
         setIsExpanded((prevState) =>
@@ -31,42 +42,27 @@ const DocAvanCard = ({ shopItems, addToCart }) => {
 else {
     setIsExpanded(isExpanded.concat(id))
 }}
-  useEffect(() => {
-    const loadUserDetails = async() => {
-        const response = await getDocSearchAvan(id , mot);
-  setDoc(response.data)
-
-console.log(response.data)
-    }
-    loadUserDetails();
-  }, []);
-  const [likes, setLikes] = useState([]);
- 
-
-
-  const handleFormSubmit = async(id,document1) => {
-    console.log("id", id)
-        if(likes.includes(id) ) {
-         
-    
-    
-          setLikes((prevState) =>
-          prevState.filter((prevItem) => prevItem !== id))
-          await editDocumentDI(id, document1 );
-        }else{
-        setLikes(likes.concat(id))
-        await editDocumentI(id, document1 );}
-    
-        
-      };
-            
+const handleFormSubmit = async(id,document1) => {
+  console.log("id", id)
+      if(likes.includes(id) ) {
+       
+  
+  
+        setLikes((prevState) =>
+        prevState.filter((prevItem) => prevItem !== id))
+        await editDocumentDI(id, document1 );
+      }else{
+      setLikes(likes.concat(id))
+      await editDocumentI(id, document1 );}
+  
+      
+    };
   return (
-    <>      {doc.length ===  0  ? (<>Il n'y a aucun résultat pour votre recherche</>) :   
-    (<>
-    {doc === undefined  ? (<>Loading....</>) : (<>{doc.map((shopItems, index) => { 
+    <>        {doc.length ===  0  ? (<>Il n'y a aucun résultat pour votre recherche</>) :
+( <>   {doc === undefined  ? (<>Loading....</>) : (<>{doc.map((shopItems, index) => { 
         return (
         <> 
-        {users === undefined  ? (<></>) : (<> {shopItems.accepte === true && (<>
+        {users === undefined  ? (<>sxxdd</>) : (<> {shopItems.accepte === true && (<>
         
         {users.map((user) => {return( <>    {shopItems.auteur === user._id ? ( <>
           
@@ -86,6 +82,7 @@ console.log(response.data)
         <img src={shopItems.image} alt='' className="size-img" />   
         <div className=' d_flex btn-like-margin'>
 
+   
         <Stack direction="row" spacing={2} >
       <Button variant="text" startIcon={<>{likes.includes(shopItems._id) ? <ThumbUpAltIcon/> :<ThumbUpOffAltIcon />}</>}   onClick={ () => handleFormSubmit(shopItems._id, {interessant: shopItems.interessant + 1} )}>
      J'aime&nbsp;{likes.includes(shopItems._id) ? shopItems.interessant + 1  : shopItems.interessant }
@@ -102,7 +99,7 @@ console.log(response.data)
         <div className='cart-details' >
             <h4  >Titre : {shopItems.titre}</h4>
     
-            {users === undefined  ? (<></>) : (<>{users.map((user) => {return( <>    {shopItems.auteur === user._id ? (     <h4 >  Auteur : {user.name} </h4> ):
+            {users === undefined  ? (<>sxxdd</>) : (<>{users.map((user) => {return( <>    {shopItems.auteur === user._id ? (     <h4 >  Auteur : {user.name} </h4> ):
             (<></>)}</> ) })}</>)}
           
             <h4 style={{color:"grey" , fontWeight:"300"}}>  {shopItems.type} - {shopItems.Annee}</h4>
@@ -150,10 +147,9 @@ console.log(response.data)
 class="size-avatar"
       />
     </Stack>
-        <img src={shopItems.image} alt=''  className="size-img"/>   
+        <img src={shopItems.image} alt='' className="size-img" />   
         <div className=' d_flex btn-like-margin'>
-   
-       
+ 
         <Stack direction="row" spacing={2} >
       <Button variant="text" startIcon={<>{likes.includes(shopItems._id) ? <ThumbUpAltIcon/> :<ThumbUpOffAltIcon />}</>}   onClick={ () => handleFormSubmit(shopItems._id, {interessant: shopItems.interessant + 1} )}>
      J'aime&nbsp;{likes.includes(shopItems._id) ? shopItems.interessant + 1  : shopItems.interessant }
@@ -170,7 +166,7 @@ class="size-avatar"
         <div className='cart-details' >
             <h4  >Titre  : {shopItems.titre}</h4>
     
-            {users === undefined  ? (<></>) : (<>{users.map((user) => {return( <>    {shopItems.auteur === user._id ? (     <h4 >  Auteur : {user.name} </h4> ):
+            {users === undefined  ? (<>sxxdd</>) : (<>{users.map((user) => {return( <>    {shopItems.auteur === user._id ? (     <h4 >  Auteur : {user.name} </h4> ):
             (<></>)}</> ) })}</>)}
           
             <h4 style={{color:"grey" , fontWeight:"300"}}>  {shopItems.type} - {shopItems.Annee}</h4>
@@ -265,4 +261,4 @@ class="size-avatar"
   )
 }
 
-export default DocAvanCard
+export default DocUniTypeCard

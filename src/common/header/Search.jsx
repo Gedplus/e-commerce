@@ -1,4 +1,4 @@
-import React, {  useState } from "react"
+import React, {  useEffect, useState } from "react"
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css"; 
 import { Link } from "react-router-dom"
@@ -11,6 +11,7 @@ import CategoriesS from "./Cat";
 import checked from "../../image/checked.png"
 import { useHistory } from 'react-router-dom'; 
 import logo1 from "../../image/LOGO.jpeg"
+import { useLocation } from 'react-router-dom';
 const style = {
   position: 'absolute' ,
   top: '50%',
@@ -30,6 +31,18 @@ const Search = ({ CartItem,user }) => {
     const search = document.querySelector(".search")
     search.classList.toggle("active", window.scrollY > 100)
   })
+  const location = useLocation();
+  const path = location.pathname.split("/")[1];
+  const mot1 = location.pathname.split("/")[2];
+  useEffect(() => {
+    const loadUserDetails = async() => {
+if(path == 'recherche')
+ {     setMot(mot1)}
+
+
+    }
+    loadUserDetails();
+  }, [mot1]);
   const [open, setOpen] = React.useState(false);
   const handleOpen = () => setOpen(!open);
   const handleClose2 = () => setOpen(false);
@@ -56,7 +69,7 @@ const Search = ({ CartItem,user }) => {
           <form  className="searchwidth" onSubmit={() =>       history.push (`/recherche/${mot}`)}>
           <div className='search-box f_flex searchM' >
        
-            <input type='text' placeholder='Vos mots-clés' style={{marginLeft:"20px"}}   onChange={(e) => setMot(e.target.value)} />
+            <input type='text' placeholder='Vos mots-clés' style={{marginLeft:"20px"}} defaultValue={mot}   onChange={(e) => setMot(e.target.value)} />
             <span onClick={() =>       history.push (`/recherche/${mot}`)}>  <i className='fa fa-search'></i></span>
           </div></form>
          <div className='icon f_flex '>
@@ -144,7 +157,7 @@ const Search = ({ CartItem,user }) => {
           <form  className="searchwidth" onSubmit={() =>       history.push (`/recherche/${mot}`)}>
         <div className='search-box f_flex'>
            
-            <input type='text' placeholder='Vos mots-clés'  style={{marginLeft:"20px"}}  onChange={(e) => setMot(e.target.value)} />
+            <input type='text' placeholder='Vos mots-clés' defaultValue={mot}  style={{marginLeft:"20px"}}  onChange={(e) => setMot(e.target.value)} />
             <span  onClick={() =>       history.push (`/recherche/${mot}`)}>  <i className='fa fa-search'></i></span>
           </div>
           </form>

@@ -1628,62 +1628,7 @@ className="slider"
   aria-labelledby="non-linear-slider"
 />
 </Box></> )}
-{user.statue === "etudiant"  && type==="Article"  && (<>    <Typography color="red" id="non-linear-slider" gutterBottom style={{fontSize:"18px"}} > 
-La soumission de ce type de document est conditionnée à la vérification préalable de votre compte
-</Typography>      <Box sx={{ width: 270 }}>
-<Typography id="non-linear-slider" gutterBottom style={{fontSize:"18px"}} > 
-Prix de mode lecture :  {value}
-</Typography>
-<Slider
-  value={value}
-  min={0}
-  step={0.001}
-  max={8000}
-  color="secondary"
-  disabled
-  className="slider"
-  getAriaValueText={valueLabelFormat}
-  valueLabelFormat={valueLabelFormat}
-  onChange={handleChange4}
-  valueLabelDisplay="auto"
-  aria-labelledby="non-linear-slider"
-/>
-</Box>      <Box sx={{ width: 270 }}>
-          <Typography id="non-linear-slider"  style={{fontSize:"18px"}}  gutterBottom>
-         Durée de mode lecture : {period} mois
-        </Typography>
-        <Slider
-                className="slider"
-          value={period}
-          min={6}
-          step={1}
-          max={12}
-          color="secondary"
-          disabled
-          getAriaValueText={valueLabelFormatD}
-          valueLabelFormat={valueLabelFormatD}
-          onChange={handleChange7}
-          valueLabelDisplay="auto"
-          aria-labelledby="non-linear-slider"
-        />
-      </Box>       <Box sx={{ width: 270 }}>
-<Typography id="non-linear-slider" gutterBottom style={{fontSize:"18px"}} >
-Prix de mode téléchargement: { value == 0 ?(<>{prixt =value } </>):(<>{prixt =value + 8000}</>)}
-</Typography>
-<Slider
-  value={value}
-  min={0}
-  step={0.001}
-  max={8000}
-disabled
-className="slider"
-  getAriaValueText={valueLabelFormat}
-  valueLabelFormat={valueLabelFormat}
-  onChange={handleChange4}
-  valueLabelDisplay="auto"
-  aria-labelledby="non-linear-slider"
-/>
-</Box></> )}
+
 {user.approved === true && type==="Ouvrage"  && (<>        <Box sx={{ width: 270 }}>
 <Typography id="non-linear-slider" gutterBottom style={{fontSize:"18px"}} > 
 Prix de mode lecture :  {value}
@@ -1793,62 +1738,7 @@ className="slider"
   aria-labelledby="non-linear-slider"
 />
 </Box></> )}
-{user.statue === "etudiant"  && type==="Ouvrage"  && (<>    <Typography color="red" id="non-linear-slider" gutterBottom style={{fontSize:"18px"}} > 
-La soumission de ce type de document est conditionnée à la vérification préalable de votre compte
-</Typography>      <Box sx={{ width: 270 }}>
-<Typography id="non-linear-slider" gutterBottom style={{fontSize:"18px"}} > 
-Prix de mode lecture :  {value}
-</Typography>
-<Slider
-  value={value}
-  min={0}
-  step={0.001}
-  max={12000}
-  color="secondary"
-  disabled
-  className="slider"
-  getAriaValueText={valueLabelFormat}
-  valueLabelFormat={valueLabelFormat}
-  onChange={handleChange4}
-  valueLabelDisplay="auto"
-  aria-labelledby="non-linear-slider"
-/>
-</Box>      <Box sx={{ width: 270 }}>
-          <Typography id="non-linear-slider"  style={{fontSize:"18px"}}  gutterBottom>
-         Durée de mode lecture : {period} mois
-        </Typography>
-        <Slider
-                 className="slider"
-          value={period}
-          min={6}
-          step={1}
-          max={12}
-          color="secondary"
-          disabled
-          getAriaValueText={valueLabelFormatD}
-          valueLabelFormat={valueLabelFormatD}
-          onChange={handleChange7}
-          valueLabelDisplay="auto"
-          aria-labelledby="non-linear-slider"
-        />
-      </Box>       <Box sx={{ width: 270 }}>
-<Typography id="non-linear-slider" gutterBottom style={{fontSize:"18px"}} >
-Prix de mode téléchargement: { value == 0 ?(<>{prixt =value } </>):(<>{prixt =value + 8000}</>)}
-</Typography>
-<Slider
-  value={value}
-  min={0}
-  step={0.001}
-  max={12000}
-disabled
-className="slider"
-  getAriaValueText={valueLabelFormat}
-  valueLabelFormat={valueLabelFormat}
-  onChange={handleChange4}
-  valueLabelDisplay="auto"
-  aria-labelledby="non-linear-slider"
-/>
-</Box></> )}
+
 <div class="field input-field">
                         <input type="text" placeholder="Titre" class="input" onChange={(event) => {setTitre(event.target.value)}} />
                     </div>

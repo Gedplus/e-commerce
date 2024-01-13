@@ -61,7 +61,7 @@ const handleFormSubmit = async(id,document1) => {
 ( <>   {doc === undefined  ? (<>Loading....</>) : (<>{doc.map((shopItems, index) => { 
         return (
         <> 
-        {users === undefined  ? (<>sxxdd</>) : (<> {shopItems.accepte === true && (<>
+        {users === undefined  ? (<></>) : (<> {shopItems.accepte === true && (<>
         
         {users.map((user) => {return( <>    {shopItems.auteur === user._id ? ( <>
           
@@ -165,7 +165,7 @@ class="size-avatar"
         <div className='cart-details' >
             <h4  >Titre  : {shopItems.titre}</h4>
     
-            {users === undefined  ? (<>sxxdd</>) : (<>{users.map((user) => {return( <>    {shopItems.auteur === user._id ? (     <h4 >  Auteur : {user.name} </h4> ):
+            {users === undefined  ? (<></>) : (<>{users.map((user) => {return( <>    {shopItems.auteur === user._id ? (     <h4 >  Auteur : {user.name} </h4> ):
             (<></>)}</> ) })}</>)}
           
             <h4 style={{color:"grey" , fontWeight:"300"}}>  {shopItems.type} - {shopItems.Annee}</h4>

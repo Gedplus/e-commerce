@@ -11,12 +11,14 @@ import Shop from '../shop/Shop'
 import { useGetDocumentQuery } from '../../state/api'
 import Categories from '../document/categorie'
 import {  useParams } from 'react-router-dom';
-import DocUniCard from './DocUniCard'
-const DocUni = ({ addToCart, shopItems,user }) => {
+
+import DocUniTypeCard from './DocUniTypeCard';
+const DocUniType = ({ addToCart, shopItems,user }) => {
     const { data, isLoading } = useGetDocumentQuery();
     const [mot, setMot] = useState("");
     const history = useHistory ();
     const { id } = useParams();
+    const { uni } = useParams();
   return (
     <>
        <section className='shop1 background '>
@@ -25,16 +27,16 @@ const DocUni = ({ addToCart, shopItems,user }) => {
 
           <div className='contentWidth'>
           <header class="h1">RECHERCHE AVANCÉE DANS "{id}" </header>
-          <form  className="searchwidth1" onSubmit={() =>       history.push (`/rechercheAvancée/${id}/${mot}`)}>
+          <form  className="searchwidth1" onSubmit={() =>       history.push (`/rechercheAvancée/${id}/${uni}/${mot}`)}>
           <div className='search-box1 f_flex ' >
        
             <input type='text' placeholder='Essayez-moi !...' style={{marginLeft:"20px"}}   onChange={(e) => setMot(e.target.value)} />
-            <span onClick={() =>       history.push (`/rechercheAvancée/${id}/${mot}`)}>  <i className='fa fa-search'></i></span>
+            <span onClick={() =>       history.push (`/rechercheAvancée/${id}/${uni}/${mot}`)}>  <i className='fa fa-search'></i></span>
           </div></form>
           <ul class="horizontal-list  " >
   <li>  
     
-  <button class="buttonType2" role="button" onClick={() => {window.location.href=`/docType/PFE/${id}`}}>
+  <button class="buttonType2" role="button" onClick={() => {window.location.href=`/docType/PFE`}}>
 
   PFE
 
@@ -68,7 +70,7 @@ const DocUni = ({ addToCart, shopItems,user }) => {
           {/* if hamro cart ma kunai pani item xaina bhane no diplay */}
 
           <div className='shop-details'>
-              <DocUniCard addToCart={addToCart} shopItems={shopItems} />
+              <DocUniTypeCard addToCart={addToCart} shopItems={shopItems} />
 
             </div>
             </div>
@@ -79,4 +81,4 @@ const DocUni = ({ addToCart, shopItems,user }) => {
     </>
   )
 }
-export default DocUni
+export default DocUniType

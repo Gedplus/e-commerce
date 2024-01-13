@@ -567,6 +567,13 @@ ul.horizontal-list li {
 }
 
 @media (max-width: 768px) {
+  ul.horizontal-list li {
+    display: inline-block;
+    padding: 0 0.17rem;
+  
+    text-align: center;
+    cursor: pointer;
+  }
   .buttonType{
     width: 60px;
     height: 30px;
@@ -625,11 +632,14 @@ ul.horizontal-list li {
     height: 80px;
     margin-left: 10px;
   }
+  .css-1d6wzja-MuiButton-startIcon>*:nth-of-type(1) {
+    font-size: 12px !important;
+}
   .css-1e6y48t-MuiButtonBase-root-MuiButton-root {
-    font-size: 10px !important;
+    font-size: 9px !important;
   }
   ul.horizontal-list {
-    margin-left: -15px;
+    margin-left: 7px;
   }
   .contactMo{
     display: block;
