@@ -95,16 +95,16 @@ export const getDocType = async (id) => {
   return await axios.get(`https://api.bibintunisie.com/client/documentsType/${id}`);
 }
 export const getDocSearch = async (id) => {
-  return await axios.get(`http://localhost:5002/client/Search/${id}`);
+  return await axios.get(`https://api.bibintunisie.com/client/Search/${id}`);
 }
 export const getDocSearchAvan = async (id, mot) => {
-  return await axios.get(`http://localhost:5002/client/SearchAvan/${id}/${mot}`);
+  return await axios.get(`https://api.bibintunisie.com/client/SearchAvan/${id}/${mot}`);
 }
 export const getDocUniType = async (Type, uni) => {
-  return await axios.get(`http://localhost:5002/client/TypeUni/${uni}/${Type}`);
+  return await axios.get(`https://api.bibintunisie.com/client/TypeUni/${uni}/${Type}`);
 }
 export const getDocSearchAvanType = async (Type, uni, mot) => {
-  return await axios.get(`http://localhost:5002/client/SearchAvanTypeUni/${uni}/${Type}/${mot}`);
+  return await axios.get(`https://api.bibintunisie.com/client/SearchAvanTypeUni/${uni}/${Type}/${mot}`);
 }
 export const editDocumentDI = async (id, document) => {
   return await axios.put(`https://api.bibintunisie.com/client/documentsDI/${id}`, document)
