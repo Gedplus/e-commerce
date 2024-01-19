@@ -531,7 +531,14 @@ ul.horizontal-list li {
   height: 45px;
   font-size: 17px;
   color:hsl(0,0%,75%) ;
-  background-color: #0000a1;
+  background-color: #0000a1; 
+}
+.buttonType3{
+  width: 120px;
+  height: 45px;
+  font-size: 17px;
+  color:hsl(0,0%,75%) ;
+  background-color: #0000a1; 
 }
 .buttonType1:hover{
   width: 120px;
@@ -540,12 +547,30 @@ ul.horizontal-list li {
   color:hsl(0,0%,75%) ;
   background-color: #0000a1;
 }
+.buttonType11{
+  width: 120px;
+  height: 45px;
+  font-size: 17px;
+  color:hsl(0,0%,75%) ;
+  background-color: #0000a1;
+  border-top-right-radius: 25px;
+  border-bottom-right-radius: 25px;
+}
 .buttonType2:hover{
   width: 120px;
   height: 45px;
   font-size: 17px;
   color:hsl(0,0%,75%) ;
   background-color: #0000a1;
+}
+.buttonType22{
+  width: 120px;
+  height: 45px;
+  font-size: 17px;
+  color:hsl(0,0%,75%) ;
+  background-color: #0000a1;
+    border-top-left-radius: 25px;
+  border-bottom-left-radius: 25px;
 }
 .buttonType1{
   width: 120px;
@@ -564,6 +589,54 @@ ul.horizontal-list li {
   background-color: hsl(0,0%,75%);
   border-top-left-radius: 25px;
   border-bottom-left-radius: 25px;
+}
+.pagination {
+  justify-content: center;
+  display: flex;
+}
+
+ul.pagination {
+  list-style: none;
+  padding: 0;
+}
+
+ul.pagination li {
+  display: inline-block;
+  width: 30px;
+  border: 1px solid #e2e2e2;
+  display: flex;
+  justify-content: center;
+  font-size: 25px;
+}
+
+ul.pagination li a {
+  text-decoration: none;
+  color: #337ab7;
+  font-size: 20px;
+}
+
+ul.pagination li.active a {
+  color: white;
+}
+ul.pagination li.active {
+  background-color: #337ab7;
+}
+
+ul.pagination li a:hover,
+ul.pagination li a.active {
+  color: blue;
+}
+
+.page-selection {
+  width: 48px;
+  height: 30px;
+  color: #337ab7;
+}
+
+.pagination-wrapper {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 10px;
 }
 
 @media (max-width: 768px) {
@@ -588,6 +661,7 @@ ul.horizontal-list li {
     color:hsl(0,0%,75%) ;
     background-color: #0000a1;
   }
+
   .buttonType1:hover{
     width: 60px;
     height: 30px;

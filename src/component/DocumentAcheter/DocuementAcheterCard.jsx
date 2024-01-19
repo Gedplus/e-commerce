@@ -60,7 +60,7 @@ useEffect(() => {
         <Avatar alt="utile" src="./images/util.png"   sx={{ width: 35, height: 35 }}  onClick={ () => handleFormSubmitU(shopItem._id, {utile: shopItem.utile + 1} )} />
 </Badge>
 <Badge badgeContent={shopItem.excellent + count} color="primary" style={{marginTop:"5px"}}>
-        <Avatar alt="excellent" src="./images/ex.png"  sx={{ width: 35, height: 35 }}  onClick={ () => handleFormSubmitE(shopItem._id, {excellent: shopItem.excellent + 1} )} />
+         <Avatar alt="excellent" src="./images/ex.png"  sx={{ width: 35, height: 35 }}  onClick={ () => handleFormSubmitE(shopItem._id, {excellent: shopItem.excellent + 1} )} />
 </Badge>
 <Badge badgeContent={shopItem.pasvraiment + count} color="primary" style={{marginTop:"5px"}}>
         <Avatar alt="pas vraiment" src="./images/sm.png"  sx={{ width: 35, height: 35 }}  onClick={ () => handleFormSubmitP(shopItem._id, {pasvraiment: shopItem.pasvraiment + 1} )} />

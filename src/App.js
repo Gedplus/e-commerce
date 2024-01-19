@@ -145,7 +145,7 @@ useEffect(() => {
   <Signup productItems={productItems} addToCart={addToCart} shopItems={shopItems}/>
     </Route>
     <Route path='/' exact>
-  <Pages productItems={productItems} addToCart={addToCart} shopItems={shopItems}/>
+  <Pages productItems={productItems} addToCart={addToCart} shopItems={shopItems} user={data || {}}/>
     </Route>
     <Route path='/cart' exact>
   <Cart CartItem={items} addToCart={addToCart}  decreaseQty={decreaseQty} user={data || {}}  />
@@ -157,7 +157,7 @@ useEffect(() => {
   <Contact CartItem={items} addToCart={addToCart}  decreaseQty={decreaseQty}/>
     </Route>
     <Route path='/documents' exact>
-  <Documents productItems={productItems} addToCart={addToCart} shopItems={shopItems}/>
+  <Documents productItems={productItems} addToCart={addToCart} shopItems={shopItems} user={data || {}}/>
     </Route>
     <Route path='/MonCompte' exact>
   <MonCompte   user={data || {}} />

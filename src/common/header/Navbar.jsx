@@ -1,6 +1,6 @@
 import React, { useState } from "react"
 import { Link } from "react-router-dom"
-
+import school from "../../image/school.png"
 const Navbar = (user) => {
   // Toogle Menu
   const [MobileMenu, setMobileMenu] = useState(false)
@@ -9,8 +9,8 @@ const Navbar = (user) => {
       <header className='header2'>
         <div className='container d_flex'>
           <div className='catgrories catgroriesMobile d_flex'>
-            <span class='fas fa-border-all'></span>
-      
+  
+       <img src={school} alt='' style={{width:"30px", height:"30px", marginTop:"7px", marginLeft:"-7px", marginRight:"7px"}} />
             <h4>
            Liste des universités <i className='fa fa-chevron-down'></i>
             </h4>

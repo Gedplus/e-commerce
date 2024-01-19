@@ -10,7 +10,7 @@ import ShopCart from '../shop/ShopCart'
 import { useHistory } from 'react-router-dom'; 
 import Categories from './categorie'
 import { useGetDocumentQuery } from '../../state/api'
-const Documents = ({ addToCart, shopItems }) => {
+const Documents = ({ addToCart, shopItems ,user}) => {
 
   return (
     <>
@@ -29,7 +29,7 @@ const Documents = ({ addToCart, shopItems }) => {
 
 </button>
     
-    
+     
 </li>
          <li>   <button  role="button"class="buttonType" onClick={() => {window.location.href=`/docType/Mémoire`}}>
   Mémoire
@@ -48,7 +48,7 @@ const Documents = ({ addToCart, shopItems }) => {
          <li>  <button class="buttonType1" role="button" onClick={() => {window.location.href=`/docType/Ouvrage`}}>
 
   Ouvrage
-
+ 
 </button>  
    </li>
 </ul>
@@ -60,7 +60,7 @@ const Documents = ({ addToCart, shopItems }) => {
           {/* if hamro cart ma kunai pani item xaina bhane no diplay */}
 
           <div className='shop-details'>
-              <ShopCart addToCart={addToCart} shopItems={shopItems} />
+              <ShopCart addToCart={addToCart} shopItems={shopItems} user={user || {}} />
 
             </div>
             </div>

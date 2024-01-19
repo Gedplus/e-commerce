@@ -3,7 +3,7 @@ import React from 'react'
 
 
 
-
+import {  useParams } from 'react-router-dom';
 
 import Shop from '../shop/Shop' 
 
@@ -14,6 +14,8 @@ import Categories from '../document/categorie'
 import DocTypeCard from './DocTypeCard'
 const DocType = ({ addToCart, shopItems,user }) => {
     const { data, isLoading } = useGetDocumentQuery();
+    const { id } = useParams();
+    console.log(id)
   return (
     <>
        <section className='shop1 background '>
@@ -24,29 +26,29 @@ const DocType = ({ addToCart, shopItems,user }) => {
           <ul class="horizontal-list  " >
   <li>  
     
-  <button class="buttonType2" role="button" onClick={() => {window.location.href=`/docType/PFE`}}>
+  <button className={`${id === "PFE" ?"buttonType22":"buttonType2"}`} role="button" onClick={() => {window.location.href=`/docType/PFE`}}>
 
   PFE
 
-</button>
+</button> 
     
     
 </li>
-         <li>   <button  role="button"class="buttonType" onClick={() => {window.location.href=`/docType/Mémoire`}}>
+         <li>   <button  role="button"className={`${id === "Mémoire" ?"buttonType3":"buttonType"}`} onClick={() => {window.location.href=`/docType/Mémoire`}}>
   Mémoire
 </button>  </li>
-         <li>   <button class="buttonType" role="button" onClick={() => {window.location.href=`/docType/Thése`}}>
+         <li>   <button className={id == "Thése" ?"buttonType3":"buttonType"}  role="button" onClick={() => {window.location.href=`/docType/Thése`}}>
 
   Thése
 
 </button>
       </li>
-<li>   <button class="buttonType" role="button" onClick={() => {window.location.href=`/docType/Article`}}>
+<li>   <button className={id == "Article" ?"buttonType3":"buttonType"} role="button" onClick={() => {window.location.href=`/docType/Article`}}>
  
   Article
 
 </button>  </li>
-         <li>  <button class="buttonType1" role="button" onClick={() => {window.location.href=`/docType/Ouvrage`}}>
+         <li>  <button className={id == "Ouvrage" ?"buttonType11":"buttonType1"} role="button" onClick={() => {window.location.href=`/docType/Ouvrage`}}>
 
   Ouvrage
 
@@ -58,7 +60,7 @@ const DocType = ({ addToCart, shopItems,user }) => {
           {/* if hamro cart ma kunai pani item xaina bhane no diplay */}
 
           <div className='shop-details'>
-              <DocTypeCard addToCart={addToCart} shopItems={shopItems} />
+              <DocTypeCard addToCart={addToCart} shopItems={shopItems} user={user || {}} />
 
             </div>
             </div>

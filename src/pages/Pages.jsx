@@ -8,14 +8,14 @@ import Shop from '../component/shop/Shop'
 import TopCate from '../component/top/TopCate'
 import Wrapper from '../component/wrapper/Wrapper'
 
-const Pages = ({productItems, addToCart,CartItem,shopItems}) => {
+const Pages = ({productItems, addToCart,CartItem,shopItems ,user}) => {
   return (
     <>
    
       <Home CartItem ={CartItem}/>
       
  
-      <Shop shopItems={shopItems} addToCart={addToCart}/>
+      <Shop shopItems={shopItems} addToCart={addToCart} user={user || {}}/>
     
 
     </>

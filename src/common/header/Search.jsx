@@ -11,6 +11,7 @@ import CategoriesS from "./Cat";
 import checked from "../../image/checked.png"
 import { useHistory } from 'react-router-dom'; 
 import logo1 from "../../image/LOGO.jpeg"
+import school from "../../image/school.png"
 import { useLocation } from 'react-router-dom';
 const style = {
   position: 'absolute' ,
@@ -147,7 +148,7 @@ if(path == 'recherche')
       <div className=' container c_flex ' >
         <Button  onClick={handleOpen}>
       <div className='catgrories d_flex'>
-            <span class='fas fa-border-all'></span>
+      <img src={school} alt='' style={{width:"20px", height:"20px", marginTop:"7px", marginRight:"7px"}} /> <img src={school} alt='' style={{width:"20px", height:"20px", marginTop:"7px", marginRight:"7px"}} />
       
             <h4>
            Liste des universités <i className='fa fa-chevron-down'></i>

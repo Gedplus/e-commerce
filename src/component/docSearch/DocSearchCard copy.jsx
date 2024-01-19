@@ -74,7 +74,7 @@ const handleFormSubmit = async(id,document1) => {
         src={user.image}
         class="size-avatar"
       />
-    </Stack>
+    </Stack> 
         <img src={shopItems.image} alt='' className="size-img" />   
         <div className=' d_flex btn-like-margin'>
 

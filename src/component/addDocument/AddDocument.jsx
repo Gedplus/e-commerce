@@ -32,6 +32,11 @@ const [period, setPeriod] = useState(6);
 const [value, setValue] = useState(0);
 const [image1 , setImage1] = useState("https://res.cloudinary.com/djkoevvlt/image/upload/v1703074820/jaedv92epr9q7mawdjwj.jpg")
 const history = useHistory ();
+
+
+
+
+
 function convertToBase646(e){
   console.log(e);
   var reader = new FileReader();
@@ -45,6 +50,7 @@ function convertToBase646(e){
     console.log("error: ", error);
   }}
   const options = [
+
     {
       value: 'Université de Tunis',
       label: 'Université de Tunis',
@@ -1342,11 +1348,17 @@ function valueLabelFormat(value) {
           <br/>
           <br/>
           <div class="field input-field">
-                <Cascader options={options} dropdownRender={dropdownRender} onChange={onChange} placeholder="Université dont vous avez travaillé votre document "  showSearch={true} className="uniwidth"  />
+        <Cascader options={options} onChange={onChange} className="uniwidth" placeholder="Université dont vous avez travaillé votre document "  />
+              
                     </div>
                     <div class="field input-field">
-                        <input type="text" placeholder="Année" class="input" onChange={(event) => {setAnnée(event.target.value)}} />
+                    <Typography id="non-linear-slider"  style={{fontSize:"18px"}}  gutterBottom>
+        Année de soutenance ou de publication :
+        </Typography>
+                    <input type="month" id="start" placeholder="Année" name="start"  onChange={(event) => {setAnnée(event.target.value)}} />
+                
                     </div>
+                    <br/><br/>
           {type === "PFE" && (<>
                       <br/>
                         <Box sx={{ width: 270 }}>
@@ -1743,7 +1755,7 @@ className="slider"
                         <input type="text" placeholder="Titre" class="input" onChange={(event) => {setTitre(event.target.value)}} />
                     </div>
                    <div class="field1 input-field">
-                        <textarea type="text" placeholder="Description" class="input" onChange={(event) => {setDescription(event.target.value)}} />
+                        <textarea type="text" placeholder="Sommaire ou Déscription " class="input" onChange={(event) => {setDescription(event.target.value)}} />
                     </div>
                     <Typography id="non-linear-slider"  style={{fontSize:"17px"}}  gutterBottom>
           Page de garde pour votre document (pas obligatoire) :

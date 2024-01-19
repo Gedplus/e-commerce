@@ -7,19 +7,23 @@ import icon1 from "../../image/icon1.png"
 import icon2 from "../../image/icon2.png"
 import icon3 from "../../image/icon3.png"
 import checked from "../../image/checked.png"
-import { editDocumentDE, editDocumentDI, editDocumentDU, editDocumentE, editDocumentI, editDocumentP, editDocumentU, getDocUni, useGetDocumentQuery, useGetUtilisateursQuery } from '../../state/api'
+import { addWishlist, editDocumentDE, editDocumentDI, editDocumentDU, editDocumentE, editDocumentI, editDocumentP, editDocumentU, getDocUni, useGetDocumentQuery, useGetUtilisateursQuery } from '../../state/api'
 import { Button, CardActions } from "@mui/material";
 import ThumbUpAltIcon from '@mui/icons-material/ThumbUpAlt';
 import ThumbUpOffAltIcon from '@mui/icons-material/ThumbUpOffAlt';
-const DocUniCard = ({ shopItems, addToCart }) => {
+import Pagination from "../shop/pagination";
+const DocUniCard = ({ shopItems, addToCart  , user }) => {
   
   const userss = useGetUtilisateursQuery();
   const { id } = useParams();
-  console.log("id",id)
+  console.log("idsahar",id)
   const users =userss.data
   const [count, setCount] = useState(0);
   const [doc, setDoc] = useState([]);
   const [isExpanded, setIsExpanded] = useState([]);
+  const [likes1, setLikes1] = useState([]);
+  const wishlist = user.wishlist
+const idu = user._id
   const handleFormSubmitD= async(id,document1) => {
     if(isExpanded.includes(id) ) { 
         setIsExpanded((prevState) =>
@@ -39,8 +43,15 @@ console.log(response.data)
   }, []);
   const [likes, setLikes] = useState([]);
  
+  useEffect(() => {
+    const loadUserDetails = async() => {
+      if(user.wishlist !== undefined )
+    {  setLikes(wishlist)}
 
 
+    }
+    loadUserDetails();
+  }, [wishlist]);
   const handleFormSubmit = async(id,document1) => {
     console.log("id", id)
         if(likes.includes(id) ) {
@@ -49,17 +60,30 @@ console.log(response.data)
     
           setLikes((prevState) =>
           prevState.filter((prevItem) => prevItem !== id))
-          await editDocumentDI(id, document1 );
+           editDocumentDI(id, document1 );
+          addWishlist(id, idu)
         }else{
-        setLikes(likes.concat(id))
-        await editDocumentI(id, document1 );}
+          setLikes(likes.concat(id))
+          setLikes1(likes1.concat(id))
+   editDocumentI(id, document1 );
+   addWishlist(id, idu)
+  }
     
-        
+  
       };
-            
+      const [currentPage, setCurrentPage] = useState(1);
+      const [recordsPerPage] = useState(10);
+      const indexOfLastRecord = currentPage * recordsPerPage;
+      const indexOfFirstRecord = indexOfLastRecord - recordsPerPage;
+    
+      const currentRecords = doc.slice(indexOfFirstRecord, 
+        indexOfLastRecord);
+        const nPages = Math.ceil(doc.length / recordsPerPage)
+  
+             
   return (
     <>    {doc.length ===  0  ? (<>Il n'y a aucun résultat pour votre recherche</>) :   
-   (<> {doc === undefined  ? (<>Loading....</>) : (<>{doc.map((shopItems, index) => { 
+   (<> {doc === undefined  ? (<>Loading....</>) : (<>{currentRecords.map((shopItems, index) => { 
         return (
         <> 
         {users === undefined  ? (<></>) : (<> {shopItems.accepte === true && (<>
@@ -80,15 +104,16 @@ console.log(response.data)
       />
     </Stack>
         <img src={shopItems.image} alt='' className="size-img" />   
+        {wishlist!== undefined ?(
         <div className=' d_flex btn-like-margin'>
 
-        <Stack direction="row" spacing={2} >
-      <Button variant="text" startIcon={<>{likes.includes(shopItems._id) ? <ThumbUpAltIcon/> :<ThumbUpOffAltIcon />}</>}   onClick={ () => handleFormSubmit(shopItems._id, {interessant: shopItems.interessant + 1} )}>
-     J'aime&nbsp;{likes.includes(shopItems._id) ? shopItems.interessant + 1  : shopItems.interessant }
+        <Stack direction="row"  >
+      <Button variant="text"  startIcon={<>{likes.includes(shopItems._id) ? <ThumbUpAltIcon/> :<ThumbUpOffAltIcon />}</>}  onClick={ () => handleFormSubmit(shopItems._id, {interessant: shopItems.interessant + 1} )}>
+     J'aime&nbsp;{likes1.includes(shopItems._id) ? shopItems.interessant + 1  : shopItems.interessant } 
       </Button>
   
     </Stack>
-</div>
+</div>):(<> </>)}
 <div className='product-like'>{user.approved === true ?(<img  style={{height:"25px", width:"25px"}} className="Aprover" alt="checked" src={checked} />):(<></>)}
               
               
@@ -147,16 +172,16 @@ class="size-avatar"
       />
     </Stack>
         <img src={shopItems.image} alt=''  className="size-img"/>   
+        {wishlist!== undefined ?(
         <div className=' d_flex btn-like-margin'>
-   
-       
-        <Stack direction="row" spacing={2} >
-      <Button variant="text" startIcon={<>{likes.includes(shopItems._id) ? <ThumbUpAltIcon/> :<ThumbUpOffAltIcon />}</>}   onClick={ () => handleFormSubmit(shopItems._id, {interessant: shopItems.interessant + 1} )}>
-     J'aime&nbsp;{likes.includes(shopItems._id) ? shopItems.interessant + 1  : shopItems.interessant }
+
+        <Stack direction="row"  >
+      <Button variant="text"  startIcon={<>{likes.includes(shopItems._id) ? <ThumbUpAltIcon/> :<ThumbUpOffAltIcon />}</>}  onClick={ () => handleFormSubmit(shopItems._id, {interessant: shopItems.interessant + 1} )}>
+     J'aime&nbsp;{likes1.includes(shopItems._id) ? shopItems.interessant + 1  : shopItems.interessant } 
       </Button>
   
     </Stack>
-</div>
+</div>):(<> </>)}
 <div className='product-like'>{user.approved === true ?(<img  style={{height:"25px", width:"25px"}} alt="checked" src={checked} />):(<></>)}
               
               
@@ -256,7 +281,11 @@ class="size-avatar"
          </>
         )
       })} </>)}</>)}
-     
+             <Pagination
+    nPages={nPages}
+    currentPage={currentPage}
+    setCurrentPage={setCurrentPage}
+/> 
     </>
   )
 }

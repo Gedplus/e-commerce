@@ -6,7 +6,7 @@ import React from 'react'
 
 
 import Shop from '../shop/Shop' 
-
+import {  useParams } from 'react-router-dom';
 
 import { useGetDocumentQuery } from '../../state/api'
 import Categories from '../document/categorie'
@@ -28,7 +28,7 @@ const DocSearch = ({ addToCart, shopItems,user }) => {
   <button class="buttonType2" role="button" onClick={() => {window.location.href=`/docType/PFE`}}>
 
   PFE
-
+  
 </button>
     
     
@@ -59,7 +59,7 @@ const DocSearch = ({ addToCart, shopItems,user }) => {
           {/* if hamro cart ma kunai pani item xaina bhane no diplay */}
 
           <div className='shop-details'>
-              <DocSearchCard  addToCart={addToCart} shopItems={shopItems} />
+              <DocSearchCard  addToCart={addToCart} shopItems={shopItems} user={user || {}} />
 
             </div>
             </div>

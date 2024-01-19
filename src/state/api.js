@@ -116,7 +116,7 @@ export const editDocumentDE = async (id, document) => {
   return await axios.put(`https://api.bibintunisie.com/client/documentsDE/${id}`, document)
 }
 export const getSearch= async (id) => {
-  return await axios.get(`http://localhost:5002/client/Search/${id}`);
+  return await axios.get(`https://api.bibintunisie.com/client/Search/${id}`);
 }
 export const signup= async (user) => {
   try{
@@ -136,4 +136,8 @@ export const ResetPassword= async (password,token ) => {
 }
 export const editUserProfile = async (id, user) => {
   return await axios.put(`https://api.bibintunisie.com/client/${id}`, user)
+}
+export const addWishlist = async ( id ,idu) => {
+  console.log(idu)
+  return await axios.put(`https://api.bibintunisie.com/client/wishlist/${idu}`,{prodId: id});
 }

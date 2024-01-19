@@ -38,7 +38,7 @@ const DocUni = ({ addToCart, shopItems,user }) => {
 
   PFE
 
-</button>
+</button> 
     
     
 </li>
@@ -68,7 +68,7 @@ const DocUni = ({ addToCart, shopItems,user }) => {
           {/* if hamro cart ma kunai pani item xaina bhane no diplay */}
 
           <div className='shop-details'>
-              <DocUniCard addToCart={addToCart} shopItems={shopItems} />
+              <DocUniCard addToCart={addToCart} shopItems={shopItems}  user={user || {}} />
 
             </div>
             </div>

@@ -5,7 +5,8 @@ import "./Style.css"
 import ShopCart1 from "./ShopCart1"
 import { Link } from "react-router-dom/cjs/react-router-dom"
 
-const Shop = ({ addToCart, shopItems }) => {
+const Shop = ({ addToCart, shopItems , user }) => {
+
   const data1 = [];
   for (let i = 0; i < shopItems.length; i++) {
     if(i <20)
@@ -37,7 +38,7 @@ console.log(data1, "sata")
           {/* if hamro cart ma kunai pani item xaina bhane no diplay */}
 
           <div className='shop-details'>
-              <ShopCart1 addToCart={addToCart} shopItems={shopItems} />
+              <ShopCart1 addToCart={addToCart} shopItems={shopItems} user={user || {}} />
 
             </div>
             </div>
@@ -46,12 +47,7 @@ console.log(data1, "sata")
               <div className='heading-left row  f_flex'>
                 <h2></h2>
               </div>
-            <div className='heading-right row '>
-            <Link       onClick={() => {
-              window.location.href = "/documents";
-            }}   style={{ textDecoration: 'none' }} >  <span>Voir tout</span>
-                 <i className='fas fa-caret-right'></i>
-                 </Link> </div>
+         
             </div>
           </div>
         </div>

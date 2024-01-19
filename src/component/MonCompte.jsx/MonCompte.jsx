@@ -154,7 +154,7 @@ const MonCompte = ({ CartItem,user }) => {
         <Link onClick={handleClose} >
             <div className='box f_flex'>
  
-              <span>Déconnection</span>
+              <span>Déconnexion</span>
             
             </div></Link>
       </div>
@@ -280,14 +280,14 @@ value={selected}
      <Link to="/Profile" >
             <div className='box f_flex' >
  
-              <span>Information professionnel</span>
+              <span>Informations personnelles</span>
             
             </div></Link>
 
         <Link onClick={handleClose} >
             <div className='box f_flex'>
  
-              <span>Déconnection</span>
+              <span>Déconnexion</span>
             
             </div></Link>
       </div>

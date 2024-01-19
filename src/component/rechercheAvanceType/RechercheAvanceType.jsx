@@ -37,7 +37,7 @@ const DocAvanceType = ({ addToCart, shopItems,user }) => {
           <Categories  />
 
           <div className='contentWidth'>
-          <header class="h1">RECHERCHE AVANCÉE DANS "{id}" </header>
+          <header class="h1">RECHERCHE AVANCÉE DANS "{uni}" </header>
           <form  className="searchwidth1" onSubmit={() =>       history.push (`/rechercheAvancée/${id}/${uni}/${mot1}`)}>
           <div className='search-box1 f_flex ' >
        
@@ -47,29 +47,29 @@ const DocAvanceType = ({ addToCart, shopItems,user }) => {
           <ul class="horizontal-list  " >
   <li>  
     
-  <button class="buttonType2" role="button" onClick={() => {window.location.href=`/rechercheAvancée/PFE/${uni}/${mot}`}}>
+  <button className={`${id === "PFE" ?"buttonType22":"buttonType2"}`} role="button" onClick={() => {window.location.href=`/rechercheAvancée/PFE/${uni}/${mot}`}}>
 
   PFE
 
 </button>
     
     
-</li>
-         <li>   <button  role="button"class="buttonType" onClick={() => {window.location.href=`/rechercheAvancée/Mémoire/${uni}/${mot}`}}>
+</li> 
+         <li>   <button  role="button" className={`${id === "Mémoire" ?"buttonType3":"buttonType"}`}  onClick={() => {window.location.href=`/rechercheAvancée/Mémoire/${uni}/${mot}`}}>
   Mémoire
 </button>  </li>
-         <li>   <button class="buttonType" role="button" onClick={() => {window.location.href=`/rechercheAvancée/Thése/${uni}/${mot}`}}>
+         <li>   <button className={id == "Thése" ?"buttonType3":"buttonType"} role="button" onClick={() => {window.location.href=`/rechercheAvancée/Thése/${uni}/${mot}`}}>
 
   Thése
 
 </button>
       </li>
-<li>   <button class="buttonType" role="button" onClick={() => {window.location.href=`/rechercheAvancée/Article/${uni}/${mot}`}}>
+<li>   <button className={id == "Article" ?"buttonType3":"buttonType"} role="button" onClick={() => {window.location.href=`/rechercheAvancée/Article/${uni}/${mot}`}}>
  
   Article
 
 </button>  </li>
-         <li>  <button class="buttonType1" role="button" onClick={() => {window.location.href=`/rechercheAvancée/Ouvrage/${uni}/${mot}`}}>
+         <li>  <button className={id == "Ouvrage" ?"buttonType11":"buttonType1"} role="button" onClick={() => {window.location.href=`/rechercheAvancée/Ouvrage/${uni}/${mot}`}}>
 
   Ouvrage
 
@@ -81,7 +81,7 @@ const DocAvanceType = ({ addToCart, shopItems,user }) => {
           {/* if hamro cart ma kunai pani item xaina bhane no diplay */}
 
           <div className='shop-details'>
-              <DocAvanTypeCard addToCart={addToCart} shopItems={shopItems} />
+              <DocAvanTypeCard addToCart={addToCart} shopItems={shopItems}   user={user || {}}  />
 
             </div>
             </div>

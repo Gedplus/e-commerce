@@ -50,7 +50,7 @@ const DocAvan = ({ addToCart, shopItems,user }) => {
   PFE
 
 </button>
-    
+     
     
 </li>
          <li>   <button  role="button"class="buttonType" onClick={() => {window.location.href=`/rechercheAvancée/Mémoire/${id}/${mot}`}}>
@@ -79,7 +79,7 @@ const DocAvan = ({ addToCart, shopItems,user }) => {
           {/* if hamro cart ma kunai pani item xaina bhane no diplay */}
 
           <div className='shop-details'>
-              <DocAvanCard addToCart={addToCart} shopItems={shopItems} />
+              <DocAvanCard addToCart={addToCart} shopItems={shopItems}  user={user || {}} />
 
             </div>
             </div>
