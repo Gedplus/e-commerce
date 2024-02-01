@@ -1293,7 +1293,7 @@ function valueLabelFormat(value) {
           <br/>
           <br/>
           <div class="field input-field">
-        <Cascader options={options} onChange={onChange} className="uniwidth" style={{height:"50px"}} placeholder="Université dont vous avez travaillé votre document "  />
+        <Cascader options={options} onChange={onChange} className="uniwidth" style={{height:"50px  !important;"}} placeholder="Université dont vous avez travaillé votre document "  />
            
                     </div>
                     {prive == "setprive" && (<><div class="field input-field" >
