@@ -26,7 +26,7 @@ const MesDocuments = ({ addToCart, shopItems,user }) => {
            </div>
            <div className='heading-right row '>
              <span></span>
-              <i className='fas fa-caret-right'></i>
+         
            </div> 
          </div>
          <section className='shop-items'>

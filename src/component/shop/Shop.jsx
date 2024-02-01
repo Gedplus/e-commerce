@@ -29,9 +29,7 @@ console.log(data1, "sata")
                 <h2>Catalogue de la bibliothèque</h2>
               </div>
             <div className='heading-right row '>
-            <Link  to="/documents" style={{ textDecoration: 'none' }} >  <span>Voir tout</span>
-                 <i className='fas fa-caret-right'></i>
-                 </Link> </div>
+         </div>
             </div>
             <section className='shop-items'> 
         <div className=' d_flex'>

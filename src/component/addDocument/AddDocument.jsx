@@ -9,6 +9,9 @@ import Select from "@mui/material/Select";
 import { useHistory } from 'react-router-dom';
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css"; 
+import ReactQuill from "react-quill";
+
+import "react-quill/dist/quill.snow.css";
 import axios from "axios";
 import { Alert, Box, Button, Card, CardMedia, CircularProgress, MenuItem, TextField, Typography } from "@mui/material";
 import InputLabel from "@mui/material/InputLabel";
@@ -26,6 +29,7 @@ const [universite , setUniversite] = useState("")
 const [file, setFile] = useState("");
 const [Annee , setAnnée] = useState("")
 const [description, setDescription] = useState("");
+const [prive, setprive] = useState("");
 var prixt = 0
 const [Titre, setTitre] = useState("");
 const [period, setPeriod] = useState(6);
@@ -1098,11 +1102,12 @@ function convertToBase646(e){
       
       },
     ],},
-    { value: 'Autre université',
-    label: 'Autre université',
+    { value: 'Université étrangère ou privée',
+    label: 'Université étrangère ou privée',
     children: [
       {
-      
+        value: 'Université étrangère ou privée',
+        label: 'Université étrangère ou privée',
       
       },
  
@@ -1113,6 +1118,9 @@ function convertToBase646(e){
       function onChange(value) {
    
         setUniversite(value[1])
+        if(value[1] ==  "Université étrangère ou privée") {
+          setprive("setprive")
+        }
       }
    
 
@@ -1203,72 +1211,9 @@ function valueLabelFormat(value) {
     }}
 
        
-        function calculateValue(value) {
-          var ss=  value.toString()
-         const str2 = '00';
-         const str = '0';
-      
-        if (ss.length == 3)
-        {ss= ss.concat('', str2)}
-        if (ss.length == 4)
-        {ss= ss.concat('', str)}
-
-          return  ss;
-        }
+    
         
-        
-        function calculateValue1(value) {
-          var ss = 0
-          if( value == 0 ){
-            ss= 0
-          } else {
-            ss=  value + 0.90
-          }
   
-          return  ss;
-         
-        }
-        function calculateValue2(value) {
-          var ss = 0
-          if( value == 0 ){
-            ss= 0
-          } else {
-            ss=  value + 1.80
-          }
-       
-          return  ss;
-        
-        }
-        function calculateValue3(value) {
-          var ss = 0
-          if( value == 0 ){
-            ss= 0
-          } else {
-            ss=  value + 2.80
-          }
-  
-          return  ss;
-        }
-        function calculateValue4(value) {
-          var ss = 0
-          if( value == 0 ){
-            ss= 0
-          } else {
-            ss=  value + 5.80
-          }
-       
-          return  ss;
-        }
-        function calculateValue5(value) {
-          var ss = 0
-          if( value == 0 ){
-            ss= 0
-          } else {
-            ss=  value + 9.80
-          }
-      
-          return  ss;
-        }
         const handleChange2 = (event) => {
             setType(event.target.value);
           };
@@ -1348,9 +1293,13 @@ function valueLabelFormat(value) {
           <br/>
           <br/>
           <div class="field input-field">
-        <Cascader options={options} onChange={onChange} className="uniwidth" placeholder="Université dont vous avez travaillé votre document "  />
-              
+        <Cascader options={options} onChange={onChange} className="uniwidth" style={{height:"50px"}} placeholder="Université dont vous avez travaillé votre document "  />
+           
                     </div>
+                    {prive == "setprive" && (<><div class="field input-field" >
+                        <input type="text" placeholder="Écrivez le nom de votre université étrangére ou privée" class="input" onChange={(event) => {setUniversite(event.target.value)}} />
+                    </div></>) }
+                    {console.log(universite,"ssssssssss")}
                     <div class="field input-field">
                     <Typography id="non-linear-slider"  style={{fontSize:"18px"}}  gutterBottom>
         Année de soutenance ou de publication :
@@ -1754,11 +1703,16 @@ className="slider"
 <div class="field input-field">
                         <input type="text" placeholder="Titre" class="input" onChange={(event) => {setTitre(event.target.value)}} />
                     </div>
-                   <div class="field1 input-field">
-                        <textarea type="text" placeholder="Sommaire ou Déscription " class="input" onChange={(event) => {setDescription(event.target.value)}} />
-                    </div>
+      <br/>
+                    
+                        <ReactQuill
+              theme="snow"
+          
+              placeholder="Sommaire ou description " class="input" value={description} onChange={setDescription} 
+            />
+      <br/>
                     <Typography id="non-linear-slider"  style={{fontSize:"17px"}}  gutterBottom>
-          Page de garde pour votre document (pas obligatoire) :
+          Page de garde pour votre document (pas obligatoire) :   
         </Typography>
                     <div class="field input-field">
                     <input accept="image/*"

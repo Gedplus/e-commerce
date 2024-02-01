@@ -228,7 +228,7 @@ a.goolge span{
   }
   .searchwidth1{
     margin-top: 10px ;
-    margin-left: 160px;
+    margin-left: 150px;
     margin-bottom: 20px;
     width: 70%;
   
@@ -252,6 +252,9 @@ a.goolge span{
 .addProgress{
     margin-left: 440px;
 }
+.addProgress1{
+    margin-left: 490px;
+}
 @media (max-width: 768px) {
     .h1 {
         font-size: 15px;
@@ -261,10 +264,13 @@ a.goolge span{
     }
     .searchwidth1{
         margin-top: 10px ;
-        margin-left: 0px;
+        margin-left: 10px;
         margin-bottom: 20px;
         width: 95%;
     
+    }
+    .addProgress1{
+        margin-left: 175px;
     }
     .addProgress{
         margin-left: 120px;

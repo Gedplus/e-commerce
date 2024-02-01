@@ -148,7 +148,7 @@ if(path == 'recherche')
       <div className=' container c_flex ' >
         <Button  onClick={handleOpen}>
       <div className='catgrories d_flex'>
-      <img src={school} alt='' style={{width:"20px", height:"20px", marginTop:"7px", marginRight:"7px"}} /> <img src={school} alt='' style={{width:"20px", height:"20px", marginTop:"7px", marginRight:"7px"}} />
+      <img src={school} alt='' style={{width:"20px", height:"20px", marginTop:"7px", marginRight:"7px"}} /> 
       
             <h4>
            Liste des universités <i className='fa fa-chevron-down'></i>

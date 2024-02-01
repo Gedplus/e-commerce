@@ -898,7 +898,7 @@ const Categories = () => {
     },
     {
       cateImg:  school,
-      cateName: "Autre université",
+      cateName: "Université étrangère ou privée",
       sousCat :[ ]
     },
   ]
@@ -940,8 +940,10 @@ const Categories = () => {
             <div className='box f_flex' key={index}>
               <img src={school}  style={{width:"30px", height:"30px"}} alt=''  />
              <span>{value.cateName}</span> 
+
+             
              <i className='fa fa-chevron-down'></i>
-             <div className='sub-menu-1'>
+             <div className='sub-menu-1'> 
              {value.sousCat.map((value, index) => {
           return (
             <Link onClick={() => {window.location.href=`/doc/${value.cateName}`}}>

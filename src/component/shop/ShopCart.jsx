@@ -11,17 +11,37 @@ import DeleteIcon from '@mui/icons-material/Delete';
 import ThumbUpAltIcon from '@mui/icons-material/ThumbUpAlt';
 import Stack from '@mui/material/Stack';
 import { addWishlist, editDocumentDE, editDocumentDI, editDocumentDU, editDocumentE, editDocumentI, editDocumentP, editDocumentU, useGetDocumentQuery, useGetUtilisateursQuery } from '../../state/api'
-import { Button, CardActions } from "@mui/material";
+import { Button, CardActions, CircularProgress } from "@mui/material";
+import Pagination from "./pagination";
 const ShopCart = ({ shopItems, addToCart , user }) => {
   const { data } = useGetDocumentQuery();
   const userss = useGetUtilisateursQuery();
   const users =userss.data
-
+  const [currentPage, setCurrentPage] = useState(1);
+  const [recordsPerPage] = useState(10);
   const [likes, setLikes] = useState([]);
   const [likes1, setLikes1] = useState([]);
+ 
+  const [moin, setmoin] = useState([]);
+  const name = user.name
   const wishlist = user.wishlist
 const idu = user._id
 console.log(wishlist)
+const data1 = [];
+
+ 
+
+   for (let i = 0; i < data?.length; i++) {
+    if(data[i]?.accepte == true)
+ {   data1.push(
+    data[i]
+
+    )}}    
+
+
+  
+
+console.log(data1,"dd")
 useEffect(() => {
   const loadUserDetails = async() => {
     if(user.wishlist !== undefined )
@@ -42,33 +62,79 @@ else {
     setIsExpanded(isExpanded.concat(id))
 }}
 
-const handleFormSubmit = async(id,document1) => {
-  console.log("id", id)
-      if(likes.includes(id) ) {
-       
-  
-  
-        setLikes((prevState) =>
-        prevState.filter((prevItem) => prevItem !== id))
-        
-         editDocumentDI(id, document1 );
-        addWishlist(id, idu)
-      }else{
-        setLikes(likes.concat(id))
-        setLikes1(likes1.concat(id))
- editDocumentI(id, document1 );
- addWishlist(id, idu)}
-  
+const indexOfLastRecord = currentPage * recordsPerPage;
+const indexOfFirstRecord = indexOfLastRecord - recordsPerPage;
 
-    };
+const currentRecords = data1.slice(indexOfFirstRecord, 
+  indexOfLastRecord);
+  const nPages = Math.ceil(data1.length / recordsPerPage)
+  const handleFormSubmit = async(id,document1) => {
 
+    if(document1.wishlist?.some(usere => usere._id.includes(idu)) && likes.includes(id)  ) {
+      console.log("condi 1")
+
+     setmoin(moin.concat(id))
+
+
+      setLikes((prevState) =>
+      prevState.filter((prevItem) => prevItem !== id))
+      addWishlist(id, idu)
+     } else   if(document1.wishlist?.some(usere => usere._id.includes(idu)) && !likes.includes(id)  && moin.includes(id) ) {
+      setmoin((prevState) =>
+      prevState.filter((prevItem) => prevItem !== id))
+
+setLikes(likes.concat(id))
+       addWishlist(id, idu)
+     }else   if(document1.wishlist?.some(usere => usere._id.includes(idu)) && !likes.includes(id)  && !moin.includes(id) ) {
+      setmoin(moin.concat(id))
+      console.log("condi 2")
+
+
+       addWishlist(id, idu)
+     }
+     
+     
+     
+     else   if(!document1.wishlist?.some(usere => usere._id.includes(idu)) && likes.includes(id)  ) {
+      setmoin(moin.concat(id))
+
+      console.log("condi 3")
+
+            setLikes((prevState) =>
+            prevState.filter((prevItem) => prevItem !== id))
+            addWishlist(id, idu)
+     }
+    
+    
+    else{
+      setLikes(likes.concat(id))
+      console.log("condi 4")
+
+addWishlist(id, idu)
+}
+
+
+  };
+    function formatDate(date) {
+      const options = {  month: 'short', year: 'numeric' };
+      const formattedDate = new Date(date).toLocaleDateString('en-US', options);
+    
+      // Split the formatted date into day, month, and year parts
+      const [month,  year] = formattedDate.split(' ');
+    
+      // Convert the month abbreviation to uppercase
+    
+    
+      // Return the formatted date with uppercase month abbreviation and desired format
+      return ` ${month} ${year}`;
+    }
 
   return (
     <>    {console.log(data)}
-    {data === undefined  ? (<>Loading....</>) : (<>{data.map((shopItems, index) => { 
+    {data === undefined || users === undefined ? (<><CircularProgress className="addProgress1" /></>) : (<>{currentRecords.map((shopItems, index) => { 
         return (
         <> 
-        {users === undefined  ? (<></>) : (<> {shopItems.accepte === true && (<>
+      {shopItems.accepte === true && (<>
         
         {users.map((user) => {return( <>    {shopItems.auteur === user._id ? ( <>
           
@@ -86,16 +152,21 @@ const handleFormSubmit = async(id,document1) => {
       />
     </Stack>
         <img src={shopItems.image} alt='' className="size-img" />   
-        {wishlist !== undefined ?(
-        <div className=' d_flex btn-like-margin'>
+        <div className=' d_flex btn-like-margin '>
 
-        <Stack direction="row"  >
-      <Button variant="text"  startIcon={<>{likes.includes(shopItems._id) ? <ThumbUpAltIcon/> :<ThumbUpOffAltIcon />}</>}  onClick={ () => handleFormSubmit(shopItems._id, {interessant: shopItems.interessant + 1} )}>
-     J'aime&nbsp;{likes1.includes(shopItems._id) ? shopItems.interessant + 1  : shopItems.interessant } 
-      </Button>
-  
-    </Stack>
-</div>):(<> </>)}
+<Stack direction="row"  >
+<Button variant="text"  startIcon={<>{(shopItems?.wishlist?.some(usere => usere._id.includes(idu)) && !moin.includes(shopItems._id) )  || likes.includes(shopItems._id)   ? <ThumbUpAltIcon/> :<ThumbUpOffAltIcon />}</>}  onClick={ () => handleFormSubmit(shopItems._id, shopItems )}>
+J'aime&nbsp; { (likes.includes(shopItems._id) && !shopItems?.wishlist?.some(usere => usere._id.includes(idu))) ? (<>{shopItems?.wishlist?.length +1  } </>):(shopItems?.wishlist?.some(usere => usere._id.includes(idu) && moin.includes(shopItems._id))) ?(<>{shopItems?.wishlist?.length -1 } </>):(shopItems?.wishlist?.some(usere => usere._id.includes(idu) && likes.includes(shopItems._id))) ?(<>{shopItems?.wishlist?.length } </>):(<>{shopItems?.wishlist?.length} </>) }
+</Button>
+
+</Stack>
+
+<div className='boxLike'> 
+{shopItems?.wishlist?.map((wish) => {return( <> {(wish?._id == idu && moin.includes(shopItems._id)) || (wish?._id == idu && likes.includes(shopItems._id))?(<></>):(<><div className='box f_flex' key={index}> <span>{wish?.name}</span></div></>)}  
+</> )})}
+{likes.includes(shopItems._id) && (<div className=' f_flex' key={index}> <span>{name}</span></div>)}
+</div>
+</div>
 <div className='product-like'>{user.approved === true ?(<img  style={{height:"25px", width:"25px"}} className="Aprover" alt="checked" src={checked}/>):(<></>)}
               
               
@@ -108,7 +179,7 @@ const handleFormSubmit = async(id,document1) => {
             {users === undefined  ? (<></>) : (<>{users.map((user) => {return( <>    {shopItems.auteur === user._id ? (     <h4 >  Auteur : {user.name} </h4> ):
             (<></>)}</> ) })}</>)}
           
-            <h4 style={{color:"grey" , fontWeight:"300"}}>  {shopItems.type} - {shopItems.Annee}</h4>
+            <h4 style={{color:"grey" , fontWeight:"300"}}>  {shopItems.type} -  {formatDate(shopItems.Annee)}</h4>
            
             <h4 style={{color:"grey" , fontWeight:"300"}}>  {shopItems.universite}</h4>
             <CardActions>       <Button
@@ -119,7 +190,7 @@ const handleFormSubmit = async(id,document1) => {
         >
        voir la description 
         </Button></CardActions>
-        {isExpanded.includes(shopItems._id) ? <p> {shopItems.description}</p> :<></>}
+        {isExpanded.includes(shopItems._id) ?<p  dangerouslySetInnerHTML={{__html:shopItems.description}}></p> :<></>}
 
  
         <button class="button-82-pushable" role="button" onClick={() => addToCart({...shopItems , typeP:"document", prixF:`${shopItems.prixLecture}`, typeF:"Lecture"})}>
@@ -154,16 +225,21 @@ class="size-avatar"
       />
     </Stack>
         <img src={shopItems.image} alt='' className="size-img"/>   
-        {wishlist !== undefined ?(
-        <div className=' d_flex btn-like-margin'>
+        <div className=' d_flex btn-like-margin '>
 
         <Stack direction="row"  >
-      <Button variant="text"  startIcon={<>{likes.includes(shopItems._id) ? <ThumbUpAltIcon/> :<ThumbUpOffAltIcon />}</>}  onClick={ () => handleFormSubmit(shopItems._id, {interessant: shopItems.interessant + 1} )}>
-     J'aime&nbsp;{likes1.includes(shopItems._id) ? shopItems.interessant + 1  : shopItems.interessant } 
+      <Button variant="text"  startIcon={<>{(shopItems?.wishlist?.some(usere => usere._id.includes(idu)) && !moin.includes(shopItems._id) )  || likes.includes(shopItems._id)   ? <ThumbUpAltIcon/> :<ThumbUpOffAltIcon />}</>}  onClick={ () => handleFormSubmit(shopItems._id, shopItems )}>
+     J'aime&nbsp; { (likes.includes(shopItems._id) && !shopItems?.wishlist?.some(usere => usere._id.includes(idu))) ? (<>{shopItems?.wishlist?.length +1  } </>):(shopItems?.wishlist?.some(usere => usere._id.includes(idu) && moin.includes(shopItems._id))) ?(<>{shopItems?.wishlist?.length -1 } </>):(shopItems?.wishlist?.some(usere => usere._id.includes(idu) && likes.includes(shopItems._id))) ?(<>{shopItems?.wishlist?.length } </>):(<>{shopItems?.wishlist?.length} </>) }
       </Button>
   
     </Stack>
-</div>):(<> </>)}
+
+      <div className='boxLike'> 
+    {shopItems?.wishlist?.map((wish) => {return( <> {(wish?._id == idu && moin.includes(shopItems._id)) || (wish?._id == idu && likes.includes(shopItems._id))?(<></>):(<><div className='box f_flex' key={index}> <span>{wish?.name}</span></div></>)}  
+</> )})}
+{likes.includes(shopItems._id) && (<div className=' f_flex' key={index}> <span>{name}</span></div>)}
+    </div>
+</div>
 <div className='product-like'>{user.approved === true ?(<img  style={{height:"25px", width:"25px"}} alt="checked" src={checked}/>):(<></>)}
               
               
@@ -176,7 +252,7 @@ class="size-avatar"
             {users === undefined  ? (<>sxxdd</>) : (<>{users.map((user) => {return( <>    {shopItems.auteur === user._id ? (     <h4 >  Auteur : {user.name} </h4> ):
             (<></>)}</> ) })}</>)}
           
-            <h4 style={{color:"grey" , fontWeight:"300"}}>  {shopItems.type} - {shopItems.Annee}</h4>
+            <h4 style={{color:"grey" , fontWeight:"300"}}>  {shopItems.type} -  {formatDate(shopItems.Annee)}</h4>
            
             <h4 style={{color:"grey" , fontWeight:"300"}}>  {shopItems.universite}  </h4>
             <CardActions>       <Button
@@ -187,7 +263,7 @@ class="size-avatar"
         >
        voir la description 
         </Button></CardActions>
-        {isExpanded.includes(shopItems._id) ? <p> {shopItems.description}</p> :<></>}
+        {isExpanded.includes(shopItems._id) ? <p  dangerouslySetInnerHTML={{__html:shopItems.description}}></p>  :<></>}
 
        
         <button class="button-82-pushable" role="button" onClick={() => addToCart({...shopItems , typeP:"document", prixF:`${shopItems.prixLecture}`,typeF:"Lecture"})}>
@@ -255,7 +331,7 @@ class="size-avatar"
         
         
         
-        } </>)}
+        } 
       
 
 
@@ -263,7 +339,11 @@ class="size-avatar"
          </>
         )
       })} </>)}
-     
+              <Pagination
+    nPages={nPages}
+    currentPage={currentPage}
+    setCurrentPage={setCurrentPage}
+/> 
     </>
   )
 }

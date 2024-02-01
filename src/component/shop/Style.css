@@ -111,6 +111,37 @@ background-color: #c6cbcf;
 .btn-like-margin{
   margin-left: 25px;
 }
+.boxLike{
+  display: none;
+
+  
+}
+
+.btn-like-margin:hover .boxLike{
+  display:block;
+  position: absolute;
+  z-index: 1 !important;
+   margin-top: 32px;
+   margin-left: 0%;
+   box-shadow: rgb(43 52 69 / 10%) 0px 4px 16px;
+   background-color: rgb(255,255,255,.5);
+   width: 15%;
+   height: auto;
+   padding: 15px 0;
+   border-radius: 5px;
+
+  
+}
+div.boxLike span {
+  margin: 5px 5px;
+  text-transform: capitalize;
+  font-size: 11px;
+  opacity: 1;
+  color: #000000;
+}
+
+
+
   .profile{
     background-size: cover;
     background-position: center;
@@ -512,3 +543,8 @@ font-weight: 500;
     width: 56px;
     height: 56px;
   }
+  @media (max-width: 768px) {
+    .shop1 .contentWidth {
+      margin-left: 0px;
+    
+  }}

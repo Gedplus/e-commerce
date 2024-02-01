@@ -895,7 +895,7 @@ const CategoriesS = () => {
     },
     {
       cateImg:  school,
-      cateName: "Autre université",
+      cateName: "Université étrangère ou privée",
       sousCat :[ ]
     },
   ]

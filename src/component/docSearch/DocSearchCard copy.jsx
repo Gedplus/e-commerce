@@ -51,7 +51,19 @@ const handleFormSubmit = async(id,document1) => {
   
       
     };
-  
+    function formatDate(date) {
+      const options = {  month: 'short', year: 'numeric' };
+      const formattedDate = new Date(date).toLocaleDateString('en-US', options);
+    
+      // Split the formatted date into day, month, and year parts
+      const [month,  year] = formattedDate.split(' ');
+    
+      // Convert the month abbreviation to uppercase
+    
+    
+      // Return the formatted date with uppercase month abbreviation and desired format
+      return ` ${month} ${year}`;
+    }
     
   return (
     <>    
@@ -97,7 +109,7 @@ const handleFormSubmit = async(id,document1) => {
             {users === undefined  ? (<>sxxdd</>) : (<>{users.map((user) => {return( <>    {shopItems.auteur === user._id ? (     <h4 >  Auteur : {user.name} </h4> ):
             (<></>)}</> ) })}</>)}
           
-            <h4 style={{color:"grey" , fontWeight:"300"}}>  {shopItems.type} - {shopItems.Annee}</h4>
+            <h4 style={{color:"grey" , fontWeight:"300"}}>  {shopItems.type} - {formatDate(shopItems.Annee)}</h4>
            
             <h4 style={{color:"grey" , fontWeight:"300"}}>  {shopItems.universite}</h4>
             <CardActions>       <Button
@@ -108,7 +120,7 @@ const handleFormSubmit = async(id,document1) => {
         >
        voir la description 
         </Button></CardActions>
-        {isExpanded.includes(shopItems._id) ? <p> {shopItems.description}</p> :<></>} 
+        {isExpanded.includes(shopItems._id) ? <p  dangerouslySetInnerHTML={{__html:shopItems.description}}></p>  :<></>} 
  
         <button class="button-82-pushable" role="button" onClick={() => addToCart({...shopItems , typeP:"document", prixF:`${shopItems.prixLecture}`, typeF:"Lecture"})}>
   <span class="button-82-shadow"></span>
@@ -163,7 +175,7 @@ class="size-avatar"
             {users === undefined  ? (<>sxxdd</>) : (<>{users.map((user) => {return( <>    {shopItems.auteur === user._id ? (     <h4 >  Auteur : {user.name} </h4> ):
             (<></>)}</> ) })}</>)}
           
-            <h4 style={{color:"grey" , fontWeight:"300"}}>  {shopItems.type} - {shopItems.Annee}</h4>
+            <h4 style={{color:"grey" , fontWeight:"300"}}>  {shopItems.type} - {formatDate(shopItems.Annee)}</h4>
            
             <h4 style={{color:"grey" , fontWeight:"300"}}>  {shopItems.universite}  </h4>
             <CardActions>       <Button
@@ -174,7 +186,7 @@ class="size-avatar"
         >
        voir la description 
         </Button></CardActions>
-        {isExpanded.includes(shopItems._id) ? <p> {shopItems.description}</p> :<></>} 
+        {isExpanded.includes(shopItems._id) ? <p  dangerouslySetInnerHTML={{__html:shopItems.description}}></p>  :<></>} 
 
        
         <button class="button-82-pushable" role="button" onClick={() => addToCart({...shopItems , typeP:"document", prixF:`${shopItems.prixLecture}`,typeF:"Lecture"})}>

@@ -26,7 +26,7 @@ const Footer = () => {
          
             
                <div class="social-buttons centeritem boxM">
-               <h2 >Suivez-nous</h2>
+               <h2 className="titresocial" >Suivez-nous</h2>
   <a href="http://www.facebook.com" target="blank" class="social-margin">
     <div class="social-icon facebook">
     <i class="fab fa-facebook-f"></i>
