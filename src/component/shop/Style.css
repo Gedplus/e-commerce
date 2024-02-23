@@ -289,6 +289,10 @@ div.boxLike span {
   
   
   @media (min-width: 768px) {
+
+    .css-1e6y48t-MuiButtonBase-root-MuiButton-root {
+      font-size: 9px !important;
+    }
     .button-82-front3 {
       font-size: 16px;
       padding: 12px 42px;

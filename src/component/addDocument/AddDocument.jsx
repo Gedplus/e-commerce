@@ -37,7 +37,7 @@ const [value, setValue] = useState(0);
 const [image1 , setImage1] = useState("https://res.cloudinary.com/djkoevvlt/image/upload/v1703074820/jaedv92epr9q7mawdjwj.jpg")
 const history = useHistory ();
 
-
+console.log("file",file)
 
 
 
@@ -1120,6 +1120,8 @@ function convertToBase646(e){
         setUniversite(value[1])
         if(value[1] ==  "Université étrangère ou privée") {
           setprive("setprive")
+        }else {
+          setprive("setNotprive")
         }
       }
    
@@ -1277,7 +1279,7 @@ function valueLabelFormat(value) {
                   <MenuItem value="Mémoire">
                  Mémoire ou autre (niveau mastére)
                   </MenuItem>
-                  <MenuItem value="Thése">
+                  <MenuItem value="Thèse">
            Thèse ou autre (niveau doctorat)
                   </MenuItem> 
                   <MenuItem value="Article">
@@ -1421,7 +1423,7 @@ disabled
   />
 </Box></>
           )}
-           {type === "Thése" && (<>
+           {type === "Thèse" && (<>
                   <Box sx={{ width: 270 }}>
   <Typography id="non-linear-slider"  style={{fontSize:"18px"}}  gutterBottom>
   Prix de mode lecture : {value}

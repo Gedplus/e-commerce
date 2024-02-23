@@ -57,7 +57,11 @@ if(path == 'recherche')
       window.localStorage.clear();
       window.location.href ="./login"
       setAnchorEl(null)};
-    
+      const handleSearch = () => {
+        if(mot!=="")
+   {     history.push (`/recherche/${mot}`)}
+
+      }
 
   return (
     <>
@@ -67,11 +71,11 @@ if(path == 'recherche')
           <div className='logo width '>
             <img src={logo1} alt=''  />
           </div></Link>
-          <form  className="searchwidth" onSubmit={() =>       history.push (`/recherche/${mot}`)}>
+          <form  className="searchwidth" onSubmit={ handleSearch  }>
           <div className='search-box f_flex searchM' >
        
             <input type='text' placeholder='Vos mots-clés' style={{marginLeft:"20px"}} defaultValue={mot}   onChange={(e) => setMot(e.target.value)} />
-            <span onClick={() =>       history.push (`/recherche/${mot}`)}>  <i className='fa fa-search'></i></span>
+            <span onClick={handleSearch}>  <i className='fa fa-search'></i></span>
           </div></form>
          <div className='icon f_flex '>
       
@@ -155,11 +159,11 @@ if(path == 'recherche')
             </h4>
           </div></Button>
           {open === true ? (<CategoriesS/>):(<></>)}
-          <form  className="searchwidth" onSubmit={() =>       history.push (`/recherche/${mot}`)}>
+          <form  className="searchwidth" onSubmit={handleSearch}>
         <div className='search-box f_flex'>
            
             <input type='text' placeholder='Vos mots-clés' defaultValue={mot}  style={{marginLeft:"20px"}}  onChange={(e) => setMot(e.target.value)} />
-            <span  onClick={() =>       history.push (`/recherche/${mot}`)}>  <i className='fa fa-search'></i></span>
+            <span  onClick={handleSearch}>  <i className='fa fa-search'></i></span>
           </div>
           </form>
        

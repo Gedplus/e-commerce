@@ -9,11 +9,13 @@ import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css"; 
 import { useHistory } from 'react-router-dom'; 
 import { toast } from "react-toastify";
+import { Alert } from "@mui/material";
 const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const history = useHistory ();
   const [type, setType] = useState('password');
+  const [erreur1, setErreur1] = useState(false);
   const [icon, setIcon] = useState(eyeOff);
   const handleToggle = () => {
     if (type==='password'){
@@ -40,9 +42,11 @@ const Login = () => {
           window.localStorage.setItem("token", response.data._id);
           window.localStorage.setItem("loggedIn", true);
 
-          window.location.href = "./";
+   
         }else {
+          setErreur1(true)
           toast.error("Erreur login ")
+          
         }
   
   }
@@ -52,6 +56,7 @@ const Login = () => {
         <div class="form login">
             <div class="form-content">
                 <header class="h">Connexion</header>
+                {erreur1==true ?(<Alert severity="error">Cette adresse est déjà utilisée </Alert>):(<></>)}
                 <div class="form2" >
                     <div class="field input-field">
                         <input type="email" placeholder="Email" class="input"     onChange={(e) => setEmail(e.target.value)} />

@@ -37,9 +37,9 @@ const DocType = ({ addToCart, shopItems,user }) => {
          <li>   <button  role="button"className={`${id === "Mémoire" ?"buttonType3":"buttonType"}`} onClick={() => {window.location.href=`/docType/Mémoire`}}>
   Mémoire
 </button>  </li>
-         <li>   <button className={id == "Thése" ?"buttonType3":"buttonType"}  role="button" onClick={() => {window.location.href=`/docType/Thése`}}>
+         <li>   <button className={id == "Thèse" ?"buttonType3":"buttonType"}  role="button" onClick={() => {window.location.href=`/docType/Thèse`}}>
 
-  Thése
+         Thèse
 
 </button>
       </li>

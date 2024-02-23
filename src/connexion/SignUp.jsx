@@ -8,7 +8,7 @@ import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css"; 
 import Radio from '@mui/material/Radio';
 import { useHistory } from 'react-router-dom'; 
-import { Typography } from "@mui/material";
+import { CircularProgress, Typography } from "@mui/material";
 import { signup } from "../state/api";
 import {Icon} from 'react-icons-kit';
 import Alert from '@mui/material/Alert';
@@ -19,6 +19,7 @@ const Signup = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [erreur, setErreur] = useState(false);
+  const [erreur2, setErreur2] = useState(false);
   const [erreur1, setErreur1] = useState(false);
   const [passwordconf, setPasswordconf] = useState("");
   const [statue, setSelected] = useState("");
@@ -71,6 +72,7 @@ if (password ==  passwordconf ) {
 
 const response = await signup(user);
 console.log("dddd", response )
+setErreur2(true)
 if (response.status == "200") {
   toast.success("Compte créer  avec succès")
   setTimeout(()=>{
@@ -188,10 +190,11 @@ else{
                     </div>
                     <div class="field button-field">
                         <button onClick={handleFormSubmit}>S'inscrire</button>
-                    </div>
-                
+                    </div><br/>
+                    
+                     {erreur2==true ?(         <CircularProgress  className="progresssignup"/>):(<></>)}
                     <div class="form-link">
-                        <span>Vous avez déjà un compte?<a href="#" class="login-link">Connexion</a></span>
+                        <span>Vous avez déjà un compte?<a href="/login" class="login-link">Connexion</a></span>
                     </div>
                 </div>
             </div>

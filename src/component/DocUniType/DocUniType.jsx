@@ -19,6 +19,11 @@ const DocUniType = ({ addToCart, shopItems,user }) => {
     const history = useHistory ();
     const { id } = useParams();
     const { uni } = useParams();
+    const handleSearch = () => {
+      if(mot!=="")
+ {  history.push (`/rechercheAvancée/${id}/${uni}/${mot}`)
+    }
+    }
   return (
     <>
        <section className='shop1 background '>
@@ -27,11 +32,11 @@ const DocUniType = ({ addToCart, shopItems,user }) => {
 
           <div className='contentWidth'>
           <header class="h1">RECHERCHE AVANCÉE DANS "{uni}" </header>
-          <form  className="searchwidth1" onSubmit={() =>       history.push (`/rechercheAvancée/${id}/${uni}/${mot}`)}>
+          <form  className="searchwidth1" onSubmit={handleSearch}>
           <div className='search-box1 f_flex ' >
        
             <input type='text' placeholder='Essayez-moi !...' style={{marginLeft:"20px"}}   onChange={(e) => setMot(e.target.value)} />
-            <span onClick={() =>       history.push (`/rechercheAvancée/${id}/${uni}/${mot}`)}>  <i className='fa fa-search'></i></span>
+            <span onClick={handleSearch}>  <i className='fa fa-search'></i></span>
           </div></form>
           <ul class="horizontal-list  " >
   <li>  
@@ -47,7 +52,7 @@ const DocUniType = ({ addToCart, shopItems,user }) => {
          <li>   <button  role="button" className={`${id === "Mémoire" ?"buttonType3":"buttonType"}`} onClick={() => {window.location.href=`/docType/Mémoire/${uni}`}}>
   Mémoire
 </button>  </li>
-         <li>   <button className={id == "Thése" ?"buttonType3":"buttonType"}  role="button" onClick={() => {window.location.href=`/docType/Thése/${uni}`}}>
+         <li>   <button className={id == "Thèse" ?"buttonType3":"buttonType"}  role="button" onClick={() => {window.location.href=`/docType/Thèse/${uni}`}}>
 
   Thèse
 

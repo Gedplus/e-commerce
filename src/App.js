@@ -35,6 +35,9 @@ import EditProfile from './connexion/editProfile';
 import DocAvan from './component/rechercheAvance/DocAvan';
 import DocUniType from './component/DocUniType/DocUniType';
 import DocAvanceType from './component/rechercheAvanceType/RechercheAvanceType';
+import Success from './common/cart/Success';
+import Fail from './common/cart/Fail';
+import SoldeUser from './connexion/dashboardUser';
 
 
 function App() {
@@ -150,6 +153,12 @@ useEffect(() => {
     <Route path='/cart' exact>
   <Cart CartItem={items} addToCart={addToCart}  decreaseQty={decreaseQty} user={data || {}}  />
     </Route>
+    <Route path='/success' exact>
+  <Success CartItem={items} addToCart={addToCart}  decreaseQty={decreaseQty} user={data || {}}  />
+    </Route>
+    <Route path='/fail' exact>
+  <Fail CartItem={items} addToCart={addToCart}  decreaseQty={decreaseQty} user={data || {}}  />
+    </Route>
     <Route path='/Reclamation' exact>
   <Reclamation CartItem={items} addToCart={addToCart}  decreaseQty={decreaseQty}/>
     </Route>
@@ -170,6 +179,9 @@ useEffect(() => {
     </Route>
     <Route path='/MesDocuments' exact>
   <MesDocuments productItems={productItems} addToCart={addToCart} shopItems={shopItems} user={data || {}}  />
+    </Route>
+    <Route path='/solde' exact>
+  <SoldeUser productItems={productItems} addToCart={addToCart} shopItems={shopItems} user={data || {}}  />
     </Route>
     <Route path='/Doc/:id' exact>
   <DocUni productItems={productItems} addToCart={addToCart} shopItems={shopItems} user={data || {}}  />

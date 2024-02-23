@@ -56,7 +56,7 @@ footer {
   }
   .social-buttons {
     display: inline-block;
- margin-left: 100px;
+
   }
   
   .social-icon {
@@ -76,7 +76,15 @@ footer {
     transition: all 0.5s;
   }
   .titresocial{
-    margin-left: -150px;
+    margin-left: -60px;
+  }
+  .center img{
+    width: 60px;
+    height: 60px;
+    
+  }
+  .center{
+    margin-left: -40px;
   }
   @media (max-width: 1400px) {
 

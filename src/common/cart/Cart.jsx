@@ -1,10 +1,11 @@
 import React, { useState } from "react"
 import "./style.css"
 import { FormControl, FormControlLabel, FormLabel, Radio, RadioGroup } from "@mui/material"
-import { addCommande, useGetUtilisateursQuery } from "../../state/api";
+import { Editsolde, addCommande, useGetUtilisateursQuery } from "../../state/api";
 import { Link } from "react-router-dom";
 import Avatar from '@mui/material/Avatar';
 import Stack from '@mui/material/Stack';
+import axios from "axios";
 const Cart = ({ CartItem, addToCart, decreaseQty , user}) => {
   // Stpe: 7   calucate total of items
   const userss = useGetUtilisateursQuery();
@@ -14,8 +15,20 @@ const Cart = ({ CartItem, addToCart, decreaseQty , user}) => {
 
   const totalPrice = CartItem.reduce((price, item) => price +  parseFloat(item.prixF), 0)
   var total = 0 
+console.log(CartItem) 
+console.log(totalPrice)
 
+/*
 const handleFormSubmit = async(values) => {
+  setTimeout(()=>{
+    for(let index=0 ; index< CartItem?.length; index++){ 
+        Editsolde(CartItem[index]?.auteur ,{solde: CartItem[index]?.prixF} )
+    }
+   
+},300)
+
+}
+ const handleFormSubmit = async(values) => {
 
 const commande ={
   user_id : user._id ,
@@ -26,8 +39,16 @@ const commande ={
 };
 await addCommande(commande);
 
+  } 
+ */
+  const handleFormSubmit = (e) => {
+    e.preventDefault();
+    axios.post("https://api.bibintunisie.com/payement/payement/" , {amount : total + totalPrice} )
+    .then((res) => {
+      const {result} = res.data;
+window.location.href= result.link
+    }) .catch((err) => console.error(err))
   }
- 
 
   // prodcut qty total
   return (

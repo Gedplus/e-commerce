@@ -141,3 +141,10 @@ export const addWishlist = async ( id ,idu) => {
   console.log(idu)
   return await axios.put(`https://api.bibintunisie.com/client/wishlist/${idu}`,{prodId: id});
 }
+export const Editsolde = async ( id , solde) => {
+ 
+  return await axios.put(`https://api.bibintunisie.com/client/editsold/${id}`,solde);
+}
+export const addDemande = async (demande) => {
+  return await axios.post(`https://api.bibintunisie.com/general/Demandeadd`, demande);
+}

@@ -34,9 +34,9 @@ const Documents = ({ addToCart, shopItems ,user}) => {
          <li>   <button  role="button"class="buttonType" onClick={() => {window.location.href=`/docType/Mémoire`}}>
   Mémoire
 </button>  </li>
-         <li>   <button class="buttonType" role="button" onClick={() => {window.location.href=`/docType/Thése`}}>
+         <li>   <button class="buttonType" role="button" onClick={() => {window.location.href=`/docType/Thèse`}}>
 
-  Thése
+         Thèse
 
 </button>
       </li>

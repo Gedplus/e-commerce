@@ -27,6 +27,43 @@ body {
   height: auto;
   
 }
+.headingTabeau{
+text-align: center;
+}
+.grid-containerUser {
+  display: grid;
+  justify-content: space-evenly;
+  grid-template-columns: 300px 300px 300px; /*Make the grid smaller than the container*/
+  gap: 10px;
+ 
+  padding: 10px;
+  margin-top: 50px;
+}
+.ProgressCircle{
+  margin-top: 30px;
+  display: flex;
+  justify-content: center;
+}
+.ProgressCircle img{
+  height: 50px;
+  width: 50px;
+  margin-right: 10px;
+
+  background-color: transparent !important;
+}
+.solid{
+  width: 200px;
+  margin-left: 400px;
+  margin-top: 20px;
+}
+.grid-containerUser > div {
+  background-color: rgba(255, 255, 255, 0.8);
+  text-align: center;
+  width: 300px;
+  height: 100px;
+  padding: 20px 0;
+  font-size: 15px;
+}
 .cart-details{
   margin-left: 100px;
 }
@@ -471,8 +508,17 @@ z-index: 1 !important;
 }
 .grid3 {
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
+  grid-template-columns: repeat(3, 1fr);
   grid-gap: 100px;
+}
+.footerB{
+  height: 40px;
+  display: flex;
+  justify-content: center;
+}
+
+.footerB p{
+  margin-top: 10px;
 }
 .boxD{
   display: none;
@@ -509,6 +555,9 @@ ul.horizontal-list li {
 
 .progress{
   margin-left: 220px;
+}
+.progresssignup{
+  margin-left: 165px;
 }
 .Btn-jaime{
   font-size: 50px;
@@ -839,6 +888,9 @@ margin-bottom: 30px;
 }
 .progress{
   margin-left: 150px;
+}
+.progresssignup{
+  margin-left: 115px;
 }
 .containerM {
   max-width: 100%;

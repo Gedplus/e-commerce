@@ -91,7 +91,7 @@ const [users, setUser] = useState(user);
                 <img src={verification} alt=''  style={{width:"400px", height:"450px" }}/>
                 
             </div>
-            </div>
+            </div> 
             <div class="div">
             <div class="form-content">
              

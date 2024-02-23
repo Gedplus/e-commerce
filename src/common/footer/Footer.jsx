@@ -1,7 +1,11 @@
 import React from "react"
 import "./Footer.css"
 import { Link } from "react-router-dom"
-
+import p1 from "../../image/p1.png"
+import p2 from "../../image/p2.png"
+import p3 from "../../image/p3.png"
+import p4 from "../../image/p4.png"
+import p5 from "../../image/p5.png"
 const Footer = () => {
   return (
     <>
@@ -17,6 +21,16 @@ const Footer = () => {
           <div className='container grid3 '>
       
           <div className='box boxM ' >
+            
+            <h2 className="footerM">Paiement sécurisé</h2>
+            <ul className="center">
+           <img src={p1} /> 
+           <img src={p2} /> 
+           <img src={p3} /> 
+           <img src={p4} /> 
+           <img src={p5} /> 
+            </ul> </div>
+            <div className='box boxM ' >
             
             <h2 className="footerM">Contactez-nous</h2>
             <ul className="center">
@@ -61,12 +75,22 @@ const Footer = () => {
           <div className='container '>
 
           <div className='box  ' >
+          <div className='box  ' >
             
+            <h2 className="footerM">Paiement sécurisé</h2>
+            <ul className="center">
+           <img src={p1} /> 
+           <img src={p2} /> 
+           <img src={p3} /> 
+           <img src={p4} /> 
+           <img src={p5} /> 
+            </ul> </div>
             <h2 className="footerM">Contactez-nous</h2>
             <ul className="center">
               <li>Email: bibintunisie@gmail.com</li>
               <li>Téléphone: +216 25 55 77 80</li>
             </ul> </div>
+    
             <div class="social-buttons centeritem box">
                <h2 >Suivez-nous</h2>
   <a href="http://www.facebook.com" target="blank" class="social-margin">
@@ -103,7 +127,9 @@ const Footer = () => {
         
         </div>
         
-      </footer>
+      </footer><div className="footerB">
+        <p>Copyright © 2024, present BibinTunisie,Inc.All rights reserved.</p>
+      </div>
     </>
   )
 }

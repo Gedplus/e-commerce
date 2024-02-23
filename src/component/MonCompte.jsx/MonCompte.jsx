@@ -62,7 +62,7 @@ const MonCompte = ({ CartItem,user }) => {
         {
           cateImg: "./images/category/application.png",
           cateName: "Mon solde",
-          catlink: "MesDocuments", 
+          catlink: "solde", 
         },
        {
           cateImg: "./images/category/book.png",
