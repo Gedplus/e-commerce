@@ -9,7 +9,8 @@ import Shop from '../shop/Shop'
 
 import { useGetDocumentQuery } from '../../state/api'
 import Categories from '../document/categorie';
-import AcheterCart from './DocuementAcheterCard';
+
+import CollapsibleTable from './DocuementAcheterCard';
 const DocumentsAcheter = ({   user}) => {
 
   return (
@@ -17,14 +18,14 @@ const DocumentsAcheter = ({   user}) => {
         <div className='container d_flex '> 
 
             <Categories/>
-        
+         
           
            
             
             <section className='homeSlide  contentWidth'>
         <div className='container'>
         <div className='shop-details'>
-              <AcheterCart   user={user || {}}/>
+              <CollapsibleTable   user={user || {}}/>
 
             </div>
          

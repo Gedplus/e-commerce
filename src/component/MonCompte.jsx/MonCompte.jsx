@@ -47,7 +47,7 @@ const MonCompte = ({ CartItem,user }) => {
         {
           cateImg: "./images/category/open-boo.png",
           cateName: "Mes achats",
-          catlink:"MesDocuments",
+          catlink:"Achats",
         },
         {
           cateImg: "./images/category/open-boo.png",

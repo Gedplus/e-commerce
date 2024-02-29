@@ -1,279 +1,132 @@
-import React, { useEffect, useState } from "react"
-import Badge from '@mui/material/Badge';
+import * as React from 'react';
+import Box from '@mui/material/Box';
+import Collapse from '@mui/material/Collapse';
+import IconButton from '@mui/material/IconButton';
+import Table from '@mui/material/Table';
+import TableBody from '@mui/material/TableBody';
+import TableCell from '@mui/material/TableCell';
+import TableContainer from '@mui/material/TableContainer';
+import TableHead from '@mui/material/TableHead';
+import TableRow from '@mui/material/TableRow';
+import { Link } from "react-router-dom"
+import Typography from '@mui/material/Typography';
+import Paper from '@mui/material/Paper';
+import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
+import KeyboardArrowUpIcon from '@mui/icons-material/KeyboardArrowUp';
+import  moment from "moment";
+import { getCommande,  useGetUtilisateursQuery } from '../../state/api'
 
-import Avatar from '@mui/material/Avatar';
-import { editDocumentE, editDocumentI, editDocumentP, editDocumentU, getCommande,  useGetUtilisateursQuery } from '../../state/api'
-import { Link } from "react-router-dom";
-const AcheterCart = ({  user  }) => {
 
+function Row({ row , user  }) {
+ 
+  const [open, setOpen] = React.useState(false);
   const userss = useGetUtilisateursQuery();
   const users =userss.data
-  const [count, setCount] = useState(0);
-  const [Achats, setAchats] = useState();
-
-useEffect(() => {
-  const loadMediaDetails = async() => {
-      const response = await getCommande(user._id);
-      setAchats(response.data);
-
-  }
-  loadMediaDetails();
-}, []);
-
-  const handleFormSubmit = async(id,document1) => {
- 
-  setCount(1)
-    await editDocumentI(id, document1 );
-  
-  };
-  const handleFormSubmitU = async(id,document1) => {
-   
-    setCount(1)
-      await editDocumentU(id, document1 );
-    
-    };
-    const handleFormSubmitE = async(id,document1) => {
-     
-      setCount(1)
-        await editDocumentE(id, document1 );
-      
-      };
-      const handleFormSubmitP = async(id,document1) => {
-  
-        setCount(1)
-          await editDocumentP(id, document1 );
-        
-        };
-            
   return (
-    <>  
-    {Achats === undefined  ? (<>Loading....</>) : (<>{Achats.map((shopItems, index) => {
-        return (<>{shopItems.product.map((shopItem, index) => { 
-          return (<>
-        {shopItem.typeP === "document" && (<> {shopItem.prixF === shopItem.prixLecture ?(<>  <div className='cart-list product d_flex' key={shopItem._id}>
-        <div className='img'>
-        {users === undefined  ? (<>sxxdd</>) : (<>{users.map((user) => {return( <>    {shopItem.auteur === user._id ? (  <>   <img  src={user.image} alt='' />   
-     <div className=' d_flex'>
-        <Badge badgeContent={shopItem.interessant + count} color="primary" style={{marginTop:"5px"}}>
-        <Avatar alt="interessant" src="./images/interessant.png"   sx={{ width: 35, height: 35 }} onClick={ () => handleFormSubmit(shopItem._id, {interessant: shopItem.interessant + 1} )}/>
-</Badge> <Badge badgeContent={shopItem.utile} color="primary" style={{marginTop:"5px"}}>
-        <Avatar alt="utile" src="./images/util.png"   sx={{ width: 35, height: 35 }}  onClick={ () => handleFormSubmitU(shopItem._id, {utile: shopItem.utile + 1} )} />
-</Badge>
-<Badge badgeContent={shopItem.excellent + count} color="primary" style={{marginTop:"5px"}}>
-         <Avatar alt="excellent" src="./images/ex.png"  sx={{ width: 35, height: 35 }}  onClick={ () => handleFormSubmitE(shopItem._id, {excellent: shopItem.excellent + 1} )} />
-</Badge>
-<Badge badgeContent={shopItem.pasvraiment + count} color="primary" style={{marginTop:"5px"}}>
-        <Avatar alt="pas vraiment" src="./images/sm.png"  sx={{ width: 35, height: 35 }}  onClick={ () => handleFormSubmitP(shopItem._id, {pasvraiment: shopItem.pasvraiment + 1} )} />
-</Badge></div><div className='product-like'>{user.approved == true ?(<img  style={{height:"40px", width:"40px"}} src="./images/checked.png"/>):(<></>)}
-              
-              
-              </div>   
-          </> ):
-          (<></>)}</> ) })}</>)} 
-
-      
-
-
-        </div>
-        <div className='cart-details' style={{marginLeft: "-350px" , width:"250px"}}>
-          <h4  style={{ fontSize:"15px"}}>Titre du document : {shopItem.titre}</h4>
-          
-        
-          {users === undefined  ? (<>sxxdd</>) : (<>{users.map((user) => {return( <>    {shopItem.auteur === user._id ? (     <h4 style={{ fontSize:"15px"}}>  Auteur : {user.name} </h4> ):
-          (<></>)}</> ) })}</>)}
-        
-          <h4 style={{color:"grey" , fontWeight:"300", fontSize:"15px"}}>  {shopItem.type}</h4>
-         
-          <h4 style={{color:"grey" , fontWeight:"300"}}>  {shopItem.universite}</h4>
-          <h4 style={{color:"grey" , fontWeight:"300"}}>  {shopItem.description}</h4>
-          <br/>
-
-      <div className='cartControl d_flex'>
-
-      <button className='incCart ' >
-      <Link  to={`/detail/${shopItem._id}`}>
-   Voir plus  <i className='fa-solid fa  fa-plus'></i></Link>
-      </button>
-      
-     
-    </div>
-        </div>
+    <React.Fragment>
+      <TableRow sx={{ '& > *': { borderBottom: 'unset' } }}>
+        <TableCell>
+          <IconButton
+            aria-label="expand row"
+            size="small"
+            onClick={() => setOpen(!open)}
+          >
+            {open ? <KeyboardArrowUpIcon /> : <KeyboardArrowDownIcon />}
+          </IconButton>
+        </TableCell>
+        <TableCell component="th" scope="row">
+          {row._id}
+        </TableCell>
+        <TableCell align="right">{row.Total}</TableCell>
+        <TableCell align="right">{ moment().format(row.createdAt)}</TableCell>
+        <TableCell align="right">{row.product.length}</TableCell>
        
-<div></div> 
-
-   
-      </div></>):(<><div className='cart-list product d_flex' key={shopItem._id}>
-        <div className='img'>
-        {users === undefined  ? (<>sxxdd</>) : (<>{users.map((user) => {return( <>    {shopItem.auteur === user._id ? (  <>   <img  src={user.image} alt='' />   
-     <div className=' d_flex'>
-        <Badge badgeContent={shopItem.interessant + count} color="primary" style={{marginTop:"5px"}}>
-        <Avatar alt="interessant" src="./images/interessant.png"   sx={{ width: 35, height: 35 }} onClick={ () => handleFormSubmit(shopItem._id, {interessant: shopItem.interessant + 1} )}/>
-</Badge> <Badge badgeContent={shopItem.utile} color="primary" style={{marginTop:"5px"}}>
-        <Avatar alt="utile" src="./images/util.png"   sx={{ width: 35, height: 35 }}  onClick={ () => handleFormSubmitU(shopItem._id, {utile: shopItem.utile + 1} )} />
-</Badge>
-<Badge badgeContent={shopItem.excellent + count} color="primary" style={{marginTop:"5px"}}>
-        <Avatar alt="excellent" src="./images/ex.png"  sx={{ width: 35, height: 35 }}  onClick={ () => handleFormSubmitE(shopItem._id, {excellent: shopItem.excellent + 1} )} />
-</Badge>
-<Badge badgeContent={shopItem.pasvraiment + count} color="primary" style={{marginTop:"5px"}}>
-        <Avatar alt="pas vraiment" src="./images/sm.png"  sx={{ width: 35, height: 35 }}  onClick={ () => handleFormSubmitP(shopItem._id, {pasvraiment: shopItem.pasvraiment + 1} )} />
-</Badge></div><div className='product-like'>{user.approved == true ?(<img  style={{height:"40px", width:"40px"}} src="./images/checked.png"/>):(<></>)}
-              
-              
-              </div>   
-          </> ):
-          (<></>)}</> ) })}</>)} 
-
-      
-
-
-        </div>
-        <div className='cart-details' style={{marginLeft: "-350px" , width:"250px"}}>
-          <h4  style={{ fontSize:"15px"}}>Titre du document : {shopItem.titre}</h4>
-       
-        
-          {users === undefined  ? (<>sxxdd</>) : (<>{users.map((user) => {return( <>    {shopItem.auteur === user._id ? (     <h4 style={{ fontSize:"15px"}}>  Auteur : {user.name} </h4> ):
-          (<></>)}</> ) })}</>)}
-        
-          <h4 style={{color:"grey" , fontWeight:"300", fontSize:"15px"}}>  {shopItem.type}</h4>
-         
-          <h4 style={{color:"grey" , fontWeight:"300"}}>  {shopItem.universite}</h4>
-          <h4 style={{color:"grey" , fontWeight:"300"}}>  {shopItem.description}</h4>
-          <br/>
-
-      <div className='cartControl d_flex'>
-
-      <button className='incCart ' >
-      <a href={document}   download="document.pdf">document.pdf</a>
-      </button>
-      
-     
-    </div>
-        </div>
-       
-<div></div> 
-
-   
-      </div></>) }
-        
-         </>
-         
-         ) }
-           {shopItem.typeP === "video" && (<>  <div className='cart-list product d_flex' key={shopItem._id}>
-        <div className='img'>
-        {users === undefined  ? (<>sxxdd</>) : (<>{users.map((user) => {return( <>    {shopItem.auteur === user._id ? (  <>   <img  src={user.image} alt='' />   
-     <div className=' d_flex'>
-        <Badge badgeContent={shopItem.interessant + count} color="primary" style={{marginTop:"5px"}}>
-        <Avatar alt="interessant" src="./images/interessant.png"   sx={{ width: 35, height: 35 }} onClick={ () => handleFormSubmit(shopItem._id, {interessant: shopItem.interessant + 1} )}/>
-</Badge> <Badge badgeContent={shopItem.utile} color="primary" style={{marginTop:"5px"}}>
-        <Avatar alt="utile" src="./images/util.png"   sx={{ width: 35, height: 35 }}  onClick={ () => handleFormSubmitU(shopItem._id, {utile: shopItem.utile + 1} )} />
-</Badge>
-<Badge badgeContent={shopItem.excellent + count} color="primary" style={{marginTop:"5px"}}>
-        <Avatar alt="excellent" src="./images/ex.png"  sx={{ width: 35, height: 35 }}  onClick={ () => handleFormSubmitE(shopItem._id, {excellent: shopItem.excellent + 1} )} />
-</Badge>
-<Badge badgeContent={shopItem.pasvraiment + count} color="primary" style={{marginTop:"5px"}}>
-        <Avatar alt="pas vraiment" src="./images/sm.png"  sx={{ width: 35, height: 35 }}  onClick={ () => handleFormSubmitP(shopItem._id, {pasvraiment: shopItem.pasvraiment + 1} )} />
-</Badge></div><div className='product-like'>{user.approved == true ?(<img  style={{height:"40px", width:"40px"}} src="./images/checked.png"/>):(<></>)}
-              
-              
-              </div>   
-          </> ):
-          (<></>)}</> ) })}</>)} 
-
-      
+      </TableRow>
+      <TableRow>
+        <TableCell style={{ paddingBottom: 0, paddingTop: 0 }} colSpan={6}>
+          <Collapse in={open} timeout="auto" unmountOnExit>
+            <Box sx={{ margin: 1 }}>
+              <Typography variant="h6" gutterBottom component="div">
+   Documents
+              </Typography>
+              <Table size="small" aria-label="purchases">
+                <TableHead>
+                  <TableRow>
+                    <TableCell>Titre</TableCell>
+                    <TableCell>Auteur</TableCell>
+                    <TableCell align="right">Type de document</TableCell>
+                    <TableCell align="right">Prix</TableCell>
+                    <TableCell align="right">Document</TableCell>
+                  </TableRow>
+                </TableHead>
+                <TableBody>
+                  {row.product.map((historyRow) => (
+                    <TableRow key={historyRow._id}>
+                      <TableCell component="th" scope="row">
+                        {historyRow.titre}
+                      </TableCell>
+                      <TableCell component="th" scope="row">
+                      {users.map((user) => {return( <>    {historyRow.auteur === user._id ? ( <> {user.name}</>):(<></>)}</>)})}                       
+                      </TableCell>
+                      <TableCell>{historyRow.typeF}</TableCell>
+                      <TableCell align="right">{historyRow.prixF}</TableCell>
+                      <TableCell align="right">
 
 
-        </div>
-        <div className='cart-details' style={{marginLeft: "-350px" , width:"250px"}}>
-          <h4  style={{ fontSize:"15px"}}>Titre du video : {shopItem.name}</h4>
-          
-        
-          {users === undefined  ? (<>sxxdd</>) : (<>{users.map((user) => {return( <>    {shopItem.auteur === user._id ? (     <h4 style={{ fontSize:"15px"}}>  Auteur : {user.name} </h4> ):
-          (<></>)}</> ) })}</>)}
-        
-          <h4 style={{color:"grey" , fontWeight:"300", fontSize:"15px"}}>  {shopItem.type}</h4>
-         
-          <h4 style={{color:"grey" , fontWeight:"300"}}>  {shopItem.universite}</h4>
-          <h4 style={{color:"grey" , fontWeight:"300"}}>  {shopItem.description}</h4>
-          <br/>
 
-      <div className='cartControl d_flex'>
-      <Link  to={`/detailVideo/${shopItem._id}`}>
- <button className='incCart ' >
-   Voir plus  <i className='fa-solid fa  fa-plus'></i>
-      </button>
-      </Link>
-     
-    </div>
-        </div>
-       
-<div></div> 
-
-   
-      </div>
-        
-         </>
-         
-         ) } {shopItem.typeP === "packs" && (<>  <div className='cart-list product d_flex' key={shopItem._id}>
-         <div className='img'>
-         {users === undefined  ? (<>sxxdd</>) : (<>{users.map((user) => {return( <>    {shopItem.auteur === user._id ? (  <>   <img  src={user.image} alt='' />   
-      <div className=' d_flex'>
-         <Badge badgeContent={shopItem.interessant + count} color="primary" style={{marginTop:"5px"}}>
-         <Avatar alt="interessant" src="./images/interessant.png"   sx={{ width: 35, height: 35 }} onClick={ () => handleFormSubmit(shopItem._id, {interessant: shopItem.interessant + 1} )}/>
- </Badge> <Badge badgeContent={shopItem.utile} color="primary" style={{marginTop:"5px"}}>
-         <Avatar alt="utile" src="./images/util.png"   sx={{ width: 35, height: 35 }}  onClick={ () => handleFormSubmitU(shopItem._id, {utile: shopItem.utile + 1} )} />
- </Badge>
- <Badge badgeContent={shopItem.excellent + count} color="primary" style={{marginTop:"5px"}}>
-         <Avatar alt="excellent" src="./images/ex.png"  sx={{ width: 35, height: 35 }}  onClick={ () => handleFormSubmitE(shopItem._id, {excellent: shopItem.excellent + 1} )} />
- </Badge>
- <Badge badgeContent={shopItem.pasvraiment + count} color="primary" style={{marginTop:"5px"}}>
-         <Avatar alt="pas vraiment" src="./images/sm.png"  sx={{ width: 35, height: 35 }}  onClick={ () => handleFormSubmitP(shopItem._id, {pasvraiment: shopItem.pasvraiment + 1} )} />
- </Badge></div><div className='product-like'>{user.approved == true ?(<img  style={{height:"40px", width:"40px"}} src="./images/checked.png"/>):(<></>)}
-               
-               
-               </div>   
-           </> ):
-           (<></>)}</> ) })}</>)} 
- 
-       
- 
- 
-         </div>
-         <div className='cart-details' style={{marginLeft: "-350px" , width:"250px"}}>
-           <h4  style={{ fontSize:"15px"}}>Titre du video : {shopItem.title}</h4>
-          
-         
-           {users === undefined  ? (<>sxxdd</>) : (<>{users.map((user) => {return( <>    {shopItem.auteur === user._id ? (     <h4 style={{ fontSize:"15px"}}>  Auteur : {user.name} </h4> ):
-           (<></>)}</> ) })}</>)}
-         
-           <h4 style={{color:"grey" , fontWeight:"300", fontSize:"15px"}}>  {shopItem.type}</h4>
-          
-           <h4 style={{color:"grey" , fontWeight:"300"}}>  {shopItem.universite}</h4>
-           <h4 style={{color:"grey" , fontWeight:"300"}}>  {shopItem.description}</h4>
-           <br/>
- 
-       <div className='cartControl d_flex'>
-       <Link  to={`/detailPack/${shopItem._id}`}>
-       <button className='incCart ' >
-  
-    Voir plus  <i className='fa-solid fa  fa-plus'></i>
-       </button>
-       </Link>
-      
-     </div>
-         </div>
-        
- <div></div> 
- 
+                        {historyRow.typeF == "Lecture" ?(                  <Link to={`/detail/${historyRow._id}`} >{historyRow.document} </Link>) :( <a  style={{color:"blue" }}href={`https://api.bibintunisie.com/public/files/${historyRow.document}`}> {historyRow.document}</a>)}
+           
+                      
+                      
     
-       </div>
-         
-          </>
-          
-          ) }</>)})}</>  )
-      })} </>)}
-      
-    </>
-  )
+                      
+                      </TableCell>
+                    </TableRow>
+                  ))}
+                </TableBody>
+              </Table>
+            </Box>
+          </Collapse>
+        </TableCell>
+      </TableRow>
+    </React.Fragment>
+  );
 }
 
-export default AcheterCart
+
+
+export default function CollapsibleTable({user}) {
+
+  const [Achats, setAchats] = React.useState();
+console.log(user._id)
+  React.useEffect(() => {
+    const loadMediaDetails = async() => {
+        const response = await getCommande(user._id);
+        setAchats(response.data);
+  
+    }
+    loadMediaDetails();
+  }, [user._id]);
+console.log("Achats" ,Achats)
+  return (
+    <TableContainer component={Paper} style={{marginTop:"50px"}}>
+      <Table aria-label="collapsible table">
+        <TableHead>
+          <TableRow>
+            <TableCell />
+            <TableCell>Numéro de commande</TableCell>
+            <TableCell align="right">Montant total</TableCell>
+            <TableCell align="right">date de commande </TableCell>
+            <TableCell align="right">Nombre de documents </TableCell>
+           
+          </TableRow>
+        </TableHead>
+        <TableBody>
+          {Achats?.map((row) => (
+            <Row key={row.name} row={row} />
+          ))}
+        </TableBody>
+      </Table>
+    </TableContainer>
+  );
+}
