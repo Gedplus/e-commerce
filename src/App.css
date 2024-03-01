@@ -765,7 +765,19 @@ ul.pagination li a.active {
   
 }
 @media (max-width: 768px) {
-
+  .solid{
+    width: 200px;
+    margin-left: 70px;
+    margin-top: 20px;
+  }
+  .grid-containerUser {
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
+    grid-gap: 10px;
+   
+    padding: 10px;
+    margin-top: 50px;
+  }
   ul.horizontal-list li {
     display: inline-block;
     padding: 0 0.17rem;
