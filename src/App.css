@@ -53,7 +53,7 @@ text-align: center;
 }
 .solid{
   width: 200px;
-  margin-left: 400px;
+  margin-left: 580px;
   margin-top: 20px;
 }
 .grid-containerUser > div {
@@ -269,6 +269,10 @@ margin-left: 80px;
 /*---------category----------*/
 .contentWidth {
   width: 77%;
+}
+.contentWidth1 {
+  width: 100%;
+ 
 }
 .category {
   box-shadow: rgb(43 52 69 / 10%) 0px 4px 16px;
@@ -765,6 +769,9 @@ ul.pagination li a.active {
   
 }
 @media (max-width: 768px) {
+  .textFooter{
+    font-size: 12px;
+  }
   .solid{
     width: 200px;
     margin-left: 70px;
@@ -958,7 +965,14 @@ margin-bottom: 30px;
   width: 170px;
 }
 .social-buttons{
-  margin-left: 0px !important;
+  margin-left: 5px !important;
+}
+.center{
+  margin-left: -50px;
+}
+
+.textff{
+  margin-left: 10px;
 }
 .boxM{
   display: none;

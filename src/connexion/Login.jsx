@@ -35,14 +35,14 @@ const Login = () => {
 
     };
     const response = await loginUser(user);
-      console.log("dddd", response)
+      console.log("dddd", response.status)
         if (response.status == "200") {
 
           toast.success("login avec succès")
           window.localStorage.setItem("token", response.data._id);
           window.localStorage.setItem("loggedIn", true);
 
-   
+          window.location.href ="./"
         }else {
           setErreur1(true)
           toast.error("Erreur login ")
@@ -56,7 +56,7 @@ const Login = () => {
         <div class="form login">
             <div class="form-content">
                 <header class="h">Connexion</header>
-                {erreur1==true ?(<Alert severity="error">Cette adresse est déjà utilisée </Alert>):(<></>)}
+                {erreur1==true ?(<Alert severity="error">Votre adresse ou mot de passe est incorrect </Alert>):(<></>)}
                 <div class="form2" >
                     <div class="field input-field">
                         <input type="email" placeholder="Email" class="input"     onChange={(e) => setEmail(e.target.value)} />

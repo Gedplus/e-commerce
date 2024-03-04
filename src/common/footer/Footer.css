@@ -1,6 +1,6 @@
 footer {
     background-color: #02026b;
-    padding: 50px 0;
+    padding: 30px 0;
     color: #fff;
   }
   footer .Link {
@@ -86,6 +86,10 @@ footer {
   .center{
     margin-left: -40px;
   }
+  @media (max-width: 768px)
+{.center {
+    margin-left: -30px;
+}}
   @media (max-width: 1400px) {
 
     .titresocial{
@@ -95,7 +99,12 @@ footer {
 
 
   }
-
+  @media only screen and (min-width: 1600px) {
+    .titresocial{
+      margin-left: -160px;
+ 
+    }
+  }
   .social-icon-no-border {
     margin-bottom: 15px;
     box-sizing: border-box;

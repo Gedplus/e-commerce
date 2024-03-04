@@ -62,13 +62,9 @@ const MonCompte = ({ CartItem,user }) => {
         {
           cateImg: "./images/category/application.png",
           cateName: "Mon solde",
-          catlink: "solde", 
+          catlink: "solde",  
         },
-       {
-          cateImg: "./images/category/book.png",
-          cateName: "Demande de versement de mon solde",
-          catlink: "verification",
-        }, {
+    {
           cateImg: "./images/category/book.png",
           cateName: "Demande de vérification de mon compte",
           catlink: "verification",

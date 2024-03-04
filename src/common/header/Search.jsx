@@ -126,11 +126,11 @@ if(path == 'recherche')
              open={isOpen}
              onClose={handleClose1}
              anchorOrigin={{ vertical: "bottom", horizontal: "center" }}
-            > <MenuItem onClick={handleClose1} ><Link to='/MesDocuments'  >Mes achats</Link></MenuItem>
+            > <MenuItem onClick={handleClose1} ><Link to='/Achats'  >Mes achats</Link></MenuItem>
                <MenuItem onClick={handleClose1} ><Link to='/MesDocuments'>Mes Documents</Link></MenuItem>
                  <MenuItem onClick={handleClose1} ><Link to='/AddDocument'>Ajouter Document</Link></MenuItem>
-                 <MenuItem  onClick={handleClose1} ><Link to='/MesDocuments'>Mon solde</Link></MenuItem>
-                 <MenuItem onClick={handleClose1} ><Link to='/MesDocuments'>Demande de versement de mon solde</Link></MenuItem>
+                 <MenuItem  onClick={handleClose1} ><Link to='/solde'>Mon solde</Link></MenuItem>
+               
               <MenuItem onClick={handleClose1} ><Link to='/verification'>Demande de vérification de mon compte <img  style={{height:"20px", width:"20px"}} alt="checked" src={checked}/></Link></MenuItem>
               <MenuItem onClick={handleClose}>Déconnexion</MenuItem>
             </Menu>

@@ -54,9 +54,8 @@ const SoldeUser = ({ addToCart, shopItems,user }) => {
     <>
     <section className='shop1 background '>
      <div className='container d_flex  '>
-       <Categories  />
 
-       <div className='contentWidth'>
+       <div className='contentWidth1'>
          <div className='headingTabeau'>
      
              <h2>Tableau de bord</h2>

@@ -6,14 +6,14 @@ import p2 from "../../image/p2.png"
 import p3 from "../../image/p3.png"
 import p4 from "../../image/p4.png"
 import p5 from "../../image/p5.png"
-const Footer = () => {
+const Footer = () => { 
   return (
     <>
       <footer>
         <div className='container '>
         <header class="h">   <h1 className="footerM">À propos</h1>
      
-            <p>"BiBin" est l'acronyme de "Bibliothèque Tunisienne de l'Intelligence Intellectuelle", une plateforme en ligne qui vise à protéger le droit  d'auteur et  offre la  possibilité aux étudiants et aux professionnels de partager  leurs travaux académiques, articles et  ouvrages tout en leur permettant d'en  tirer profit. </p>
+            <p className="textFooter">"BiBin" est l'acronyme de "Bibliothèque Tunisienne de l'Intelligence Intellectuelle", une plateforme en ligne qui vise à protéger le droit  d'auteur et  offre la  possibilité aux étudiants et aux professionnels de partager  leurs travaux académiques, articles et  ouvrages tout en leur permettant d'en  tirer profit. </p>
         
             </header>
   
@@ -71,28 +71,28 @@ const Footer = () => {
           </div>
         </div>
         
-        <div className='container display '>
+        <div className='container display  '>
           <div className='container '>
 
           <div className='box  ' >
           <div className='box  ' >
             
-            <h2 className="footerM">Paiement sécurisé</h2>
-            <ul className="center">
+            <h2 className="footerM ">Paiement sécurisé</h2>
+            <ul className="center ">
            <img src={p1} /> 
            <img src={p2} /> 
            <img src={p3} /> 
            <img src={p4} /> 
            <img src={p5} /> 
             </ul> </div>
-            <h2 className="footerM">Contactez-nous</h2>
-            <ul className="center">
+            <h2 className="footerM ">Contactez-nous</h2>
+            <ul className="center ">
               <li>Email: bibintunisie@gmail.com</li>
               <li>Téléphone: +216 25 55 77 80</li>
             </ul> </div>
     
-            <div class="social-buttons centeritem box">
-               <h2 >Suivez-nous</h2>
+            <div class="social-buttons  centeritem box">
+               <h2  className="textff">Suivez-nous</h2>
   <a href="http://www.facebook.com" target="blank" class="social-margin">
     <div class="social-icon facebook">
     <i class="fab fa-facebook-f"></i>

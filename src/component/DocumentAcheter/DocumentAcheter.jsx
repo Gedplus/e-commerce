@@ -17,12 +17,12 @@ const DocumentsAcheter = ({   user}) => {
     <><section className='shop-items ' >
         <div className='container d_flex '> 
 
-            <Categories/>
+          
          
           
            
             
-            <section className='homeSlide  contentWidth'>
+            <section className='homeSlide  contentWidth1'>
         <div className='container'>
         <div className='shop-details'>
               <CollapsibleTable   user={user || {}}/>
