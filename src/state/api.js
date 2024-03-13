@@ -126,7 +126,10 @@ export const signup= async (user) => {
  
 }
 export const loginUser= async (user) => {
+  try{
   return await axios.post(`https://api.bibintunisie.com/user/login`, user);
+} catch (error) {
+  return error.response}
 }
 export const forgetPassword= async (email) => {
   return await axios.post(`https://api.bibintunisie.com/user/forget-password-token`, email);

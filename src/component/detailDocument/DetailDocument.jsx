@@ -5,10 +5,7 @@ import { Link,  useParams } from 'react-router-dom';
 import { getDocument } from "../../state/api";
 import { pdfjs } from "react-pdf";
 import Categories from "../document/categorie";
-pdfjs.GlobalWorkerOptions.workerSrc = new URL(
-  "pdfjs-dist/build/pdf.worker.min.js",
-  import.meta.url
-).toString();
+pdfjs.GlobalWorkerOptions.workerSrc =  `//cdnjs.cloudflare.com/ajax/libs/pdf.js/${pdfjs.version}/pdf.worker.js`;
 function DetailDoc() {
   const { id } = useParams();
   const [Documents, setDocument] = useState("");
