@@ -25,6 +25,7 @@ const DocSearch = ({ addToCart, shopItems,user }) => {
           <ul class="horizontal-list  " >
   <li>  
     
+    
   <button class="buttonType2" role="button" onClick={() => {window.location.href=`/docType/PFE`}}>
 
   PFE

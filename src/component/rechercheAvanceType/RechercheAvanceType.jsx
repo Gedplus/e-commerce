@@ -51,35 +51,45 @@ const DocAvanceType = ({ addToCart, shopItems,user }) => {
             <span onClick={handleSearch}>  <i className='fa fa-search'></i></span>
           </div></form>
           <ul class="horizontal-list  " >
-  <li>  
+  <li>      
     
   <button className={`${id === "PFE" ?"buttonType22":"buttonType2"}`} role="button" onClick={() => {window.location.href=`/rechercheAvancée/PFE/${uni}/${mot}`}}>
 
   PFE
 
 </button>
-    
+{id === "PFE" &&(<>  <button className='removeCart1' onClick={() => {window.location.href=`/rechercheAvancée/${uni}/${mot}`}}  >
+                    <i className='fas fa-times close'></i>
+                  </button></>)}
     
 </li> 
          <li>   <button  role="button" className={`${id === "Mémoire" ?"buttonType3":"buttonType"}`}  onClick={() => {window.location.href=`/rechercheAvancée/Mémoire/${uni}/${mot}`}}>
   Mémoire
-</button>  </li>
+</button> {id === "Mémoire" &&(<>  <button className='removeCart1' onClick={() => {window.location.href=`/rechercheAvancée/${uni}/${mot}`}} >
+                    <i className='fas fa-times close'></i>
+                  </button></>)} </li>
          <li>   <button className={id == "Thèse" ?"buttonType3":"buttonType"} role="button" onClick={() => {window.location.href=`/rechercheAvancée/Thèse/${uni}/${mot}`}}>
 
          Thèse
 
-</button>
+</button>{id === "Thèse" &&(<>  <button className='removeCart1' onClick={() => {window.location.href=`/rechercheAvancée/${uni}/${mot}`}}  >
+                    <i className='fas fa-times close'></i>
+                  </button></>)}
       </li>
 <li>   <button className={id == "Article" ?"buttonType3":"buttonType"} role="button" onClick={() => {window.location.href=`/rechercheAvancée/Article/${uni}/${mot}`}}>
  
   Article
 
-</button>  </li>
+</button> {id === "Article" &&(<>  <button className='removeCart1' onClick={() => {window.location.href=`/rechercheAvancée/${uni}/${mot}`}}   >
+                    <i className='fas fa-times close'></i>
+                  </button></>)} </li>
          <li>  <button className={id == "Ouvrage" ?"buttonType11":"buttonType1"} role="button" onClick={() => {window.location.href=`/rechercheAvancée/Ouvrage/${uni}/${mot}`}}>
 
   Ouvrage
 
-</button>  
+</button>  {id === "Ouvrage" &&(<>  <button className='removeCart1' onClick={() => {window.location.href=`/rechercheAvancée/${uni}/${mot}`}}  >
+                    <i className='fas fa-times close'></i>
+                  </button></>)}
    </li>
 </ul>
             <section className='shop-items'>

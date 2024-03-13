@@ -40,6 +40,7 @@ const DocUniType = ({ addToCart, shopItems,user }) => {
           </div></form>
           <ul class="horizontal-list  " >
   <li>  
+
     
   <button className={`${id === "PFE" ?"buttonType22":"buttonType2"}`} role="button" onClick={() => {window.location.href=`/docType/PFE/${uni}`}}>
 
@@ -47,27 +48,37 @@ const DocUniType = ({ addToCart, shopItems,user }) => {
 
 </button>
     
-     
+{id === "PFE" &&(<>  <button className='removeCart1' onClick={() => {window.location.href=`/doc/${uni}`}}  >
+                    <i className='fas fa-times close'></i>
+                  </button></>)}
 </li>
          <li>   <button  role="button" className={`${id === "Mémoire" ?"buttonType3":"buttonType"}`} onClick={() => {window.location.href=`/docType/Mémoire/${uni}`}}>
   Mémoire
-</button>  </li>
+</button> {id === "Mémoire" &&(<>  <button className='removeCart1' onClick={() => {window.location.href=`/doc/${uni}`}}  >
+                    <i className='fas fa-times close'></i>
+                  </button></>)} </li>
          <li>   <button className={id == "Thèse" ?"buttonType3":"buttonType"}  role="button" onClick={() => {window.location.href=`/docType/Thèse/${uni}`}}>
 
   Thèse
 
-</button>
+</button>{id === "Thèse" &&(<>  <button className='removeCart1' onClick={() => {window.location.href=`/doc/${uni}`}}  >
+                    <i className='fas fa-times close'></i>
+                  </button></>)}
       </li>
 <li>   <button  className={id == "Article" ?"buttonType3":"buttonType"}role="button" onClick={() => {window.location.href=`/docType/Article/${uni}`}}>
  
   Article
 
-</button>  </li>
+</button> {id === "Article" &&(<>  <button className='removeCart1' onClick={() => {window.location.href=`/doc/${uni}`}}  >
+                    <i className='fas fa-times close'></i>
+                  </button></>)} </li>
          <li>  <button className={id == "Ouvrage" ?"buttonType11":"buttonType1"}  role="button" onClick={() => {window.location.href=`/docType/Ouvrage/${uni}`}}>
 
   Ouvrage
 
-</button>  
+</button>  {id === "Ouvrage" &&(<>  <button className='removeCart1' onClick={() => {window.location.href=`/doc/${uni}`}}  >
+                    <i className='fas fa-times close'></i>
+                  </button></>)}
    </li>
 </ul>
             <section className='shop-items'>
