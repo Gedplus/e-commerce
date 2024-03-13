@@ -709,6 +709,19 @@ ul.pagination li a.active {
   margin-top: 10px;
 }
 @media (max-width: 1400px) {
+  .removeCart1 {
+    background: none;
+    font-size: 15px;
+    height: 20px;
+    width: 20px;
+  
+  margin-left: -10px;
+  position: absolute;
+  margin-top: -8px;
+    color: hsl(0,0%,75%);
+    border-radius: 50px;
+    background-color: #0000a1;
+  }
 
   .buttonType{
     width: 100px;
@@ -787,6 +800,19 @@ ul.pagination li a.active {
 @media (max-width: 768px) {
   .textFooter{
     font-size: 12px;
+  }
+  .removeCart1 {
+    background: none;
+    font-size: 10px;
+    height: 15px;
+    width: 15px;
+  
+  margin-left: -10px;
+  position: absolute;
+  margin-top: -5px;
+    color: hsl(0,0%,75%);
+    border-radius: 50px;
+    background-color: #0000a1;
   }
   .solid{
     width: 200px;
