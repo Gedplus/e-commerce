@@ -1193,5 +1193,6 @@ margin-left: 5px;
 }
 .react-pdf__Page__canvas{
   width: 300px  !important;
+  margin-left: 0px !important;
 }
 }
