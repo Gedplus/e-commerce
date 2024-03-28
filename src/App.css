@@ -39,6 +39,10 @@ text-align: center;
   padding: 10px;
   margin-top: 50px;
 }
+.react-pdf__Page__canvas{
+  width: 900px  !important;
+  margin-left: 100px !important;
+}
 .ProgressCircle{
   margin-top: 30px;
   display: flex;
@@ -53,7 +57,7 @@ text-align: center;
 }
 .solid{
   width: 200px;
-  margin-left: 580px;
+  
   margin-top: 20px;
 }
 .grid-containerUser > div {
@@ -539,7 +543,7 @@ ul.horizontal-list {
   list-style: none;
 
   display: inline-block;
-margin-left: 170px;
+margin-left: 160px;
 padding-bottom: 10px;
 
 }
@@ -573,35 +577,35 @@ ul.horizontal-list li {
 }
 
 .buttonType{
-  width: 120px;
+  width: 110px;
   height: 45px;
   font-size: 17px;
   color: #0000a1;
   background-color: hsl(0,0%,75%);
 }
 .buttonType:hover{
-  width: 120px;
+  width: 110px;
   height: 45px;
   font-size: 17px;
   color:hsl(0,0%,75%) ;
   background-color: #0000a1; 
 }
 .buttonType3{
-  width: 120px;
+  width: 110px;
   height: 45px;
   font-size: 17px;
   color:hsl(0,0%,75%) ;
   background-color: #0000a1; 
 }
 .buttonType1:hover{
-  width: 120px;
+  width: 110px;
   height: 45px;
   font-size: 17px;
   color:hsl(0,0%,75%) ;
   background-color: #0000a1;
 }
 .buttonType11{
-  width: 120px;
+  width: 110px;
   height: 45px;
   font-size: 17px;
   color:hsl(0,0%,75%) ;
@@ -610,14 +614,14 @@ ul.horizontal-list li {
   border-bottom-right-radius: 25px;
 }
 .buttonType2:hover{
-  width: 120px;
+  width: 110px;
   height: 45px;
   font-size: 17px;
   color:hsl(0,0%,75%) ;
   background-color: #0000a1;
 }
 .buttonType22{
-  width: 120px;
+  width: 110px;
   height: 45px;
   font-size: 17px;
   color:hsl(0,0%,75%) ;
@@ -627,7 +631,7 @@ ul.horizontal-list li {
 
 }
 .buttonType1{
-  width: 120px;
+  width: 110px;
   height: 45px;
   font-size: 17px;
   color: #0000a1;
@@ -636,7 +640,7 @@ ul.horizontal-list li {
   border-bottom-right-radius: 25px;
 }
 .buttonType2{
-  width: 120px;
+  width: 110px;
   height: 45px;
   font-size: 17px;
   color: #0000a1;
@@ -816,16 +820,28 @@ ul.pagination li a.active {
   }
   .solid{
     width: 200px;
-    margin-left: 70px;
+    
     margin-top: 20px;
+  }
+  .ProgressCircle{
+    margin-top: 10px;
   }
   .grid-containerUser {
     display: grid;
     grid-template-columns: repeat(1, 1fr);
     grid-gap: 10px;
-   
+  align-items: center;
     padding: 10px;
-    margin-top: 50px;
+    margin-top: -0px;
+  }
+  .grid-containerUser > div {
+
+    text-align: center;
+    width: 200px;
+    height: 70px;
+    padding: 20px 0;
+    font-size: 15px;
+  
   }
   ul.horizontal-list li {
     display: inline-block;
@@ -1174,5 +1190,8 @@ margin-left: 5px;
 }
 .SearchMobile{
   display: block;
+}
+.react-pdf__Page__canvas{
+  width: 300px  !important;
 }
 }

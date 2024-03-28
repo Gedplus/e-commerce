@@ -28,29 +28,28 @@ const [file, setfile] = useState("");
 
   return (
     <><section className='shop-items ' >
-    <div className='container d_flex '> 
+    <div className='container '> 
 
-        <Categories/>
+
      
       
        
-        
-        <section className='homeSlide  contentWidth'>
-    <div className='container'>
-    <div className='shop-details'>
+      
+    <div className='container' >
+    <div className='shop-details ' style={{paddingTop:"30px"}}>
     <div className="pdf-div">
-           <p>
-        Page {pageNumber} of {numPages}
-      </p>
-      {file== "" ?(<></>):(<>      <Document file={`https://api.bibintunisie.com/public/files/${Documents.document}`} onLoadSuccess={onDocumentLoadSuccess}>
+      
+      {file== "" ?(<></>):(<>      <Document       file={`https://api.bibintunisie.com/public/files/${Documents.document}`} onLoadSuccess={onDocumentLoadSuccess}>
         {Array.apply(null, Array(numPages))
           .map((x, i) => i + 1)
           .map((page) => {
             return (
               <Page
+             
                 pageNumber={page}
                 renderTextLayer={false}
                 renderAnnotationLayer={false}
+                className	="pdf-page"
               />
             );
           })}
@@ -62,7 +61,7 @@ const [file, setfile] = useState("");
         </div>
      
     </div>
-  </section>
+
     </div>
 </section>
 

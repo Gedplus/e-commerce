@@ -97,7 +97,7 @@ function Row({ row , user  }) {
 
 export default function CollapsibleTable({user}) {
 
-  const [Achats, setAchats] = React.useState();
+  const [Achats, setAchats] = React.useState([]);
 console.log(user._id)
   React.useEffect(() => {
     const loadMediaDetails = async() => {

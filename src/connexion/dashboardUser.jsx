@@ -52,7 +52,7 @@ const SoldeUser = ({ addToCart, shopItems,user }) => {
       };
   return (
     <>
-    <section className='shop1 background '>
+    <section className=' background '>
      <div className='container d_flex  '>
 
        <div className='contentWidth1'>
@@ -63,12 +63,14 @@ const SoldeUser = ({ addToCart, shopItems,user }) => {
        
          </div>
          <section className='shop-items'>
+         <div className='ProgressCircle'>
          <div class="grid-containerUser">
+       
   <div style={{backgroundColor:"#3fbde2"}}><p  style={{color:"#ffff"}}>Solde </p><p style={{color:"#437284"}}>{userSolde}TND</p></div>
   <div  style={{backgroundColor:"#c1c1c1"}} ><p   style={{color:"#ffff"}}>Pourcentage pour versement </p><p style={{color:"#437284"}}>{userpourcentage}%</p></div>
   <div  style={{backgroundColor:"#989acc"}}><p   style={{color:"#ffff"}}>Nombre des achats</p><p style={{color:"#437284"}}>{user.nbrAchats}</p></div>  
- 
-</div>
+
+</div></div>
 <div className='ProgressCircle'>
 <Box
       sx={{
@@ -81,8 +83,8 @@ const SoldeUser = ({ addToCart, shopItems,user }) => {
       }}
     />
 </div>
-
-<hr className="solid" />
+<div className='ProgressCircle'>
+<hr className="solid" /></div>
 {erreur1==true ?(<Alert severity="success">Votre demande est envoyée</Alert>):(<></>)}
 <div className='ProgressCircle'><button className="button-17" onClick={handleFormSubmit}>Demander</button></div>
 <div className='ProgressCircle'>

@@ -896,7 +896,336 @@ const Categories = () => {
     {
       cateImg:  school,
       cateName: "Université étrangère ou privée",
-      sousCat :[ ]
+      sousCat :[{
+        cateImg:  school,
+        cateName: "Faculté Privée de Montplaisir / Tunis",
+      },
+      {
+        cateImg:  school,
+        cateName: "Institut Privé des Hautes Etudes de Tunis",
+      },
+      {
+        cateImg:  school,
+        cateName: "Faculté Privée de Droit, d’Economie et de Gestion / Tunis",
+      },
+      {
+        cateImg:  school,
+        cateName: "Institut Supérieur Privé Polytechnique/ Tunis",
+      },  {
+        cateImg:  school,
+        cateName: "Ecole Supérieure Privée de Carthage des Sciences et d’Ingénierie / Tunis",
+      },
+      {
+        cateImg:  school,
+        cateName: "Ecole Supérieure Privée de Carthage de Management",
+      },  {
+        cateImg:  school,
+        cateName: "Ecole Supérieure Privée d’Ingénieurs et d’Etudes Technologiques de Tunis",
+      },
+      {
+        cateImg:  school,
+        cateName: "Faculté Privée des Sciences de Gestion et de Technologie à Mégrine",
+      },
+      {
+        cateImg:  school,
+        cateName: "Ecole Centrale Supérieure Privée des Sciences Paramédicales et de la Santé",
+      },
+      {
+        cateImg:  school,
+        cateName: "Ecole Supérieure Privée de Technologie et de Management",
+      },   {
+        cateImg:  school,
+        cateName: "Ecole Supérieure Privée de Technologies de l'Information et d’Administration des Entreprises",
+      }, {
+        cateImg:  school,
+        cateName: "Ecole Supérieure Internationale Privée de Tunis",
+      }, {
+        cateImg:  school,
+        cateName: "Ecole Méditerranéenne Supérieure Privée des Affaires",
+      },
+      {
+        cateImg:  school,
+        cateName: "Ecole Supérieure Privée d'Ingénierie et de Technologie",
+      },
+      {
+        cateImg:  school,
+        cateName: "Ecole Supérieure Privée de l'Aéronautique et des Technologies",
+      },
+      {
+        cateImg:  school,
+        cateName: "Ecole Supérieure Privée d'Architecture, d'Audiovisuel et du Design",
+      },
+      {
+        cateImg:  school,
+        cateName: "Faculté Privée Ibn Khaldoun de Droit, des Sciences Economiques et de Gestion",
+      },
+      {
+        cateImg:  school,
+        cateName: "Ecole Supérieure Privée des Sciences Appliquées et de Management",
+      },  {
+        cateImg:  school,
+        cateName: "Institut Supérieur Privé des Sciences Paramédicales ' Mahmoud Materi'",
+      },
+      {
+        cateImg:  school,
+        cateName: "Institut Supérieur Privé Tunis Dauphine",
+      },
+      {
+        cateImg:  school,
+        cateName: "Ecole Supérieure Privée d’Administration des Affaires et de Droit « Avicenne»",
+      },
+      {
+        cateImg:  school,
+        cateName: "Ecole Centrale Supérieure Privée des Lettres, des Arts et des Sciences de la Communication",
+      },
+      {
+        cateImg:  school,
+        cateName: "Ecole Supérieure Privée Centrale Polytechnique",
+      },
+      {
+        cateImg:  school,
+        cateName: "Ecole Centrale Supérieure Privée de Droit et de Gestion",
+      },   {
+        cateImg:  school,
+        cateName: "Faculté Privée des Sciences de la Santé de Tunis",
+      },
+      {
+        cateImg:  school,
+        cateName: "Faculté Privée des Sciences Juridiques, Sociales, Economiques et de Gestion de Tunis",
+      },
+      {
+        cateImg:  school,
+        cateName: "Faculté Méditerranéenne Privée des Sciences Informatiques, d’Economie et de Gestion de Tunis",
+      },
+      {
+        cateImg:  school,
+        cateName: "Ecole Supérieure Privée Polytechnique Ibn Khaldoun",
+      },
+      {
+        cateImg:  school,
+        cateName: "Ecole Supérieure Privée d’Informatique et d’Administration des Affaires/Tunis",
+      },
+      {
+        cateImg:  school,
+        cateName: "Ecole Méditerranéenne Supérieure Privée Polytechnique",
+      },
+      {
+        cateImg:  school,
+        cateName: "Ecole Internationale Supérieure Privée Polytechnique de Tunis",
+      },
+      {
+        cateImg:  school,
+        cateName: "Institut Supérieur Privé Méditerranéen de Technologie",
+      },
+      {
+        cateImg:  school,
+        cateName: "École supérieure privée d'ingénierie d'informatique et d'administration des affaires",
+      },
+      {
+        cateImg:  school,
+        cateName: "Ecole Supérieure Privée de technologie et d’ingénierie",
+      },
+      {
+        cateImg:  school,
+        cateName: "Institut Supérieur privé d’administration des Entreprises / Tunis",
+      },
+      {
+        cateImg:  school,
+        cateName: "Institut International Supérieur Privé des Etudes Numériques et Audiovisuelles / Tunis",
+      },
+      {
+        cateImg:  school,
+        cateName: "Ecole Internationale Supérieure privée de Droit et des Affaires",
+      },
+      {
+        cateImg:  school,
+        cateName: "Ecole Supérieure Privée des Affaires",
+      },
+      {
+        cateImg:  school,
+        cateName: "Faculté privée des sciences politiques et économiques",
+      },
+      {
+        cateImg:  school,
+        cateName: "Ecole supérieure privée de management de Tunis",
+      },
+      {
+        cateImg:  school,
+        cateName: "Ecole supérieure privée d'Assurance et de Finance",
+      },
+      {
+        cateImg:  school,
+        cateName: "Ecole centrale supérieure privée de droit et des sciences politiques de Tunis",
+      },
+      {
+        cateImg:  school,
+        cateName: "Ecole centrale supérieure privée d'informatique et de communication de Tunis",
+      },
+      {
+        cateImg:  school,
+        cateName: "Ecole supérieure privée des sciences juridiques, économiques et politiques",
+      },
+      {
+        cateImg:  school,
+        cateName: "Faculté Privée de droit, des sciences politiques et de gestion 'Mahmoud El Matri'",
+      },
+      {
+        cateImg:  school,
+        cateName: "Ecole Supérieure Privée d'informatique et de Technologie",
+      },
+      {
+        cateImg:  school,
+        cateName: "Ecole supérieure privée Magrébine des sciences et technologie",
+      },
+      {
+        cateImg:  school,
+        cateName: "Institut Supérieur Privé des Technologies de la Digitalisation",
+      },
+      {
+        cateImg:  school,
+        cateName: "Ecole internationale Supérieure Privée de Gestion Hôtelière",
+      },
+      {
+        cateImg:  school,
+        cateName: "Ecole Supérieure Privée d'Informatique et de Technologie de digitalisation",
+      },
+      {
+        cateImg:  school,
+        cateName: "Institut Supérieur Polytechnique Privé des Sciences Avancées du Sud",
+      },
+      {
+        cateImg:  school,
+        cateName: "Ecole Supérieure Privée des Etudes Administratives et Commerciales de Sfax",
+      },
+      {
+        cateImg:  school,
+        cateName: "Faculté Privée des Sciences Paramédicales de Sfax",
+      },
+      {
+        cateImg:  school,
+        cateName: "Ecole Supérieure Internationale Privée de Technologie / Sfax",
+      },
+      {
+        cateImg:  school,
+        cateName: "Ecole Internationale Supérieure Privée des Affaires / Sfax",
+      },
+      {
+        cateImg:  school,
+        cateName: "Ecole Polytechnique Internationale Supérieure Privée de Sfax",
+      },
+      {
+        cateImg:  school,
+        cateName: "Institut Supérieur Privé des Sciences de la santé de Sousse",
+      },
+      {
+        cateImg:  school,
+        cateName: "Institut Supérieur Privé des Sciences Infirmières 'EL AMED'",
+      },
+      {
+        cateImg:  school,
+        cateName: "Ecole Supérieure Privée d’Ingénierie, des Sciences et de Technologie de Sousse",
+      },
+      {
+        cateImg:  school,
+        cateName: "Institut Supérieur Privé des Sciences Infirmières 'Etoile de formation'",
+      },
+      {
+        cateImg:  school,
+        cateName: "Institut Supérieur Privé des Sciences Infirmières de Sousse",
+      },
+      {
+        cateImg:  school,
+        cateName: "Ecole Supérieure Polytechnique Privée de Sousse",
+      },
+      {
+        cateImg:  school,
+        cateName: "Institut Privé des Hautes Etudes de Sousse",
+      },
+      {
+        cateImg:  school,
+        cateName: "Ecole Supérieure Privée de Technologie, d’Informatique et de Gestion de Sousse",
+      },
+      {
+        cateImg:  school,
+        cateName: "Ecole Internationale Supérieure Privée Polytechnique de Sousse",
+      },
+      {
+        cateImg:  school,
+        cateName: "Ecole Supérieure Privée d’Ingénierie et de Technologie appliquée/ Sousse",
+      },
+      {
+        cateImg:  school,
+        cateName: "Faculté Privée de Gestion et des Sciences de l’Administration de Sousse",
+      },
+      {
+        cateImg:  school,
+        cateName: "Ecole Supérieure Internationale Privée de Management de Sousse",
+      },
+      {
+        cateImg:  school,
+        cateName: "Ecole Supérieure Privée d’Economie et de Gestion de Sousse",
+      },
+      {
+        cateImg:  school,
+        cateName: "Ecole supérieure privée de technologie avancée de Sousse",
+      },
+      {
+        cateImg:  school,
+        cateName: "Ecole supérieure privée des sciences commerciales et des affaires",
+      },
+      {
+        cateImg:  school,
+        cateName: "Ecole internationale supérieure privée de management et de marketing de Sousse",
+      },
+      {
+        cateImg:  school,
+        cateName: "Ecole supérieure privée des technologies numériques'l'Horizon'",
+      },
+      {
+        cateImg:  school,
+        cateName: "Institut Supérieur privé des sciences et technologie en informatique appliquée de Sousse",
+      },
+      {
+        cateImg:  school,
+        cateName: "Ecole Méditerranéenne Supérieure Privée des Sciences Informatiques, d’Economie et de Gestion de Nabeul",
+      },
+      {
+        cateImg:  school,
+        cateName: "Ecole Supérieure Privée de Technologie de l’Information et de Management de Nabeul",
+      },
+      {
+        cateImg:  school,
+        cateName: "Faculté Privée des sciences de l’informatique et de management de Nabeul",
+      },
+      {
+        cateImg:  school,
+        cateName: "Institut Supérieur Privé des Sciences Infirmières de Kairouan",
+      },
+      {
+        cateImg:  school,
+        cateName: "Ecole Supérieure Privée des Sciences Appliquées et de Technologie de Gabès",
+      },
+      {
+        cateImg:  school,
+        cateName: "Ecole supérieure privée de technologie et de management de Gabès",
+      },
+      {
+        cateImg:  school,
+        cateName: "Ecole Supérieure Polytechnique Privée de Monastir",
+      },
+      {
+        cateImg:  school,
+        cateName: "Ecole Supérieure Privée d’ingénieurs de Monastir",
+      },
+      {
+        cateImg:  school,
+        cateName: "Ecole Supérieure Privée d’ingénieurs de Gafsa",
+      },
+      {
+        cateImg:  school,
+        cateName: "Autre université étrangère ou privée",
+      },
+    ]
     },
   ]
 
